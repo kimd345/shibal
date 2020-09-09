@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from starter_app.models import User
+from server.models import User
 
 user_routes = Blueprint('users', __name__)
 

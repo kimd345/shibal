@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
-from starter_app import app, db
-from starter_app.models import User
+from server import app, db
+from server.models import User
 
 load_dotenv()
 

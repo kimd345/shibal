@@ -4,10 +4,10 @@ from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 
 
-from starter_app.models import db, User
-from starter_app.api.user_routes import user_routes
+from server.models import db, User
+from server.api.user_routes import user_routes
 
-from starter_app.config import Config
+from server.config import Config
 
 app = Flask(__name__, static_url_path='')
 
