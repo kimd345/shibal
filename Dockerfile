@@ -15,10 +15,10 @@ RUN ["npm", "run", "build", "--prefix", "client"]
 # Move our react build for Flask to serve
 # Use cp here because we're copying files inside our working directory, not from
 # our host machine.
-RUN ["cp", "-r", "client/build/", "starter_app/static"]
+RUN ["cp", "-r", "client/build/", "server/static"]
 
 # Setup Flask environment
-ENV FLASK_APP=starter_app
+ENV FLASK_APP=server
 ENV FLASK_ENV=production
 ENV SQLALCHEMY_ECHO=True
 ENV SECRET_KEY=lkasjdf09ajsdkfljalsiorj12n3490re9485309irefvn,u90818734902139489230
@@ -26,4 +26,4 @@ ENV SECRET_KEY=lkasjdf09ajsdkfljalsiorj12n3490re9485309irefvn,u90818734902139489
 EXPOSE 8000
 
 # Run flask environment
-CMD gunicorn starter_app:app
+CMD gunicorn server:app
