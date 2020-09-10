@@ -1,12 +1,11 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
-function SignupScreen(props) {
+import colors from '../config/colors';
+
+function AuthScreen(props) {
   return (
-    <ImageBackground
-      style={styles.background}
-      source={require('../assets/background.png')}
-    >
+    <View style={styles.background}>
       <View style={styles.oauthContainer}>
         <Text style={styles.topText}>
           Want to learn how to best train your Shiba Inu? Sign up, it's free!
@@ -25,12 +24,13 @@ function SignupScreen(props) {
         <Text style={styles.bottomText}>Already have an account?</Text>
         <Text style={styles.loginText}>Login</Text>
       </View>
-    </ImageBackground>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   background: {
+    backgroundColor: colors.primaryBackground,
     flex: 1,
     alignItems: 'center',
   },
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   topText: {
-    color: 'maroon',
+    color: colors.primaryText,
     textAlign: 'center',
     marginBottom: 20,
   },
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#3b5998',
     borderRadius: 50,
     margin: 10,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   facebookButtonText: {
-    color: 'white',
+    color: colors.white,
   },
   googleButton: {
     width: '100%',
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#de5246',
     borderRadius: 50,
     margin: 10,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   googleButtonText: {
-    color: 'white',
+    color: colors.white,
   },
   authContainer: {
     position: 'absolute',
@@ -94,10 +94,10 @@ const styles = StyleSheet.create({
   signupButton: {
     width: '100%',
     height: 50,
-    backgroundColor: 'white',
+    backgroundColor: colors.white,
     borderRadius: 50,
     margin: 10,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -109,15 +109,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   signupButtonText: {
-    color: 'maroon',
+    color: colors.primaryText,
   },
   bottomText: {
-    color: 'maroon',
+    color: colors.primaryText,
     margin: 20,
   },
   loginText: {
-    color: 'white',
+    color: colors.white,
   },
 });
 
-export default SignupScreen;
+export default AuthScreen;

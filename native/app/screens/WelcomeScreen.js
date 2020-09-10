@@ -1,6 +1,9 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Text } from 'react-native';
 
+import colors from '../config/colors';
+import AppButton from '../components/AppButton';
+
 function WelcomeScreen(props) {
   return (
     <ImageBackground
@@ -14,9 +17,12 @@ function WelcomeScreen(props) {
         </Text>
       </View>
       <View style={styles.loginContainer}>
-        <View style={styles.getStartedButton}>
+        {/* <View style={styles.getStartedButton}>
           <Text style={styles.getStartedButtonText}>GET STARTED</Text>
-        </View>
+        </View> */}
+
+        <AppButton title='GET STARTED' width='80%' />
+
         <View style={styles.loginButton}>
           <Text style={styles.loginButtonText}>LOGIN</Text>
         </View>
@@ -37,10 +43,10 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   welcomeHeader: {
-    color: 'white',
+    color: colors.white,
   },
   welcomeMessage: {
-    color: 'maroon',
+    color: colors.primaryText,
     textAlign: 'center',
   },
   loginContainer: {
@@ -52,10 +58,10 @@ const styles = StyleSheet.create({
   getStartedButton: {
     width: '50%',
     height: 50,
-    backgroundColor: '#ff9999',
+    backgroundColor: colors.primaryButton,
     borderRadius: 50,
     margin: 10,
-    shadowColor: '#000',
+    shadowColor: colors.black,
     shadowOffset: {
       width: 0,
       height: 1,
@@ -70,16 +76,16 @@ const styles = StyleSheet.create({
   loginButton: {
     width: '40%',
     height: 40,
-    backgroundColor: '#ff999900',
+    backgroundColor: colors.secondaryButton,
     borderWidth: 1,
-    borderColor: 'rosybrown',
+    borderColor: colors.buttonBorder,
     borderRadius: 50,
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },
   loginButtonText: {
-    color: 'white',
+    color: colors.white,
   },
 });
 

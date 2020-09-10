@@ -1,10 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View } from 'react-native';
+
 import WelcomeScreen from './app/screens/WelcomeScreen';
-import SignupScreen from './app/screens/SignupScreen';
+// import AuthScreen from './app/screens/AuthScreen';
+// import AppButton from './app/components/AppButton';
 
 export default function App() {
-  // return <WelcomeScreen />;
-  return <SignupScreen />;
+  return (
+    <WelcomeScreen />
+    // <AuthScreen />
+    // <AppButton title='LOGIN' onPress={() => alert('Tapped')} />
+  );
 }
