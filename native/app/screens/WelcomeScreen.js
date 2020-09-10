@@ -15,10 +15,10 @@ function WelcomeScreen(props) {
       </View>
       <View style={styles.loginContainer}>
         <View style={styles.getStartedButton}>
-          <Text style={styles.getStartedText}>GET STARTED</Text>
+          <Text style={styles.getStartedButtonText}>GET STARTED</Text>
         </View>
         <View style={styles.loginButton}>
-          <Text style={styles.loginText}>LOGIN</Text>
+          <Text style={styles.loginButtonText}>LOGIN</Text>
         </View>
       </View>
     </ImageBackground>
@@ -29,6 +29,19 @@ const styles = StyleSheet.create({
   background: {
     flex: 1,
     alignItems: 'center',
+  },
+  welcomeContainer: {
+    position: 'absolute',
+    top: '20%',
+    alignItems: 'center',
+    width: '80%',
+  },
+  welcomeHeader: {
+    color: 'white',
+  },
+  welcomeMessage: {
+    color: 'maroon',
+    textAlign: 'center',
   },
   loginContainer: {
     position: 'absolute',
@@ -47,12 +60,13 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.2,
+    shadowOpacity: 1,
     shadowRadius: 1.5,
-    elevation: 2,
+    elevation: 2.5,
     justifyContent: 'center',
     alignItems: 'center',
   },
+  getStartedButtonText: {},
   loginButton: {
     width: '40%',
     height: 40,
@@ -64,23 +78,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  getStartedText: {},
-  loginText: {
+  loginButtonText: {
     color: 'white',
-  },
-  welcomeContainer: {
-    position: 'absolute',
-    top: '20%',
-    alignItems: 'center',
-    width: '100%',
-  },
-  welcomeHeader: {
-    color: 'white',
-  },
-  welcomeMessage: {
-    width: '80%',
-    color: 'maroon',
-    textAlign: 'center',
   },
 });
 
