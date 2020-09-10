@@ -17,15 +17,16 @@ function WelcomeScreen(props) {
         </Text>
       </View>
       <View style={styles.loginContainer}>
-        {/* <View style={styles.getStartedButton}>
-          <Text style={styles.getStartedButtonText}>GET STARTED</Text>
-        </View> */}
-
-        <AppButton title='GET STARTED' width='80%' />
-
-        <View style={styles.loginButton}>
-          <Text style={styles.loginButtonText}>LOGIN</Text>
-        </View>
+        <AppButton title='GET STARTED' /* onPress={} */ width='60%' />
+        <AppButton
+          title='LOGIN'
+          /* onPress={} */
+          color='primaryBackground'
+          width='40%'
+          height={40}
+          borderWidth={1}
+          borderColor='rosybrown'
+        />
       </View>
     </ImageBackground>
   );
@@ -55,24 +56,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
-  getStartedButton: {
-    width: '50%',
-    height: 50,
-    backgroundColor: colors.primaryButton,
-    borderRadius: 50,
-    margin: 10,
-    shadowColor: colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 1.5,
-    elevation: 2.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  getStartedButtonText: {},
   loginButton: {
     width: '40%',
     height: 40,

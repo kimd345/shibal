@@ -9,5 +9,5 @@ export default {
   black: '#000',
   white: '#fff',
 
-  buttonBorder: '#bc8f8f', // rosybrown
+  rosybrown: '#bc8f8f', // rosybrown
 };
