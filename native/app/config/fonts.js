@@ -1,3 +1,5 @@
+import { Platform } from 'react-native';
+
 export default {
-  primary: '', // system font
+  primary: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
 };

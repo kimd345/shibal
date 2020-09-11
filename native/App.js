@@ -7,7 +7,7 @@ import AuthScreen from './app/screens/AuthScreen';
 
 export default function App() {
   return (
-    // <WelcomeScreen />
-    <AuthScreen />
+    <WelcomeScreen />
+    // <AuthScreen />
   );
 }
