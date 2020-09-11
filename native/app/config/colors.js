@@ -9,5 +9,8 @@ export default {
   black: '#000',
   white: '#fff',
 
-  rosybrown: '#bc8f8f', // rosybrown
+  facebook: '#3b5998',
+  google: '#de5246',
+
+  rosybrown: '#bc8f8f',
 };

@@ -44,31 +44,22 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   welcomeHeader: {
+    paddingBottom: 10,
     color: colors.white,
+    fontSize: 18,
+    fontWeight: 'bold',
+    letterSpacing: 1,
   },
   welcomeMessage: {
     color: colors.primaryText,
     textAlign: 'center',
+    lineHeight: 30,
   },
   loginContainer: {
     position: 'absolute',
     top: '40%',
     alignItems: 'center',
     width: '100%',
-  },
-  loginButton: {
-    width: '40%',
-    height: 40,
-    backgroundColor: colors.secondaryButton,
-    borderWidth: 1,
-    borderColor: colors.buttonBorder,
-    borderRadius: 50,
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  loginButtonText: {
-    color: colors.white,
   },
 });
 
