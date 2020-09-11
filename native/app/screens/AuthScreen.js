@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
 import colors from '../config/colors';
+import AppButton from '../components/AppButton';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 function AuthScreen(props) {
   return (
@@ -10,17 +12,24 @@ function AuthScreen(props) {
         <Text style={styles.topText}>
           Want to learn how to best train your Shiba Inu? Sign up, it's free!
         </Text>
-        <View style={styles.facebookButton}>
-          <Text style={styles.facebookButtonText}>Continue with Facebook</Text>
-        </View>
-        <View style={styles.googleButton}>
-          <Text style={styles.googleButtonText}>Continue with Google</Text>
-        </View>
+        <AppButton
+          title='Continue with Facebook'
+          // onPress={}
+          color={'facebook'}
+        />
+        <AppButton
+          title='Continue with Google'
+          // onPress={}
+          color={'google'}
+        />
       </View>
       <View style={styles.authContainer}>
-        <View style={styles.signupButton}>
-          <Text style={styles.signupButtonText}>Sign up with email</Text>
-        </View>
+        <AppButton
+          title='Sign up with email'
+          // onPress={}
+          color={'white'}
+          textColor={'black'}
+        />
         <Text style={styles.bottomText}>Already have an account?</Text>
         <Text style={styles.loginText}>Login</Text>
       </View>

@@ -3,13 +3,11 @@ import React from 'react';
 import { View } from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
-// import AuthScreen from './app/screens/AuthScreen';
-// import AppButton from './app/components/AppButton';
+import AuthScreen from './app/screens/AuthScreen';
 
 export default function App() {
   return (
-    <WelcomeScreen />
-    // <AuthScreen />
-    // <AppButton title='LOGIN' onPress={() => alert('Tapped')} />
+    // <WelcomeScreen />
+    <AuthScreen />
   );
 }

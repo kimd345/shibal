@@ -8,19 +8,28 @@ function AppButton({
   title = 'Coming Soon!',
   onPress = () => alert('Coming Soon!'),
   color = 'primaryButton',
-  border = 'none',
   width = '100%',
   height = 50,
+  margin = 10,
+  borderWidth = 0,
+  borderColor = 'black',
   textColor = 'white',
   fontFamily = 'primary',
-  fontSize = 18,
+  fontSize = 14,
   fontWeight = '400',
 }) {
   return (
     <TouchableOpacity
       style={[
         styles.button,
-        { backgroundColor: colors[color], border, width, height },
+        {
+          backgroundColor: colors[color],
+          width,
+          height,
+          margin,
+          borderColor: colors[borderColor],
+          borderWidth,
+        },
       ]}
       activeOpacity={0.65}
       onPress={onPress}
@@ -41,9 +50,9 @@ function AppButton({
 
 const styles = StyleSheet.create({
   button: {
-    borderRadius: 50,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 50,
     padding: 10,
     shadowColor: '#000',
     shadowOffset: {
