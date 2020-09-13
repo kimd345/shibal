@@ -6,6 +6,7 @@ import { AppLoading } from 'expo';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AuthScreen from './app/screens/AuthScreen';
+// import ProgramCard from './app/components/ProgramCard';
 
 export default function App() {
   const [fontsLoaded] = useFonts({

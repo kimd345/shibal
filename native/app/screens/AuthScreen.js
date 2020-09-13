@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   bottomText: {
-    margin: 20,
+    marginVertical: 20,
   },
   login: {
     color: colors.white,
