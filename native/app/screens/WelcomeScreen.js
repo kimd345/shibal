@@ -14,7 +14,7 @@ function WelcomeScreen(props) {
     >
       <Image style={styles.logo} source={require('../assets/logo.png')} />
       <View style={styles.welcomeContainer}>
-        <AppHeader style={styles.welcomeHeader}>Welcome to Shibal !</AppHeader>
+        <AppHeader style={styles.welcomeHeader}>Welcome to Shibal</AppHeader>
         <AppText style={styles.welcomeMessage}>
           Train your Shiba Inu daily, and strengthen your friendship
         </AppText>
@@ -59,8 +59,6 @@ const styles = StyleSheet.create({
   },
   welcomeMessage: {
     color: colors.primaryText,
-    textAlign: 'center',
-    lineHeight: 27,
   },
   loginContainer: {
     position: 'absolute',

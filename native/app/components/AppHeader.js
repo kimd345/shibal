@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: colors.black,
     textAlign: 'center',
+    letterSpacing: 0.5,
+    lineHeight: 34,
     margin: 10,
   },
 });

@@ -50,6 +50,7 @@ function AppButton({
           fontFamily: fonts[fontFamily],
           fontSize,
           fontWeight,
+          letterSpacing: 0.5,
           margin: 10,
         }}
       >

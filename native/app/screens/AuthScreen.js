@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 
 import colors from '../config/colors';
 import AppButton from '../components/AppButton';
@@ -31,7 +31,7 @@ function AuthScreen(props) {
           textColor={'black'}
         />
         <AppText style={styles.bottomText}>Already have an account?</AppText>
-        <AppText style={styles.loginText}>Login</AppText>
+        <Button title='Login' style={styles.loginText} />
       </View>
     </View>
   );
@@ -54,71 +54,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
-  facebookButton: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#3b5998',
-    borderRadius: 50,
-    margin: 10,
-    shadowColor: colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 1.5,
-    elevation: 2.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  facebookButtonText: {
-    color: colors.white,
-  },
-  googleButton: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#de5246',
-    borderRadius: 50,
-    margin: 10,
-    shadowColor: colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 1.5,
-    elevation: 2.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  googleButtonText: {
-    color: colors.white,
-  },
   authContainer: {
     position: 'absolute',
     top: '75%',
     alignItems: 'center',
     width: '80%',
-  },
-  signupButton: {
-    width: '100%',
-    height: 50,
-    backgroundColor: colors.white,
-    borderRadius: 50,
-    margin: 10,
-    shadowColor: colors.black,
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 1.5,
-    elevation: 2.5,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  signupButtonText: {
-    color: colors.primaryText,
   },
   bottomText: {
     color: colors.primaryText,
