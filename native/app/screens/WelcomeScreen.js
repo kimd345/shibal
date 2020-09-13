@@ -3,6 +3,7 @@ import { ImageBackground, StyleSheet, View, Text } from 'react-native';
 
 import colors from '../config/colors';
 import AppButton from '../components/AppButton';
+import AppText from '../components/AppText';
 
 function WelcomeScreen(props) {
   return (
@@ -11,13 +12,17 @@ function WelcomeScreen(props) {
       source={require('../assets/welcome.png')}
     >
       <View style={styles.welcomeContainer}>
-        <Text style={styles.welcomeHeader}>Welcome to Shibal!</Text>
-        <Text style={styles.welcomeMessage}>
+        <AppText style={styles.welcomeHeader}>Welcome to Shibal!</AppText>
+        <AppText style={styles.welcomeMessage}>
           Train your Shiba Inu daily, and strengthen your friendship
-        </Text>
+        </AppText>
       </View>
       <View style={styles.loginContainer}>
-        <AppButton title='GET STARTED' /* onPress={} */ width='60%' />
+        <AppButton
+          iconName='arrow-right'
+          title='GET STARTED'
+          /* onPress={} */ width='55%'
+        />
         <AppButton
           title='LOGIN'
           /* onPress={} */

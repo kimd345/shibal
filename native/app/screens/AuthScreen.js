@@ -3,14 +3,15 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import colors from '../config/colors';
 import AppButton from '../components/AppButton';
+import AppText from '../components/AppText';
 
 function AuthScreen(props) {
   return (
     <View style={styles.background}>
       <View style={styles.oauthContainer}>
-        <Text style={styles.topText}>
+        <AppText style={styles.topText}>
           Want to learn how to best train your Shiba Inu? Sign up, it's free!
-        </Text>
+        </AppText>
         <AppButton
           title='Continue with Facebook'
           // onPress={}
@@ -29,8 +30,8 @@ function AuthScreen(props) {
           color={'white'}
           textColor={'black'}
         />
-        <Text style={styles.bottomText}>Already have an account?</Text>
-        <Text style={styles.loginText}>Login</Text>
+        <AppText style={styles.bottomText}>Already have an account?</AppText>
+        <AppText style={styles.loginText}>Login</AppText>
       </View>
     </View>
   );
