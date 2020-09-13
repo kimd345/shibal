@@ -18,7 +18,7 @@ function AppButton({
   textColor = 'white',
   fontFamily = 'primary',
   fontSize = 14,
-  fontWeight = '400',
+  fontWeight = '500',
 }) {
   return (
     <TouchableOpacity

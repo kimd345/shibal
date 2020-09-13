@@ -1,9 +1,10 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View, Text } from 'react-native';
+import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 
 import colors from '../config/colors';
 import AppButton from '../components/AppButton';
 import AppText from '../components/AppText';
+import AppHeader from '../components/AppHeader';
 
 function WelcomeScreen(props) {
   return (
@@ -11,8 +12,9 @@ function WelcomeScreen(props) {
       style={styles.background}
       source={require('../assets/welcome.png')}
     >
+      <Image style={styles.logo} source={require('../assets/logo.png')} />
       <View style={styles.welcomeContainer}>
-        <AppText style={styles.welcomeHeader}>Welcome to Shibal!</AppText>
+        <AppHeader style={styles.welcomeHeader}>Welcome to Shibal !</AppHeader>
         <AppText style={styles.welcomeMessage}>
           Train your Shiba Inu daily, and strengthen your friendship
         </AppText>
@@ -21,7 +23,8 @@ function WelcomeScreen(props) {
         <AppButton
           iconName='arrow-right'
           title='GET STARTED'
-          /* onPress={} */ width='55%'
+          /* onPress={} */
+          width='55%'
         />
         <AppButton
           title='LOGIN'
@@ -38,6 +41,12 @@ function WelcomeScreen(props) {
 }
 
 const styles = StyleSheet.create({
+  logo: {
+    position: 'absolute',
+    top: 50,
+    width: 50,
+    height: 50,
+  },
   background: {
     flex: 1,
     alignItems: 'center',
@@ -48,17 +57,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '80%',
   },
-  welcomeHeader: {
-    paddingBottom: 10,
-    color: colors.white,
-    fontSize: 18,
-    fontWeight: 'bold',
-    letterSpacing: 1,
-  },
   welcomeMessage: {
     color: colors.primaryText,
     textAlign: 'center',
-    lineHeight: 30,
+    lineHeight: 27,
   },
   loginContainer: {
     position: 'absolute',
