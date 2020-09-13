@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
@@ -29,8 +29,8 @@ function AppButton({
           width,
           height,
           margin,
-          borderColor: colors[borderColor],
           borderWidth,
+          borderColor: colors[borderColor],
         },
       ]}
       activeOpacity={0.65}
@@ -50,8 +50,6 @@ function AppButton({
           fontFamily: fonts[fontFamily],
           fontSize,
           fontWeight,
-          letterSpacing: 0.5,
-          margin: 10,
         }}
       >
         {title}
@@ -72,7 +70,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
-    shadowOpacity: 1,
+    shadowOpacity: 0.2,
     shadowRadius: 1.5,
     elevation: 2.5,
   },

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Button } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 
 import colors from '../config/colors';
 import AppButton from '../components/AppButton';
@@ -31,7 +31,12 @@ function AuthScreen(props) {
           textColor={'black'}
         />
         <AppText style={styles.bottomText}>Already have an account?</AppText>
-        <Button title='Login' style={styles.loginText} />
+        <Text
+          onPress={() => alert('navigate to login form')}
+          style={styles.login}
+        >
+          Login
+        </Text>
       </View>
     </View>
   );
@@ -50,8 +55,6 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   topText: {
-    color: colors.primaryText,
-    textAlign: 'center',
     marginBottom: 20,
   },
   authContainer: {
@@ -61,11 +64,12 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   bottomText: {
-    color: colors.primaryText,
     margin: 20,
   },
-  loginText: {
+  login: {
     color: colors.white,
+    fontSize: 16,
+    letterSpacing: 1,
   },
 });
 

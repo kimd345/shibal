@@ -8,6 +8,7 @@ export default {
 
   black: '#000',
   white: '#fff',
+  transparent: '#00000000',
 
   facebook: '#3b5998',
   google: '#de5246',
