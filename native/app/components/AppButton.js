@@ -46,7 +46,7 @@ function AppButton({
       <Text
         style={{
           color: defaultStyles.colors[textColor],
-          fontFamily: defaultStyles.button[fontFamily],
+          fontFamily: defaultStyles.systemText[fontFamily],
           fontSize,
           fontWeight,
         }}

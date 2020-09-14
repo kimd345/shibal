@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import AppText from './AppText';
 
+import AppText from './AppText';
 import colors from '../config/colors';
 
 function ListItem({ title, subTitle, image, IconComponent, onPress }) {

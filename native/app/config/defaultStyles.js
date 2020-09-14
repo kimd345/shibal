@@ -4,13 +4,12 @@ import colors from './colors';
 
 export default {
   colors,
-  text: {
+  systemText: {
     color: colors.dark,
     fontSize: 18,
     fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
   },
   button: {
-    fontFamily: Platform.OS === 'android' ? 'Roboto' : 'Avenir',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
