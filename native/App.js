@@ -5,6 +5,7 @@ import { AppLoading } from 'expo';
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AuthScreen from './app/screens/AuthScreen';
 import ProgramsScreen from './app/screens/ProgramsScreen';
+import SettingsScreen from './app/screens/SettingsScreen';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,6 +20,7 @@ export default function App() {
   return (
     // <WelcomeScreen />
     // <AuthScreen />
-    <ProgramsScreen />
+    // <ProgramsScreen />
+    <SettingsScreen />
   );
 }

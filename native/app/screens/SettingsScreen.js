@@ -1,0 +1,97 @@
+import React from 'react';
+import { StyleSheet, View, FlatList, Text } from 'react-native';
+
+import Screen from '../components/Screen';
+import ListItem from '../components/ListItem';
+import ListItemSeparatorComponent from '../components/ListItemSeparator';
+import colors from '../config/colors';
+import Icon from '../components/Icon';
+
+const menuItems = [
+  {
+    title: 'GitHub',
+    subTitle: '/kimd345',
+    icon: {
+      name: 'github-alt',
+      backgroundColor: colors.github,
+    },
+  },
+  {
+    title: 'LinkedIn',
+    subTitle: '/dong-hyuk-kim',
+    icon: {
+      name: 'linkedin-in',
+      backgroundColor: colors.linkedin,
+    },
+  },
+  {
+    title: 'AngelList',
+    subTitle: '/dong-hyuk-kim',
+    icon: {
+      name: 'angellist',
+      backgroundColor: colors.angellist,
+    },
+  },
+];
+
+function SettingsScreen(props) {
+  return (
+    <Screen style={styles.screen}>
+      <View style={styles.container}>
+        <ListItem
+          title='Demo User'
+          subTitle='demo@user.com'
+          image={require('../assets/icon.png')}
+        />
+      </View>
+      <View style={styles.container}>
+        <FlatList
+          data={menuItems}
+          keyExtractor={(menuItem) => menuItem.title}
+          ItemSeparatorComponent={ListItemSeparatorComponent}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.title}
+              subTitle={item.subTitle}
+              IconComponent={
+                <Icon
+                  name={item.icon.name}
+                  backgroundColor={item.icon.backgroundColor}
+                />
+              }
+            />
+          )}
+        />
+      </View>
+      <Text style={styles.thankYouText}>
+        Thank you for checking out my app!
+      </Text>
+      <ListItem
+        title='Logout'
+        IconComponent={
+          <Icon
+            name='sign-out-alt'
+            backgroundColor={colors.white}
+            iconColor={colors.tertiaryText}
+          />
+        }
+      />
+    </Screen>
+  );
+}
+
+const styles = StyleSheet.create({
+  screen: {
+    backgroundColor: colors.secondaryBackground,
+  },
+  container: {
+    marginVertical: 20,
+  },
+  thankYouText: {
+    marginLeft: 20,
+    color: colors.tertiaryText,
+    fontSize: 12,
+  },
+});
+
+export default SettingsScreen;
