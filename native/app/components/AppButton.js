@@ -41,7 +41,7 @@ function AppButton({
           name={iconName}
           size={24}
           color={textColor}
-          style={{ marginRight: 10 }}
+          style={{ position: 'absolute', left: 20, marginRight: 10 }}
         />
       ) : null}
       <Text

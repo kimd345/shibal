@@ -20,7 +20,7 @@ export default function App() {
   return (
     // <WelcomeScreen />
     // <AuthScreen />
-    // <ProgramsScreen />
-    <SettingsScreen />
+    <ProgramsScreen />
+    // <SettingsScreen />
   );
 }

@@ -13,11 +13,13 @@ function AuthScreen(props) {
           Want to learn how to best train your Shiba Inu? Sign up, it's free!
         </AppText>
         <AppButton
+          iconName='facebook'
           title='Continue with Facebook'
           // onPress={}
           color={'facebook'}
         />
         <AppButton
+          iconName='google'
           title='Continue with Google'
           // onPress={}
           color={'google'}

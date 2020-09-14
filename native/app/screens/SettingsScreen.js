@@ -10,7 +10,6 @@ import Icon from '../components/Icon';
 const menuItems = [
   {
     title: 'GitHub',
-    subTitle: '/kimd345',
     icon: {
       name: 'github-alt',
       backgroundColor: colors.github,
@@ -18,7 +17,6 @@ const menuItems = [
   },
   {
     title: 'LinkedIn',
-    subTitle: '/dong-hyuk-kim',
     icon: {
       name: 'linkedin-in',
       backgroundColor: colors.linkedin,
@@ -26,7 +24,6 @@ const menuItems = [
   },
   {
     title: 'AngelList',
-    subTitle: '/dong-hyuk-kim',
     icon: {
       name: 'angellist',
       backgroundColor: colors.angellist,
@@ -52,7 +49,6 @@ function SettingsScreen(props) {
           renderItem={({ item }) => (
             <ListItem
               title={item.title}
-              subTitle={item.subTitle}
               IconComponent={
                 <Icon
                   name={item.icon.name}
