@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     textAlign: 'center',
     letterSpacing: 0.5,
-    lineHeight: 34,
+    lineHeight: 22,
   },
 });
 
