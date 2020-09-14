@@ -11,12 +11,12 @@ function AppTextInput({ icon, width = '100%', ...otherProps }) {
         <MaterialCommunityIcons
           name={icon}
           size={20}
-          color={defaultStyles.colors.tertiaryText}
+          color={defaultStyles.colors.grey}
           style={styles.icon}
         />
       )}
       <TextInput
-        placeholderTextColor={defaultStyles.colors.tertiaryText}
+        placeholderTextColor={defaultStyles.colors.grey}
         style={defaultStyles.systemText}
         {...otherProps}
       />

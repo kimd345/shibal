@@ -24,7 +24,7 @@ function ProgramListItem({ title, subTitle, image, onPress, backgroundColor }) {
 const styles = StyleSheet.create({
   container: {
     borderRadius: 10,
-    backgroundColor: colors.secondaryBackground, // white
+    backgroundColor: colors.lightgrey, // white
     marginHorizontal: 20,
     marginVertical: 5,
     overflow: 'hidden',

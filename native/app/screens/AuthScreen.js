@@ -30,7 +30,7 @@ function AuthScreen(props) {
           title='Sign up with email'
           // onPress={}
           color={'white'}
-          textColor={'black'}
+          textColor={'darkgrey'}
         />
         <AppText style={styles.bottomText}>Already have an account?</AppText>
         <Text

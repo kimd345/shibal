@@ -68,7 +68,7 @@ function SettingsScreen(props) {
           <Icon
             name='sign-out-alt'
             backgroundColor={colors.white}
-            iconColor={colors.tertiaryText}
+            iconColor={colors.grey}
           />
         }
       />
@@ -78,14 +78,14 @@ function SettingsScreen(props) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.secondaryBackground,
+    backgroundColor: colors.lightgrey,
   },
   container: {
     marginVertical: 20,
   },
   thankYouText: {
     marginLeft: 20,
-    color: colors.tertiaryText,
+    color: colors.grey,
     fontSize: 12,
   },
 });

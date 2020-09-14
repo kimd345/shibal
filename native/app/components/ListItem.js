@@ -35,11 +35,11 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   title: {
-    color: colors.secondaryText,
+    color: colors.darkgrey,
     textAlign: 'left',
   },
   subTitle: {
-    color: colors.tertiaryText,
+    color: colors.grey,
     textAlign: 'left',
   },
 });

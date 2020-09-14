@@ -1,13 +1,12 @@
 export default {
   primaryBackground: '#d7bf99', // sesame
-  secondaryBackground: '#f8f8f8', // grey tint
   primaryButton: '#ff9999', // salmon
-  secondaryButton: '#00000000', // transparent
   primaryText: 'maroon', // maroon
-  secondaryText: '#333333', // dark gray
-  tertiaryText: '#808080', // gray
 
   black: '#000',
+  darkgrey: '#333333',
+  grey: '#808080',
+  lightgrey: '#f8f8f8',
   white: '#fff',
   transparent: '#00000000',
 
