@@ -5,10 +5,12 @@ import AppText from './AppText';
 import AppHeader from './AppHeader';
 import colors from '../config/colors';
 
-function ProgramListItem({ title, subTitle, image, onPress }) {
+function ProgramListItem({ title, subTitle, image, onPress, backgroundColor }) {
   return (
     <TouchableOpacity activeOpacity={0.65} onPress={onPress}>
-      <View style={styles.container}>
+      <View
+        style={[styles.container, { backgroundColor: colors[backgroundColor] }]}
+      >
         <Image style={styles.image} source={image} />
         <View style={styles.detailsContainer}>
           <AppHeader style={styles.title}>{title}</AppHeader>

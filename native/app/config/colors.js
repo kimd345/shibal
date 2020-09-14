@@ -11,6 +11,12 @@ export default {
   white: '#fff',
   transparent: '#00000000',
 
+  newDog: '#c3fdb8', // light jade
+  littleHelper: '#fff8c6', // lemon chiffon
+  strengthenYourFriendship: '#cfecec', // pale blue lily
+  basicObedience: '#e3e4fa', // lavendar blue
+  stayActive: '#f9966b', // light salmon
+
   facebook: '#3b5998',
   google: '#de5246',
   github: '#24292e',
