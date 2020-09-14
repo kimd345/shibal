@@ -12,8 +12,8 @@ export default {
 
   newDog: '#cc9900',
   littleHelper: '#cc6699',
-  strengthenYourFriendship: '#999966',
-  basicObedience: '#006666',
+  strengthenYourFriendship: '#006666',
+  basicObedience: '#999966',
   stayActive: '#800000',
 
   facebook: '#3b5998',
