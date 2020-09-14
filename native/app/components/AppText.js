@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.primaryText,
     textAlign: 'center',
-    letterSpacing: 0.5,
     lineHeight: 27,
   },
 });
