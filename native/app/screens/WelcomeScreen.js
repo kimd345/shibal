@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '100%',
   },
+  getStartedButton: {},
 });
 
 export default WelcomeScreen;

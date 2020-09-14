@@ -1,9 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, Button } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import colors from '../config/colors';
-import fonts from '../config/fonts';
+import defaultStyles from '../config/defaultStyles';
 
 function AppButton({
   iconName = '',
@@ -23,14 +22,14 @@ function AppButton({
   return (
     <TouchableOpacity
       style={[
-        styles.button,
+        defaultStyles.button,
         {
-          backgroundColor: colors[color],
+          backgroundColor: defaultStyles.colors[color],
           width,
           height,
           margin,
           borderWidth,
-          borderColor: colors[borderColor],
+          borderColor: defaultStyles.colors[borderColor],
         },
       ]}
       activeOpacity={0.65}
@@ -46,8 +45,8 @@ function AppButton({
       ) : null}
       <Text
         style={{
-          color: colors[textColor],
-          fontFamily: fonts[fontFamily],
+          color: defaultStyles.colors[textColor],
+          fontFamily: defaultStyles.button[fontFamily],
           fontSize,
           fontWeight,
         }}
@@ -57,23 +56,5 @@ function AppButton({
     </TouchableOpacity>
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 50,
-    padding: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 1.5,
-    elevation: 2.5,
-  },
-});
 
 export default AppButton;
