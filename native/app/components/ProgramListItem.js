@@ -40,11 +40,13 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 7,
     textAlign: 'left',
+    color: colors.white,
   },
   subTitle: {
     color: colors.secondary,
     textAlign: 'left',
     fontSize: 12,
+    color: colors.white,
   },
   image: {
     width: 175,

@@ -18,9 +18,9 @@ export default function App() {
   }
 
   return (
-    <WelcomeScreen />
+    // <WelcomeScreen />
     // <AuthScreen />
-    // <ProgramsScreen />
+    <ProgramsScreen />
     // <SettingsScreen />
   );
 }
