@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet } from 'react-native';
 
 import Screen from '../components/Screen';
 import ProgramListItem from '../components/ProgramListItem';
