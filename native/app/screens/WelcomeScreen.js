@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   welcomeMessage: {
-    color: colors.primaryText,
+    color: colors.secondaryText,
   },
   loginContainer: {
     position: 'absolute',

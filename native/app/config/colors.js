@@ -1,8 +1,9 @@
 export default {
   primaryBackground: '#d7bf99', // sesame
   secondaryBackground: '#fff8dc', // cornsilk
+  primaryText: '#232A23', // superdarkgreen
+  secondaryText: '#800000', // maroon
   primaryButton: '#ff9999', // salmon
-  primaryText: 'maroon', // maroon
 
   black: '#000',
   mossygrey: '#525b52', // dark

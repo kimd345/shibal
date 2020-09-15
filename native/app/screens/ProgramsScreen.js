@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import Screen from '../components/Screen';
-import { ProgramListItem } from '../components/lists';
+import { ProgramCard } from '../components/lists';
 import colors from '../config/colors';
 
 const initialPrograms = [
@@ -53,7 +53,7 @@ function ProgramsScreen(props) {
         data={programs}
         keyExtractor={(program) => program.id.toString()}
         renderItem={({ item }) => (
-          <ProgramListItem
+          <ProgramCard
             title={item.title}
             subTitle={item.subTitle}
             image={item.image}

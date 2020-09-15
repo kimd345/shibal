@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   topText: {
+    color: colors.secondaryText,
     marginBottom: 20,
   },
   authContainer: {
@@ -66,6 +67,7 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   bottomText: {
+    color: colors.secondaryText,
     marginVertical: 10,
   },
   login: {

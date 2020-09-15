@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   text: {
+    color: colors.secondaryText,
     fontSize: 24,
     marginVertical: 20,
     letterSpacing: 0.5,

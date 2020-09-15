@@ -5,7 +5,7 @@ import Text from '../Text';
 import Header from '../Header';
 import colors from '../../config/colors';
 
-function ProgramListItem({ title, subTitle, image, onPress, backgroundColor }) {
+function ProgramCard({ title, subTitle, image, onPress, backgroundColor }) {
   return (
     <TouchableOpacity activeOpacity={0.65} onPress={onPress}>
       <View
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProgramListItem;
+export default ProgramCard;

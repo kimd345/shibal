@@ -11,8 +11,14 @@ function ListItem({ title, subTitle, image, IconComponent, onPress }) {
         {IconComponent}
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
-          <Text style={styles.title}>{title}</Text>
-          {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
+          <Text style={styles.title} numberOfLines={1}>
+            {title}
+          </Text>
+          {subTitle && (
+            <Text style={styles.subTitle} numberOfLines={2}>
+              {subTitle}
+            </Text>
+          )}
         </View>
       </View>
     </TouchableOpacity>
@@ -35,11 +41,12 @@ const styles = StyleSheet.create({
     borderRadius: 35,
   },
   title: {
-    color: colors.mossygrey,
+    color: colors.primaryText,
     textAlign: 'left',
   },
   subTitle: {
     color: colors.greenishgrey,
+    fontSize: 12,
     textAlign: 'left',
   },
 });
