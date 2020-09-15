@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 import * as Yup from 'yup';
 
+import colors from '../config/colors';
 import Screen from '../components/Screen';
+import Text from '../components/Text';
 import { Form, FormField, SubmitButton } from '../components/forms';
 
 const validationSchema = Yup.object().shape({
@@ -12,9 +14,8 @@ const validationSchema = Yup.object().shape({
 
 function LoginScreen(props) {
   return (
-    <Screen style={styles.container}>
-      <Image style={styles.logo} source={require('../assets/logo.png')} />
-
+    <Screen style={styles.screen}>
+      <Text style={styles.text}>Log in to your account</Text>
       <Form
         initialValues={{ email: '', password: '' }}
         onSubmit={(values) => console.log(values)}
@@ -26,7 +27,7 @@ function LoginScreen(props) {
           icon='email'
           keyboardType='email-address'
           name='email'
-          placeholder='Email'
+          placeholder='Enter your email'
           textContentType='emailAddress'
         />
         <FormField
@@ -34,7 +35,7 @@ function LoginScreen(props) {
           autoCorrect={false}
           icon='lock'
           name='password'
-          placeholder='Password'
+          placeholder='Please enter your password'
           secureTextEntry
           textContentType='password'
         />
@@ -45,15 +46,14 @@ function LoginScreen(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
+    backgroundColor: colors.primaryBackground,
     padding: 10,
   },
-  logo: {
-    width: 80,
-    height: 80,
-    alignSelf: 'center',
-    marginTop: 50,
-    marginBottom: 20,
+  text: {
+    fontSize: 24,
+    marginVertical: 20,
+    letterSpacing: 0.5,
   },
 });
 

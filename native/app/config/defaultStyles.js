@@ -13,6 +13,7 @@ export default {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    alignSelf: 'center',
     borderRadius: 50,
     padding: 10,
     shadowColor: '#000',

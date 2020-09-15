@@ -1,12 +1,13 @@
 export default {
   primaryBackground: '#d7bf99', // sesame
+  secondaryBackground: '#fff8dc', // cornsilk
   primaryButton: '#ff9999', // salmon
   primaryText: 'maroon', // maroon
 
   black: '#000',
   darkgrey: '#333333',
   grey: '#808080',
-  lightgrey: '#f8f8f8',
+  lightgrey: '#aab6aa',
   white: '#fff',
   transparent: '#00000000',
 

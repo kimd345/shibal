@@ -1,7 +1,7 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import React from 'react';
+import { StyleSheet } from 'react-native';
 
-import Text from "../Text";
+import Text from '../Text';
 
 function ErrorMessage({ error, visible }) {
   if (!visible || !error) return null;
@@ -10,7 +10,7 @@ function ErrorMessage({ error, visible }) {
 }
 
 const styles = StyleSheet.create({
-  error: { color: "red" },
+  error: { color: '#C70039', textAlign: 'left' },
 });
 
 export default ErrorMessage;

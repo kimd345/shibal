@@ -42,8 +42,7 @@ function WelcomeScreen(props) {
 
 const styles = StyleSheet.create({
   logo: {
-    position: 'absolute',
-    top: 50,
+    marginTop: 50,
     width: 50,
     height: 50,
   },
