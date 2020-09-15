@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-import Text from './Text';
-import colors from '../config/colors';
+import Text from '../Text';
+import colors from '../../config/colors';
 
 function ListItem({ title, subTitle, image, IconComponent, onPress }) {
   return (

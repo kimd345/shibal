@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-import Text from './Text';
-import Header from './Header';
-import colors from '../config/colors';
+import Text from '../Text';
+import Header from '../Header';
+import colors from '../../config/colors';
 
 function ProgramListItem({ title, subTitle, image, onPress, backgroundColor }) {
   return (

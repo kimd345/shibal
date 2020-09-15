@@ -21,10 +21,10 @@ export default function App() {
 
   return (
     // <WelcomeScreen />
-    <AuthScreen />
+    // <AuthScreen />
     // <LoginScreen />
     // <RegisterScreen />
     // <ProgramsScreen />
-    // <SettingsScreen />
+    <SettingsScreen />
   );
 }

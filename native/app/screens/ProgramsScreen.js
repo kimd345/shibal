@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
 import Screen from '../components/Screen';
-import ProgramListItem from '../components/ProgramListItem';
+import { ProgramListItem } from '../components/lists';
 import colors from '../config/colors';
 
 const initialPrograms = [
