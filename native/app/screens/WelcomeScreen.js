@@ -56,6 +56,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     width: '80%',
   },
+  welcomeHeader: {
+    fontSize: 22,
+    marginBottom: 10,
+  },
   welcomeMessage: {
     color: colors.primaryText,
   },
