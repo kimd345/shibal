@@ -4,6 +4,8 @@ import { AppLoading } from 'expo';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AuthScreen from './app/screens/AuthScreen';
+import LoginScreen from './app/screens/LoginScreen';
+import RegisterScreen from './app/screens/RegisterScreen';
 import ProgramsScreen from './app/screens/ProgramsScreen';
 import SettingsScreen from './app/screens/SettingsScreen';
 
@@ -20,7 +22,9 @@ export default function App() {
   return (
     // <WelcomeScreen />
     // <AuthScreen />
-    <ProgramsScreen />
-    // <SettingsScreen />
+    // <LoginScreen />
+    // <RegisterScreen />
+    // <ProgramsScreen />
+    <SettingsScreen />
   );
 }

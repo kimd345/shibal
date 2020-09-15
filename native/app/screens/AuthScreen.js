@@ -1,24 +1,24 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import colors from '../config/colors';
-import AppButton from '../components/AppButton';
-import AppText from '../components/AppText';
+import Button from '../components/Button';
+import Text from '../components/Text';
 
 function AuthScreen(props) {
   return (
     <View style={styles.background}>
       <View style={styles.oauthContainer}>
-        <AppText style={styles.topText}>
+        <Text style={styles.topText}>
           Want to learn how to best train your Shiba Inu? Sign up, it's free!
-        </AppText>
-        <AppButton
+        </Text>
+        <Button
           iconName='facebook'
           title='Continue with Facebook'
           // onPress={}
           color={'facebook'}
         />
-        <AppButton
+        <Button
           iconName='google'
           title='Continue with Google'
           // onPress={}
@@ -26,13 +26,13 @@ function AuthScreen(props) {
         />
       </View>
       <View style={styles.authContainer}>
-        <AppButton
+        <Button
           title='Sign up with email'
           // onPress={}
           color={'white'}
           textColor={'darkgrey'}
         />
-        <AppText style={styles.bottomText}>Already have an account?</AppText>
+        <Text style={styles.bottomText}>Already have an account?</Text>
         <Text
           onPress={() => alert('navigate to login form')}
           style={styles.login}

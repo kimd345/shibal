@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-import AppText from './AppText';
-import AppHeader from './AppHeader';
+import Text from './Text';
+import Header from './Header';
 import colors from '../config/colors';
 
 function ProgramListItem({ title, subTitle, image, onPress, backgroundColor }) {
@@ -13,8 +13,8 @@ function ProgramListItem({ title, subTitle, image, onPress, backgroundColor }) {
       >
         <Image style={styles.image} source={image} />
         <View style={styles.detailsContainer}>
-          <AppHeader style={styles.title}>{title}</AppHeader>
-          <AppText style={styles.subTitle}>{subTitle}</AppText>
+          <Header style={styles.title}>{title}</Header>
+          <Text style={styles.subTitle}>{subTitle}</Text>
         </View>
       </View>
     </TouchableOpacity>

@@ -2,9 +2,9 @@ import React from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 
 import colors from '../config/colors';
-import AppButton from '../components/AppButton';
-import AppText from '../components/AppText';
-import AppHeader from '../components/AppHeader';
+import Button from '../components/Button';
+import Text from '../components/Text';
+import Header from '../components/Header';
 
 function WelcomeScreen(props) {
   return (
@@ -14,19 +14,19 @@ function WelcomeScreen(props) {
     >
       <Image style={styles.logo} source={require('../assets/logo.png')} />
       <View style={styles.welcomeContainer}>
-        <AppHeader style={styles.welcomeHeader}>Welcome to Shibal</AppHeader>
-        <AppText style={styles.welcomeMessage}>
+        <Header style={styles.welcomeHeader}>Welcome to Shibal</Header>
+        <Text style={styles.welcomeMessage}>
           Train your Shiba Inu daily, and strengthen your friendship
-        </AppText>
+        </Text>
       </View>
       <View style={styles.loginContainer}>
-        <AppButton
+        <Button
           iconName='arrow-right'
           title='GET STARTED'
           /* onPress={} */
           width='55%'
         />
-        <AppButton
+        <Button
           title='LOGIN'
           /* onPress={} */
           color='primaryBackground'

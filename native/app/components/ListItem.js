@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-import AppText from './AppText';
+import Text from './Text';
 import colors from '../config/colors';
 
 function ListItem({ title, subTitle, image, IconComponent, onPress }) {
@@ -11,8 +11,8 @@ function ListItem({ title, subTitle, image, IconComponent, onPress }) {
         {IconComponent}
         {image && <Image style={styles.image} source={image} />}
         <View style={styles.detailsContainer}>
-          <AppText style={styles.title}>{title}</AppText>
-          {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+          <Text style={styles.title}>{title}</Text>
+          {subTitle && <Text style={styles.subTitle}>{subTitle}</Text>}
         </View>
       </View>
     </TouchableOpacity>
