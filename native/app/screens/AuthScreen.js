@@ -29,8 +29,8 @@ function AuthScreen(props) {
         <Button
           title='Sign up with email'
           // onPress={}
-          color={'white'}
-          textColor={'darkgrey'}
+          color={'palegrey'}
+          textColor={'mossygrey'}
         />
         <Text style={styles.bottomText}>Already have an account?</Text>
         <Text

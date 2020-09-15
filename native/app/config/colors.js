@@ -5,9 +5,11 @@ export default {
   primaryText: 'maroon', // maroon
 
   black: '#000',
-  darkgrey: '#333333',
-  grey: '#808080',
-  lightgrey: '#aab6aa',
+  mossygrey: '#525b52', // dark
+  greenishgrey: '#879787', // medium
+  leafygrey: '#aab6aa', // light
+  palegrey: '#f6f6f6',
+
   white: '#fff',
   transparent: '#00000000',
 

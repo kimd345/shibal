@@ -11,7 +11,7 @@ function AppButton({
   color = 'primaryButton',
   width = '100%',
   height = 50,
-  margin = 10,
+  margin = 15,
   borderWidth = 0,
   borderColor = 'black',
   textColor = 'white',

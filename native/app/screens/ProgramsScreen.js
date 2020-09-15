@@ -79,7 +79,7 @@ function ProgramsScreen(props) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.lightgrey,
+    backgroundColor: colors.palegrey,
   },
 });
 
