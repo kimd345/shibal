@@ -28,6 +28,13 @@ const menuItems = [
       backgroundColor: colors.angellist,
     },
   },
+  {
+    title: 'Portfolio',
+    icon: {
+      name: 'briefcase',
+      backgroundColor: colors.mossygrey,
+    },
+  },
 ];
 
 function SettingsScreen(props) {
