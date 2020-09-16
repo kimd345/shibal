@@ -4,9 +4,16 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import colors from '../../config/colors';
 
-function ListItem({ title, subTitle, image, IconComponent, onPress }) {
+function ListItem({
+  title,
+  subTitle,
+  image,
+  IconComponent,
+  onPress,
+  activeOpacity = 0.65,
+}) {
   return (
-    <TouchableOpacity activeOpacity={0.65} onPress={onPress}>
+    <TouchableOpacity activeOpacity={activeOpacity} onPress={onPress}>
       <View style={styles.container}>
         {IconComponent}
         {image && <Image style={styles.image} source={image} />}

@@ -11,7 +11,12 @@ function PostCard({ title, subTitle, image, description }) {
       <Image style={styles.image} source={image} />
       <View style={styles.container}>
         <View style={styles.profileContainer}>
-          <ListItem image={image} title={title} subTitle={subTitle} />
+          <ListItem
+            image={image}
+            title={title}
+            subTitle={subTitle}
+            activeOpacity={1}
+          />
           <Text style={styles.description} numberOfLines={2}>
             {description}
           </Text>
