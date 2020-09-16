@@ -7,7 +7,7 @@ import AuthScreen from './app/screens/AuthScreen';
 import LoginScreen from './app/screens/LoginScreen';
 import RegisterScreen from './app/screens/RegisterScreen';
 import ProgramsScreen from './app/screens/ProgramsScreen';
-import PostsScreen from './app/screens/PostsScreen';
+import SocialScreen from './app/screens/SocialScreen';
 import PostCreateScreen from './app/screens/PostCreateScreen';
 import SettingsScreen from './app/screens/SettingsScreen';
 
@@ -22,13 +22,13 @@ export default function App() {
   }
 
   return (
-    // <WelcomeScreen />
+    <WelcomeScreen />
     // <AuthScreen />
     // <LoginScreen />
     // <RegisterScreen />
     // <ProgramsScreen />
-    // <PostsScreen />
-    <PostCreateScreen />
+    // <SocialScreen />
+    // <PostCreateScreen />
     // <SettingsScreen />
   );
 }

@@ -24,7 +24,7 @@ const posts = [
   },
 ];
 
-function PostsScreen(props) {
+function SocialScreen(props) {
   return (
     <Screen style={styles.screen}>
       <FlatList
@@ -49,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PostsScreen;
+export default SocialScreen;
