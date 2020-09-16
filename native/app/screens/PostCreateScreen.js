@@ -1,0 +1,44 @@
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import * as Yup from 'yup';
+
+import { Form, FormField, SubmitButton } from '../components/forms';
+import Screen from '../components/Screen';
+import FormImagePicker from '../components/forms/FormImagePicker';
+
+const validationSchema = Yup.object().shape({
+  description: Yup.string().label('Description'),
+  images: Yup.array().min(1, 'Please select at least one image.'),
+});
+
+function PostCreateScreen() {
+  return (
+    <Screen style={styles.container}>
+      <Form
+        initialValues={{
+          description: '',
+          images: [],
+        }}
+        onSubmit={(values) => console.log(values)}
+        validationSchema={validationSchema}
+      >
+        <FormImagePicker name='images' />
+        <FormField
+          maxLength={255}
+          multiline
+          name='description'
+          numberOfLines={3}
+          placeholder='Description'
+        />
+        <SubmitButton title='Post' />
+      </Form>
+    </Screen>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 10,
+  },
+});
+export default PostCreateScreen;
