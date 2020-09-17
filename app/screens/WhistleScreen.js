@@ -1,15 +1,25 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Audio } from 'expo-av';
+import Whistle from '../components/Whistle';
 
 import Screen from '../components/Screen';
+import colors from '../config/colors';
 
 function WhistleScreen(props) {
-  return <Screen style={styles.screen}></Screen>;
+  return (
+    <Screen style={styles.screen}>
+      <Whistle />
+    </Screen>
+  );
 }
 
 const styles = StyleSheet.create({
-  screen: {},
+  screen: {
+    backgroundColor: colors.grass,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default WhistleScreen;

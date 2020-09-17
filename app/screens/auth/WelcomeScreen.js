@@ -29,7 +29,7 @@ function WelcomeScreen({ navigation }) {
         <Button
           title='LOGIN'
           onPress={() => navigation.navigate('Auth')}
-          color='darkpink'
+          color='welcomelogin'
           width='40%'
           height={40}
         />

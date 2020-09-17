@@ -20,11 +20,12 @@ export default {
   basicObedience: '#999966',
   stayActive: '#800000',
 
+  welcomeLogin: '#d57b90', // dark pink
   facebook: '#3b5998',
   google: '#de5246',
   github: '#24292e',
   linkedin: '#0072b1',
   angellist: '#5f29f4',
 
-  darkpink: '#d57b90',
+  grass: '#50c878', // paris
 };

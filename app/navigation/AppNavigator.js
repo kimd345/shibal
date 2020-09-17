@@ -13,9 +13,9 @@ const AppNavigator = () => (
   <Tab.Navigator>
     {/* <Tab.Screen name='Home' component={HomeScreen} /> */}
     {/* <Tab.Screen name='Training' component={TrainingScreen} /> */}
-    {/* <Tab.Screen name='Social' component={SocialScreen} /> */}
+    <Tab.Screen name='Social' component={SocialScreen} />
     <Tab.Screen name='Whistle' component={WhistleScreen} />
-    {/* <Tab.Screen name='Settings' component={SettingsScreen} /> */}
+    <Tab.Screen name='Settings' component={SettingsScreen} />
   </Tab.Navigator>
 );
 
