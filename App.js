@@ -5,9 +5,7 @@ import { AppLoading } from 'expo';
 
 import AuthNavigator from './app/navigation/AuthNavigator';
 
-import ProgramsScreen from './app/screens/ProgramsScreen';
 import SocialScreen from './app/screens/SocialScreen';
-import PostCreateScreen from './app/screens/PostCreateScreen';
 import SettingsScreen from './app/screens/SettingsScreen';
 
 export default function App() {
@@ -21,12 +19,10 @@ export default function App() {
   }
 
   return (
-    // <NavigationContainer>
-    //   <AuthNavigator />
-    // </NavigationContainer>
-    // <ProgramsScreen />
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
     // <SocialScreen />
-    <PostCreateScreen />
     // <SettingsScreen />
   );
 }
