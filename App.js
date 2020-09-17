@@ -21,12 +21,12 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <AuthNavigator />
-    </NavigationContainer>
+    // <NavigationContainer>
+    //   <AuthNavigator />
+    // </NavigationContainer>
     // <ProgramsScreen />
     // <SocialScreen />
-    // <PostCreateScreen />
+    <PostCreateScreen />
     // <SettingsScreen />
   );
 }

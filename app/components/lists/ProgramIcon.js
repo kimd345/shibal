@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 
-import Icon from './Icon';
-import Text from './Text';
+import Icon from '../Icon';
+import Text from '../Text';
 
-function CategoryPickerItem({ item, onPress }) {
+function ProgramIcon({ item, onPress }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryPickerItem;
+export default ProgramIcon;

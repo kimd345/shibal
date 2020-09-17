@@ -2,9 +2,13 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
-import { Form, FormField, SubmitButton } from '../components/forms';
+import {
+  Form,
+  FormField,
+  FormImagePicker,
+  SubmitButton,
+} from '../components/forms';
 import Screen from '../components/Screen';
-import FormImagePicker from '../components/forms/FormImagePicker';
 
 const validationSchema = Yup.object().shape({
   description: Yup.string().label('Description'),
