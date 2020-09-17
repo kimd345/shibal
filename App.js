@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+
+import AuthNavigator from './app/navigation/AuthNavigator';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
 import AuthScreen from './app/screens/AuthScreen';
@@ -22,7 +25,10 @@ export default function App() {
   }
 
   return (
-    <WelcomeScreen />
+    <NavigationContainer>
+      <AuthNavigator />
+    </NavigationContainer>
+    // <WelcomeScreen />
     // <AuthScreen />
     // <LoginScreen />
     // <RegisterScreen />

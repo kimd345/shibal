@@ -6,7 +6,7 @@ import Button from '../components/Button';
 import Text from '../components/Text';
 import Header from '../components/Header';
 
-function WelcomeScreen(props) {
+function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
@@ -28,12 +28,10 @@ function WelcomeScreen(props) {
         />
         <Button
           title='LOGIN'
-          /* onPress={} */
-          color='primaryBackground'
+          onPress={() => navigation.navigate('Auth')}
+          color='darkpink'
           width='40%'
           height={40}
-          borderWidth={1}
-          borderColor='rosybrown'
         />
       </View>
     </ImageBackground>

@@ -26,5 +26,5 @@ export default {
   linkedin: '#0072b1',
   angellist: '#5f29f4',
 
-  rosybrown: '#bc8f8f',
+  darkpink: '#d57b90',
 };

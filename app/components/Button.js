@@ -16,7 +16,7 @@ function AppButton({
   borderColor = 'black',
   textColor = 'white',
   fontFamily = 'fontFamily',
-  fontSize = 14,
+  fontSize = 15,
   fontWeight = '500',
 }) {
   return (

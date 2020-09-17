@@ -5,7 +5,7 @@ import colors from '../config/colors';
 import Button from '../components/Button';
 import Text from '../components/Text';
 
-function AuthScreen(props) {
+function AuthScreen({ navigation }) {
   return (
     <View style={styles.background}>
       <View style={styles.oauthContainer}>
@@ -28,15 +28,12 @@ function AuthScreen(props) {
       <View style={styles.authContainer}>
         <Button
           title='Sign up with email'
-          // onPress={}
+          onPress={() => navigation.navigate('Register')}
           color={'palegrey'}
           textColor={'mossygrey'}
         />
         <Text style={styles.bottomText}>Already have an account?</Text>
-        <Text
-          onPress={() => alert('navigate to login form')}
-          style={styles.login}
-        >
+        <Text onPress={() => navigation.navigate('Login')} style={styles.login}>
           Login
         </Text>
       </View>
@@ -52,7 +49,7 @@ const styles = StyleSheet.create({
   },
   oauthContainer: {
     position: 'absolute',
-    top: '15%',
+    top: '5%',
     alignItems: 'center',
     width: '80%',
   },
