@@ -1,18 +1,18 @@
 import React from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 
-import colors from '../config/colors';
-import Button from '../components/Button';
-import Text from '../components/Text';
-import Header from '../components/Header';
+import colors from '../../config/colors';
+import Button from '../../components/Button';
+import Text from '../../components/Text';
+import Header from '../../components/Header';
 
 function WelcomeScreen({ navigation }) {
   return (
     <ImageBackground
       style={styles.background}
-      source={require('../assets/welcome.png')}
+      source={require('../../assets/welcome.png')}
     >
-      <Image style={styles.logo} source={require('../assets/logo.png')} />
+      <Image style={styles.logo} source={require('../../assets/logo.png')} />
       <View style={styles.welcomeContainer}>
         <Header style={styles.welcomeHeader}>Welcome to Shibal</Header>
         <Text style={styles.welcomeMessage}>

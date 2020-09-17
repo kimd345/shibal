@@ -2,10 +2,10 @@ import React from 'react';
 import { StyleSheet, Image } from 'react-native';
 import * as Yup from 'yup';
 
-import colors from '../config/colors';
-import Screen from '../components/Screen';
-import Text from '../components/Text';
-import { Form, FormField, SubmitButton } from '../components/forms';
+import colors from '../../config/colors';
+import Screen from '../../components/Screen';
+import Text from '../../components/Text';
+import { Form, FormField, SubmitButton } from '../../components/forms';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),

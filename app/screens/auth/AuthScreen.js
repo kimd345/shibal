@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import colors from '../config/colors';
-import Button from '../components/Button';
-import Text from '../components/Text';
+import colors from '../../config/colors';
+import Button from '../../components/Button';
+import Text from '../../components/Text';
 
 function AuthScreen({ navigation }) {
   return (

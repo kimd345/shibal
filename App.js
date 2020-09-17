@@ -5,10 +5,6 @@ import { AppLoading } from 'expo';
 
 import AuthNavigator from './app/navigation/AuthNavigator';
 
-import WelcomeScreen from './app/screens/WelcomeScreen';
-import AuthScreen from './app/screens/AuthScreen';
-import LoginScreen from './app/screens/LoginScreen';
-import RegisterScreen from './app/screens/RegisterScreen';
 import ProgramsScreen from './app/screens/ProgramsScreen';
 import SocialScreen from './app/screens/SocialScreen';
 import PostCreateScreen from './app/screens/PostCreateScreen';
@@ -28,10 +24,6 @@ export default function App() {
     <NavigationContainer>
       <AuthNavigator />
     </NavigationContainer>
-    // <WelcomeScreen />
-    // <AuthScreen />
-    // <LoginScreen />
-    // <RegisterScreen />
     // <ProgramsScreen />
     // <SocialScreen />
     // <PostCreateScreen />
