@@ -4,13 +4,13 @@ import { Audio } from 'expo-av';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../config/colors';
 
-function Whistle({}) {
+function Whistle({ size }) {
   const whistle = new Audio.Sound();
 
   const HandleWhistlePress = async () => {
     try {
       await whistle.unloadAsync();
-      await whistle.loadAsync(require('../assets/whistles/mariah_whistle.mp3'));
+      await whistle.loadAsync(require('../assets/whistles/light_whistle.mp3'));
       await whistle.playAsync();
     } catch (error) {
       alert("Couldn't load whistle asset.");
@@ -22,7 +22,7 @@ function Whistle({}) {
     <TouchableOpacity onPress={HandleWhistlePress}>
       <MaterialCommunityIcons
         name='whistle'
-        size={200}
+        size={size}
         color={colors.mossygrey}
       />
     </TouchableOpacity>

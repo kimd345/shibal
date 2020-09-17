@@ -19,8 +19,8 @@ export default function App() {
   return (
     // conditionally render: if logged in, render App, else, Auth
     <NavigationContainer>
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
+      <AuthNavigator />
+      {/* <AppNavigator /> */}
     </NavigationContainer>
   );
 }

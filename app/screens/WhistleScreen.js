@@ -8,7 +8,7 @@ import colors from '../config/colors';
 function WhistleScreen(props) {
   return (
     <Screen style={styles.screen}>
-      <Whistle />
+      <Whistle size={200} />
     </Screen>
   );
 }
