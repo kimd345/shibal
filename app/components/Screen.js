@@ -1,8 +1,17 @@
 import React from 'react';
 import Constants from 'expo-constants';
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  View,
+  Platform,
+  FlatList,
+} from 'react-native';
 
 function Screen({ children, style }) {
+  if (Platform.OS === 'web') {
+    return children;
+  }
   return (
     <SafeAreaView style={[styles.screen, style]}>
       <View style={style}>{children}</View>
