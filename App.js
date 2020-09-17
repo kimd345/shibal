@@ -4,9 +4,7 @@ import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
 
 import AuthNavigator from './app/navigation/AuthNavigator';
-
-import SocialScreen from './app/screens/SocialScreen';
-import SettingsScreen from './app/screens/SettingsScreen';
+import AppNavigator from './app/navigation/AppNavigator';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -19,10 +17,10 @@ export default function App() {
   }
 
   return (
+    // conditionally render: if logged in, render App, else, Auth
     <NavigationContainer>
-      <AuthNavigator />
+      {/* <AuthNavigator /> */}
+      <AppNavigator />
     </NavigationContainer>
-    // <SocialScreen />
-    // <SettingsScreen />
   );
 }
