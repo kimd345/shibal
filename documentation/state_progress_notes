@@ -1,0 +1,30 @@
+To check if program (parent) is completed upon completion of module (child)
+
+
+total count of modules in current program:
+
+SELECT COUNT * FROM modules
+WHERE modules.program_id = current_program_id
+
+
+count of current dog’s completed modules in current program:
+
+SELECT COUNT * FROM progress
+WHERE progress.dog_id = current_dog_id
+  AND parent_id = current_program_id
+  AND entity_type = 'module'
+  AND status = 'completed'
+
+if both are equal, completed = True
+
+
+
+
+
+
+
+unique id's across all training entities:
+
+CREATE SEQUENCE entity_id_seq;
+CREATE TABLE programs (id INT DEFAULT nextval('entity_id_seq') NOT NULL, title VARCHAR ...);
+CREATE TABLE modules (id INT DEFAULT nextval('entity_id_seq') NOT NULL, title ...);
