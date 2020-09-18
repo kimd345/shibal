@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
+import * as WebBrowser from 'expo-web-browser';
 
 import Screen from '../components/Screen';
 import { ListItem, ListItemSeparator } from '../components/lists';
@@ -13,6 +14,8 @@ const menuItems = [
       name: 'github-alt',
       backgroundColor: colors.github,
     },
+    handleOpenBio: () =>
+      WebBrowser.openBrowserAsync('https://github.com/kimd345'),
   },
   {
     title: 'LinkedIn',
@@ -20,6 +23,8 @@ const menuItems = [
       name: 'linkedin-in',
       backgroundColor: colors.linkedin,
     },
+    handleOpenBio: () =>
+      WebBrowser.openBrowserAsync('https://linkedin.com/in/dong-hyuk-kim'),
   },
   {
     title: 'AngelList',
@@ -27,6 +32,8 @@ const menuItems = [
       name: 'angellist',
       backgroundColor: colors.angellist,
     },
+    handleOpenBio: () =>
+      WebBrowser.openBrowserAsync('https://angel.co/u/dong-hyuk-kim'),
   },
   {
     title: 'Portfolio',
@@ -61,6 +68,7 @@ function SettingsScreen(props) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={item.handleOpenBio}
             />
           )}
         />

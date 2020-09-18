@@ -1,17 +1,23 @@
 import os
 from flask import Flask, render_template, request, session
+from flask_login import LoginManager
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
+from flask_jwt_extended import JWTManager
 
 
 from server.models import db, User
+from server.api.auth_routes import auth_routes
 from server.api.user_routes import user_routes
 
 from server.config import Config
 
 app = Flask(__name__, static_url_path='')
 
+jwt = JWTManager(app)
+
 app.config.from_object(Config)
+app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 
