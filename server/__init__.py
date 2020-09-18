@@ -15,15 +15,18 @@ app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 db.init_app(app)
 
-## Application Security
+# Application Security
 CORS(app)
+
+
 @app.after_request
 def inject_csrf_token(response):
     response.set_cookie('csrf_token',
-        generate_csrf(),
-        secure=True if os.environ.get('FLASK_ENV') else False,
-        samesite='Strict' if os.environ.get('FLASK_ENV') else None,
-        httponly=True)
+                        generate_csrf(),
+                        secure=True if os.environ.get('FLASK_ENV') else False,
+                        samesite='Strict' if os.environ.get(
+                            'FLASK_ENV') else None,
+                        httponly=True)
     return response
 
 

@@ -4,9 +4,9 @@
     "slug": "shibal",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "splash": {
-      "image": "./app/assets/splash.png",
+      "image": "./src/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#d7bf99"
     },
@@ -18,7 +18,7 @@
       "supportsTablet": true
     },
     "web": {
-      "favicon": "./app/assets/favicon.png"
+      "favicon": "./src/assets/favicon.png"
     },
     "description": ""
   }
