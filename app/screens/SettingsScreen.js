@@ -3,8 +3,8 @@ import { StyleSheet, View, FlatList, Text } from 'react-native';
 
 import Screen from '../components/Screen';
 import { ListItem, ListItemSeparator } from '../components/lists';
-import colors from '../config/colors';
 import Icon from '../components/Icon';
+import colors from '../config/colors';
 
 const menuItems = [
   {
@@ -40,14 +40,14 @@ const menuItems = [
 function SettingsScreen(props) {
   return (
     <Screen style={styles.screen}>
-      <View style={styles.container}>
+      <View style={styles.listContainer}>
         <ListItem
           title='Demo User'
           subTitle='demo@user.com'
           image={require('../assets/icon.png')}
         />
       </View>
-      <View style={styles.container}>
+      <View style={styles.listContainer}>
         <FlatList
           data={menuItems}
           keyExtractor={(menuItem) => menuItem.title}
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.palegrey,
   },
-  container: {
+  listContainer: {
     marginVertical: 20,
   },
   thankYouText: {

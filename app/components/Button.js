@@ -33,7 +33,7 @@ function AppButton({
           borderColor: colors[borderColor],
         },
       ]}
-      activeOpacity={0.65}
+      TouchableOpacity={0.65}
       onPress={onPress}
     >
       {iconName ? (

@@ -10,7 +10,6 @@
       "resizeMode": "contain",
       "backgroundColor": "#d7bf99"
     },
-    "platforms": ["web"],
     "updates": {
       "fallbackToCacheTimeout": 0
     },

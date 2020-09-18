@@ -13,7 +13,7 @@ function ListItem({
   activeOpacity = 0.65,
 }) {
   return (
-    <TouchableOpacity activeOpacity={activeOpacity} onPress={onPress}>
+    <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
       <View style={styles.container}>
         {IconComponent}
         {image && <Image style={styles.image} source={image} />}

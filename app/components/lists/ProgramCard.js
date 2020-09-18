@@ -7,7 +7,7 @@ import colors from '../../config/colors';
 
 function ProgramCard({ title, subTitle, image, onPress, backgroundColor }) {
   return (
-    <TouchableOpacity activeOpacity={0.65} onPress={onPress}>
+    <TouchableOpacity onPress={onPress}>
       <View
         style={[styles.container, { backgroundColor: colors[backgroundColor] }]}
       >
