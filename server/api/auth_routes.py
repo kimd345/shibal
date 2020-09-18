@@ -1,10 +1,10 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import (
     create_access_token,
-    # jwt_required,
-    # get_jwt_identity,
+    # jwt_required, #Protect a view with jwt_required, which requires
+    # a valid access token in the request to access.
+    # get_jwt_identity, #Access the identity of the current user with it
 )
-# from flask_login import current_user, login_user, logout_user
 
 from server.models import db, User
 
@@ -37,9 +37,6 @@ def auth():
         if not user or not user.check_password(password):
             return jsonify({"msg": "Missing password"}), 401
     elif request.method == 'POST':  # signup
-        username = request.json.get('username', None)
-        if not username:
-            return jsonify({"msg": "Missing username"}), 400
         user = User(username=username, email=email)
         user.password = password
 
@@ -48,9 +45,4 @@ def auth():
     db.session.add(user)
     db.session.commit()
 
-    user_dict = {
-        'id': user.id,
-        # 'username': user.username,
-        # 'email': user.email
-    }
-    return jsonify({'user': user_dict, 'token': access_token}), 200
+    return jsonify({'user': user.to_dict}), 200

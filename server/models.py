@@ -9,7 +9,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    email = db.Column(db.String(320), nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
     session_token = db.Column(db.String(500))
 

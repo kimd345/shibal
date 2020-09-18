@@ -39,4 +39,5 @@ def inject_csrf_token(response):
 @app.route('/', defaults={'path': ''})
 @app.route('/<path>')
 def react_root(path):
-    return app.send_static_file('index.html')
+    return None
+    # app.send_static_file('index.html')
