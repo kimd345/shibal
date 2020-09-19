@@ -40,4 +40,4 @@ def inject_csrf_token(response):
 @app.route('/<path>')
 def react_root(path):
     return None
-    # app.send_static_file('index.html')
+    app.send_static_file('index.html')

@@ -1,12 +1,12 @@
 from werkzeug.security import generate_password_hash
 from dotenv import load_dotenv
-from server import src, db
+from server import app, db
 from server.models import User
 
 load_dotenv()
 
 
-with src.app_context():
+with app.app_context():
     db.drop_all()
     db.create_all()
 
