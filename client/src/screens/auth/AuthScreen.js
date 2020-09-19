@@ -4,6 +4,7 @@ import { StyleSheet, View } from 'react-native';
 import colors from '../../config/colors';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
+import routes from '../../navigation/routes';
 
 function AuthScreen({ navigation }) {
   return (
@@ -28,12 +29,15 @@ function AuthScreen({ navigation }) {
       <View style={styles.authContainer}>
         <Button
           title='Sign up with email'
-          onPress={() => navigation.navigate('Register')}
+          onPress={() => navigation.navigate(routes.AUTH)}
           color={'palegrey'}
           textColor={'mossygrey'}
         />
         <Text style={styles.bottomText}>Already have an account?</Text>
-        <Text onPress={() => navigation.navigate('Login')} style={styles.login}>
+        <Text
+          onPress={() => navigation.navigate(routes.LOGIN)}
+          style={styles.login}
+        >
           Login
         </Text>
       </View>

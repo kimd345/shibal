@@ -1,4 +1,3 @@
-// for auto import -- inform VS Code that this is a JS, not TS project
 {
   "exclude": ["node_modules"]
 }

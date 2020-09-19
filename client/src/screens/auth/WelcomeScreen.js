@@ -5,6 +5,7 @@ import colors from '../../config/colors';
 import Button from '../../components/Button';
 import Text from '../../components/Text';
 import Header from '../../components/Header';
+import routes from '../../navigation/routes';
 
 function WelcomeScreen({ navigation }) {
   return (
@@ -28,7 +29,7 @@ function WelcomeScreen({ navigation }) {
         />
         <Button
           title='LOGIN'
-          onPress={() => navigation.navigate('Auth')}
+          onPress={() => navigation.navigate(routes.LOGIN)}
           color='welcomeLogin'
           width='40%'
           height={40}
