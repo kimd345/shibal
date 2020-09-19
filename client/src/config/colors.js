@@ -4,6 +4,7 @@ export default {
   primaryText: '#232A23', // superdarkgreen
   secondaryText: '#800000', // maroon
   primaryButton: '#ff9999', // salmon
+  tabButton: '#B5915E', // dark tan
 
   black: '#000',
   mossygrey: '#525b52', // dark
