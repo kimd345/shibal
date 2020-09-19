@@ -29,7 +29,7 @@ function AuthScreen({ navigation }) {
       <View style={styles.authContainer}>
         <Button
           title='Sign up with email'
-          onPress={() => navigation.navigate(routes.AUTH)}
+          onPress={() => navigation.navigate(routes.REGISTER)}
           color={'palegrey'}
           textColor={'mossygrey'}
         />

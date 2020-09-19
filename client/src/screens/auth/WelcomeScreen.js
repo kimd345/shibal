@@ -29,7 +29,7 @@ function WelcomeScreen({ navigation }) {
         />
         <Button
           title='LOGIN'
-          onPress={() => navigation.navigate(routes.LOGIN)}
+          onPress={() => navigation.navigate(routes.AUTH)}
           color='welcomeLogin'
           width='40%'
           height={40}
