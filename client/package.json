@@ -30,7 +30,8 @@
     "react-native-screens": "~2.9.0",
     "react-native-web": "~0.11.7",
     "yup": "^0.29.3",
-    "@react-native-community/datetimepicker": "2.4.0"
+    "@react-native-community/datetimepicker": "2.4.0",
+    "lottie-react-native": "~2.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",
