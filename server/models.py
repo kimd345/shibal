@@ -51,10 +51,10 @@ class Dog(db.Model):
             'id': self.id,
             'user_id': self.user_id,
             'name': self.name,
-            'image_url': self.image_url,
+            'profile_image_url': self.image_url,
             'birthday': self.birthday,
-            'gender': self.gender,
-            'likes': self.likes
+            'gender': self.gender
+            # 'likes': self.likes
         }
 
 
@@ -72,11 +72,11 @@ class Post(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'dog_id': self.dog_id,
-            'image_url': self.image_url,
+            'dogId': self.dog_id,
+            'postImageUrl': self.image_url,
             'body': self.body,
-            'created_at': self.created_at,
-            'likes': self.likes
+            'createdAt': self.created_at
+            # 'likes': self.likes
         }
 
 

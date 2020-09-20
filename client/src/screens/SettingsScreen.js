@@ -48,11 +48,7 @@ function SettingsScreen(props) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.listContainer}>
-        <ListItem
-          title='Demo User'
-          subTitle='demo@user.com'
-          image={require('../assets/icon.png')}
-        />
+        <ListItem title='Demo User' subtitle='demo@user.com' />
       </View>
       <View style={styles.listContainer}>
         <FlatList

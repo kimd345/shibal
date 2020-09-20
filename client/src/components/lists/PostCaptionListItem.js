@@ -4,9 +4,10 @@ import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Text from '../Text';
 import colors from '../../config/colors';
 
-function ListItem({
-  title,
-  subtitle,
+function PostCaptionListItem({
+  dogname,
+  createdAt,
+  profileImageUrl,
   IconComponent,
   onPress,
   activeOpacity = 0.65,
@@ -15,13 +16,16 @@ function ListItem({
     <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
       <View style={styles.container}>
         {IconComponent}
+        {profileImageUrl && (
+          <Image style={styles.image} source={{ uri: profileImageUrl }} />
+        )}
         <View style={styles.detailsContainer}>
-          <Text style={styles.title} numberOfLines={1}>
-            {title}
+          <Text style={styles.dogname} numberOfLines={1}>
+            {dogname}
           </Text>
-          {subtitle && (
-            <Text style={styles.subtitle} numberOfLines={2}>
-              {subtitle}
+          {createdAt && (
+            <Text style={styles.createdAt} numberOfLines={2}>
+              {createdAt}
             </Text>
           )}
         </View>
@@ -40,15 +44,20 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     justifyContent: 'center',
   },
-  title: {
+  image: {
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+  },
+  dogname: {
     color: colors.primaryText,
     textAlign: 'left',
   },
-  subtitle: {
+  createdAt: {
     color: colors.greenishgrey,
     fontSize: 12,
     textAlign: 'left',
   },
 });
 
-export default ListItem;
+export default PostCaptionListItem;

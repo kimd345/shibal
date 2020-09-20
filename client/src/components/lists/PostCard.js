@@ -1,24 +1,23 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet, Text } from 'react-native';
 
 import colors from '../../config/colors';
-import ListItem from './ListItem';
-import Text from '../Text';
+import PostCaptionListItem from './PostCaptionListItem';
 
-function PostCard({ title, subTitle, image, description }) {
+function PostCard({ dogname, profileImageUrl, postImageUrl, body, createdAt }) {
   return (
     <View>
-      <Image style={styles.image} source={image} />
-      <View style={styles.container}>
-        <View style={styles.profileContainer}>
-          <ListItem
-            image={image}
-            title={title}
-            subTitle={subTitle}
+      <Image style={styles.postImage} source={{ uri: postImageUrl }} />
+      <View>
+        <View>
+          <PostCaptionListItem
+            dogname={dogname}
+            profileImageUrl={profileImageUrl}
+            createdAt={createdAt}
             activeOpacity={1}
           />
-          <Text style={styles.description} numberOfLines={2}>
-            {description}
+          <Text style={styles.body} numberOfLines={2}>
+            {body}
           </Text>
         </View>
       </View>
@@ -27,13 +26,11 @@ function PostCard({ title, subTitle, image, description }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
-  image: {
+  postImage: {
     width: '100%',
     height: 350,
   },
-  profileContainer: {},
-  description: {
+  body: {
     fontSize: 14,
     lineHeight: 20,
     paddingHorizontal: 10,
