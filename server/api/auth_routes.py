@@ -26,18 +26,20 @@ def auth():
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
-
     if not email:
-        return jsonify({"msg": "Missing email"}), 400
+        return {"msg": "Missing email"}, 400
     if not password:
-        return jsonify({"msg": "Missing password"}), 400
+        return {"msg": "Missing password"}, 400
 
+    user = User.query.filter(User.email == email).first()
     if request.method == 'PUT':   # login
-        user = User.query.filter(User.email == email).first()
         if not user or not user.check_password(password):
-            return jsonify({"msg": "Missing password"}), 401
+            return {"msg": "Invalid email or password"}, 401
     elif request.method == 'POST':  # signup
-        user = User(username=username, email=email)
+        if user:
+            return {"msg": "Email already exists"}, 401
+
+        user = User(email=email)
         user.password = password
 
     access_token = create_access_token(identity=email)
@@ -45,4 +47,4 @@ def auth():
     db.session.add(user)
     db.session.commit()
 
-    return jsonify({'user': user.to_dict}), 200
+    return {'user': user.to_dict()}, 200

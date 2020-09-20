@@ -23,7 +23,7 @@ function SocialScreen(props) {
   return (
     <Screen style={styles.screen}>
       {error && (
-        <View>
+        <View style={styles.error}>
           <Text>Couldn't retrieve the posts.</Text>
           <Button title='Retry' onPress={loadPosts} width='60%' />
         </View>
@@ -49,6 +49,9 @@ function SocialScreen(props) {
 const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.palegrey,
+  },
+  error: {
+    top: 300,
   },
 });
 

@@ -31,6 +31,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'email': self.email,
+            'session_token': self.session_token,
+            'dogs': self.dogs
         }
 
 
