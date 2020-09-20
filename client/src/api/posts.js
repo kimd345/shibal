@@ -1,8 +1,6 @@
 import client from './client';
 
-const endpoint = '/posts';
-
-const getPosts = () => client.get(endpoint);
+const getPosts = () => client.get('/posts');
 
 export default {
   getPosts,

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -6,6 +6,7 @@ import Screen from '../components/Screen';
 import { ListItem, ListItemSeparator } from '../components/lists';
 import Icon from '../components/Icon';
 import colors from '../config/colors';
+import AuthContext from '../auth/context';
 
 const menuItems = [
   {
@@ -45,10 +46,18 @@ const menuItems = [
 ];
 
 function SettingsScreen(props) {
+  const { user } = useContext(AuthContext);
+
   return (
     <Screen style={styles.screen}>
       <View style={styles.listContainer}>
-        <ListItem title='Demo User' subtitle='demo@user.com' />
+        <ListItem
+          title={user.email}
+          subtitle={`Joined on: ${user.createdAt
+            .split(' ')
+            .slice(0, 4)
+            .join(' ')}`}
+        />
       </View>
       <View style={styles.listContainer}>
         <FlatList

@@ -12,7 +12,7 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
-    demo_user = User(email='demo_user@demo.com',
+    demo_user = User(email='demo@user.com',
                      hashed_password=generate_password_hash('password'))
     test_user_2 = User(email='test_user_2@test.com',
                        hashed_password=generate_password_hash('password'))

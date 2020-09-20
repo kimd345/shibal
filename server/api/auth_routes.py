@@ -19,7 +19,7 @@ def auth():
     if request.method == 'DELETE':  # logout
         id = request.json.get('userId', None)
         user = User.query.filter(User.id == id).first()
-        user.session_token = None
+        user.access_token = None
         db.session.add(user)
         db.session.commit()
         return jsonify({"msg": "Session token removed"}), 200
@@ -27,9 +27,9 @@ def auth():
     email = request.json.get('email', None)
     password = request.json.get('password', None)
     if not email:
-        return {"msg": "Missing email"}, 400
+        return {"msg": "Please enter an email"}, 400
     if not password:
-        return {"msg": "Missing password"}, 400
+        return {"msg": "Please enter a password"}, 400
 
     user = User.query.filter(User.email == email).first()
     if request.method == 'PUT':   # login
@@ -38,13 +38,15 @@ def auth():
     elif request.method == 'POST':  # signup
         if user:
             return {"msg": "Email already exists"}, 401
+        if len(password) < 4:
+            return {"msg": "Password must be 4 characters or longer"}, 401
 
         user = User(email=email)
         user.password = password
 
-    access_token = create_access_token(identity=email)
-    user.session_token = access_token
+    access_token = create_access_token(identity=user.to_dict())
+    user.access_token = access_token
     db.session.add(user)
     db.session.commit()
 
-    return {'user': user.to_dict()}, 200
+    return access_token, 200

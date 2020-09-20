@@ -12,7 +12,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(320), nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
-    session_token = db.Column(db.String(500))
+    access_token = db.Column(db.String(500))
+    created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
     dogs = db.relationship('Dog', backref='user', lazy=True)
 
@@ -31,8 +32,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'email': self.email,
-            'session_token': self.session_token,
-            'dogs': self.dogs
+            'createdAt': self.created_at
         }
 
 
@@ -51,12 +51,11 @@ class Dog(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
+            'userId': self.user_id,
             'name': self.name,
-            'profile_image_url': self.image_url,
+            'profileImageUrl': self.image_url,
             'birthday': self.birthday,
             'gender': self.gender
-            # 'likes': self.likes
         }
 
 
@@ -78,7 +77,6 @@ class Post(db.Model):
             'postImageUrl': self.image_url,
             'body': self.body,
             'createdAt': self.created_at
-            # 'likes': self.likes
         }
 
 
