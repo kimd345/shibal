@@ -5,6 +5,7 @@ import { AppLoading } from 'expo';
 
 import AuthNavigator from './src/navigation/AuthNavigator';
 import AppNavigator from './src/navigation/AppNavigator';
+import OfflineNotice from './src/components/OfflineNotice';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -17,10 +18,12 @@ export default function App() {
   }
 
   return (
-    // conditionally render: if logged in, render App, else, Auth
-    <NavigationContainer>
-      {/* <AuthNavigator /> */}
-      <AppNavigator />
-    </NavigationContainer>
+    <>
+      <OfflineNotice />
+      <NavigationContainer>
+        {/* <AuthNavigator /> */}
+        <AppNavigator />
+      </NavigationContainer>
+    </>
   );
 }
