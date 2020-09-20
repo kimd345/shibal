@@ -5,13 +5,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
 
-post_likes = db.Table('likes',
-                      db.Column('dog_id', db.Integer, db.ForeignKey(
-                          'dogs.id'), primary_key=True),
-                      db.Column('post_id', db.Integer, db.ForeignKey(
-                          'posts.id'), primary_key=True)
-                      )
-
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -20,6 +13,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(320), nullable=False, unique=True)
     hashed_password = db.Column(db.String(100), nullable=False)
     session_token = db.Column(db.String(500))
+
     dogs = db.relationship('Dog', backref='user', lazy=True)
 
     @property
@@ -35,8 +29,8 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "email": self.email,
+            'id': self.id,
+            'email': self.email,
         }
 
 
@@ -49,9 +43,19 @@ class Dog(db.Model):
     image_url = db.Column(db.String(2048))
     birthday = db.Column(db.Date)
     gender = db.Column(db.String(50))
-    posts = db.relationship('Post', backref='dog', lazy=True)
-    likes = db.relationship('Post', secondary=post_likes, lazy='subquery',
-                            backref=db.backref('dogs', lazy=True))
+
+    likes = db.relationship('Like', backref='dog', lazy=True)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'name': self.name,
+            'image_url': self.image_url,
+            'birthday': self.birthday,
+            'gender': self.gender,
+            'likes': self.likes
+        }
 
 
 class Post(db.Model):
@@ -62,3 +66,23 @@ class Post(db.Model):
     image_url = db.Column(db.String(2048))
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
+
+    likes = db.relationship('Like', backref='post', lazy=True)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'dog_id': self.dog_id,
+            'image_url': self.image_url,
+            'body': self.body,
+            'created_at': self.created_at,
+            'likes': self.likes
+        }
+
+
+class Like(db.Model):
+    __tablename__ = 'likes'
+
+    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id'), primary_key=True)
+    post_id = db.Column(db.Integer, db.ForeignKey(
+        'posts.id'), primary_key=True)
