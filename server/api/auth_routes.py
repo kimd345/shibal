@@ -11,18 +11,10 @@ from server.models import db, User
 auth_routes = Blueprint('auth_routes', __name__)
 
 
-@auth_routes.route('', methods=['PUT', 'POST', 'DELETE'])
+@auth_routes.route('', methods=['PUT', 'POST'])
 def auth():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
-
-    if request.method == 'DELETE':  # logout
-        id = request.json.get('userId', None)
-        user = User.query.filter(User.id == id).first()
-        user.access_token = None
-        db.session.add(user)
-        db.session.commit()
-        return jsonify({"msg": "Session token removed"}), 200
 
     email = request.json.get('email', None)
     password = request.json.get('password', None)
@@ -43,10 +35,9 @@ def auth():
 
         user = User(email=email)
         user.password = password
+        db.session.add(user)
+        db.session.commit()
 
     access_token = create_access_token(identity=user.to_dict())
-    user.access_token = access_token
-    db.session.add(user)
-    db.session.commit()
 
     return access_token, 200

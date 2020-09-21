@@ -14,6 +14,7 @@ import {
 } from '../../components/forms';
 import authApi from '../../api/auth';
 import AuthContext from '../../auth/context';
+import authStorage from '../../auth/storage';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -24,12 +25,13 @@ function LoginScreen(props) {
   const authContext = useContext(AuthContext);
   const [loginFailed, setLoginFailed] = useState(false);
 
-  const handleSubmit = async ({ email, password }) => {
+  const handleLogin = async ({ email, password }) => {
     const result = await authApi.login(email, password);
     if (!result.ok) return setLoginFailed(true);
     setLoginFailed(false);
     const user = jwtDecode(result.data).identity;
     authContext.setUser(user);
+    authStorage.storeToken(result.data);
   };
 
   return (
@@ -37,7 +39,7 @@ function LoginScreen(props) {
       <Text style={styles.text}>Log in to your account</Text>
       <Form
         initialValues={{ email: '', password: '' }}
-        onSubmit={handleSubmit}
+        onSubmit={handleLogin}
         validationSchema={validationSchema}
       >
         <ErrorMessage error='Invalid email or password' visible={loginFailed} />
