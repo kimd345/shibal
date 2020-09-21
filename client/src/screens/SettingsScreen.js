@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { StyleSheet, View, FlatList, Text } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
@@ -6,8 +6,7 @@ import Screen from '../components/Screen';
 import { ListItem, ListItemSeparator } from '../components/lists';
 import Icon from '../components/Icon';
 import colors from '../config/colors';
-import AuthContext from '../auth/context';
-import authStorage from '../auth/storage';
+import useAuth from '../auth/useAuth';
 
 const menuItems = [
   {
@@ -47,12 +46,7 @@ const menuItems = [
 ];
 
 function SettingsScreen(props) {
-  const { user, setUser } = useContext(AuthContext);
-
-  const handleLogout = () => {
-    setUser(null);
-    authStorage.removeToken();
-  };
+  const { user, logOut } = useAuth();
 
   return (
     <Screen style={styles.screen}>
@@ -89,7 +83,7 @@ function SettingsScreen(props) {
       </Text>
       <ListItem
         title='Logout'
-        onPress={handleLogout}
+        onPress={() => logOut()}
         IconComponent={
           <Icon
             name='sign-out-alt'

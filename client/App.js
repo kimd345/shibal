@@ -10,26 +10,22 @@ import AuthContext from './src/auth/context';
 import authStorage from './src/auth/storage';
 
 export default function App() {
-  const [user, setUser] = useState();
-  const [sessionLoaded, setSessionLoaded] = useState(false);
-
-  const restoreUser = async () => {
-    const user = await authStorage.getUser();
-    if (user) setUser(user);
-  };
-
   const [fontsLoaded] = useFonts({
     'DogeSans-Regular': require('./src/assets/fonts/DogeSans-Regular.otf'),
     Osake: require('./src/assets/fonts/Osake.otf'),
   });
+  const [user, setUser] = useState();
+  const [sessionLoaded, setSessionLoaded] = useState(false);
 
-  if (!sessionLoaded && !fontsLoaded)
-    return (
-      <AppLoading
-        startAsync={restoreUser}
-        onFinish={() => setSessionLoaded(true)}
-      />
-    );
+  if (!fontsLoaded) return <AppLoading />;
+
+  if (!sessionLoaded) {
+    const restoreUser = async () => {
+      const user = await authStorage.getUser();
+      if (user) setUser(user);
+    };
+    restoreUser().then(setSessionLoaded(true));
+  }
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
@@ -40,3 +36,25 @@ export default function App() {
     </AuthContext.Provider>
   );
 }
+
+// const [fontsLoaded] = useFonts({
+//   'DogeSans-Regular': require('./src/assets/fonts/DogeSans-Regular.otf'),
+//   Osake: require('./src/assets/fonts/Osake.otf'),
+// });
+// if (!fontsLoaded) return <AppLoading />;
+
+// const [user, setUser] = useState();
+// const [sessionLoaded, setSessionLoaded] = useState(false);
+
+// const restoreUser = async () => {
+//   const user = await authStorage.getUser();
+//   if (user) setUser(user);
+// };
+
+// if (!sessionLoaded)
+//   return (
+//     <AppLoading
+//       startAsync={restoreUser}
+//       onFinish={() => setSessionLoaded(true)}
+//     />
+//   );
