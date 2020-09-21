@@ -1,11 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
 import colors from '../../config/colors';
 import Screen from '../../components/Screen';
 import Text from '../../components/Text';
-import { Form, FormField, SubmitButton } from '../../components/forms';
+import {
+  ErrorMessage,
+  Form,
+  FormField,
+  SubmitButton,
+} from '../../components/forms';
+import authApi from '../../api/auth';
+import useAuth from '../../auth/useAuth';
+import useApi from '../../hooks/useApi';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -13,14 +21,39 @@ const validationSchema = Yup.object().shape({
 });
 
 function RegisterScreen() {
+  const registerApi = useApi(authApi.register);
+  const loginApi = useApi(authApi.login);
+  const auth = useAuth();
+  const [error, setError] = useState();
+
+  const handleSubmit = async (userInfo) => {
+    const result = await registerApi.request(userInfo);
+    console.log(result);
+
+    if (!result.ok) {
+      if (result.data) setError(result.data.msg);
+      else {
+        setError('An unexpected error occurred');
+      }
+      return;
+    }
+
+    const { data: authToken } = await loginApi.request(
+      userInfo.email,
+      userInfo.password
+    );
+    auth.logIn(authToken);
+  };
+
   return (
     <Screen style={styles.screen}>
       <Text style={styles.text}>Create new account</Text>
       <Form
         initialValues={{ email: '', password: '' }}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
+        <ErrorMessage error={error} visible={error} />
         <FormField
           autoCapitalize='none'
           autoCorrect={false}

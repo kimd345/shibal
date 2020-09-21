@@ -29,7 +29,7 @@ def auth():
             return {"msg": "Invalid email or password"}, 401
     elif request.method == 'POST':  # signup
         if user:
-            return {"msg": "Email already exists"}, 401
+            return {"msg": "A user with the given email already exists"}, 401
         if len(password) < 4:
             return {"msg": "Password must be 4 characters or longer"}, 401
 
