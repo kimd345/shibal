@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, View } from 'react-native';
 
 import Screen from '../components/Screen';
 import ActivityIndicator from '../components/ActivityIndicator';
-import { PostCard } from '../components/lists';
+import PostCard from '../components/social/PostCard';
 import Text from '../components/Text';
 import Button from '../components/Button';
 import colors from '../config/colors';

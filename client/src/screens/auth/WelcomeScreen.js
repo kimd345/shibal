@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import Text from '../../components/Text';
 import Header from '../../components/Header';
 import routes from '../../navigation/routes';
-import WelcomeBirdsAnimation from '../../components/lists/WelcomeBirdsAnimation';
+import WelcomeBirdsAnimation from '../../components/WelcomeBirdsAnimation';
 
 function WelcomeScreen({ navigation }) {
   return (

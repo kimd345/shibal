@@ -8,7 +8,7 @@ function WelcomeBirdsAnimation(props) {
       <LottieView
         autoPlay
         loop
-        source={require('../../assets/animations/birds.json')}
+        source={require('../assets/animations/birds.json')}
       />
     </View>
   );
