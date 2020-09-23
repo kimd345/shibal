@@ -22,7 +22,7 @@ function SocialScreen(props) {
 
   return (
     <>
-      <ActivityIndicator visible={loading} />
+      <ActivityIndicator visible={loading} backgroundColor='palegrey' />
       <Screen style={styles.screen}>
         {error && (
           <View style={styles.error}>

@@ -47,7 +47,10 @@ function RegisterScreen() {
 
   return (
     <>
-      <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
+      <ActivityIndicator
+        visible={registerApi.loading || loginApi.loading}
+        backgroundColor='primaryBackground'
+      />
       <Screen style={styles.screen}>
         <Text style={styles.text}>Create new account</Text>
         <Form

@@ -3,11 +3,16 @@ import LottieView from 'lottie-react-native';
 import { View, StyleSheet } from 'react-native';
 import colors from '../config/colors';
 
-function ActivityIndicator({ visible = false }) {
+function ActivityIndicator({
+  visible = false,
+  backgroundColor = 'primaryBackground',
+}) {
   if (!visible) return null;
 
   return (
-    <View style={styles.overlay}>
+    <View
+      style={[styles.overlay, { backgroundColor: colors[backgroundColor] }]}
+    >
       <LottieView
         autoPlay
         loop
@@ -20,7 +25,6 @@ function ActivityIndicator({ visible = false }) {
 const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
-    backgroundColor: colors.white,
     height: '100%',
     opacity: 0.8,
     width: '100%',

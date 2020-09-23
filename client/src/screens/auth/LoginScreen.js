@@ -42,7 +42,10 @@ function LoginScreen(props) {
 
   return (
     <>
-      <ActivityIndicator visible={loginApi.loading} />
+      <ActivityIndicator
+        visible={loginApi.loading}
+        backgroundColor='primaryBackground'
+      />
       <Screen style={styles.screen}>
         <Text style={styles.text}>Log in to your account</Text>
         <Form
