@@ -7,8 +7,8 @@ import {
   FormField,
   FormImagePicker,
   SubmitButton,
-} from '../components/forms';
-import Screen from '../components/Screen';
+} from '../../components/forms';
+import Screen from '../../components/Screen';
 
 const validationSchema = Yup.object().shape({
   description: Yup.string().label('Description'),

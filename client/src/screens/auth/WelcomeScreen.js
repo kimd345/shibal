@@ -6,36 +6,40 @@ import Button from '../../components/Button';
 import Text from '../../components/Text';
 import Header from '../../components/Header';
 import routes from '../../navigation/routes';
+import WelcomeBirdsAnimation from '../../components/lists/WelcomeBirdsAnimation';
 
 function WelcomeScreen({ navigation }) {
   return (
-    <ImageBackground
-      style={styles.background}
-      source={require('../../assets/welcome.png')}
-    >
-      <Image style={styles.logo} source={require('../../assets/logo.png')} />
-      <View style={styles.welcomeContainer}>
-        <Header style={styles.welcomeHeader}>Welcome to Shibal</Header>
-        <Text style={styles.welcomeMessage}>
-          Train your Shiba Inu daily, and strengthen your friendship
-        </Text>
-      </View>
-      <View style={styles.loginContainer}>
-        <Button
-          iconName='arrow-right'
-          title='GET STARTED'
-          /* onPress={} */
-          width='55%'
-        />
-        <Button
-          title='LOGIN'
-          onPress={() => navigation.navigate(routes.AUTH)}
-          color='welcomeLogin'
-          width='40%'
-          height={40}
-        />
-      </View>
-    </ImageBackground>
+    <>
+      {/* <WelcomeBirdsAnimation /> */}
+      <ImageBackground
+        style={styles.background}
+        source={require('../../assets/welcome.png')}
+      >
+        <Image style={styles.logo} source={require('../../assets/logo.png')} />
+        <View style={styles.welcomeContainer}>
+          <Header style={styles.welcomeHeader}>Welcome to Shibal</Header>
+          <Text style={styles.welcomeMessage}>
+            Train your Shiba Inu daily, and strengthen your friendship
+          </Text>
+        </View>
+        <View style={styles.loginContainer}>
+          <Button
+            iconName='arrow-right'
+            title='GET STARTED'
+            /* onPress={} */
+            width='55%'
+          />
+          <Button
+            title='LOGIN'
+            onPress={() => navigation.navigate(routes.AUTH)}
+            color='welcomeLogin'
+            width='40%'
+            height={40}
+          />
+        </View>
+      </ImageBackground>
+    </>
   );
 }
 
