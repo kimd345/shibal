@@ -14,6 +14,7 @@ import {
 import authApi from '../../api/auth';
 import useAuth from '../../auth/useAuth';
 import useApi from '../../hooks/useApi';
+import ActivityIndicator from '../../components/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
@@ -28,7 +29,6 @@ function RegisterScreen() {
 
   const handleSubmit = async (userInfo) => {
     const result = await registerApi.request(userInfo);
-    console.log(result);
 
     if (!result.ok) {
       if (result.data) setError(result.data.msg);
@@ -46,35 +46,38 @@ function RegisterScreen() {
   };
 
   return (
-    <Screen style={styles.screen}>
-      <Text style={styles.text}>Create new account</Text>
-      <Form
-        initialValues={{ email: '', password: '' }}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        <ErrorMessage error={error} visible={error} />
-        <FormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          icon='email'
-          keyboardType='email-address'
-          name='email'
-          placeholder='Enter your email'
-          textContentType='emailAddress'
-        />
-        <FormField
-          autoCapitalize='none'
-          autoCorrect={false}
-          icon='lock'
-          name='password'
-          placeholder='Please enter your password'
-          secureTextEntry
-          textContentType='password'
-        />
-        <SubmitButton title='Register' />
-      </Form>
-    </Screen>
+    <>
+      <ActivityIndicator visible={registerApi.loading || loginApi.loading} />
+      <Screen style={styles.screen}>
+        <Text style={styles.text}>Create new account</Text>
+        <Form
+          initialValues={{ email: '', password: '' }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <ErrorMessage error={error} visible={error} />
+          <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='email'
+            keyboardType='email-address'
+            name='email'
+            placeholder='Enter your email'
+            textContentType='emailAddress'
+          />
+          <FormField
+            autoCapitalize='none'
+            autoCorrect={false}
+            icon='lock'
+            name='password'
+            placeholder='Please enter your password'
+            secureTextEntry
+            textContentType='password'
+          />
+          <SubmitButton title='Register' />
+        </Form>
+      </Screen>
+    </>
   );
 }
 

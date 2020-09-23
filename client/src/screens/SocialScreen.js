@@ -21,28 +21,30 @@ function SocialScreen(props) {
   }, []);
 
   return (
-    <Screen style={styles.screen}>
-      {error && (
-        <View style={styles.error}>
-          <Text>Couldn't retrieve the posts.</Text>
-          <Button title='Retry' onPress={loadPosts} width='60%' />
-        </View>
-      )}
+    <>
       <ActivityIndicator visible={loading} />
-      <FlatList
-        data={posts}
-        keyExtractor={(post) => post.id.toString()}
-        renderItem={({ item }) => (
-          <PostCard
-            dogname={item.dogId} // change later to name
-            profileImageUrl={item.postImageUrl} // change later to profileImageUrl
-            postImageUrl={item.postImageUrl}
-            body={item.body}
-            createdAt={item.createdAt}
-          />
+      <Screen style={styles.screen}>
+        {error && (
+          <View style={styles.error}>
+            <Text>Couldn't retrieve the posts.</Text>
+            <Button title='Retry' onPress={loadPosts} width='60%' />
+          </View>
         )}
-      />
-    </Screen>
+        <FlatList
+          data={posts}
+          keyExtractor={(post) => post.id.toString()}
+          renderItem={({ item }) => (
+            <PostCard
+              dogname={item.dogId} // change later to name
+              profileImageUrl={item.postImageUrl} // change later to profileImageUrl
+              postImageUrl={item.postImageUrl}
+              body={item.body}
+              createdAt={item.createdAt}
+            />
+          )}
+        />
+      </Screen>
+    </>
   );
 }
 

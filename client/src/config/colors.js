@@ -5,7 +5,6 @@ export default {
   secondaryText: '#800000', // maroon
   primaryButton: '#FF9999', // salmon
   tabButton: '#B5915E', // dark tan
-  loadingPaw: '#8B572A', // brown
 
   black: '#000',
   mossygrey: '#525B52', // dark
@@ -30,4 +29,5 @@ export default {
   angellist: '#5F29F4',
 
   grass: '#50C878', // paris
+  sakura: '#FFB7C5', // cherry blossom
 };
