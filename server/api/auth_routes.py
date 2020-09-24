@@ -38,6 +38,6 @@ def auth():
         db.session.add(user)
         db.session.commit()
 
-    access_token = create_access_token(identity=user.to_dict())
+    access_token = create_access_token(identity=user.to_auth())
 
     return access_token, 200

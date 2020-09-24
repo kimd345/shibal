@@ -26,7 +26,7 @@ export default function App() {
     };
     restoreUser().then(setSessionLoaded(true));
   }
-
+  console.log(user);
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />

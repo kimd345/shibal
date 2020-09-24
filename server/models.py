@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
     dogs = db.relationship('Dog', backref='user', lazy=True)
+    current_dog = db.relationship('Current_Dog', backref='user', lazy=True)
 
     @property
     def password(self):
@@ -30,8 +31,15 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'current_dog': [dog.to_id() for dog in self.current_dog][0],
+            'dogs_by_id': [dog.to_id() for dog in self.dogs]
+        }
+
+    def to_auth(self):
+        return {
+            'id': self.id,
             'email': self.email,
-            'createdAt': self.created_at
+            'createdAt': self.created_at,
         }
 
 
@@ -39,7 +47,7 @@ class Dog(db.Model):
     __tablename__ = 'dogs'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))  # noqa
     name = db.Column(db.String(50), nullable=False)
     image_url = db.Column(db.String(2048))
     birthday = db.Column(db.Date)
@@ -57,12 +65,25 @@ class Dog(db.Model):
             'gender': self.gender
         }
 
+    def to_id(self):
+        return self.id
+
+
+class Current_Dog(db.Model):
+    __tablename__ = 'current_dogs'
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), primary_key=True)  # noqa
+    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'), unique=True)  # noqa
+
+    def to_id(self):
+        return self.dog_id
+
 
 class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
-    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id'))
+    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'))  # noqa
     image_url = db.Column(db.String(2048))
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
@@ -82,6 +103,5 @@ class Post(db.Model):
 class Like(db.Model):
     __tablename__ = 'likes'
 
-    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id'), primary_key=True)
-    post_id = db.Column(db.Integer, db.ForeignKey(
-        'posts.id'), primary_key=True)
+    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'), primary_key=True)  # noqa
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='CASCADE'), primary_key=True)  # noqa

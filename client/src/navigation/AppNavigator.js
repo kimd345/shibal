@@ -10,9 +10,6 @@ import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import colors from '../config/colors';
 
-import PostCreateScreen from '../screens/utilities/PostCreateScreen';
-import ProgramsListScreen from '../screens/programs/ProgramsListScreen';
-
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => (
@@ -24,7 +21,7 @@ const AppNavigator = () => (
   >
     <Tab.Screen
       name='Home'
-      component={PostCreateScreen} //HomeScreen
+      component={HomeScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name='home' color={color} size={size} />
@@ -33,7 +30,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name='Training'
-      component={ProgramsListScreen} //TrainingScreen
+      component={TrainingScreen}
       options={{
         tabBarIcon: ({ color }) => (
           <FontAwesome5 name='hand-holding-heart' color={color} size={20} />
