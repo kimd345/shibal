@@ -1,7 +1,7 @@
 import React from 'react';
 import LottieView from 'lottie-react-native';
 import { View, StyleSheet } from 'react-native';
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 function ActivityIndicator({
   visible = false,
@@ -16,7 +16,7 @@ function ActivityIndicator({
       <LottieView
         autoPlay
         loop
-        source={require('../assets/animations/loader.json')}
+        source={require('../../assets/animations/loader.json')}
       />
     </View>
   );
