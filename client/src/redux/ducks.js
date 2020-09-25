@@ -2,20 +2,34 @@ import remove from 'lodash.remove';
 
 // Action Types
 
-export const ADD_DOG = 'ADD_DOG';
-export const DELETE_DOG = 'DELETE_DOG';
-export const SELECT_DOG = 'SELECT_DOG';
-export const UPDATE_DOG = 'UPDATE_DOG';
+export const actionTypes = {
+  ADD_DOG: 'ADD_DOG',
+  DELETE_DOG: 'DELETE_DOG',
+  SELECT_DOG: 'SELECT_DOG',
+  UPDATE_DOG: 'UPDATE_DOG',
+};
 
 // Action Creators
-
-export const addDog = (dog) => ({ type: ADD_DOG, payload: dog });
-export const deleteDog = (id) => ({ type: DELETE_DOG, payload: id });
-export const selectDog = (id) => ({ type: SELECT_DOG, payload: id });
-export const updateDog = (dog) => ({ type: UPDATE_DOG, payload: dog });
+export const actions = {
+  addDog: (dog) => ({ type: ADD_DOG, payload: dog }),
+  deleteDog: (id) => ({ type: DELETE_DOG, payload: id }),
+  selectDog: (id) => ({ type: SELECT_DOG, payload: id }),
+  updateDog: (dog) => ({ type: UPDATE_DOG, payload: dog }),
+};
 
 // Reducers
 
-const initialState = [];
+const initialState = {
+  dogs: [],
+};
 
-const dogReducer = (state = initialState, action) => {};
+const rootReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case actionTypes.ADD_DOG:
+      return { ...state, dogs: [...state.dogs, action.payload] };
+    default:
+      return state;
+  }
+};
+
+export default rootReducer;
