@@ -14,7 +14,7 @@ import {
 import authApi from '../../api/auth';
 import useAuth from '../../auth/useAuth';
 import useApi from '../../hooks/useApi';
-import ActivityIndicator from '../../components/ActivityIndicator';
+import ActivityIndicator from '../../components/animations/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),

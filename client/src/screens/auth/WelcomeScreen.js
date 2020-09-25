@@ -6,16 +6,16 @@ import Button from '../../components/Button';
 import Text from '../../components/Text';
 import Header from '../../components/Header';
 import routes from '../../navigation/routes';
-import WelcomeBirdsAnimation from '../../components/lists/WelcomeBirdsAnimation';
+import Birds from '../../components/animations/Birds';
 
 function WelcomeScreen({ navigation }) {
   return (
     <>
-      {/* <WelcomeBirdsAnimation /> */}
       <ImageBackground
         style={styles.background}
         source={require('../../assets/welcome.png')}
       >
+        <Birds />
         <Image style={styles.logo} source={require('../../assets/logo.png')} />
         <View style={styles.welcomeContainer}>
           <Header style={styles.welcomeHeader}>Welcome to Shibal</Header>

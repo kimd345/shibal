@@ -1,7 +1,7 @@
 import React from 'react';
 import LottieView from 'lottie-react-native';
-import { View, StyleSheet } from 'react-native';
-import colors from '../config/colors';
+import { View, StyleSheet, Platform } from 'react-native';
+import colors from '../../config/colors';
 
 function ActivityIndicator({
   visible = false,
@@ -13,11 +13,20 @@ function ActivityIndicator({
     <View
       style={[styles.overlay, { backgroundColor: colors[backgroundColor] }]}
     >
-      <LottieView
-        autoPlay
-        loop
-        source={require('../assets/animations/loader.json')}
-      />
+      {Platform.OS === 'android' && (
+        <LottieView
+          autoPlay
+          loop
+          source={require('../../assets/animations/loader_android.json')}
+        />
+      )}
+      {Platform.OS === 'ios' && (
+        <LottieView
+          autoPlay
+          loop
+          source={require('../../assets/animations/loader_ios.json')}
+        />
+      )}
     </View>
   );
 }

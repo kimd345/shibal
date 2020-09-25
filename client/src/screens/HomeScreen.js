@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import ActivityIndicator from '../components/ActivityIndicator';
 import Screen from '../components/Screen';
 
 function HomeScreen(props) {

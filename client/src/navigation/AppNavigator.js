@@ -9,7 +9,6 @@ import SocialScreen from '../screens/SocialScreen';
 import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import colors from '../config/colors';
-import PostCreateScreen from '../screens/utilities/PostCreateScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +21,7 @@ const AppNavigator = () => (
   >
     <Tab.Screen
       name='Home'
-      component={PostCreateScreen} //HomeScreen
+      component={HomeScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name='home' color={color} size={size} />

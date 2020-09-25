@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash
 from dotenv import load_dotenv
 from server import app, db
-from server.models import User, Dog, Post
+from server.models import User, Dog, Current_Dog, Post, Like
 
 import requests
 
@@ -57,6 +57,9 @@ with app.app_context():
     db.session.add(test_dog_8)
     db.session.commit()
 
+    demo_current_dog = Current_Dog(user_id=1, dog_id=1)
+    db.session.add(demo_current_dog)
+
     demo_post = Post(dog_id=1, image_url="https://cdn.shibe.online/shibes/a21b3d28beec5380ab9eb94b14348be0e67cfb92.jpg", body='안녕 얘들아!!')  # noqa
     test_post_2 = Post(dog_id=2, image_url="https://cdn.shibe.online/shibes/69901d07648a0ba1646b854c7b3114eb8cb7d5d2.jpg", body='hey hey hey')  # noqa
     test_post_3 = Post(dog_id=3, image_url="https://cdn.shibe.online/shibes/b68964180e052b787bf572e9de34031028fa3d67.jpg", body='im kinda sleepy')  # noqa
@@ -74,5 +77,11 @@ with app.app_context():
     db.session.add(test_post_6)
     db.session.add(test_post_7)
     db.session.add(test_post_8)
+
+    demo_like = Like(dog_id=1, post_id=1)
+    demo_like_2 = Like(dog_id=1, post_id=2)
+
+    db.session.add(demo_like)
+    db.session.add(demo_like_2)
 
     db.session.commit()
