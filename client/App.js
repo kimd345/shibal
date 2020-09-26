@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Provider, useDispatch } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -8,25 +9,42 @@ import AppNavigator from './src/navigation/AppNavigator';
 import OfflineNotice from './src/components/OfflineNotice';
 import AuthContext from './src/auth/context';
 import authStorage from './src/auth/storage';
+import store from './src/redux/store';
+import { actions } from './src/redux/ducks';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     'DogeSans-Regular': require('./src/assets/fonts/DogeSans-Regular.otf'),
     Osake: require('./src/assets/fonts/Osake.otf'),
   });
-  const [user, setUser] = useState();
-  const [sessionLoaded, setSessionLoaded] = useState(false);
 
   if (!fontsLoaded) return <AppLoading />;
 
-  if (!sessionLoaded) {
+  return (
+    <Provider store={store}>
+      <AppContent />
+    </Provider>
+  );
+}
+
+function AppContent() {
+  const [isReady, setIsReady] = useState(false);
+  const [user, setUser] = useState();
+
+  // put redux logic in home screen later
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(actions.setUser(user));
+  }, [dispatch, user]);
+
+  if (!isReady) {
     const restoreUser = async () => {
       const user = await authStorage.getUser();
       if (user) setUser(user);
     };
-    restoreUser().then(setSessionLoaded(true));
+    restoreUser().then(setIsReady(true));
   }
-  console.log(user);
+
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       <OfflineNotice />
@@ -36,25 +54,3 @@ export default function App() {
     </AuthContext.Provider>
   );
 }
-
-// const [fontsLoaded] = useFonts({
-//   'DogeSans-Regular': require('./src/assets/fonts/DogeSans-Regular.otf'),
-//   Osake: require('./src/assets/fonts/Osake.otf'),
-// });
-// if (!fontsLoaded) return <AppLoading />;
-
-// const [user, setUser] = useState();
-// const [sessionLoaded, setSessionLoaded] = useState(false);
-
-// const restoreUser = async () => {
-//   const user = await authStorage.getUser();
-//   if (user) setUser(user);
-// };
-
-// if (!sessionLoaded)
-//   return (
-//     <AppLoading
-//       startAsync={restoreUser}
-//       onFinish={() => setSessionLoaded(true)}
-//     />
-//   );

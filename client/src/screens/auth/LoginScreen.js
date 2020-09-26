@@ -36,7 +36,6 @@ function LoginScreen(props) {
       }
       return;
     }
-
     auth.logIn(result.data);
   };
 
