@@ -28,18 +28,20 @@ class User(db.Model, UserMixin):
     def check_password(self, password):
         return check_password_hash(self.password, password)
 
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'current_dog': [dog.to_id() for dog in self.current_dog][0],
-            'dogs_by_id': [dog.to_id() for dog in self.dogs]
-        }
-
     def to_auth(self):
         return {
             'id': self.id,
             'email': self.email,
-            'createdAt': self.created_at,
+            'createdAt': self.created_at
+        }
+
+    def to_user(self):
+        return {
+            'id': self.id,
+            'current_dog': [dog.to_id() for dog in self.current_dog][0],
+            'dogs_by_id': [dog.to_id() for dog in self.dogs],
+            'email': self.email,
+            'createdAt': self.created_at
         }
 
 
