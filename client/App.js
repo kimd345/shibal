@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Provider, useDispatch } from 'react-redux';
+import { Provider, useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
@@ -36,6 +36,12 @@ function AppContent() {
   useEffect(() => {
     dispatch(actions.setUser(user));
   }, [dispatch, user]);
+
+  console.log(
+    // for testing
+    'APP',
+    useSelector((state) => state)
+  );
 
   if (!isReady) {
     const restoreUser = async () => {

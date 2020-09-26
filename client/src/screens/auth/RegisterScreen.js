@@ -37,12 +37,11 @@ function RegisterScreen() {
       }
       return;
     }
-    console.log('BEFORE');
+
     const { data: authToken } = await loginApi.request(
       userInfo.email,
       userInfo.password
     );
-    console.log('AFTER');
     auth.logIn(authToken);
   };
 

@@ -9,6 +9,7 @@ import SocialScreen from '../screens/SocialScreen';
 import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import colors from '../config/colors';
+import NewDogScreen from '../screens/forms/NewDogScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -21,7 +22,7 @@ const AppNavigator = () => (
   >
     <Tab.Screen
       name='Home'
-      component={HomeScreen}
+      component={NewDogScreen} //HomeScreen
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name='home' color={color} size={size} />

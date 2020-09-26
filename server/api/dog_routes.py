@@ -1,9 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import (
-    create_access_token,
-    # jwt_required, #Protect a view with jwt_required, which requires
-    # a valid access token in the request to access.
-    # get_jwt_identity, #Access the identity of the current user with it
+    jwt_required
 )
 
 from server.models import db, User
