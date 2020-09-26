@@ -40,8 +40,7 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'current_dog': [dog.to_id() for dog in self.current_dog][0],
             'dogs_by_id': [dog.to_id() for dog in self.dogs],
-            'email': self.email,
-            'createdAt': self.created_at
+            'email': self.email
         }
 
 
