@@ -15,7 +15,7 @@ const validationSchema = Yup.object().shape({
   images: Yup.array().min(1, 'Please select at least one image.'),
 });
 
-function PostCreateScreen() {
+function NewPostScreen() {
   return (
     <Screen style={styles.container}>
       <Form
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-export default PostCreateScreen;
+export default NewPostScreen;

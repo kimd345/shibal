@@ -31,8 +31,8 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'current_dog_id': [dog.to_id() for dog in self.current_dog],
-            'dogs_by_id': [dog.to_id() for dog in self.dogs],
+            'currentDogId': [dog.to_id() for dog in self.current_dog],
+            'dogsById': [dog.to_id() for dog in self.dogs],
             'email': self.email,
             'createdAt': self.created_at
         }
@@ -68,7 +68,13 @@ class Current_Dog(db.Model):
     __tablename__ = 'current_dogs'
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), primary_key=True)  # noqa
-    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'), unique=True)  # noqa
+    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'), primary_key=True)  # noqa
+
+    def to_dict(self):
+        return {
+            'userId': self.user_id,
+            'dogId': self.dog_id
+        }
 
     def to_id(self):
         return self.dog_id

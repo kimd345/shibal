@@ -3,38 +3,27 @@ from flask_jwt_extended import (
     jwt_required
 )
 
-from server.models import db, User
+from server.models import db, Dog
 
-auth_routes = Blueprint('auth_routes', __name__)
+dog_routes = Blueprint('dogs', __name__)
 
 
-@auth_routes.route('', methods=['PUT', 'POST'])
-def auth():
+@dog_routes.route('', methods=['POST'])
+def index():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 
-    email = request.json.get('email', None)
-    password = request.json.get('password', None)
-    if not email:
-        return {"msg": "Please enter an email"}, 400
-    if not password:
-        return {"msg": "Please enter a password"}, 400
+    name = request.json.get('name', None)
+    user_id = request.json.get('user_id', None)
+    if not name:
+        return {"msg": "Please enter a name"}, 400
+    if len(name) > 50:
+        return {"msg": "Please abbreviate name to under 50 characters"}, 400
+    if not user_id:
+        return {"msg": "User not found"}, 400
 
-    user = User.query.filter(User.email == email).first()
-    if request.method == 'PUT':   # login
-        if not user or not user.check_password(password):
-            return {"msg": "Invalid email or password"}, 401
-    elif request.method == 'POST':  # signup
-        if user:
-            return {"msg": "A user with the given email already exists"}, 401
-        if len(password) < 4:
-            return {"msg": "Password must be 4 characters or longer"}, 401
+    dog = Dog(name=name, user_id=user_id)
+    db.session.add(dog)
+    db.session.commit()
 
-        user = User(email=email)
-        user.password = password
-        db.session.add(user)
-        db.session.commit()
-
-    access_token = create_access_token(identity=user.to_dict())
-
-    return access_token, 200
+    return dog.to_dict(), 200

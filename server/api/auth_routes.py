@@ -8,11 +8,11 @@ from flask_jwt_extended import (
 
 from server.models import db, User
 
-auth_routes = Blueprint('auth_routes', __name__)
+auth_routes = Blueprint('auth', __name__)
 
 
 @auth_routes.route('', methods=['PUT', 'POST'])
-def auth():
+def index():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 

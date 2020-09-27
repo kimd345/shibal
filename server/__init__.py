@@ -9,6 +9,7 @@ from flask_jwt_extended import JWTManager
 from server.models import db, User
 from server.api.auth_routes import auth_routes
 from server.api.user_routes import user_routes
+from server.api.dog_routes import dog_routes
 from server.api.post_routes import post_routes
 
 from server.config import Config
@@ -20,6 +21,7 @@ jwt = JWTManager(app)
 app.config.from_object(Config)
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(user_routes, url_prefix='/api/users')
+app.register_blueprint(dog_routes, url_prefix='/api/dogs')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 db.init_app(app)
 
@@ -42,4 +44,3 @@ def inject_csrf_token(response):
 @app.route('/<path>')
 def react_root(path):
     return None
-    app.send_static_file('index.html')

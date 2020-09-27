@@ -18,7 +18,7 @@ import useAuth from '../../auth/useAuth';
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required().label('Name'),
+  name: Yup.string().required().max(50).label('Name'),
 });
 
 function NewDogScreen(props) {
@@ -29,10 +29,12 @@ function NewDogScreen(props) {
 
   const handleSubmit = async (dogInfo) => {
     dogInfo = { ...dogInfo, ...{ user_id: userId } };
-    const result = await createDogApi.request(dogInfo);
+    console.log('DogInfo: ', dogInfo);
+    const result1 = await createDogApi.request(dogInfo);
+    console.log('Result1: ', result.data);
 
-    if (!result.ok) {
-      if (result.data) setError(result.data.msg);
+    if (!result1.ok) {
+      if (result1.data) setError(result1.data.msg);
       else {
         setError('An unexpected error occurred');
       }
@@ -40,13 +42,17 @@ function NewDogScreen(props) {
     }
 
     const dogId = result.data.id;
-    await putCurrentDogApi.request(userId, dogId);
+    const result2 = await putCurrentDogApi.request(userId, dogId);
+    console.log('NewDogScreen: ', result2.data);
     // navigate to home
   };
 
   return (
     <>
-      <ActivityIndicator visible={false} backgroundColor='primaryBackground' />
+      <ActivityIndicator
+        visible={createDogApi.loading}
+        backgroundColor='primaryBackground'
+      />
       <Screen style={styles.screen}>
         <Text style={styles.text}>Your Inu</Text>
         <Form
@@ -60,7 +66,7 @@ function NewDogScreen(props) {
             autoCorrect={false}
             icon='dog-side'
             keyboardType='default'
-            name='new-dog'
+            name='name'
             placeholder="Enter your Inu's name"
             textContentType='name'
           />

@@ -5,7 +5,7 @@ from flask_jwt_extended import (
     get_jwt_identity
 )
 
-post_routes = Blueprint('post', __name__)
+post_routes = Blueprint('posts', __name__)
 
 
 @post_routes.route('')
