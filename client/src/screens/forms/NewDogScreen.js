@@ -9,6 +9,7 @@ import {
   ErrorMessage,
   Form,
   FormField,
+  FormPicker,
   SubmitButton,
 } from '../../components/forms';
 import dogsApi from '../../api/dogs';
@@ -21,6 +22,17 @@ const validationSchema = Yup.object().shape({
   name: Yup.string().required().max(50).label('Name'),
 });
 
+const genders = [
+  {
+    label: 'Male',
+    value: 'Male',
+  },
+  {
+    label: 'Female',
+    value: 'Female',
+  },
+];
+
 function NewDogScreen(props) {
   const createDogApi = useApi(dogsApi.createDog);
   const putCurrentDogApi = useApi(usersApi.putCurrentDog);
@@ -30,20 +42,20 @@ function NewDogScreen(props) {
   const handleSubmit = async (dogInfo) => {
     dogInfo = { ...dogInfo, ...{ user_id: userId } };
     console.log('DogInfo: ', dogInfo);
-    const result1 = await createDogApi.request(dogInfo);
-    console.log('Result1: ', result.data);
+    const responseDog = await createDogApi.request(dogInfo);
+    console.log('responseDog: ', responseDog.data);
 
-    if (!result1.ok) {
-      if (result1.data) setError(result1.data.msg);
+    if (!responseDog.ok) {
+      if (responseDog.data) setError(responseDog.data.msg);
       else {
         setError('An unexpected error occurred');
       }
       return;
     }
 
-    const dogId = result.data.id;
-    const result2 = await putCurrentDogApi.request(userId, dogId);
-    console.log('NewDogScreen: ', result2.data);
+    const dogId = responseDog.data.id;
+    const responseCurrentDog = await putCurrentDogApi.request(userId, dogId);
+    console.log('NewDogScreen: ', responseCurrentDog.data);
     // navigate to home
   };
 
@@ -69,6 +81,12 @@ function NewDogScreen(props) {
             name='name'
             placeholder="Enter your Inu's name"
             textContentType='name'
+          />
+          <FormPicker
+            items={genders}
+            name='gender'
+            placeholder='Gender'
+            width='50%'
           />
           <SubmitButton title='Submit' />
         </Form>
