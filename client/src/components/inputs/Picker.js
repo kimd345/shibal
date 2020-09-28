@@ -4,11 +4,11 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
   Modal,
-  Button,
   FlatList,
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+import Button from '../Button';
 import Text from '../Text';
 import defaultStyles from '../../config/defaultStyles';
 import PickerItem from './PickerItem';
@@ -52,9 +52,9 @@ function AppPicker({
         </View>
       </TouchableWithoutFeedback>
       <Modal visible={modalVisible} animationType='slide'>
-        <Screen>
-          <Button title='Close' onPress={() => setModalVisible(false)} />
+        <Screen style={styles.screen}>
           <FlatList
+            style={styles.list}
             data={items}
             keyExtractor={(item) => item.value.toString()}
             numColumns={numberOfColumns}
@@ -68,6 +68,11 @@ function AppPicker({
                 }}
               />
             )}
+          />
+          <Button
+            onPress={() => setModalVisible(false)}
+            title='Close'
+            width='50%'
           />
         </Screen>
       </Modal>
@@ -93,6 +98,9 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 1,
+  },
+  screen: {
+    justifyContent: 'center',
   },
 });
 
