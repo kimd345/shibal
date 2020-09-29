@@ -10,6 +10,11 @@
       "StackName": "amplify-shibal-dev-10155",
       "StackId": "arn:aws:cloudformation:us-east-1:768798352704:stack/amplify-shibal-dev-10155/e62c5750-0210-11eb-b33e-12bf92df32e3",
       "AmplifyAppId": "d2ntqo5shac2m4"
+    },
+    "categories": {
+      "auth": {
+        "shibald6a057c2": {}
+      }
     }
   }
 }
