@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, request
-from server.models import Post
+from backend.models import Post
 from flask_jwt_extended import (
     jwt_required,
     get_jwt_identity

@@ -6,7 +6,7 @@ from flask_jwt_extended import (
     # get_jwt_identity, #Access the identity of the current user with it
 )
 
-from server.models import db, User
+from backend.models import db, User
 
 auth_routes = Blueprint('auth', __name__)
 

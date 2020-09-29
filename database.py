@@ -1,7 +1,7 @@
 from werkzeug.security import generate_password_hash
 from dotenv import load_dotenv
-from server import app, db
-from server.models import User, Dog, Current_Dog, Post, Like
+from backend import app, db
+from backend.models import User, Dog, Current_Dog, Post, Like
 
 import requests
 

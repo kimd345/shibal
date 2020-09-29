@@ -3,7 +3,7 @@ from flask_jwt_extended import (
     jwt_required
 )
 
-from server.models import db, User, Current_Dog
+from backend.models import db, User, Current_Dog
 
 user_routes = Blueprint('users', __name__)
 

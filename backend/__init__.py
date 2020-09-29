@@ -6,13 +6,13 @@ from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_jwt_extended import JWTManager
 
 
-from server.models import db, User
-from server.api.auth_routes import auth_routes
-from server.api.user_routes import user_routes
-from server.api.dog_routes import dog_routes
-from server.api.post_routes import post_routes
+from backend.models import db, User
+from backend.api.auth_routes import auth_routes
+from backend.api.user_routes import user_routes
+from backend.api.dog_routes import dog_routes
+from backend.api.post_routes import post_routes
 
-from server.config import Config
+from backend.config import Config
 
 app = Flask(__name__, static_url_path='')
 
