@@ -1,10 +1,10 @@
 import { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import jwtDecode from 'jwt-decode';
 
-import AuthContext from './context';
-import authStorage from './storage';
+import AuthContext from '../auth/context';
+import authStorage from '../auth/storage';
 import { actions } from '../redux/ducks';
-import { useDispatch } from 'react-redux';
 
 export default useAuth = () => {
   const { user, setUser } = useContext(AuthContext);

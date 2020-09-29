@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-shibal-dev-10155-authRole",
+      "UnauthRoleArn": "arn:aws:iam::768798352704:role/amplify-shibal-dev-10155-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::768798352704:role/amplify-shibal-dev-10155-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-shibal-dev-10155-deployment",
+      "UnauthRoleName": "amplify-shibal-dev-10155-unauthRole",
+      "StackName": "amplify-shibal-dev-10155",
+      "StackId": "arn:aws:cloudformation:us-east-1:768798352704:stack/amplify-shibal-dev-10155/e62c5750-0210-11eb-b33e-12bf92df32e3",
+      "AmplifyAppId": "d2ntqo5shac2m4"
+    }
+  }
+}

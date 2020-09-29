@@ -16,7 +16,7 @@ import {
 import dogsApi from '../../api/dogs';
 import usersApi from '../../api/users';
 import useApi from '../../hooks/useApi';
-import useAuth from '../../auth/useAuth';
+import useAuth from '../../hooks/useAuth';
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({

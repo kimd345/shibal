@@ -12,8 +12,8 @@ import {
   SubmitButton,
 } from '../../components/forms';
 import authApi from '../../api/auth';
-import useAuth from '../../auth/useAuth';
 import useApi from '../../hooks/useApi';
+import useAuth from '../../hooks/useAuth';
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
 
 const validationSchema = Yup.object().shape({
