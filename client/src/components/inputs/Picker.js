@@ -95,9 +95,11 @@ const styles = StyleSheet.create({
   placeholder: {
     color: defaultStyles.colors.leafygrey,
     flex: 1,
+    lineHeight: 18,
   },
   text: {
     flex: 1,
+    lineHeight: 18,
   },
   screen: {
     justifyContent: 'center',

@@ -8,6 +8,7 @@ import Text from '../../components/Text';
 import {
   ErrorMessage,
   Form,
+  FormDatePicker,
   FormField,
   FormPicker,
   SubmitButton,
@@ -88,6 +89,7 @@ function NewDogScreen(props) {
             placeholder='Gender'
             width='50%'
           />
+          <FormDatePicker name='birthday' />
           <SubmitButton title='Submit' />
         </Form>
       </Screen>
