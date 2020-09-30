@@ -44,7 +44,7 @@ class Dog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))  # noqa
     name = db.Column(db.String(50), nullable=False)
-    image_url = db.Column(db.String(2048))
+    image_url = db.Column(db.String(8192))
     birthday = db.Column(db.Date)
     gender = db.Column(db.String(50))
 
@@ -85,7 +85,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'))  # noqa
-    image_url = db.Column(db.String(2048))
+    image_url = db.Column(db.String(8192))
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 

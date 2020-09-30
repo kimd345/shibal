@@ -6,7 +6,7 @@ import defaultStyles from '../config/defaultStyles';
 import colors from '../config/colors';
 
 function AppButton({
-  iconName = '',
+  icon = '',
   title = 'Coming Soon!',
   onPress = () => alert('Coming Soon!'),
   color = 'primaryButton',
@@ -36,9 +36,9 @@ function AppButton({
       TouchableOpacity={0.65}
       onPress={onPress}
     >
-      {iconName ? (
+      {icon ? (
         <MaterialCommunityIcons
-          name={iconName}
+          name={icon}
           size={24}
           color={textColor}
           style={{ position: 'absolute', left: 20, marginRight: 10 }}

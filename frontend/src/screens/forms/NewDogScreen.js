@@ -11,6 +11,7 @@ import {
   FormDatePicker,
   FormField,
   FormPicker,
+  FormProfileImagePicker,
   SubmitButton,
 } from '../../components/forms';
 import dogsApi from '../../api/dogs';
@@ -43,20 +44,20 @@ function NewDogScreen(props) {
   const handleSubmit = async (dogInfo) => {
     dogInfo = { ...dogInfo, ...{ user_id: userId } };
     console.log('DogInfo: ', dogInfo);
-    const responseDog = await createDogApi.request(dogInfo);
-    console.log('responseDog: ', responseDog.data);
+    const resultDog = await createDogApi.request(dogInfo);
+    console.log('resultDog: ', resultDog.data);
 
-    if (!responseDog.ok) {
-      if (responseDog.data) setError(responseDog.data.msg);
+    if (!resultDog.ok) {
+      if (resultDog.data) setError(resultDog.data.msg);
       else {
         setError('An unexpected error occurred');
       }
       return;
     }
 
-    const dogId = responseDog.data.id;
-    const responseCurrentDog = await putCurrentDogApi.request(userId, dogId);
-    console.log('NewDogScreen: ', responseCurrentDog.data);
+    const dogId = resultDog.data.id;
+    const resultCurrentDog = await putCurrentDogApi.request(userId, dogId);
+    console.log('NewDogScreen: ', resultCurrentDog.data);
     // navigate to home
   };
 
@@ -90,6 +91,7 @@ function NewDogScreen(props) {
             width='50%'
           />
           <FormDatePicker name='birthday' />
+          <FormProfileImagePicker name='image_url' />
           <SubmitButton title='Submit' />
         </Form>
       </Screen>

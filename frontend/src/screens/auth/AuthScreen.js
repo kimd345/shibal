@@ -14,13 +14,13 @@ function AuthScreen({ navigation }) {
           Want to learn how to best train your Shiba Inu? Sign up, it's free!
         </Text>
         <Button
-          iconName='facebook'
+          icon='facebook'
           title='Continue with Facebook'
           // onPress={}
           color={'facebook'}
         />
         <Button
-          iconName='google'
+          icon='google'
           title='Continue with Google'
           // onPress={}
           color={'google'}
