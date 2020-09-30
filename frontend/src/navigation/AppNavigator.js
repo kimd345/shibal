@@ -10,6 +10,7 @@ import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import colors from '../config/colors';
 import NewDogScreen from '../screens/forms/NewDogScreen';
+import NewPostScreen from '../screens/forms/NewPostScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -31,7 +32,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name='Training'
-      component={TrainingScreen}
+      component={NewPostScreen} //TrainingScreen
       options={{
         tabBarIcon: ({ color }) => (
           <FontAwesome5 name='hand-holding-heart' color={color} size={20} />

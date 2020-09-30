@@ -25,7 +25,7 @@ function WelcomeScreen({ navigation }) {
         </View>
         <View style={styles.loginContainer}>
           <Button
-            iconName='arrow-right'
+            icon='arrow-right'
             title='GET STARTED'
             /* onPress={} */
             width='55%'

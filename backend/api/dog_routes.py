@@ -15,8 +15,13 @@ def index():
 
     name = request.json.get('name', None)
     user_id = request.json.get('user_id', None)
-    gender = request.json.get('gender', None)['value']
+    gender = request.json.get('gender', None)
     birthday = request.json.get('birthday', None)
+    image_url = request.json.get('image_url', None)
+
+    if gender:
+        gender = gender['value']
+
     print('birthday: ', birthday)
     if not name:
         return {"msg": "Please enter a name"}, 400
@@ -25,7 +30,7 @@ def index():
     if not user_id:
         return {"msg": "User not found"}, 400
 
-    dog = Dog(name=name, user_id=user_id, gender=gender, birthday=birthday)
+    dog = Dog(name=name, user_id=user_id, gender=gender, birthday=birthday, image_url=image_url)  # noqa
 
     db.session.add(dog)
     db.session.commit()

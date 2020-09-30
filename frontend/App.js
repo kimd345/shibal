@@ -13,8 +13,8 @@ import store from './src/redux/store';
 import { actions } from './src/redux/ducks';
 
 import Amplify from 'aws-amplify';
-import config from './aws-exports';
-Amplify.configure(config);
+import awsconfig from './aws-exports';
+Amplify.configure(awsconfig);
 
 export default function App() {
   const [fontsLoaded] = useFonts({

@@ -1,1 +1,16 @@
-{}
+{
+  "auth": {
+    "shibald6a057c2": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false
+    }
+  },
+  "storage": {
+    "shibals3auth": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation"
+    }
+  }
+}
