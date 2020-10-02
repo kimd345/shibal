@@ -42,7 +42,7 @@ function NewDogScreen(props) {
   const [error, setError] = useState();
 
   const handleSubmit = async (dogInfo) => {
-    dogInfo = { ...dogInfo, ...{ user_id: userId } };
+    dogInfo = { ...dogInfo, ...{ userId: userId } };
     console.log('DogInfo: ', dogInfo);
     const resultDog = await createDogApi.request(dogInfo);
     console.log('resultDog: ', resultDog.data);
@@ -91,7 +91,7 @@ function NewDogScreen(props) {
             width='50%'
           />
           <FormDatePicker name='birthday' />
-          <FormProfileImagePicker name='image_url' />
+          <FormProfileImagePicker name='imageUrl' />
           <SubmitButton title='Submit' />
         </Form>
       </Screen>

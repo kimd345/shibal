@@ -9,7 +9,7 @@ user_routes = Blueprint('users', __name__)
 
 
 @user_routes.route('/current-dog', methods=['PUT'])
-def index():
+def updateCurrentDog():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 

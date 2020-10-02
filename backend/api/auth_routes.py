@@ -12,7 +12,7 @@ auth_routes = Blueprint('auth', __name__)
 
 
 @auth_routes.route('', methods=['PUT', 'POST'])
-def index():
+def auth():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 

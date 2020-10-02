@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Clipboard, Image } from 'react-native';
+import { View, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Auth, Storage } from 'aws-amplify';
 import { useFormikContext } from 'formik';
@@ -7,11 +7,13 @@ import { useFormikContext } from 'formik';
 import Button from '../Button';
 import Text from '../Text';
 import colors from '../../config/colors';
+import useAuth from '../../hooks/useAuth';
 
 function FormProfileImagePicker({ name }) {
   const { setFieldValue, values } = useFormikContext();
   const [image, setImage] = useState(values[name]);
   const [percentage, setPercentage] = useState(0);
+  const userId = useAuth().user.id;
 
   useEffect(() => {
     (async () => {
@@ -56,7 +58,7 @@ function FormProfileImagePicker({ name }) {
         setPercentage(0);
         const img = await fetchImageFromUri(pickerResult.uri);
         const uploadUrl = await uploadImage(
-          `profiles/demo.jpg`, // ${userId}
+          `dogProfileImages/user-${userId}_${Date.now()}.jpg`,
           img
         );
         downloadImage(uploadUrl);
@@ -166,7 +168,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 15,
   },
   percentage: {
-    marginBottom: 10,
+    zIndex: 1,
   },
   result: {
     paddingTop: 5,

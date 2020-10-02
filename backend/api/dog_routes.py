@@ -9,15 +9,15 @@ dog_routes = Blueprint('dogs', __name__)
 
 
 @dog_routes.route('', methods=['POST'])
-def index():
+def createDog():
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 
     name = request.json.get('name', None)
-    user_id = request.json.get('user_id', None)
+    user_id = request.json.get('userId', None)
     gender = request.json.get('gender', None)
     birthday = request.json.get('birthday', None)
-    image_url = request.json.get('image_url', None)
+    image_url = request.json.get('imageUrl', None)
 
     if gender:
         gender = gender['value']
@@ -34,5 +34,17 @@ def index():
 
     db.session.add(dog)
     db.session.commit()
+
+    return dog.to_dict(), 200
+
+
+@dog_routes.route('')
+def getDog():
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
+
+    dog_id = request.json.get('dogId', None)
+
+    dog = Dog.query.filter(Dog.id == dog_id).first()
 
     return dog.to_dict(), 200
