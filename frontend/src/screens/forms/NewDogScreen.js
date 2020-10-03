@@ -58,7 +58,6 @@ function NewDogScreen(props) {
     const dogId = resultDog.data.id;
     const resultCurrentDog = await putCurrentDogApi.request(userId, dogId);
     console.log('NewDogScreen: ', resultCurrentDog.data);
-    // navigate to home
   };
 
   return (
