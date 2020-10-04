@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList, Text, Image } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 
 import Screen from '../components/Screen';
@@ -79,6 +79,20 @@ function SettingsScreen(props) {
         />
       </View>
       <Text style={styles.thankYouText}>
+        Shibal is a React Native application inspired by DOGO. Please support
+        DOGO in making millions of dogs happy around the world!
+      </Text>
+      <ListItem
+        title='DOGO'
+        onPress={() => WebBrowser.openBrowserAsync('https://dogo.app')}
+        IconComponent={
+          <Image
+            style={styles.dogoIcon}
+            source={require('../assets/dogo.png')}
+          />
+        }
+      />
+      <Text style={styles.thankYouText}>
         Thank you for checking out my app!
       </Text>
       <ListItem
@@ -104,9 +118,15 @@ const styles = StyleSheet.create({
     marginVertical: 20,
   },
   thankYouText: {
-    marginLeft: 20,
+    marginHorizontal: 20,
+    marginTop: 20,
     color: colors.greenishgrey,
     fontSize: 12,
+  },
+  dogoIcon: {
+    resizeMode: 'contain',
+    height: 40,
+    width: 40,
   },
 });
 
