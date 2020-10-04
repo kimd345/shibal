@@ -80,7 +80,8 @@ function SettingsScreen(props) {
       </View>
       <Text style={styles.thankYouText}>
         Shibal is a React Native application inspired by DOGO. Please support
-        DOGO in making millions of dogs happy around the world!
+        DOGO in making millions of dogs happy around the world! Thank you for
+        checking out my app!
       </Text>
       <ListItem
         title='DOGO'
@@ -92,20 +93,19 @@ function SettingsScreen(props) {
           />
         }
       />
-      <Text style={styles.thankYouText}>
-        Thank you for checking out my app!
-      </Text>
-      <ListItem
-        title='Logout'
-        onPress={() => logOut()}
-        IconComponent={
-          <Icon
-            name='sign-out-alt'
-            backgroundColor={colors.white}
-            iconColor={colors.greenishgrey}
-          />
-        }
-      />
+      <View style={styles.listContainer}>
+        <ListItem
+          title='Log Out'
+          onPress={() => logOut()}
+          IconComponent={
+            <Icon
+              name='sign-out-alt'
+              backgroundColor={colors.white}
+              iconColor={colors.greenishgrey}
+            />
+          }
+        />
+      </View>
     </Screen>
   );
 }
