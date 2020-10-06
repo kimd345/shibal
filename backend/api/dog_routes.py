@@ -44,6 +44,7 @@ def getDog():
         return jsonify({"msg": "Missing JSON in request"}), 400
 
     dog_id = request.json.get('dogId', None)
+    print(dog_id)
 
     dog = Dog.query.filter(Dog.id == dog_id).first()
 

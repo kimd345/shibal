@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
@@ -9,15 +10,33 @@ import NewDogScreen from '../screens/forms/NewDogScreen';
 import colors from '../config/colors';
 import routes from './routes';
 
+import dogsApi from '../api/dogs';
+import useAuth from '../hooks/useAuth';
+import useApi from '../hooks/useApi';
+import { actions } from '../redux/ducks';
+
 const Stack = createStackNavigator();
 
 function HomeNavigator({ navigation }) {
-  // const dogExists = useAuth().user.currentDogId.length > 0;
-  // const dogId = dogExists ? useAuth().user.currentDogId[0] : null;
+  const user = useAuth().user;
+  const dogExists = user.currentDogId.length > 0;
+  const dogId = dogExists ? user.currentDogId[0] : null;
+  console.log(dogId);
+  const initialRoute = dogExists ? routes.HOME : routes.NEW_DOG;
 
-  // const initialRoute = dogExists ? routes.HOME : routes.NEW_DOG;
+  const getDogApi = useApi(dogsApi.getDog);
+  const dispatch = useDispatch();
 
-  const initialRoute = routes.NEW_DOG;
+  useEffect(() => {
+    dispatch(actions.setUser(user));
+    if (dogExists)
+      (async () => await getDogApi.request(dogId))().then((result) =>
+        dispatch(actions.setDog(result.data))
+      );
+  }, [dispatch, dogExists]);
+
+  console.log(useSelector((state) => state));
+
   return (
     <Stack.Navigator initialRouteName={initialRoute}>
       <Stack.Screen
