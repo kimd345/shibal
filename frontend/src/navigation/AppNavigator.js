@@ -4,7 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import HomeNavigator from './HomeNavigator';
-import TrainingScreen from '../screens/TrainingScreen';
+// import TrainingScreen from '../screens/TrainingScreen';
 import SocialScreen from '../screens/SocialScreen';
 import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
