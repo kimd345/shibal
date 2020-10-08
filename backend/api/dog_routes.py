@@ -38,14 +38,7 @@ def createDog():
     return dog.to_dict(), 200
 
 
-@dog_routes.route('')
-def getDog():
-    if not request.is_json:
-        return jsonify({"msg": "Missing JSON in request"}), 400
-
-    dog_id = request.json.get('dogId', None)
-    print(dog_id)
-
-    dog = Dog.query.filter(Dog.id == dog_id).first()
-
+@dog_routes.route('/<dogId>')
+def getDog(dogId):
+    dog = Dog.query.filter(Dog.id == dogId).first()
     return dog.to_dict(), 200

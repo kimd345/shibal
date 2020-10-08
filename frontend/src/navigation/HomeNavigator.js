@@ -2,26 +2,26 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
 import HomeScreen from '../screens/HomeScreen';
 import DogProfileScreen from '../screens/forms/DogProfileScreen';
 import NewDogScreen from '../screens/forms/NewDogScreen';
-import colors from '../config/colors';
 import routes from './routes';
 
 import dogsApi from '../api/dogs';
-import useAuth from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth'; // remove
 import useApi from '../hooks/useApi';
 import { actions } from '../redux/ducks';
 
 const Stack = createStackNavigator();
 
 function HomeNavigator({ navigation }) {
+  // update with useSelector from newDogScreen
   const user = useAuth().user;
+  console.log('USER: ', user);
   const dogExists = user.currentDogId.length > 0;
   const dogId = dogExists ? user.currentDogId[0] : null;
-  console.log(dogId);
   const initialRoute = dogExists ? routes.HOME : routes.NEW_DOG;
 
   const getDogApi = useApi(dogsApi.getDog);
@@ -36,6 +36,7 @@ function HomeNavigator({ navigation }) {
   }, [dispatch, dogExists]);
 
   console.log(useSelector((state) => state));
+  const dog = useSelector((state) => state.dog);
 
   return (
     <Stack.Navigator initialRouteName={initialRoute}>
@@ -45,9 +46,17 @@ function HomeNavigator({ navigation }) {
         options={{
           headerLeft: () => (
             <TouchableWithoutFeedback
-              style={styles.dogButton}
               onPress={() => navigation.navigate(routes.DOG_PROFILE)}
-            />
+            >
+              <Image
+                style={styles.dogButton}
+                source={
+                  dogExists
+                    ? { uri: dog.profileImageUrl }
+                    : require('../assets/defaultIcons/shiba_default.png')
+                }
+              />
+            </TouchableWithoutFeedback>
           ),
         }}
       />
@@ -71,7 +80,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 10,
     borderRadius: 50,
-    backgroundColor: colors.black,
+    // backgroundColor: colors.black,
   },
 });
 
