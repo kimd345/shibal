@@ -16,6 +16,7 @@ import useApi from '../hooks/useApi';
 import { actions } from '../redux/ducks';
 import ActivityIndicator from '../components/animations/ActivityIndicator';
 import colors from '../config/colors';
+import { Picker } from '../components/inputs';
 
 const Stack = createStackNavigator();
 
@@ -76,6 +77,7 @@ function HomeNavigator({ navigation }) {
               />
             </TouchableWithoutFeedback>
           ),
+          // headerTitle: () => <Picker width={150} />,
         }}
       />
       <Stack.Screen
