@@ -24,7 +24,7 @@ function HomeNavigator({ navigation }) {
   const [dog, setDog] = useState(useSelector((state) => state.dog));
   const [dogExists, setDogExists] = useState();
   const [initialRoute, setInitialRoute] = useState(null);
-
+  console.log(useSelector((state) => state));
   const userId = useAuth().user.id;
   const dispatch = useDispatch();
 

@@ -46,10 +46,10 @@ function NewDogScreen({ navigation }) {
 
   const handleSubmit = async (dogInfo) => {
     dogInfo = { ...dogInfo, ...{ userId: userId } };
-    console.log('DogInfo: ', dogInfo);
+    // console.log('DogInfo: ', dogInfo);
     const resultDog = await createDogApi.request(dogInfo);
-    console.log('resultDog: ', resultDog.data);
-    dispatch(actions.setDog);
+    // console.log('resultDog: ', resultDog.data);
+    dispatch(actions.setDog(resultDog.data));
 
     if (!resultDog.ok) {
       if (resultDog.data) setError(resultDog.data.msg);
@@ -61,7 +61,8 @@ function NewDogScreen({ navigation }) {
 
     const dogId = resultDog.data.id;
     const resultCurrentDog = await putCurrentDogApi.request(userId, dogId);
-    console.log('NewDogScreen: ', resultCurrentDog.data);
+    // console.log('NewDogScreen: ', resultCurrentDog.data);
+    dispatch(actions.addDogs(dogId));
 
     navigation.navigate(routes.HOME);
   };
