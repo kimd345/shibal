@@ -8,6 +8,12 @@ from backend.models import db, User, Current_Dog
 user_routes = Blueprint('users', __name__)
 
 
+@user_routes.route('/<userId>')
+def getUser(userId):
+    user = User.query.filter(User.id == userId).first()
+    return user.to_dict(), 200
+
+
 @user_routes.route('/current-dog', methods=['PUT'])
 def updateCurrentDog():
     if not request.is_json:
