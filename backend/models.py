@@ -44,7 +44,7 @@ class Dog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'))  # noqa
     name = db.Column(db.String(50), nullable=False)
-    image_url = db.Column(db.String(8192))
+    image_url = db.Column(db.String(8192), default='https://shibal-bucket10155-dev.s3.amazonaws.com/assets/shiba_default_head.png')  # noqa
     birthday = db.Column(db.Date)
     gender = db.Column(db.String(50))
 

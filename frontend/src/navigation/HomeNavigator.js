@@ -15,12 +15,13 @@ import useAuth from '../hooks/useAuth';
 import useApi from '../hooks/useApi';
 import { actions } from '../redux/ducks';
 import ActivityIndicator from '../components/animations/ActivityIndicator';
+import colors from '../config/colors';
 
 const Stack = createStackNavigator();
 
 function HomeNavigator({ navigation }) {
   const [user, setUser] = useState();
-  const [dog, setDog] = useState({});
+  const [dog, setDog] = useState(useSelector((state) => state.dog));
   const [dogExists, setDogExists] = useState();
   const [initialRoute, setInitialRoute] = useState(null);
 
@@ -71,11 +72,7 @@ function HomeNavigator({ navigation }) {
             >
               <Image
                 style={styles.dogButton}
-                source={
-                  dogExists
-                    ? { uri: dog.profileImageUrl }
-                    : require('../assets/defaultIcons/shiba_default.png')
-                }
+                source={{ uri: dog.profileImageUrl }}
               />
             </TouchableWithoutFeedback>
           ),
@@ -84,12 +81,22 @@ function HomeNavigator({ navigation }) {
       <Stack.Screen
         name='DogProfile'
         component={DogProfileScreen}
-        options={{ headerTitle: 'Your Inu' }}
+        options={{
+          headerTitle: 'Your Inu',
+          headerStyle: { backgroundColor: colors.primaryBackground },
+          headerTintColor: colors.white,
+          headerBackTitle: 'Back',
+        }}
       />
       <Stack.Screen
         name='NewDog'
         component={NewDogScreen}
-        options={{ headerShown: false /* headerTitle: 'Your Inu' */ }}
+        options={{
+          headerTitle: 'New Inu',
+          headerStyle: { backgroundColor: colors.primaryBackground },
+          headerTintColor: colors.white,
+          headerBackTitle: 'Back',
+        }}
       />
     </Stack.Navigator>
   );
@@ -101,7 +108,7 @@ const styles = StyleSheet.create({
     height: 40,
     margin: 10,
     borderRadius: 50,
-    // backgroundColor: colors.black,
+    backgroundColor: colors.palegrey,
   },
 });
 

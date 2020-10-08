@@ -4,7 +4,6 @@ import * as Yup from 'yup';
 
 import colors from '../../config/colors';
 import Screen from '../../components/Screen';
-import Text from '../../components/Text';
 import {
   ErrorMessage,
   Form,
@@ -19,6 +18,9 @@ import usersApi from '../../api/users';
 import useApi from '../../hooks/useApi';
 import useAuth from '../../hooks/useAuth';
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
+import routes from '../../navigation/routes';
+import { useDispatch } from 'react-redux';
+import { actions } from '../../redux/ducks';
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required().max(50).label('Name'),
@@ -35,17 +37,19 @@ const genders = [
   },
 ];
 
-function NewDogScreen(props) {
+function NewDogScreen({ navigation }) {
   const createDogApi = useApi(dogsApi.createDog);
   const putCurrentDogApi = useApi(usersApi.putCurrentDog);
   const userId = useAuth().user.id;
   const [error, setError] = useState();
+  const dispatch = useDispatch();
 
   const handleSubmit = async (dogInfo) => {
     dogInfo = { ...dogInfo, ...{ userId: userId } };
     console.log('DogInfo: ', dogInfo);
     const resultDog = await createDogApi.request(dogInfo);
     console.log('resultDog: ', resultDog.data);
+    dispatch(actions.setDog);
 
     if (!resultDog.ok) {
       if (resultDog.data) setError(resultDog.data.msg);
@@ -58,6 +62,8 @@ function NewDogScreen(props) {
     const dogId = resultDog.data.id;
     const resultCurrentDog = await putCurrentDogApi.request(userId, dogId);
     console.log('NewDogScreen: ', resultCurrentDog.data);
+
+    navigation.navigate(routes.HOME);
   };
 
   return (
@@ -67,7 +73,6 @@ function NewDogScreen(props) {
         backgroundColor='primaryBackground'
       />
       <Screen style={styles.screen}>
-        <Text style={styles.text}>Your Inu</Text>
         <Form
           initialValues={{ name: '' }}
           onSubmit={handleSubmit}
@@ -102,12 +107,6 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.primaryBackground,
     padding: 10,
-  },
-  text: {
-    color: colors.secondaryText,
-    fontSize: 24,
-    marginVertical: 20,
-    letterSpacing: 0.5,
   },
 });
 
