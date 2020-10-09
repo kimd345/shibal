@@ -28,6 +28,8 @@ function HomeNavigator({ navigation }) {
   console.log(useSelector((state) => state));
   const userId = useAuth().user.id;
   const dispatch = useDispatch();
+  const [dogs, setDogs] = useState();
+  const putCurrentDogApi = useApi(usersApi.putCurrentDog);
 
   const getUserApi = useApi(usersApi.getUser);
   const getDogApi = useApi(dogsApi.getDog);
@@ -48,6 +50,11 @@ function HomeNavigator({ navigation }) {
             dispatch(actions.setDog(result.data));
             setDog(result.data);
           }
+        );
+        setDogs(
+          user.dogs.map((dogItem) => {
+            return { ...dogItem, value: dogItem.id, label: dogItem.name };
+          })
         );
         setInitialRoute(routes.HOME);
       } else if (dogExists === false) {
@@ -77,7 +84,24 @@ function HomeNavigator({ navigation }) {
               />
             </TouchableWithoutFeedback>
           ),
-          // headerTitle: () => <Picker width={150} />,
+          headerTitle: () => (
+            <Picker
+              width={150}
+              items={dogs}
+              placeholder='hello'
+              selectedItem={dog.name}
+              onSelectItem={(item) => {
+                dogs.forEach(async (dog) => {
+                  if (dog.id === item.value) {
+                    dispatch(actions.setDog(dog));
+                    setDog(dog);
+                    await putCurrentDogApi.request(user.id, dog.id);
+                  }
+                });
+                console.log(`${item.label}`);
+              }}
+            />
+          ),
         }}
       />
       <Stack.Screen
