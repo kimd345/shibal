@@ -96,6 +96,7 @@ function HomeNavigator({ navigation }) {
                     dispatch(actions.setDog(dog));
                     setDog(dog);
                     await putCurrentDogApi.request(user.id, dog.id);
+                    dispatch(actions.setCurrentDogId(dog.id));
                   }
                 });
                 console.log(`${item.label}`);
