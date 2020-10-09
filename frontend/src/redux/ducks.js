@@ -7,7 +7,7 @@ const ADD_DOGS = 'ADD_DOGS';
 export const actions = {
   setUser: (user) => ({ type: SET_USER, payload: user }),
   setDog: (dog) => ({ type: SET_DOG, payload: dog }),
-  addDogs: (dogId) => ({ type: ADD_DOGS, payload: dogId }),
+  addDogs: (dogId, dog) => ({ type: ADD_DOGS, payload: { dogId, dog } }),
 };
 
 // Reducers
@@ -25,9 +25,9 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, dog: action.payload };
 
     case ADD_DOGS:
-      const currentDogId = [action.payload];
-      const dogsById = [...state.user.dogsById, action.payload];
-      return { ...state, user: { ...state.user, currentDogId, dogsById } };
+      const currentDogId = [action.payload.dogId];
+      const dogs = [...state.user.dogs, action.payload.dog];
+      return { ...state, user: { ...state.user, currentDogId, dogs } };
 
     default:
       return state;

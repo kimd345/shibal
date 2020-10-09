@@ -32,7 +32,7 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'currentDogId': [dog.to_id() for dog in self.current_dog],
-            'dogsById': [dog.to_id() for dog in self.dogs],
+            'dogs': [dog.to_dict() for dog in self.dogs],
             'email': self.email,
             'createdAt': self.created_at
         }

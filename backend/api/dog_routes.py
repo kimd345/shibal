@@ -42,3 +42,9 @@ def createDog():
 def getDog(dogId):
     dog = Dog.query.filter(Dog.id == dogId).first()
     return dog.to_dict(), 200
+
+
+@dog_routes.route('/<userId>')
+def getDogs(userId):
+    dogs = Dog.query.filter_by(Dog.user_id == userId)
+    return {'dogs': [dog.to_dict() for dog in dogs]}
