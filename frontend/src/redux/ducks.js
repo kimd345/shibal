@@ -39,7 +39,7 @@ const rootReducer = (state = initialState, action) => {
     case SET_CURRENT_DOG_ID:
       return {
         ...state,
-        user: { ...state.user, currentDogId: action.payload },
+        user: { ...state.user, currentDogId: [action.payload] },
       };
 
     case ADD_DOG:

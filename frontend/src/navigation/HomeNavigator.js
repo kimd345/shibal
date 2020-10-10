@@ -46,19 +46,12 @@ function HomeNavigator({ navigation }) {
 
   useEffect(() => {   // if user has dog, get and set current dog and dogs and set initial route
     if (Object.keys(user).length > 0) {
-      setDogExists(user.currentDogId !== null);
+      setDogExists(user.currentDogId.length === 1);
       if (dogExists === true) {
-        (async () => await getDogApi.request(user.currentDogId))().then(
-          (result) => {
-            dispatch(actions.setDog(result.data));
-          }
-        );
-        (async () => await getDogsApi.request(user.id))().then(
-          (result) => {
-            console.log('RESULT: ', result.data.dogs);
-            dispatch(actions.setDogs(result.data.dogs));
-          }
-        );
+        (async () => await getDogApi.request(user.currentDogId))()
+          .then(result => dispatch(actions.setDog(result.data)));
+        (async () => await getDogsApi.request(user.id))()
+          .then(result => dispatch(actions.setDogs(result.data.dogs)));
         setInitialRoute(routes.HOME);
       } else if (dogExists === false) {
         dispatch(actions.setDog({}));
@@ -101,7 +94,6 @@ function HomeNavigator({ navigation }) {
                     dispatch(actions.setCurrentDogId(dog.id));
                   }
                 });
-                console.log(`${item.label}`);
               }}
             />
           ),
@@ -111,7 +103,7 @@ function HomeNavigator({ navigation }) {
         name='DogProfile'
         component={DogProfileScreen}
         options={{
-          headerTitle: 'Your Inu',
+          headerTitle: `${dog.name}`,
           headerStyle: { backgroundColor: colors.primaryBackground },
           headerTintColor: colors.white,
           headerBackTitle: 'Back',

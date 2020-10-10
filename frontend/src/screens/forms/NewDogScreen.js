@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
-import colors from '../../config/colors';
+import ActivityIndicator from '../../components/animations/ActivityIndicator';
 import Screen from '../../components/Screen';
 import {
   ErrorMessage,
@@ -13,13 +14,14 @@ import {
   FormProfileImagePicker,
   SubmitButton,
 } from '../../components/forms';
+import colors from '../../config/colors';
+
+import useAuth from '../../hooks/useAuth';
+import useApi from '../../hooks/useApi';
+
 import dogsApi from '../../api/dogs';
 import usersApi from '../../api/users';
-import useApi from '../../hooks/useApi';
-import useAuth from '../../hooks/useAuth';
-import ActivityIndicator from '../../components/animations/ActivityIndicator';
 import routes from '../../navigation/routes';
-import { useDispatch } from 'react-redux';
 import { actions } from '../../redux/ducks';
 
 const validationSchema = Yup.object().shape({
@@ -27,21 +29,17 @@ const validationSchema = Yup.object().shape({
 });
 
 const genders = [
-  {
-    label: 'Male',
-    value: 'Male',
-  },
-  {
-    label: 'Female',
-    value: 'Female',
-  },
+  { label: 'Male', value: 'Male' },
+  { label: 'Female', value: 'Female' },
 ];
 
 function NewDogScreen({ navigation }) {
+  const [error, setError] = useState();
+  
   const createDogApi = useApi(dogsApi.createDog);
   const putCurrentDogApi = useApi(usersApi.putCurrentDog);
+
   const userId = useAuth().user.id;
-  const [error, setError] = useState();
   const dispatch = useDispatch();
 
   const handleSubmit = async (dogInfo) => {
