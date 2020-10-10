@@ -22,10 +22,10 @@ import { actions } from '../redux/ducks';
 const Stack = createStackNavigator();
 
 function HomeNavigator({ navigation }) {
-  const [user, setUser] = useState();
-  const [dogExists, setDogExists] = useState();
-  const [dog, setDog] = useState(useSelector((state) => state.dog));
-  const [dogs, setDogs] = useState(useSelector((state) => state.dogs));
+  const user = useSelector(state => state.user);
+  const dog = useSelector(state => state.dog);
+  const dogs = useSelector(state => state.dogs);
+  const [dogExists, setDogExists] = useState(null);
   const [initialRoute, setInitialRoute] = useState(null);
 
   const getUserApi = useApi(usersApi.getUser);
@@ -36,32 +36,27 @@ function HomeNavigator({ navigation }) {
   const dispatch = useDispatch();
   const userId = useAuth().user.id;
 
-  console.log(useSelector((state) => state));
+  console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state));
   
-  useEffect(() => {
+  useEffect(() => {   // get and set user
     (async () => await getUserApi.request(userId))().then((result) => {
       dispatch(actions.setUser(result.data));
-      setUser(result.data);
     });
   }, []);
 
-  useEffect(() => {
-    if (user) {
+  useEffect(() => {   // if user has dog, get and set current dog and dogs and set initial route
+    if (Object.keys(user).length > 0) {
       setDogExists(user.currentDogId !== null);
       if (dogExists === true) {
         (async () => await getDogApi.request(user.currentDogId))().then(
           (result) => {
             dispatch(actions.setDog(result.data));
-            setDog(result.data);
           }
         );
         (async () => await getDogsApi.request(user.id))().then(
           (result) => {
             console.log('RESULT: ', result.data.dogs);
             dispatch(actions.setDogs(result.data.dogs));
-            setDogs(result.data.dogs.map((dogItem) => {
-              return { ...dogItem, value: dogItem.id, label: dogItem.name };
-            }));
           }
         );
         setInitialRoute(routes.HOME);
@@ -102,7 +97,6 @@ function HomeNavigator({ navigation }) {
                 dogs.forEach(async (dog) => {
                   if (dog.id === item.value) {
                     dispatch(actions.setDog(dog));
-                    setDog(dog);
                     await putCurrentDogApi.request(user.id, dog.id);
                     dispatch(actions.setCurrentDogId(dog.id));
                   }

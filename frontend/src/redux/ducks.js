@@ -30,7 +30,11 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, dog: action.payload };
 
     case SET_DOGS:
-      return { ...state, dogs: action.payload };
+      return { ...state, dogs: 
+        action.payload.map(dog => {
+          return { ...dog, label: dog.name, value: dog.id }
+        })
+      };
 
     case SET_CURRENT_DOG_ID:
       return {
@@ -39,7 +43,7 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ADD_DOG:
-      const dogs = [...state.dogs, action.payload];
+      const dogs = [ ...state.dogs, { ...action.payload, label: action.payload.name, value: action.payload.id } ];
       return { ...state, dogs };
 
     default:
