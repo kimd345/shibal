@@ -31,8 +31,7 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'currentDogId': [dog.to_id() for dog in self.current_dog],
-            'dogs': [dog.to_dict() for dog in self.dogs],
+            'currentDogId': [dog.to_id() for dog in self.current_dog][0],
             'email': self.email,
             'createdAt': self.created_at
         }

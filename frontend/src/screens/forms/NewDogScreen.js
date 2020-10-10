@@ -59,7 +59,7 @@ function NewDogScreen({ navigation }) {
 
     const dogId = resultDog.data.id;
     await putCurrentDogApi.request(userId, dogId);
-    dispatch(actions.addDogs(resultDog.data));
+    dispatch(actions.addDog(resultDog.data));
     dispatch(actions.setCurrentDogId(dogId));
 
     navigation.navigate(routes.HOME);
