@@ -38,17 +38,18 @@ function HomeNavigator({ navigation }) {
 
   console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state));
   
-  useEffect(() => {   // get and set user
+  useEffect(() => {
     (async () => await getUserApi.request(userId))().then((result) => {
       dispatch(actions.setUser(result.data));
     });
   }, []);
 
-  useEffect(() => {   // if user has dog, get and set current dog and dogs and set initial route
+  useEffect(() => { 
     if (Object.keys(user).length > 0) {
       setDogExists(user.currentDogId.length === 1);
     }
   }, [user]);
+  console.log('DOGEXISTS: ', dogExists);
 
   useEffect(() => {
     if (dogExists === true) {
@@ -107,7 +108,7 @@ function HomeNavigator({ navigation }) {
         name='DogProfile'
         component={DogProfileScreen}
         options={{
-          headerTitle: `${dog.name}`,
+          headerTitle: 'Your Inu',
           headerStyle: { backgroundColor: colors.primaryBackground },
           headerTintColor: colors.white,
           headerBackTitle: 'Back',

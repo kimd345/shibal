@@ -14,8 +14,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
-    dogs = db.relationship('Dog', backref='user', lazy=True)
-    current_dog = db.relationship('Current_Dog', backref='user', lazy=True)
+    dogs = db.relationship('Dog', backref='user', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
+    current_dog = db.relationship('Current_Dog', backref='user', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
 
     @property
     def password(self):
@@ -47,7 +47,7 @@ class Dog(db.Model):
     birthday = db.Column(db.Date)
     gender = db.Column(db.String(50))
 
-    likes = db.relationship('Like', backref='dog', lazy=True)
+    likes = db.relationship('Like', backref='dog', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
 
     def to_dict(self):
         return {
@@ -88,7 +88,7 @@ class Post(db.Model):
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
-    likes = db.relationship('Like', backref='post', lazy=True)
+    likes = db.relationship('Like', backref='post', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
 
     def to_dict(self):
         return {

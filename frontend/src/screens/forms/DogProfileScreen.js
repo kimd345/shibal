@@ -28,14 +28,20 @@ function DogProfileScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    dispatch(actions.removeDog(dog.id));
-    const dogsR = dogs.filter(dogR => dogR.id !== dog.id);
-    dispatch(actions.setDog(dogsR[0]));
-    await putCurrentDogApi.request(userId, dogsR[0].id);
-    dispatch(actions.setCurrentDogId(dogsR[0].id));
-    await deleteDogApi.request(dog.id);
-
-    navigation.navigate(routes.HOME)
+    if (dogs.length === 1) {
+      dispatch(actions.emptyDogs());
+      await putCurrentDogApi.request(userId);
+      await deleteDogApi.request(dog.id);
+      navigation.popToTop();
+    } else if (dogs.length > 1) {
+      dispatch(actions.removeDog(dog.id));
+      const dogsR = dogs.filter(dogR => dogR.id !== dog.id);
+      dispatch(actions.setDog(dogsR[0]));
+      await putCurrentDogApi.request(userId, dogsR[0].id);
+      dispatch(actions.setCurrentDogId(dogsR[0].id));
+      await deleteDogApi.request(dog.id);
+      navigation.navigate(routes.HOME);
+    }
   }
 
   if (deleteDogApi.loading || putCurrentDogApi.loading ) {
@@ -79,7 +85,7 @@ function DogProfileScreen({ navigation }) {
         title='New Dog'
         width={200}
       />
-      {(dogs.length > 1) && <Button
+      <Button
         icon='home-minus'
         color='secondaryText'
         onPress={() => Alert.alert(
@@ -98,7 +104,7 @@ function DogProfileScreen({ navigation }) {
         )}
         title='Remove Dog'
         width={200}
-      />}
+      />
     </Screen>
   );
 }
