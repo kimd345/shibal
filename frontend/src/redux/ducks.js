@@ -27,7 +27,7 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, user: action.payload };
 
     case SET_DOG:
-      return { ...state, dog: action.payload };
+      return { ...state, dog: {...action.payload, label: action.payload.name, value: action.payload.id } };
 
     case SET_DOGS:
       return { ...state, dogs: 

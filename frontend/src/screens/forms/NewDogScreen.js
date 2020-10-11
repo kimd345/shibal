@@ -66,7 +66,7 @@ function NewDogScreen({ navigation }) {
   return (
     <>
       <ActivityIndicator
-        visible={createDogApi.loading}
+        visible={createDogApi.loading || putCurrentDogApi.loading}
         backgroundColor='primaryBackground'
       />
       <Screen style={styles.screen}>

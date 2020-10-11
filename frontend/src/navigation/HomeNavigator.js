@@ -84,8 +84,9 @@ function HomeNavigator({ navigation }) {
             <Picker
               width={150}
               items={dogs}
-              placeholder='hello'
-              selectedItem={dog.name}
+              placeholder='Your Inu'
+              style={{ padding: 2 }}
+              selectedItem={dog}
               onSelectItem={(item) => {
                 dogs.forEach(async (dog) => {
                   if (dog.id === item.value) {

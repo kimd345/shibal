@@ -23,13 +23,14 @@ function AppPicker({
   placeholder,
   selectedItem,
   width = '100%',
+  style,
 }) {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
-        <View style={[styles.container, { width }]}>
+        <View style={[styles.container, style, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
