@@ -90,9 +90,9 @@ function HomeNavigator({ navigation }) {
               onSelectItem={(item) => {
                 dogs.forEach(async (dog) => {
                   if (dog.id === item.value) {
-                    dispatch(actions.setDog(dog));
                     await putCurrentDogApi.request(user.id, dog.id);
                     dispatch(actions.setCurrentDogId(dog.id));
+                    dispatch(actions.setDog(dog));
                   }
                 });
               }}
