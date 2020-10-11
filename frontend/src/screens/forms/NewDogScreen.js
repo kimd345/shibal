@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
@@ -41,6 +41,17 @@ function NewDogScreen({ navigation }) {
 
   const userId = useAuth().user.id;
   const dispatch = useDispatch();
+
+  useEffect(() => { // hide tab bar on mount, clean up on unmount
+    const parent = navigation.dangerouslyGetParent();
+    parent.setOptions({
+      tabBarVisible: false
+    });
+    return () =>
+        parent.setOptions({
+          tabBarVisible: true
+        });
+  }, []);
 
   const handleSubmit = async (dogInfo) => {
     dogInfo = { ...dogInfo, ...{ userId: userId } };
