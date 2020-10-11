@@ -47,18 +47,21 @@ function HomeNavigator({ navigation }) {
   useEffect(() => {   // if user has dog, get and set current dog and dogs and set initial route
     if (Object.keys(user).length > 0) {
       setDogExists(user.currentDogId.length === 1);
-      if (dogExists === true) {
-        (async () => await getDogApi.request(user.currentDogId))()
-          .then(result => dispatch(actions.setDog(result.data)));
-        (async () => await getDogsApi.request(user.id))()
-          .then(result => dispatch(actions.setDogs(result.data.dogs)));
-        setInitialRoute(routes.HOME);
-      } else if (dogExists === false) {
-        dispatch(actions.setDog({}));
-        setInitialRoute(routes.NEW_DOG);
-      }
     }
-  }, [user, dogExists]);
+  }, [user]);
+
+  useEffect(() => {
+    if (dogExists === true) {
+      (async () => await getDogApi.request(user.currentDogId))()
+        .then(result => dispatch(actions.setDog(result.data)));
+      (async () => await getDogsApi.request(user.id))()
+        .then(result => dispatch(actions.setDogs(result.data.dogs)));
+      setInitialRoute(routes.HOME);
+    } else if (dogExists === false) {
+      dispatch(actions.setDog({}));
+      setInitialRoute(routes.NEW_DOG);
+    }
+  }, [dogExists]);
 
   if (initialRoute === null || getUserApi.loading || getDogApi.loading || getDogsApi.loading ) {
     return <ActivityIndicator visible={true} backgroundColor='palegrey' />;

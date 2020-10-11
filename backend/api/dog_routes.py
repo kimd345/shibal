@@ -38,13 +38,21 @@ def createDog():
     return dog.to_dict(), 200
 
 
-@dog_routes.route('/<dogId>')
+@dog_routes.route('/<dogId>', methods=['DELETE'])
+def deleteDog(dogId):
+    dog = Dog.query.filter(Dog.id == dogId).first()
+    db.session.delete(dog)
+    db.session.commit()
+    return jsonify({"msg": "Delete successful"}), 200
+
+
+@dog_routes.route('/<dogId>', methods=['GET'])
 def getDog(dogId):
     dog = Dog.query.filter(Dog.id == dogId).first()
     return dog.to_dict(), 200
 
 
-@dog_routes.route('/user-id/<userId>')
+@dog_routes.route('/user-id/<userId>', methods=['GET'])
 def getDogs(userId):
     dogs = Dog.query.filter(Dog.user_id == userId)
     return {'dogs': [dog.to_dict() for dog in dogs]}, 200

@@ -1,9 +1,12 @@
+import dogs from "../api/dogs";
+
 // Action Types
 const SET_USER = 'SET_USER';
 const SET_DOG = 'SET_DOG';
 const SET_DOGS = 'SET_DOGS';
 const SET_CURRENT_DOG_ID = 'SET_CURRENT_DOG_ID';
 const ADD_DOG = 'ADD_DOG';
+const REMOVE_DOG = 'REMOVE_DOG';
 
 // Action Creators
 export const actions = {
@@ -12,6 +15,7 @@ export const actions = {
   setDogs: (dogs) => ({ type: SET_DOGS, payload: dogs }),
   setCurrentDogId: (dogId) => ({ type: SET_CURRENT_DOG_ID, payload: dogId }),
   addDog: (dog) => ({ type: ADD_DOG, payload: dog }),
+  removeDog: (dogId) => ({ type: REMOVE_DOG, payload: dogId }),
 };
 
 // Reducers
@@ -43,8 +47,11 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case ADD_DOG:
-      const dogs = [ ...state.dogs, { ...action.payload, label: action.payload.name, value: action.payload.id } ];
-      return { ...state, dogs };
+      const dogsA = [ ...state.dogs, { ...action.payload, label: action.payload.name, value: action.payload.id } ];
+      return { ...state, dogs: dogsA };
+
+    case REMOVE_DOG:
+      return { ...state, dogs: state.dogs.filter(dog => dog.id !== action.payload) }
 
     default:
       return state;
