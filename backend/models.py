@@ -88,6 +88,7 @@ class Post(db.Model):
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
+    dog = db.relationship('Dog', backref='post', lazy=True)  # noqa
     likes = db.relationship('Like', backref='post', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
 
     def to_dict(self):
@@ -96,7 +97,8 @@ class Post(db.Model):
             'dogId': self.dog_id,
             'postImageUrl': self.image_url,
             'body': self.body,
-            'createdAt': self.created_at
+            'createdAt': self.created_at,
+            'dog': self.dog.to_dict()
         }
 
 
