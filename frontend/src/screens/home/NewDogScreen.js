@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
@@ -14,6 +14,7 @@ import {
   FormProfileImagePicker,
   SubmitButton,
 } from '../../components/forms';
+import Button from '../../components/Button';
 import colors from '../../config/colors';
 
 import useAuth from '../../hooks/useAuth';
@@ -35,6 +36,7 @@ const genders = [
 
 function NewDogScreen({ navigation }) {
   const [error, setError] = useState();
+  const dog = useSelector(state => state.dog);
   
   const createDogApi = useApi(dogsApi.createDog);
   const putCurrentDogApi = useApi(usersApi.putCurrentDog);
@@ -106,6 +108,12 @@ function NewDogScreen({ navigation }) {
           <FormProfileImagePicker name='imageUrl' />
           <SubmitButton title='Submit' />
         </Form>
+        {Object.keys(dog).length > 0 && <Button
+          color='tabButton'
+          onPress={() => navigation.goBack()}
+          title='Cancel'
+          width='60%'
+        />}
       </Screen>
     </>
   );

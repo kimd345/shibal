@@ -71,13 +71,13 @@ function DogProfileScreen({ navigation }) {
           </View>
         )}
       </View>
-      <Button
+      {/* <Button
         icon='playlist-edit'
         color='tabButton'
         onPress={() => {}}
         title='Edit Dog'
         width={200}
-      />
+      /> */}
       <Button
         icon='home-plus'
         color='tabButton'

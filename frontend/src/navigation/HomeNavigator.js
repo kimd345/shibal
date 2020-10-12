@@ -121,7 +121,7 @@ function HomeNavigator({ navigation }) {
           headerStyle: { backgroundColor: colors.primaryBackground },
           headerTintColor: colors.white,
           headerBackTitle: 'Back',
-          headerLeft: !dog && null,
+          headerLeft: null,
         }}
       />
     </Stack.Navigator>
