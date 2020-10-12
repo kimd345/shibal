@@ -38,20 +38,19 @@ function HomeNavigator({ navigation }) {
 
   console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state));
   
-  useEffect(() => {
+  useEffect(() => { // set user on mount
     (async () => await getUserApi.request(userId))().then((result) => {
       dispatch(actions.setUser(result.data));
     });
   }, []);
 
-  useEffect(() => { 
+  useEffect(() => { // set dogExists on user change
     if (Object.keys(user).length > 0) {
       setDogExists(user.currentDogId.length === 1);
     }
   }, [user]);
-  console.log('DOGEXISTS: ', dogExists);
 
-  useEffect(() => {
+  useEffect(() => { // set dog, dogs and initial route on dogExists change
     if (dogExists === true) {
       (async () => await getDogApi.request(user.currentDogId))()
         .then(result => dispatch(actions.setDog(result.data)));
@@ -122,6 +121,7 @@ function HomeNavigator({ navigation }) {
           headerStyle: { backgroundColor: colors.primaryBackground },
           headerTintColor: colors.white,
           headerBackTitle: 'Back',
+          headerLeft: !dog && null,
         }}
       />
     </Stack.Navigator>

@@ -32,7 +32,7 @@ function DogProfileScreen({ navigation }) {
       dispatch(actions.emptyDogs());
       await putCurrentDogApi.request(userId);
       await deleteDogApi.request(dog.id);
-      navigation.popToTop();
+      navigation.navigate(routes.NEW_DOG);
     } else if (dogs.length > 1) {
       dispatch(actions.removeDog(dog.id));
       const dogsR = dogs.filter(dogR => dogR.id !== dog.id);
