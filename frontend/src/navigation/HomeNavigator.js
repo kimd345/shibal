@@ -5,9 +5,9 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Image, StyleSheet } from 'react-native';
 
 import ActivityIndicator from '../components/animations/ActivityIndicator';
-import DogProfileScreen from '../screens/forms/DogProfileScreen';
+import DogProfileScreen from '../screens/home/DogProfileScreen';
 import HomeScreen from '../screens/HomeScreen';
-import NewDogScreen from '../screens/forms/NewDogScreen';
+import NewDogScreen from '../screens/home/NewDogScreen';
 import { Picker } from '../components/inputs';
 import colors from '../config/colors';
 

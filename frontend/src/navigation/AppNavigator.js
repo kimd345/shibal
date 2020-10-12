@@ -10,7 +10,7 @@ import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import colors from '../config/colors';
 
-import ProgramsListScreen from '../screens/programs/ProgramsListScreen';
+import ProgramsListScreen from '../screens/training/ProgramsListScreen';
 
 const Tab = createBottomTabNavigator();
 
