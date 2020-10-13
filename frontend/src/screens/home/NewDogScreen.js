@@ -11,7 +11,7 @@ import {
   FormDatePicker,
   FormField,
   FormPicker,
-  FormProfileImagePicker,
+  FormImagePicker,
   SubmitButton,
 } from '../../components/forms';
 import Button from '../../components/Button';
@@ -73,7 +73,7 @@ function NewDogScreen({ navigation }) {
     dispatch(actions.addDog(resultDog.data));
     dispatch(actions.setCurrentDogId(dogId));
 
-    navigation.navigate(routes.HOME);
+    navigation.popToTop();
   };
 
   return (
@@ -105,7 +105,7 @@ function NewDogScreen({ navigation }) {
             width='50%'
           />
           <FormDatePicker name='birthday' />
-          <FormProfileImagePicker name='imageUrl' />
+          <FormImagePicker name='imageUrl' category='profiles' />
           <SubmitButton title='Submit' />
         </Form>
         {Object.keys(dog).length > 0 && <Button

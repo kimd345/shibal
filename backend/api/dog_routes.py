@@ -22,7 +22,6 @@ def createDog():
     if gender:
         gender = gender['value']
 
-    print('birthday: ', birthday)
     if not name:
         return {"msg": "Please enter a name"}, 400
     if len(name) > 50:

@@ -1,12 +1,16 @@
 import React from 'react';
 import { StyleSheet, View, FlatList, Text, Image } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
+import { useDispatch } from 'react-redux';
 
 import Screen from '../components/Screen';
 import { ListItem, ListItemSeparator } from '../components/lists';
 import Icon from '../components/Icon';
+
 import colors from '../config/colors';
+
 import useAuth from '../hooks/useAuth';
+import { actions } from '../redux/ducks';
 
 const menuItems = [
   {
@@ -47,6 +51,7 @@ const menuItems = [
 
 function SettingsScreen(props) {
   const { user, logOut } = useAuth();
+  const dispatch = useDispatch();
 
   return (
     <Screen style={styles.screen}>
@@ -55,7 +60,7 @@ function SettingsScreen(props) {
           title={user.email}
           subtitle={`Joined on: ${user.createdAt
             .split(' ')
-            .slice(0, 4)
+            .slice(1, 4)
             .join(' ')}`}
         />
       </View>
@@ -96,7 +101,10 @@ function SettingsScreen(props) {
       <View style={styles.listContainer}>
         <ListItem
           title='Log Out'
-          onPress={() => logOut()}
+          onPress={() => {
+            logOut();
+            dispatch(actions.logOut());
+          }}
           IconComponent={
             <Icon
               name='sign-out-alt'

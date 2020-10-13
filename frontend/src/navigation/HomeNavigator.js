@@ -4,10 +4,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Image, StyleSheet } from 'react-native';
 
-import ActivityIndicator from '../components/animations/ActivityIndicator';
-import DogProfileScreen from '../screens/home/DogProfileScreen';
 import HomeScreen from '../screens/HomeScreen';
+import DogProfileScreen from '../screens/home/DogProfileScreen';
 import NewDogScreen from '../screens/home/NewDogScreen';
+
+import ActivityIndicator from '../components/animations/ActivityIndicator';
 import { Picker } from '../components/inputs';
 import colors from '../config/colors';
 
@@ -120,7 +121,6 @@ function HomeNavigator({ navigation }) {
           headerTitle: 'New Inu',
           headerStyle: { backgroundColor: colors.primaryBackground },
           headerTintColor: colors.white,
-          headerBackTitle: 'Back',
           headerLeft: null,
         }}
       />

@@ -84,7 +84,7 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'))  # noqa
-    image_url = db.Column(db.String(8192))
+    image_url = db.Column(db.String(8192), nullable=False)
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 

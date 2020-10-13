@@ -1,48 +1,94 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
+import ActivityIndicator from '../../components/animations/ActivityIndicator';
+import Screen from '../../components/Screen';
 import {
+  ErrorMessage,
   Form,
   FormField,
   FormImagePicker,
   SubmitButton,
 } from '../../components/forms';
-import Screen from '../../components/Screen';
+import Button from '../../components/Button';
+import colors from '../../config/colors';
+
+import useAuth from '../../hooks/useAuth';
+import useApi from '../../hooks/useApi';
+
+import postsApi from '../../api/posts';
+import routes from '../../navigation/routes';
+// import { actions } from '../../redux/ducks';
 
 const validationSchema = Yup.object().shape({
-  description: Yup.string().label('Description'),
-  images: Yup.array().min(1, 'Please select at least one image.'),
+  imageUrl: Yup.string().required('Please upload an image'),
+  body: Yup.string().max(280).label('body'),
 });
 
-function NewPostScreen() {
+function NewPostScreen({ navigation }) {
+  const [error, setError] = useState();
+  const dog = useSelector(state => state.dog);
+
+  const createPostApi = useApi(postsApi.createPost);
+
+  const handleSubmit = async (postInfo) => {
+    postInfo = { ...postInfo, ...{ dogId: dog.id } };
+    const resultPost = await createPostApi.request(postInfo);
+
+    if (!resultPost.ok) {
+      if (resultPost.data) setError(resultPost.data.msg);
+      else {
+        setError('An unexpected error occurred');
+      }
+      return;
+    }
+
+    navigation.navigate(routes.SOCIAL);
+  };
+
   return (
-    <Screen style={styles.container}>
-      <Form
-        initialValues={{
-          description: '',
-          images: [],
-        }}
-        onSubmit={(values) => console.log(values)}
-        validationSchema={validationSchema}
-      >
-        <FormImagePicker name='images' />
-        <FormField
-          maxLength={255}
-          multiline
-          name='description'
-          numberOfLines={3}
-          placeholder='Description'
+    <>
+      <ActivityIndicator
+        visible={createPostApi.loading}
+        backgroundColor='leafygrey'
+      />
+      <Screen style={styles.screen}>
+        <Form
+          initialValues={{
+            imageUrl: '',
+            body: '',
+          }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+        >
+          <ErrorMessage error={error} visible={error} />
+          <FormImagePicker name='imageUrl' category='posts' />
+          <FormField
+            maxLength={280}
+            multiline
+            name='body'
+            numberOfLines={3}
+            placeholder='Share some details?'
+          />
+          <SubmitButton title='Post' />
+        </Form>
+        <Button
+          color='tabButton'
+          onPress={() => navigation.goBack()}
+          title='Cancel'
+          width='60%'
         />
-        <SubmitButton title='Post' />
-      </Form>
-    </Screen>
+      </Screen>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     padding: 10,
+    backgroundColor: colors.leafygrey,
   },
 });
 export default NewPostScreen;

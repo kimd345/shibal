@@ -4,9 +4,14 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { View, StyleSheet } from 'react-native';
 
 import SocialScreen from '../screens/SocialScreen';
+import NewPostScreen from '../screens/social/NewPostScreen';
+
+import Icon from '../components/Icon';
 
 import colors from '../config/colors';
-import Icon from '../components/Icon';
+
+import routes from './routes';
+
 
 const Stack = createStackNavigator();
 
@@ -26,6 +31,7 @@ function SocialNavigator({ navigation }) {
               </TouchableWithoutFeedback>
             </View>
           ),
+          headerTintColor: colors.mossygrey,
         }}
       />
       {/* <Stack.Screen
@@ -38,17 +44,16 @@ function SocialNavigator({ navigation }) {
           headerBackTitle: 'Back',
         }}
       /> */}
-      {/* <Stack.Screen
-        name='NewDog'
-        component={NewDogScreen}
+      <Stack.Screen
+        name='NewPost'
+        component={NewPostScreen}
         options={{
-          headerTitle: 'New Inu',
-          headerStyle: { backgroundColor: colors.primaryBackground },
-          headerTintColor: colors.white,
-          headerBackTitle: 'Back',
+          headerTitle: 'New Post',
+          headerStyle: { backgroundColor: colors.leafygrey },
+          headerTintColor: colors.mossygrey,
           headerLeft: null,
         }}
-      /> */}
+      />
     </Stack.Navigator>
   );
 }

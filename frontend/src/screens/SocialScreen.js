@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import ActivityIndicator from '../components/animations/ActivityIndicator';
 import PostCard from '../components/social/PostCard';
@@ -10,19 +11,23 @@ import colors from '../config/colors';
 
 import postsApi from '../api/posts';
 import useApi from '../hooks/useApi';
+import routes from '../navigation/routes';
 
-function SocialScreen(props) {
+function SocialScreen({ navigation }) {
+  const [scrolling, setScrolling] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+  
   const { data: posts, error, loading, request: loadPosts } = useApi(
     postsApi.getPosts,
     'posts'
   );
 
-  const [scrolling, setScrolling] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     loadPosts();
   }, []);
+
 
   return (
     <>
@@ -33,9 +38,13 @@ function SocialScreen(props) {
           <Button title='Retry' onPress={loadPosts} width='60%' />
         </View>
       )}
-      {!scrolling && (
+      {!(scrolling || loading) && (
         <View style={styles.newPostButton}>
-          <Button title='Participate!' icon='star' />
+          <Button 
+            title='Participate!'
+            icon='star'
+            onPress={() => navigation.navigate(routes.NEW_POST)}
+          />
         </View>
       )}
       <FlatList
@@ -47,11 +56,11 @@ function SocialScreen(props) {
         keyExtractor={(post) => post.id.toString()}
         renderItem={({ item }) => (
           <PostCard
-            dogname={item.dog.name} // change later to name
-            profileImageUrl={item.dog.profileImageUrl} // change later to profileImageUrl
+            dogname={item.dog.name}
+            profileImageUrl={item.dog.profileImageUrl}
             postImageUrl={item.postImageUrl}
             body={item.body}
-            createdAt={item.createdAt}
+            createdAt={item.createdAt.toString().split(' ').slice(1, 5).join(' ')}
           />
         )}
       />
