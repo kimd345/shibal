@@ -6,4 +6,7 @@ export default Object.freeze({
   HOME: 'Home',
   DOG_PROFILE: 'DogProfile',
   NEW_DOG: 'NewDog',
+
+  SOCIAL: 'Social',
+  NEW_POST: 'NewPost',
 });

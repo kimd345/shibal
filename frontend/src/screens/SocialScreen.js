@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import Screen from '../components/Screen';
 import ActivityIndicator from '../components/animations/ActivityIndicator';
 import PostCard from '../components/social/PostCard';
 import Text from '../components/Text';
@@ -18,6 +17,9 @@ function SocialScreen(props) {
     'posts'
   );
 
+  const [scrolling, setScrolling] = useState(false);
+  const [refreshing, setRefreshing] = useState(false);
+
   useEffect(() => {
     loadPosts();
   }, []);
@@ -25,38 +27,48 @@ function SocialScreen(props) {
   return (
     <>
       <ActivityIndicator visible={loading} backgroundColor='palegrey' />
-      <Screen style={styles.screen}>
-        {error && (
-          <View style={styles.error}>
-            <Text>Couldn't retrieve the posts.</Text>
-            <Button title='Retry' onPress={loadPosts} width='60%' />
-          </View>
+      {error && (
+        <View style={styles.error}>
+          <Text>Couldn't retrieve the posts.</Text>
+          <Button title='Retry' onPress={loadPosts} width='60%' />
+        </View>
+      )}
+      {!scrolling && (
+        <View style={styles.newPostButton}>
+          <Button title='Participate!' icon='star' />
+        </View>
+      )}
+      <FlatList
+        onScrollBeginDrag={() => setScrolling(true)}
+        onMomentumScrollEnd={() => setScrolling(false)}
+        onRefresh={() => loadPosts()}
+        refreshing={refreshing}
+        data={posts}
+        keyExtractor={(post) => post.id.toString()}
+        renderItem={({ item }) => (
+          <PostCard
+            dogname={item.dog.name} // change later to name
+            profileImageUrl={item.dog.profileImageUrl} // change later to profileImageUrl
+            postImageUrl={item.postImageUrl}
+            body={item.body}
+            createdAt={item.createdAt}
+          />
         )}
-        <FlatList
-          data={posts}
-          keyExtractor={(post) => post.id.toString()}
-          renderItem={({ item }) => (
-            <PostCard
-              dogname={item.dog.name} // change later to name
-              profileImageUrl={item.dog.profileImageUrl} // change later to profileImageUrl
-              postImageUrl={item.postImageUrl}
-              body={item.body}
-              createdAt={item.createdAt}
-            />
-          )}
-        />
-      </Screen>
+      />
     </>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: colors.palegrey,
-  },
   error: {
     top: 300,
   },
+  newPostButton: {
+    position: 'absolute',
+    zIndex: 1,
+    bottom: 0,
+    alignSelf: 'center',
+  }
 });
 
 export default SocialScreen;

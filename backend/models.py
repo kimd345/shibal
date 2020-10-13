@@ -98,7 +98,8 @@ class Post(db.Model):
             'postImageUrl': self.image_url,
             'body': self.body,
             'createdAt': self.created_at,
-            'dog': self.dog.to_dict()
+            'dog': self.dog.to_dict(),
+            'likes': [like.to_dict() for like in self.likes]
         }
 
 
@@ -107,3 +108,9 @@ class Like(db.Model):
 
     dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id', ondelete='CASCADE'), primary_key=True)  # noqa
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id', ondelete='CASCADE'), primary_key=True)  # noqa
+
+    def to_dict(self):
+        return {
+            'dog_id': self.dog_id,
+            'post_id': self.post_id
+        }

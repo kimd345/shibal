@@ -5,12 +5,12 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 import HomeNavigator from './HomeNavigator';
 // import TrainingScreen from '../screens/TrainingScreen';
-import SocialScreen from '../screens/SocialScreen';
+import ProgramsListScreen from '../screens/training/ProgramsListScreen';
+import SocialNavigator from './SocialNavigator';
 import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import colors from '../config/colors';
 
-import ProgramsListScreen from '../screens/training/ProgramsListScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -41,7 +41,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name='Social'
-      component={SocialScreen}
+      component={SocialNavigator}
       options={{
         tabBarIcon: ({ color, size }) => (
           <MaterialCommunityIcons name='paw' color={color} size={size} />
