@@ -59,9 +59,11 @@ const rootReducer = (state = initialState, action) => {
       };
 
     case SET_DOG:
+      if (Object.keys(action.payload).length === 0) return state;
       return { ...state, dog: {...action.payload, label: action.payload.name, value: action.payload.id } };
 
     case SET_DOGS:
+      if (Object.keys(action.payload).length === 0) return state;
       return { ...state, dogs: 
         action.payload.map(dog => {
           return { ...dog, label: dog.name, value: dog.id }

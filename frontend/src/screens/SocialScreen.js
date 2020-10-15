@@ -52,6 +52,7 @@ function SocialScreen({ navigation }) {
           <Button 
             title='Participate!'
             icon='star'
+            margin={0}
             onPress={() => navigation.navigate(routes.NEW_POST)}
           />
         </View>
@@ -81,6 +82,7 @@ function SocialScreen({ navigation }) {
 const styles = StyleSheet.create({
   error: {
     top: 300,
+    zIndex: 1,
   },
   newPostButton: {
     position: 'absolute',

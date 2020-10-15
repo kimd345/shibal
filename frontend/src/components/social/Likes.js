@@ -13,6 +13,7 @@ import { actions } from '../../redux/ducks';
 
 function Likes({ postId }) {
   const [currentLikes, setCurrentLikes] = useState();
+  const [liked, setLiked] = useState(false);
   const dogId = useSelector(state => state.dog.id);
   const likes = useSelector(state => state.likes);
   
@@ -21,11 +22,23 @@ function Likes({ postId }) {
 
   const dispatch = useDispatch();
 
-  console.log('STORE - LIKES: ', likes);
+  // console.log('STORE - LIKES: ', likes);
+  // console.log(currentLikes);
 
   useEffect(() => {
     setCurrentLikes(likes.filter(like => like.postId === postId));
   }, [likes]);
+
+  useEffect(() => {
+    if (currentLikes !== undefined) {
+      for (let i = 0; i < currentLikes.length; i++) {
+        if (currentLikes[i].dogId === dogId) {
+          return setLiked(true);
+        }
+      }
+      setLiked(false);
+    }
+  }, [currentLikes]);
 
   const handleLike = async () => {
     await createLikeApi.request(dogId, postId)
@@ -45,7 +58,7 @@ function Likes({ postId }) {
       <Text style={styles.likesCount}>{currentLikes.length}</Text>
       </View>
       <View style={styles.likeItemContainer}>
-        {currentLikes.length === 0 ?
+        {!liked ?
           <TouchableWithoutFeedback onPress={() => handleLike()}>
             <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} />
           </TouchableWithoutFeedback> :
@@ -68,7 +81,7 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   likesCount: {
-    fontSize: 14
+    fontSize: 14,
   },
 });
 
