@@ -2,9 +2,11 @@ import React from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
 import Text from '../Text';
+import Likes from '../social/Likes';
 import colors from '../../config/colors';
 
 function PostCaptionListItem({
+  postId,
   dogname,
   createdAt,
   profileImageUrl,
@@ -20,15 +22,10 @@ function PostCaptionListItem({
           <Image style={styles.image} source={{ uri: profileImageUrl }} />
         )}
         <View style={styles.detailsContainer}>
-          <Text style={styles.dogname} numberOfLines={1}>
-            {dogname}
-          </Text>
-          {createdAt && (
-            <Text style={styles.createdAt} numberOfLines={2}>
-              {createdAt}
-            </Text>
-          )}
+          <Text style={styles.dogname}>{dogname}</Text>
+          <Text style={styles.createdAt}>{createdAt}</Text>
         </View>
+        <Likes postId={postId} />
       </View>
     </TouchableOpacity>
   );

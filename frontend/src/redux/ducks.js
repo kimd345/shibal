@@ -1,3 +1,5 @@
+import likes from "../api/likes";
+
 // Action Types
 const SET_USER = 'SET_USER';
 const SET_CURRENT_DOG_ID = 'SET_CURRENT_DOG_ID';
@@ -9,6 +11,11 @@ const ADD_DOG = 'ADD_DOG';
 const REMOVE_DOG = 'REMOVE_DOG';
 const EMPTY_DOGS = 'EMPTY_DOGS';
 
+const SET_LIKES = 'SET_LIKES';
+const ADD_LIKE = 'ADD_LIKE';
+const REMOVE_LIKE = 'REMOVE_LIKE';
+
+const RELOAD_POSTS = 'RELOAD_POSTS';
 const LOG_OUT = 'LOG_OUT';
 
 // Action Creators
@@ -23,6 +30,11 @@ export const actions = {
   removeDog: (dogId) => ({ type: REMOVE_DOG, payload: dogId }),
   emptyDogs: () => ({ type: EMPTY_DOGS }),
 
+  setLikes: (likes) => ({ type: SET_LIKES, payload: likes }),
+  addLike: (like) => ({ type: ADD_LIKE, payload: like }),
+  removeLike: (like) => ({ type: REMOVE_LIKE, payload: like }),
+
+  reloadPosts: () => ({ type: RELOAD_POSTS }),
   logOut: () => ({ type: LOG_OUT }),
 };
 
@@ -31,6 +43,8 @@ const initialState = {
   user: {},
   dog: {},
   dogs: [],
+  likes: [],
+  reloadPosts: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -59,10 +73,31 @@ const rootReducer = (state = initialState, action) => {
       return { ...state, dogs: dogsA };
 
     case REMOVE_DOG:
-      return { ...state, dogs: state.dogs.filter(dog => dog.id !== action.payload) }
+      return { ...state, dogs: state.dogs.filter(dog => dog.id !== action.payload) };
 
     case EMPTY_DOGS:
       return { ...state, dog: {}, dogs: [], user: { ...state.user, currentDogId: [] } };
+
+    case SET_LIKES:
+      return { ...state, likes: action.payload };
+
+    case ADD_LIKE:
+      const likesA = [ ...state.likes, action.payload ]
+      return { ...state, likes: likesA };
+
+    case REMOVE_LIKE:
+      const likesR = state.likes;
+      const likeR = action.payload;
+      for (let i = 0; i < likesR.length; i++) {
+        let like = likesR[i];
+        if ((like.dogId === likeR.dogId) && (like.postId === likeR.postId)) {
+          const newLikesR =  [ ...likesR.slice(0, i), ...likesR.slice(i+1, likesR.length) ]
+          return { ...state, likes: newLikesR };
+        }
+      }
+
+    case RELOAD_POSTS:
+      return { ...state, reloadPosts: state.reloadPosts + 1 }
 
     case LOG_OUT:
       return initialState;

@@ -11,6 +11,7 @@ from backend.api.auth_routes import auth_routes
 from backend.api.user_routes import user_routes
 from backend.api.dog_routes import dog_routes
 from backend.api.post_routes import post_routes
+from backend.api.like_routes import like_routes
 
 from backend.config import Config
 
@@ -23,6 +24,7 @@ app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(dog_routes, url_prefix='/api/dogs')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
+app.register_blueprint(like_routes, url_prefix='/api/likes')
 db.init_app(app)
 
 # Application Security

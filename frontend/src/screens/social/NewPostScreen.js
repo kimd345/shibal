@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
@@ -15,12 +15,10 @@ import {
 import Button from '../../components/Button';
 import colors from '../../config/colors';
 
-import useAuth from '../../hooks/useAuth';
 import useApi from '../../hooks/useApi';
 
 import postsApi from '../../api/posts';
-import routes from '../../navigation/routes';
-// import { actions } from '../../redux/ducks';
+import { actions } from '../../redux/ducks';
 
 const validationSchema = Yup.object().shape({
   imageUrl: Yup.string().required('Please upload an image'),
@@ -32,6 +30,8 @@ function NewPostScreen({ navigation }) {
   const dog = useSelector(state => state.dog);
 
   const createPostApi = useApi(postsApi.createPost);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (postInfo) => {
     postInfo = { ...postInfo, ...{ dogId: dog.id } };
@@ -45,7 +45,9 @@ function NewPostScreen({ navigation }) {
       return;
     }
 
-    navigation.navigate(routes.SOCIAL);
+    dispatch(actions.reloadPosts());
+    
+    navigation.popToTop();
   };
 
   return (

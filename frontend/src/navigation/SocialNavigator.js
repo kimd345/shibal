@@ -22,15 +22,15 @@ function SocialNavigator({ navigation }) {
         name='Social'
         component={SocialScreen}
         options={{
-          headerRight: () => (
-            <View>
-              <TouchableWithoutFeedback
-                onPress={() => navigation.navigate(routes.DOG_PROFILE)}
-                >
-                <Icon name='clone' iconColor={colors.mossygrey} backgroundColor={colors.transparent} />
-              </TouchableWithoutFeedback>
-            </View>
-          ),
+          // headerRight: () => (
+          //   <View>
+          //     <TouchableWithoutFeedback
+          //       onPress={() => navigation.navigate(routes.DOG_PROFILE)}
+          //       >
+          //       <Icon name='clone' iconColor={colors.mossygrey} backgroundColor={colors.transparent} />
+          //     </TouchableWithoutFeedback>
+          //   </View>
+          // ),
           headerTintColor: colors.mossygrey,
         }}
       />

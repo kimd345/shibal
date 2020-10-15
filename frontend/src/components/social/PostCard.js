@@ -4,13 +4,14 @@ import { View, Image, StyleSheet, Text } from 'react-native';
 import colors from '../../config/colors';
 import PostCaptionListItem from './PostCaptionListItem';
 
-function PostCard({ dogname, profileImageUrl, postImageUrl, body, createdAt }) {
+function PostCard({ postId, dogname, profileImageUrl, postImageUrl, body, createdAt }) {
   return (
     <View>
       <Image style={styles.postImage} source={{ uri: postImageUrl }} />
       <View>
         <View>
           <PostCaptionListItem
+            postId={postId}
             dogname={dogname}
             profileImageUrl={profileImageUrl}
             createdAt={createdAt}

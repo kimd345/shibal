@@ -7,27 +7,36 @@ import PostCard from '../components/social/PostCard';
 import Text from '../components/Text';
 import Button from '../components/Button';
 
-import colors from '../config/colors';
+import useApi from '../hooks/useApi';
 
 import postsApi from '../api/posts';
-import useApi from '../hooks/useApi';
+import likesApi from '../api/likes';
 import routes from '../navigation/routes';
+import { actions } from '../redux/ducks';
 
 function SocialScreen({ navigation }) {
   const [scrolling, setScrolling] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
+  const reloadPosts = useSelector(state => state.reloadPosts);
+
+  const getLikesApi = useApi(likesApi.getLikes);
+
+  const dispatch = useDispatch();
   
   const { data: posts, error, loading, request: loadPosts } = useApi(
     postsApi.getPosts,
     'posts'
   );
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     loadPosts();
-  }, []);
+  }, [reloadPosts]);
 
+  useEffect(() => {
+    (async () => await getLikesApi.request())().then(result => {
+      dispatch(actions.setLikes(result.data.likes));
+    });
+  }, []);
 
   return (
     <>
@@ -56,6 +65,7 @@ function SocialScreen({ navigation }) {
         keyExtractor={(post) => post.id.toString()}
         renderItem={({ item }) => (
           <PostCard
+            postId={item.id}
             dogname={item.dog.name}
             profileImageUrl={item.dog.profileImageUrl}
             postImageUrl={item.postImageUrl}
