@@ -3,6 +3,7 @@ import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { Ionicons } from '@expo/vector-icons';
 
+import ActivityIndicator from '../animations/ActivityIndicator';
 import Text from '../Text';
 import colors from '../../config/colors';
 
@@ -50,7 +51,7 @@ function Likes({ postId }) {
       .then(result => dispatch(actions.removeLike(result.data)));
   };
 
-  if (!currentLikes) return null;
+  if (!currentLikes) return <ActivityIndicator visible={true} />;
 
   return (
     <View style={styles.container}>
@@ -59,12 +60,20 @@ function Likes({ postId }) {
       </View>
       <View style={styles.likeItemContainer}>
         {!liked ?
-          <TouchableWithoutFeedback onPress={() => handleLike()}>
-            <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} />
-          </TouchableWithoutFeedback> :
-          <TouchableWithoutFeedback onPress={()=> handleUnlike()}>
-            <Ionicons name="md-heart" size={26} color={colors.google} />
-          </TouchableWithoutFeedback>
+          ((!currentLikes || createLikeApi.loading) ?
+            <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} /> :
+            <TouchableWithoutFeedback onPress={() => handleLike()}>
+              <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} />
+            </TouchableWithoutFeedback>) :
+          ((!currentLikes || deleteLikeApi.loading) ?
+            <Ionicons name="md-heart" size={26} color={colors.google} /> :
+            <TouchableWithoutFeedback onPress={() => handleUnlike()}>
+              <Ionicons name="md-heart" size={26} color={colors.google} />
+            </TouchableWithoutFeedback>)
+
+          // <TouchableWithoutFeedback onPress={()=> handleUnlike()}>
+          //   <Ionicons name="md-heart" size={26} color={colors.google} />
+          // </TouchableWithoutFeedback>
         }
       </View>
     </View>

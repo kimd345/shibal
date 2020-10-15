@@ -37,7 +37,7 @@ const genders = [
 function NewDogScreen({ navigation }) {
   const [error, setError] = useState();
   const dog = useSelector(state => state.dog);
-  console.log(dog);
+  // console.log(dog);
   
   const createDogApi = useApi(dogsApi.createDog);
   const putCurrentDogApi = useApi(usersApi.putCurrentDog);
