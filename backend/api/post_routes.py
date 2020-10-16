@@ -36,3 +36,11 @@ def createPost():
     db.session.commit()
 
     return post.to_dict(), 200
+
+
+@post_routes.route('/<postId>', methods=['DELETE'])
+def deletePost(postId):
+    post = Post.query.filter(Post.id == postId).first()
+    db.session.delete(post)
+    db.session.commit()
+    return jsonify({"msg": "Delete successful"}), 200

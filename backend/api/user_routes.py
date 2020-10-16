@@ -36,3 +36,11 @@ def updateCurrentDog():
         db.session.add(current_dog)
         db.session.commit()
         return current_dog.to_dict(), 200
+
+
+@user_routes.route('/<userId>', methods=['DELETE'])
+def deleteUser(userId):
+    user = User.query.filter(User.id == userId).first()
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({"msg": "Delete successful"}), 200

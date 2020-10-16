@@ -48,6 +48,7 @@ class Dog(db.Model):
     gender = db.Column(db.String(50))
 
     likes = db.relationship('Like', backref='dog', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
+    posts = db.relationship('Post', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
     def to_dict(self):
         return {
@@ -89,7 +90,8 @@ class Post(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
     dog = db.relationship('Dog', backref='post', lazy=True)  # noqa
-    likes = db.relationship('Like', backref='post', lazy=True)  # noqa
+    # cascade delete children likes orphans on delete post
+    likes = db.relationship('Like', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
     def to_dict(self):
         return {
@@ -99,7 +101,7 @@ class Post(db.Model):
             'body': self.body,
             'createdAt': self.created_at,
             'dog': self.dog.to_dict(),
-            'likes': [like.to_dict() for like in self.likes]
+            # 'likes': [like.to_dict() for like in self.likes]
         }
 
 
