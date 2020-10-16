@@ -54,7 +54,7 @@ with app.app_context():
     # test_post_7 = Post(dog_id=7, image_url="https://cdn.shibe.online/shibes/33d520a1e70ab3ec63d2a5aeee28ab9dad4958ce.jpg", body='where are we..?')  # noqa
     # test_post_8 = Post(dog_id=8, image_url="https://cdn.shibe.online/shibes/4149cbc36f4b95601d576cbabb0c7a1e716c0ce1.jpg", body='I am a happy Inu!')  # noqa
 
-    db.session.add(demo_post)
+    # db.session.add(demo_post)
     db.session.add(test_post_2)
     db.session.add(test_post_3)
     # db.session.add(test_post_4)
