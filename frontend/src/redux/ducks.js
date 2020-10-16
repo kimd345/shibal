@@ -1,5 +1,3 @@
-import likes from "../api/likes";
-
 // Action Types
 const SET_USER = 'SET_USER';
 const SET_CURRENT_DOG_ID = 'SET_CURRENT_DOG_ID';
@@ -15,7 +13,6 @@ const SET_LIKES = 'SET_LIKES';
 const ADD_LIKE = 'ADD_LIKE';
 const REMOVE_LIKE = 'REMOVE_LIKE';
 
-const RELOAD_POSTS = 'RELOAD_POSTS';
 const LOG_OUT = 'LOG_OUT';
 
 // Action Creators
@@ -34,7 +31,6 @@ export const actions = {
   addLike: (like) => ({ type: ADD_LIKE, payload: like }),
   removeLike: (like) => ({ type: REMOVE_LIKE, payload: like }),
 
-  reloadPosts: () => ({ type: RELOAD_POSTS }),
   logOut: () => ({ type: LOG_OUT }),
 };
 
@@ -44,7 +40,6 @@ const initialState = {
   dog: {},
   dogs: [],
   likes: [],
-  reloadPosts: 0,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -97,9 +92,6 @@ const rootReducer = (state = initialState, action) => {
           return { ...state, likes: newLikesR };
         }
       }
-
-    case RELOAD_POSTS:
-      return { ...state, reloadPosts: state.reloadPosts + 1 }
 
     case LOG_OUT:
       return initialState;

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 
 import ActivityIndicator from '../components/animations/ActivityIndicator';
 import PostCard from '../components/social/PostCard';
@@ -17,8 +18,6 @@ import { actions } from '../redux/ducks';
 function SocialScreen({ navigation }) {
   const [scrolling, setScrolling] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
-  const reloadPosts = useSelector(state => state.reloadPosts);
-  const dog = useSelector(state => state.dog);
 
   const getLikesApi = useApi(likesApi.getLikes);
 
@@ -29,15 +28,21 @@ function SocialScreen({ navigation }) {
     'posts'
   );
   console.log('LIKES - SOCIAL SCREEN: ', useSelector((state) => state.likes));
-  useEffect(() => {
-    loadPosts();
-  }, [reloadPosts]);
 
-  useEffect(() => {
-    (async () => await getLikesApi.request())().then(result => {
-      dispatch(actions.setLikes(result.data.likes));
-    });
-  }, [dog]);
+
+  useFocusEffect(
+    useCallback(() => {
+      (async () => await getLikesApi.request())().then(result => {
+        dispatch(actions.setLikes(result.data.likes));
+      });
+      loadPosts();
+
+      return () => {
+        setRefreshing(false);
+        setScrolling(false);
+      };
+    }, [])
+  );
 
   return (
     <>

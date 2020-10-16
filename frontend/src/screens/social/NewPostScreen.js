@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
@@ -18,7 +18,6 @@ import colors from '../../config/colors';
 import useApi from '../../hooks/useApi';
 
 import postsApi from '../../api/posts';
-import { actions } from '../../redux/ducks';
 
 const validationSchema = Yup.object().shape({
   imageUrl: Yup.string().required('Please upload an image'),
@@ -31,8 +30,6 @@ function NewPostScreen({ navigation }) {
 
   const createPostApi = useApi(postsApi.createPost);
 
-  const dispatch = useDispatch();
-
   const handleSubmit = async (postInfo) => {
     postInfo = { ...postInfo, ...{ dogId: dog.id } };
     const resultPost = await createPostApi.request(postInfo);
@@ -44,8 +41,6 @@ function NewPostScreen({ navigation }) {
       }
       return;
     }
-
-    dispatch(actions.reloadPosts());
     
     navigation.popToTop();
   };

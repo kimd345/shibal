@@ -14,8 +14,10 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.now())
 
-    dogs = db.relationship('Dog', backref='user', lazy=True)  # noqa
-    current_dog = db.relationship('Current_Dog', backref='user', lazy=True)  # noqa
+    # cascade delete dogs orphans when deleting user
+    dogs = db.relationship('Dog', cascade='save-update, merge, delete, delete-orphan')  # noqa
+    # cascade delete current_dog orphan when deleting user, or dog
+    current_dog = db.relationship('Current_Dog', backref='user', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
 
     @property
     def password(self):
@@ -89,7 +91,7 @@ class Post(db.Model):
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
-    dog = db.relationship('Dog', backref='post', lazy=True)  # noqa
+    dog = db.relationship('Dog', lazy=True)  # noqa
     # cascade delete children likes orphans on delete post
     likes = db.relationship('Like', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
@@ -101,7 +103,6 @@ class Post(db.Model):
             'body': self.body,
             'createdAt': self.created_at,
             'dog': self.dog.to_dict(),
-            # 'likes': [like.to_dict() for like in self.likes]
         }
 
 

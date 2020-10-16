@@ -37,7 +37,7 @@ function HomeNavigator({ navigation }) {
   const dispatch = useDispatch();
   const userId = useAuth().user.id;
 
-  // console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state));
+  console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state.dog));
   
   useEffect(() => { // set user on mount
     (async () => await getUserApi.request(userId))().then((result) => {
