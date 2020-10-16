@@ -23,12 +23,13 @@ function Likes({ postId }) {
 
   const dispatch = useDispatch();
 
-  // console.log('STORE - LIKES: ', likes);
-  // console.log(currentLikes);
-
+  console.log('STORE - LIKES: ', likes);
+  
   useEffect(() => {
     setCurrentLikes(likes.filter(like => like.postId === postId));
+    console.log('STATE - LIKES: ', currentLikes);
   }, [likes]);
+  
 
   useEffect(() => {
     if (currentLikes !== undefined) {
