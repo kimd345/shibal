@@ -14,38 +14,20 @@ with app.app_context():
 
     demo_user = User(email='demo@user.com',
                      hashed_password=generate_password_hash('password'))
-    test_user_2 = User(email='test_user_2@test.com',
-                       hashed_password=generate_password_hash('password'))
-    test_user_3 = User(email='test_user_3@test.com',
-                       hashed_password=generate_password_hash('password'))
-    test_user_4 = User(email='test_user_4@test.com',
-                       hashed_password=generate_password_hash('password'))
-    test_user_5 = User(email='test_user_5@test.com',
-                       hashed_password=generate_password_hash('password'))
-    test_user_6 = User(email='test_user_6@test.com',
-                       hashed_password=generate_password_hash('password'))
-    test_user_7 = User(email='test_user_7@test.com',
-                       hashed_password=generate_password_hash('password'))
-    test_user_8 = User(email='test_user_8@test.com',
-                       hashed_password=generate_password_hash('password'))
+    dogs = User(email='dogs@user.com',
+                hashed_password=generate_password_hash('password'))
 
     db.session.add(demo_user)
-    db.session.add(test_user_2)
-    db.session.add(test_user_3)
-    db.session.add(test_user_4)
-    db.session.add(test_user_5)
-    db.session.add(test_user_6)
-    db.session.add(test_user_7)
-    db.session.add(test_user_8)
+    db.session.add(dogs)
 
     demo_dog = Dog(user_id=1, name='만두', image_url="https://cdn.shibe.online/shibes/b8556c4cb61497d35c6d1790eef343dcf5430f09.jpg")  # noqa
     test_dog_2 = Dog(user_id=2, name='Walnut', image_url="https://cdn.shibe.online/shibes/1a92f81932d8e2976fbeadbd48ce03ea149dbe3d.jpg")  # noqa
-    test_dog_3 = Dog(user_id=3, name='Lily', image_url="https://cdn.shibe.online/shibes/1501d925f913dd4cc85b57b193046e5cf3fb1e15.jpg")  # noqa
-    test_dog_4 = Dog(user_id=4, name='ぎょうざ', image_url="https://cdn.shibe.online/shibes/f1979eb7fbd217318a5a72bba5aabbd7793610ef.jpg")  # noqa
-    test_dog_5 = Dog(user_id=5, name='Pip', image_url="https://cdn.shibe.online/shibes/257876a12cd99b0995e958958a3dc79f1757ec76.jpg")  # noqa
-    test_dog_6 = Dog(user_id=6, name='Rex', image_url="https://cdn.shibe.online/shibes/e4269bb5f9ce00274da89c947e1697896adae23c.jpg")  # noqa
-    test_dog_7 = Dog(user_id=7, name='Joo', image_url="https://cdn.shibe.online/shibes/8c533aafeec84ba6c8450bce6c9c8a6c6002efb0.jpg")  # noqa
-    test_dog_8 = Dog(user_id=8, name='Bogey', image_url="https://cdn.shibe.online/shibes/43c7f6caa02dc93f2b80a87272271261d2fe1848.jpg")  # noqa
+    test_dog_3 = Dog(user_id=2, name='Lily', image_url="https://cdn.shibe.online/shibes/1501d925f913dd4cc85b57b193046e5cf3fb1e15.jpg")  # noqa
+    test_dog_4 = Dog(user_id=2, name='ぎょうざ', image_url="https://cdn.shibe.online/shibes/f1979eb7fbd217318a5a72bba5aabbd7793610ef.jpg")  # noqa
+    test_dog_5 = Dog(user_id=2, name='Pip', image_url="https://cdn.shibe.online/shibes/257876a12cd99b0995e958958a3dc79f1757ec76.jpg")  # noqa
+    test_dog_6 = Dog(user_id=2, name='Rex', image_url="https://cdn.shibe.online/shibes/e4269bb5f9ce00274da89c947e1697896adae23c.jpg")  # noqa
+    test_dog_7 = Dog(user_id=2, name='Joo', image_url="https://cdn.shibe.online/shibes/8c533aafeec84ba6c8450bce6c9c8a6c6002efb0.jpg")  # noqa
+    test_dog_8 = Dog(user_id=2, name='Bogey', image_url="https://cdn.shibe.online/shibes/43c7f6caa02dc93f2b80a87272271261d2fe1848.jpg")  # noqa
 
     db.session.add(demo_dog)
     db.session.add(test_dog_2)
@@ -58,7 +40,10 @@ with app.app_context():
     db.session.commit()
 
     demo_current_dog = Current_Dog(user_id=1, dog_id=1)
+    test_current_dog = Current_Dog(user_id=2, dog_id=2)
+
     db.session.add(demo_current_dog)
+    db.session.add(test_current_dog)
 
     demo_post = Post(dog_id=1, image_url="https://cdn.shibe.online/shibes/a21b3d28beec5380ab9eb94b14348be0e67cfb92.jpg", body='안녕 얘들아!!')  # noqa
     test_post_2 = Post(dog_id=2, image_url="https://cdn.shibe.online/shibes/69901d07648a0ba1646b854c7b3114eb8cb7d5d2.jpg", body='hey hey hey')  # noqa

@@ -18,6 +18,7 @@ function SocialScreen({ navigation }) {
   const [scrolling, setScrolling] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const reloadPosts = useSelector(state => state.reloadPosts);
+  const dog = useSelector(state => state.dog);
 
   const getLikesApi = useApi(likesApi.getLikes);
 
@@ -27,7 +28,7 @@ function SocialScreen({ navigation }) {
     postsApi.getPosts,
     'posts'
   );
-
+  console.log('LIKES - SOCIAL SCREEN: ', useSelector((state) => state.likes));
   useEffect(() => {
     loadPosts();
   }, [reloadPosts]);
@@ -36,7 +37,7 @@ function SocialScreen({ navigation }) {
     (async () => await getLikesApi.request())().then(result => {
       dispatch(actions.setLikes(result.data.likes));
     });
-  }, []);
+  }, [dog]);
 
   return (
     <>
