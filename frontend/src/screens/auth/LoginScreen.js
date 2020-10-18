@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet } from 'react-native';
 import * as Yup from 'yup';
 
-import colors from '../../config/colors';
+import ActivityIndicator from '../../components/animations/ActivityIndicator';
 import Screen from '../../components/Screen';
 import Text from '../../components/Text';
 import {
@@ -11,10 +11,13 @@ import {
   FormField,
   SubmitButton,
 } from '../../components/forms';
-import authApi from '../../api/auth';
+
 import useApi from '../../hooks/useApi';
 import useAuth from '../../hooks/useAuth';
-import ActivityIndicator from '../../components/animations/ActivityIndicator';
+
+import authApi from '../../api/auth';
+
+import colors from '../../config/colors';
 
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label('Email'),
