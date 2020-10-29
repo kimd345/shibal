@@ -46,6 +46,8 @@ const menuItems = [
       name: 'briefcase',
       backgroundColor: colors.mossygrey,
     },
+    handleOpenBio: () =>
+      WebBrowser.openBrowserAsync('https://kimd345.github.io'),
   },
 ];
 
