@@ -117,3 +117,34 @@ class Like(db.Model):
             'dogId': self.dog_id,
             'postId': self.post_id
         }
+
+
+# Training
+class Program(db.Model):
+    __tablename__ = 'programs'
+
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(50), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
+
+
+class Module(db.Model):
+    __tablename__ = 'modules'
+
+    id = db.Column(db.Integer, primary_key=True)
+    program_id = db.Column(db.Integer, db.ForeignKey('programs.id'))
+    title = db.Column(db.String(50), nullable=False)
+
+
+class Lesson(db.Model):
+    __tablename__ = 'lessons'
+
+    id = db.Column(db.Integer, primary_key=True)
+    module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
+    title = db.Column(db.String(50), nullable=False)
+
+
+# class Enrollment(db.Model):
+#     __tablename__ = 'enrollments'
+
+#     entity_id = db.Column(db.Integer, db.ForeignKey(''))

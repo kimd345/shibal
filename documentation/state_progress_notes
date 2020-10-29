@@ -9,8 +9,8 @@ WHERE modules.program_id = current_program_id
 
 count of current dog’s completed modules in current program:
 
-SELECT COUNT * FROM progress
-WHERE progress.dog_id = current_dog_id
+SELECT COUNT * FROM enrollments
+WHERE enrollments.dog_id = current_dog_id
   AND parent_id = current_program_id
   AND entity_type = 'module'
   AND status = 'completed'
