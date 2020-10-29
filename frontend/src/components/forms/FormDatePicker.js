@@ -21,12 +21,16 @@ function FormDatePicker({ name }) {
 
   const onChange = (event, selectedDate) => {
     setDate(selectedDate);
-    setFieldValue(name, date);
-    setButtonText(date.toString().split(' ').slice(1, 4).join(' '));
+    setFieldValue(name, selectedDate);
+    setButtonText(selectedDate.toString().split(' ').slice(1, 4).join(' '));
     if (Platform.OS === 'android') {
       setShow(false);
     }
+    // console.log("before change date: ", date)
+    // console.log("before change selectedDate: ", selectedDate)
   };
+  // console.log("after change date: ", date)
+  // console.log("after change show: ", show)
 
   const showDatepicker = () => {
     show ? setShow(false) : setShow(true);
