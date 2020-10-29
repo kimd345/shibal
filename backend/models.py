@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
 
 db = SQLAlchemy()
+entity_id_seq = db.Sequence('entity_id_seq')
 
 
 class User(db.Model, UserMixin):
@@ -123,28 +124,58 @@ class Like(db.Model):
 class Program(db.Model):
     __tablename__ = 'programs'
 
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), nullable=False)
+    id = db.Column(db.Integer, entity_id_seq, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500), nullable=False)
 
 
 class Module(db.Model):
     __tablename__ = 'modules'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     program_id = db.Column(db.Integer, db.ForeignKey('programs.id'))
-    title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
 
 
 class Lesson(db.Model):
     __tablename__ = 'lessons'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
-    title = db.Column(db.String(50), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
 
 
-# class Enrollment(db.Model):
-#     __tablename__ = 'enrollments'
+class Quiz(db.Model):
+    __tablename__ = 'quizzes'
 
-#     entity_id = db.Column(db.Integer, db.ForeignKey(''))
+    id = db.Column(db.Integer, entity_id_seq, primary_key=True)
+    lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
+    prompt = db.Column(db.String(500), nullable=False)
+    questions = db.Column(db.String(2000), nullable=False)
+    answer_idx = db.Column(db.Integer, nullable=False)
+    explanation = db.Column(db.String(500), nullable=False)
+
+
+# class Training(db.Model):
+#     __tablename__ = 'trainings'
+
+#     id = db.Column(db.Integer, primary_key=True)
+#     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
+#     title = db.Column(db.String(100), nullable=False)
+
+
+class Enrollment(db.Model):
+    __tablename__ = 'enrollments'
+
+    entity_id = db.Column(db.Integer, db.ForeignKey('programs.id'),
+                          db.ForeignKey('modules.id'),
+                          db.ForeignKey('lessons.id'),
+                          db.ForeignKey('quizzes.id'),
+                          primary_key=True)
+    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id'), primary_key=True)
+    parent_id = db.Column(db.Integer, db.ForeignKey('programs.id'),
+                          db.ForeignKey('modules.id'),
+                          db.ForeignKey('lessons.id'),
+                          db.ForeignKey('quizzes.id'))
+    entity_type = db.Column(db.String(20), nullable=False)
+    status = db.Column(db.String(11), default='In Progress')
