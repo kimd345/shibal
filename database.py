@@ -76,3 +76,7 @@ with app.app_context():
     _5_new_dog_module_1_lesson_1_training = Training(lesson_id=3, description='Master a familiar trick or learn a new exercise. Repeat the exercise while the timer is running.')  # noqa
     db.session.add(_5_new_dog_module_1_lesson_1_training)
     db.session.commit()
+
+    _6_new_dog_module_1_lesson_1_training_skill_1 = Training(training_id=5, steps='["After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.", "Feed your dog while walking backwards. Your dog follows you and eats from your hand."]')  # noqa
+    db.session.add(_6_new_dog_module_1_lesson_1_training_skill_1)
+    db.session.commit()

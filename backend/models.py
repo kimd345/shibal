@@ -169,7 +169,7 @@ class Skill(db.Model):
 
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     training_id = db.Column(db.Integer, db.ForeignKey('trainings.id'))
-    steps = db.Column(db.String(2000), nullable=False)
+    steps = db.Column(db.String(5000), nullable=False)
     duration = db.Column(db.Integer, default=120)
 
 
