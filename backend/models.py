@@ -179,7 +179,7 @@ class Activity(db.Model):
 
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
-    title = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.String(500), nullable=False)
     tasks = db.Column(db.ARRAY(db.String(2000)), nullable=False)
 
 

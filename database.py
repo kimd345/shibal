@@ -84,3 +84,7 @@ with app.app_context():
     _7_new_dog_module_1_lesson_1_training_skill_2 = Skill(training_id=5, title='Potty Training', steps=["To be successful in potty training it is important to have a consistent schedule. Take your puppy to their designated potty area 15 to 30 minutes after feeding time, or immediately after they wake up.", "If your dog cannot be taken outside then the spot should be as close to the doors; placing a sponge soaked in urine might help your puppy find the correct place.", "Once you are outside, concentrate on the mission. Keep your dog on a short lead, allow sniffing, but do not play until they are done.", "After your pet has been eliminated, praise enthusiastically and reward with time outside to explore, or have playtime.", "Set reminders to take your puppy outside. A puppy of 1 month can hold it for 1 hour, 2 months - 2 hours, etc. Your dog should not be left alone for longer than six hours without a potty break."])  # noqa
     db.session.add(_7_new_dog_module_1_lesson_1_training_skill_2)
     db.session.commit()
+
+    _8_new_dog_module_1_lesson_1_training_activity = Activity(lesson_id=3, description='Spend some time with your dog and complete these tasks during the day', tasks=["Introduce your puppy to two family members. They should greet the dog by getting down low to puppy's level and pet them gently."])  # noqa
+    db.session.add(_8_new_dog_module_1_lesson_1_training_activity)
+    db.session.commit()
