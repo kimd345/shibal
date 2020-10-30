@@ -151,7 +151,7 @@ class Quiz(db.Model):
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
     prompt = db.Column(db.String(500), nullable=False)
-    questions = db.Column(db.String(2000), nullable=False)
+    questions = db.Column(db.ARRAY(db.String(2000)), nullable=False)
     answer_idx = db.Column(db.Integer, nullable=False)
     explanation = db.Column(db.String(500), nullable=False)
 
@@ -169,7 +169,7 @@ class Skill(db.Model):
 
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     training_id = db.Column(db.Integer, db.ForeignKey('trainings.id'))
-    steps = db.Column(db.String(5000), nullable=False)
+    steps = db.Column(db.ARRAY(db.String(5000)), nullable=False)
     duration = db.Column(db.Integer, default=120)
 
 
@@ -179,7 +179,7 @@ class Activity(db.Model):
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
     title = db.Column(db.String(100), nullable=False)
-    tasks = db.Column(db.String(2000), nullable=False)
+    tasks = db.Column(db.ARRAY(db.String(2000)), nullable=False)
 
 
 class Enrollment(db.Model):

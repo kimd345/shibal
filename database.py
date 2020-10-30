@@ -69,7 +69,7 @@ with app.app_context():
     db.session.add(_3_new_dog_module_1_lesson_1)
     db.session.commit()
 
-    _4_new_dog_module_1_lesson_1_quiz = Quiz(lesson_id=3, prompt='In the first week many new dog parents will hear their puppy crying at night. How should you react when you hear your puppy cry?', questions='["Take the puppy to your arms. You want to create a safe space and bond.", "Tell your puppy to \"hush\" and shake lightly by the scruff, as dog mum.", "Make sure your dog doesn\'t need to pee. Otherwise, ignore the puppy."]', answer_idx=2, explanation='New home, no siblings, it is normal that your puppy will feel lonely and insecure at night. But, you should think about what your reaction will teach them. Whining = sleeping in the bed. If you don\'t want your dog to sleep in your bed in the future, put earplugs in and ignore your puppy. They will calm down.')  # noqa
+    _4_new_dog_module_1_lesson_1_quiz = Quiz(lesson_id=3, prompt='In the first week many new dog parents will hear their puppy crying at night. How should you react when you hear your puppy cry?', questions=["Take the puppy to your arms. You want to create a safe space and bond.", "Tell your puppy to \"hush\" and shake lightly by the scruff, as dog mum.", "Make sure your dog doesn\'t need to pee. Otherwise, ignore the puppy."], answer_idx=2, explanation='New home, no siblings, it is normal that your puppy will feel lonely and insecure at night. But, you should think about what your reaction will teach them. Whining = sleeping in the bed. If you don\'t want your dog to sleep in your bed in the future, put earplugs in and ignore your puppy. They will calm down.')  # noqa
     db.session.add(_4_new_dog_module_1_lesson_1_quiz)
     db.session.commit()
 
@@ -77,6 +77,10 @@ with app.app_context():
     db.session.add(_5_new_dog_module_1_lesson_1_training)
     db.session.commit()
 
-    _6_new_dog_module_1_lesson_1_training_skill_1 = Training(training_id=5, steps='["After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.", "Feed your dog while walking backwards. Your dog follows you and eats from your hand."]')  # noqa
+    _6_new_dog_module_1_lesson_1_training_skill_1 = Skill(training_id=5, steps=["After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.", "Feed your dog while walking backwards. Your dog follows you and eats from your hand."])  # noqa
     db.session.add(_6_new_dog_module_1_lesson_1_training_skill_1)
     db.session.commit()
+
+    # _7_new_dog_module_1_lesson_1_training_skill_2 = Skill(training_id=5, steps='["]')  # noqa
+    # db.session.add(_7_new_dog_module_1_lesson_1_training_skill_2)
+    # db.session.commit()
