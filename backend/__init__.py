@@ -12,6 +12,7 @@ from backend.api.user_routes import user_routes
 from backend.api.dog_routes import dog_routes
 from backend.api.post_routes import post_routes
 from backend.api.like_routes import like_routes
+from backend.api.training_routes import training_routes
 
 from backend.config import Config
 
@@ -25,6 +26,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(dog_routes, url_prefix='/api/dogs')
 app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
+app.register_blueprint(training_routes, url_prefix='/api/trainings')
 db.init_app(app)
 
 # Application Security

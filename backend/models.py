@@ -18,7 +18,7 @@ class User(db.Model, UserMixin):
     # cascade delete dogs orphans when deleting user
     dogs = db.relationship('Dog', cascade='save-update, merge, delete, delete-orphan')  # noqa
     # cascade delete current_dog orphan when deleting user, or dog
-    current_dog = db.relationship('Current_Dog', backref='user', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
+    current_dog = db.relationship('Current_Dog', backref='user', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
     @property
     def password(self):
@@ -50,7 +50,7 @@ class Dog(db.Model):
     birthday = db.Column(db.Date)
     gender = db.Column(db.String(50))
 
-    likes = db.relationship('Like', backref='dog', cascade='save-update, merge, delete, delete-orphan', lazy=True)  # noqa
+    likes = db.relationship('Like', backref='dog', cascade='save-update, merge, delete, delete-orphan')  # noqa
     posts = db.relationship('Post', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
     def to_dict(self):
@@ -92,7 +92,7 @@ class Post(db.Model):
     body = db.Column(db.String(280))
     created_at = db.Column(db.DateTime, default=datetime.datetime.now)
 
-    dog = db.relationship('Dog', lazy=True)  # noqa
+    dog = db.relationship('Dog')  # noqa
     # cascade delete children likes orphans on delete post
     likes = db.relationship('Like', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
@@ -128,6 +128,16 @@ class Program(db.Model):
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(500), nullable=False)
 
+    modules = db.relationship('Module', backref='program')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description,
+            'modules': [module.to_dict() for module in self.modules]
+        }
+
 
 class Module(db.Model):
     __tablename__ = 'modules'
@@ -136,6 +146,16 @@ class Module(db.Model):
     program_id = db.Column(db.Integer, db.ForeignKey('programs.id'))  # noqa
     title = db.Column(db.String(100), nullable=False)
 
+    lessons = db.relationship('Lesson', backref='module')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'program_id': self.program_id,
+            'title': self.title,
+            'lessons': [lesson.to_dict() for lesson in self.lessons]
+        }
+
 
 class Lesson(db.Model):
     __tablename__ = 'lessons'
@@ -143,6 +163,20 @@ class Lesson(db.Model):
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     module_id = db.Column(db.Integer, db.ForeignKey('modules.id'))
     title = db.Column(db.String(100), nullable=False)
+
+    quizzes = db.relationship('Quiz', backref='lesson')
+    trainings = db.relationship('Training', backref='lesson')
+    activities = db.relationship('Activity', backref='lesson')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'module_id': self.module_id,
+            'title': self.title,
+            'quizzes': [quiz.to_dict() for quiz in self.quizzes],
+            'trainings': [training.to_dict() for training in self.trainings],
+            'activities': [activity.to_dict() for activity in self.activities]
+        }
 
 
 class Quiz(db.Model):
@@ -155,6 +189,16 @@ class Quiz(db.Model):
     answer_idx = db.Column(db.Integer, nullable=False)
     explanation = db.Column(db.String(500), nullable=False)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'lesson_id': self.lesson_id,
+            'prompt': self.prompt,
+            'questions': self.questions,
+            'answer_idx': self.answer_idx,
+            'explanation': self.explanation
+        }
+
 
 class Training(db.Model):
     __tablename__ = 'trainings'
@@ -162,6 +206,16 @@ class Training(db.Model):
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
     description = db.Column(db.String(500), nullable=False)
+
+    skills = db.relationship('Skill', backref='training')
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'lesson_id': self.lesson_id,
+            'description': self.description,
+            'skills': [skill.to_dict() for skill in self.skills]
+        }
 
 
 class Skill(db.Model):
@@ -173,6 +227,15 @@ class Skill(db.Model):
     steps = db.Column(db.ARRAY(db.String(5000)), nullable=False)
     duration = db.Column(db.Integer, default=120)
 
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'training_id': self.training_id,
+            'title': self.title,
+            'steps': self.steps,
+            'duration': self.duration
+        }
+
 
 class Activity(db.Model):
     __tablename__ = 'activities'
@@ -181,6 +244,14 @@ class Activity(db.Model):
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
     description = db.Column(db.String(500), nullable=False)
     tasks = db.Column(db.ARRAY(db.String(2000)), nullable=False)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'lesson_id': self.lesson_id,
+            'description': self.description,
+            'tasks': self.tasks
+        }
 
 
 class Enrollment(db.Model):
