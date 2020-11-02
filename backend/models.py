@@ -231,14 +231,12 @@ class Activity(db.Model):
 
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
-    description = db.Column(db.String(500), nullable=False)
     tasks = db.Column(db.ARRAY(db.String(2000)), nullable=False)
 
     def to_dict(self):
         return {
             'id': self.id,
             'lesson_id': self.lesson_id,
-            'description': self.description,
             'tasks': self.tasks
         }
 

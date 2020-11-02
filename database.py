@@ -86,15 +86,37 @@ with app.app_context():
 
     db.engine.execute(skills.insert().values(lesson_id=3, skill_id=6))
 
-    _7_new_dog_module_1_lesson_1_training_activity = Activity(lesson_id=3, description='Spend some time with your dog and complete these tasks during the day', tasks=["Introduce your puppy to two family members. They should greet the dog by getting down low to puppy's level and pet them gently."])  # noqa
+    _7_new_dog_module_1_lesson_1_training_activity = Activity(lesson_id=3, tasks=["Introduce your puppy to two family members. They should greet the dog by getting down low to puppy's level and pet them gently."])  # noqa
     db.session.add(_7_new_dog_module_1_lesson_1_training_activity)
     db.session.commit()
 
     # Lesson 2
-    _8_new_dog_module_1_lesson_2 = Lesson(module_id=2, title='Lesson 2 - Clicker, Handling, Tug')  # noqa
+    _8_new_dog_module_1_lesson_2 = Lesson(module_id=2, title='Lesson 2 - Whistle, Handling, Tug')  # noqa
     db.session.add(_8_new_dog_module_1_lesson_2)
     db.session.commit()
 
     _9_new_dog_module_1_lesson_2_quiz = Quiz(lesson_id=8, prompt='If your dog is trained to go to the toilet at home...', questions=["The designated spot should be near the bed.", "Rugs and newspapers are good for training.", "The spot should be in a quiet place."], answer_idx=2, explanation='Teaching your dog to eliminate on puppy pads, on paper, or in a litter box can make housebreaking hard. The puppy can develop preferences to peeing on paper and actively seek a similar spot. Later, even a house-trained dog can eliminate on newspaper lying on the floor. The best thing is to teach your puppy to do their business outside.')  # noqa
     db.session.add(_9_new_dog_module_1_lesson_2_quiz)
+    db.session.commit()
+
+    _10_new_dog_module_1_lesson_2_training_skill_1 = Skill(title='Whistle', steps=["In this exercise you are teaching your dog to associate a specific whistle sound with a reward / to a treat.", "Start by standing or sitting next to your dog.", "Press the whistle button and immediately give a treat.", "A food reward must follow after each whistle so your dog learns whistle = food. You can use the whistle in the app."])  # noqa
+    db.session.add(_10_new_dog_module_1_lesson_2_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=8, skill_id=10))
+
+    _11_new_dog_module_1_lesson_2_training_skill_2 = Skill(title='Handling', steps=["It is important that your puppy is used to your hands, being touched and lifted up. This will come very handy in many life situations in the future.", "Lift your puppy up and put them on your lap or kneel next to them and hug, pulling them close to you. Wait until the puppy is calm and give them some treats.", "Put your puppy down or stop touching them when they are calm."])  # noqa
+    db.session.add(_11_new_dog_module_1_lesson_2_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=8, skill_id=11))
+
+    _12_new_dog_module_1_lesson_2_training_skill_3 = Skill(title='Tug', steps=["Take a rope toy or a napkin, offer it to your dog and move it like a cat toy, wiggling on the ground. Once your dog \"attacks\" it, praise and gently pull on the toy.", "When your dog mouths it, gently shake and tug the rope toy to get the dog to hold and pull against you.", "When your dog tugs back on the rope toy, praise your dog enthusiastically. The game itself is the reward, no need for treats."])  # noqa
+    db.session.add(_12_new_dog_module_1_lesson_2_training_skill_3)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=8, skill_id=12))
+
+    _13_new_dog_module_1_lesson_2_training_activity = Activity(lesson_id=8, tasks=["Paws are a sensitive area for many dogs. Touch and apply light pressure when your dog is relaxed so the dog gets used to it."])  # noqa
+    db.session.add(_13_new_dog_module_1_lesson_2_training_activity)
     db.session.commit()
