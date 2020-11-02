@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from backend import app, db
 from backend.models import (User, Dog, Current_Dog, Post, Like,
                             Program, Module, Lesson, Quiz,
-                            Training, Skill, Activity, Enrollment)
+                            skills, Skill, Activity, Enrollment)
 
 
 load_dotenv()
@@ -61,6 +61,7 @@ with app.app_context():
     db.session.commit()
 
     # Module 1
+    # Lesson 1
     _2_new_dog_module_1 = Module(program_id=1, title='Module 1 - Teach your puppy to pay attention to you')  # noqa
     db.session.add(_2_new_dog_module_1)
     db.session.commit()
@@ -73,18 +74,27 @@ with app.app_context():
     db.session.add(_4_new_dog_module_1_lesson_1_quiz)
     db.session.commit()
 
-    _5_new_dog_module_1_lesson_1_training = Training(lesson_id=3, description='Master a familiar trick or learn a new exercise. Repeat the exercise while the timer is running.')  # noqa
-    db.session.add(_5_new_dog_module_1_lesson_1_training)
+    _5_new_dog_module_1_lesson_1_training_skill_1 = Skill(title='Hand Feeding', steps=["After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.", "Feed your dog while walking backwards. Your dog follows you and eats from your hand."])  # noqa
+    db.session.add(_5_new_dog_module_1_lesson_1_training_skill_1)
     db.session.commit()
 
-    _6_new_dog_module_1_lesson_1_training_skill_1 = Skill(training_id=5, title='Hand Feeding', steps=["After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.", "Feed your dog while walking backwards. Your dog follows you and eats from your hand."])  # noqa
-    db.session.add(_6_new_dog_module_1_lesson_1_training_skill_1)
+    db.engine.execute(skills.insert().values(lesson_id=3, skill_id=5))
+
+    _6_new_dog_module_1_lesson_1_training_skill_2 = Skill(title='Potty Training', steps=["To be successful in potty training it is important to have a consistent schedule. Take your puppy to their designated potty area 15 to 30 minutes after feeding time, or immediately after they wake up.", "If your dog cannot be taken outside then the spot should be as close to the doors; placing a sponge soaked in urine might help your puppy find the correct place.", "Once you are outside, concentrate on the mission. Keep your dog on a short lead, allow sniffing, but do not play until they are done.", "After your pet has been eliminated, praise enthusiastically and reward with time outside to explore, or have playtime.", "Set reminders to take your puppy outside. A puppy of 1 month can hold it for 1 hour, 2 months - 2 hours, etc. Your dog should not be left alone for longer than six hours without a potty break."])  # noqa
+    db.session.add(_6_new_dog_module_1_lesson_1_training_skill_2)
     db.session.commit()
 
-    _7_new_dog_module_1_lesson_1_training_skill_2 = Skill(training_id=5, title='Potty Training', steps=["To be successful in potty training it is important to have a consistent schedule. Take your puppy to their designated potty area 15 to 30 minutes after feeding time, or immediately after they wake up.", "If your dog cannot be taken outside then the spot should be as close to the doors; placing a sponge soaked in urine might help your puppy find the correct place.", "Once you are outside, concentrate on the mission. Keep your dog on a short lead, allow sniffing, but do not play until they are done.", "After your pet has been eliminated, praise enthusiastically and reward with time outside to explore, or have playtime.", "Set reminders to take your puppy outside. A puppy of 1 month can hold it for 1 hour, 2 months - 2 hours, etc. Your dog should not be left alone for longer than six hours without a potty break."])  # noqa
-    db.session.add(_7_new_dog_module_1_lesson_1_training_skill_2)
+    db.engine.execute(skills.insert().values(lesson_id=3, skill_id=6))
+
+    _7_new_dog_module_1_lesson_1_training_activity = Activity(lesson_id=3, description='Spend some time with your dog and complete these tasks during the day', tasks=["Introduce your puppy to two family members. They should greet the dog by getting down low to puppy's level and pet them gently."])  # noqa
+    db.session.add(_7_new_dog_module_1_lesson_1_training_activity)
     db.session.commit()
 
-    _8_new_dog_module_1_lesson_1_training_activity = Activity(lesson_id=3, description='Spend some time with your dog and complete these tasks during the day', tasks=["Introduce your puppy to two family members. They should greet the dog by getting down low to puppy's level and pet them gently."])  # noqa
-    db.session.add(_8_new_dog_module_1_lesson_1_training_activity)
+    # Lesson 2
+    _8_new_dog_module_1_lesson_2 = Lesson(module_id=2, title='Lesson 2 - Clicker, Handling, Tug')  # noqa
+    db.session.add(_8_new_dog_module_1_lesson_2)
+    db.session.commit()
+
+    _9_new_dog_module_1_lesson_2_quiz = Quiz(lesson_id=8, prompt='If your dog is trained to go to the toilet at home...', questions=["The designated spot should be near the bed.", "Rugs and newspapers are good for training.", "The spot should be in a quiet place."], answer_idx=2, explanation='Teaching your dog to eliminate on puppy pads, on paper, or in a litter box can make housebreaking hard. The puppy can develop preferences to peeing on paper and actively seek a similar spot. Later, even a house-trained dog can eliminate on newspaper lying on the floor. The best thing is to teach your puppy to do their business outside.')  # noqa
+    db.session.add(_9_new_dog_module_1_lesson_2_quiz)
     db.session.commit()

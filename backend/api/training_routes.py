@@ -5,7 +5,7 @@ from flask_jwt_extended import (
 )
 
 from backend.models import (db, Program, Module, Lesson, Quiz,
-                            Training, Skill, Activity)
+                            skills, Skill, Activity)
 
 training_routes = Blueprint('trainings', __name__)
 

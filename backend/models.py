@@ -6,6 +6,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 db = SQLAlchemy()
 entity_id_seq = db.Sequence('entity_id_seq')
 
+skills = db.Table('lessons_skills',
+                  db.Column('lesson_id', db.Integer, db.ForeignKey(
+                      'lessons.id'), primary_key=True),
+                  db.Column('skill_id', db.Integer, db.ForeignKey(
+                      'skills.id'), primary_key=True)
+                  )
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -165,8 +172,10 @@ class Lesson(db.Model):
     title = db.Column(db.String(100), nullable=False)
 
     quizzes = db.relationship('Quiz', backref='lesson')
-    trainings = db.relationship('Training', backref='lesson')
     activities = db.relationship('Activity', backref='lesson')
+
+    skills = db.relationship('Skill', secondary=skills, lazy='subquery',
+                             backref=db.backref('lessons', lazy=True))
 
     def to_dict(self):
         return {
@@ -174,7 +183,7 @@ class Lesson(db.Model):
             'module_id': self.module_id,
             'title': self.title,
             'quizzes': [quiz.to_dict() for quiz in self.quizzes],
-            'trainings': [training.to_dict() for training in self.trainings],
+            'skills': [skill.to_dict() for skill in self.skills],
             'activities': [activity.to_dict() for activity in self.activities]
         }
 
@@ -200,29 +209,10 @@ class Quiz(db.Model):
         }
 
 
-class Training(db.Model):
-    __tablename__ = 'trainings'
-
-    id = db.Column(db.Integer, entity_id_seq, primary_key=True)
-    lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
-    description = db.Column(db.String(500), nullable=False)
-
-    skills = db.relationship('Skill', backref='training')
-
-    def to_dict(self):
-        return {
-            'id': self.id,
-            'lesson_id': self.lesson_id,
-            'description': self.description,
-            'skills': [skill.to_dict() for skill in self.skills]
-        }
-
-
 class Skill(db.Model):
     __tablename__ = 'skills'
 
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
-    training_id = db.Column(db.Integer, db.ForeignKey('trainings.id'))
     title = db.Column(db.String(50), nullable=False)
     steps = db.Column(db.ARRAY(db.String(5000)), nullable=False)
     duration = db.Column(db.Integer, default=120)
@@ -230,7 +220,6 @@ class Skill(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'training_id': self.training_id,
             'title': self.title,
             'steps': self.steps,
             'duration': self.duration
@@ -261,7 +250,6 @@ class Enrollment(db.Model):
                           db.ForeignKey('modules.id'),
                           db.ForeignKey('lessons.id'),
                           db.ForeignKey('quizzes.id'),
-                          db.ForeignKey('trainings.id'),
                           db.ForeignKey('skills.id'),
                           db.ForeignKey('activities.id'),
                           primary_key=True)
