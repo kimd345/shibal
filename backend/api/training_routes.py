@@ -11,6 +11,7 @@ training_routes = Blueprint('trainings', __name__)
 
 
 @training_routes.route('', methods=['GET'])
+# @jwt_required
 def getPrograms():
     programs = Program.query.all()
     return {'programs': [program.to_dict() for program in programs]}
