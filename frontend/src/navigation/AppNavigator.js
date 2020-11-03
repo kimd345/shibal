@@ -4,8 +4,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import HomeNavigator from './HomeNavigator';
-// import TrainingScreen from '../screens/TrainingScreen';
-import ProgramsListScreen from '../screens/training/ProgramsListScreen';
+import TrainingNavigator from './TrainingNavigator';
 import SocialNavigator from './SocialNavigator';
 import WhistleScreen from '../screens/WhistleScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -32,7 +31,7 @@ const AppNavigator = () => (
     />
     <Tab.Screen
       name='Training'
-      component={ProgramsListScreen} // TrainingScreen
+      component={TrainingNavigator}
       options={{
         tabBarIcon: ({ color }) => (
           <FontAwesome5 name='hand-holding-heart' color={color} size={20} />
