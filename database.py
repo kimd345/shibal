@@ -146,3 +146,90 @@ with app.app_context():
     _18_new_dog_module_1_lesson_3_activity = Activity(lesson_id=14, tasks=['Feed tonight\'s dinner from your hands. Your dog will appreciate the food coming directly from you and next time will focus more on your hands.', 'Weigh your dog. Note the weight so you can compare it in the future.'])  # noqa
     db.session.add(_18_new_dog_module_1_lesson_3_activity)
     db.session.commit()
+
+# Lesson 4
+    _19_new_dog_module_1_lesson_4 = Lesson(module_id=2, title='Lesson 4 - Meet and greet, Name in a circle')  # noqa
+    db.session.add(_19_new_dog_module_1_lesson_4)
+    db.session.commit()
+
+    _20_new_dog_module_1_lesson_4_quiz = Quiz(lesson_id=19, prompt='As the parent of a two-month-old puppy, your top priority in training should be?', choices=['The puppy is too young to train', 'Socialization and potty training', 'Obedience training'], answer_idx=1, explanation=['It is important to expose your puppy to as many new situations, people, sounds, and environments as you can. If they get acquainted with new things and situations up until they are four-months-old, they will be more relaxed in the future.', 'Potty training: The best time to start house training a dog is between 7,5 and 8,5 weeks. This is when puppies develop preferences and will actively search for the chosen substrate. So, if you teach your dog to pee on grass, your dog will avoid peeing elsewhere.'])  # noqa
+    db.session.add(_20_new_dog_module_1_lesson_4_quiz)
+    db.session.commit()
+
+    _21_new_dog_module_1_lesson_4_training_skill_1 = Skill(title='Meet and Greet', steps=['Teach your dog that it is not exciting if you come back home or from the bathroom. This is a building block to being confident when alone.', 'Get your dog\'s attention and feed them a few treats. With your hands or pockets still full of treats, stand up and go to another room or bathroom. Close the door behind you so your puppy is alone.', 'If your dog is not scratching the door, open it and ignore the puppy. Reward them only if they are calm.', 'If your dog is scratching the door wait until they calm down; only then open the door.', 'If your puppy is sxcited to see you and jumps and barks, turn your back on them. Don\'t talk to them or hold any eye contact. Once te dog calms down or sits politely, pet and praise your dog.', 'Once the dog calms down or sits, pet and praise him/her.'])  # noqa
+    db.session.add(_21_new_dog_module_1_lesson_4_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=19, skill_id=21))
+
+    _22_new_dog_module_1_lesson_4_training_skill_2 = Skill(title='Name in a circle', steps=['Make sure all family members are involved in training, so your dog responds to everyone. Sit in a circle or in front of each other, with a few meters in between.', 'One person enthusiastically calls the puppy by name and rewards them with petting and treats.', 'Without a big pause, another person calls the puppy by name and rewards them for reacting. Repeat the exercise, making it as fun as possible.'])  # noqa
+    db.session.add(_22_new_dog_module_1_lesson_4_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=19, skill_id=22))
+    db.engine.execute(skills.insert().values(lesson_id=19, skill_id=17))
+
+    _23_new_dog_module_1_lesson_4_activity = Activity(lesson_id=19, tasks=['Invite two or three guests over to meet your dog. Socialization with different people is important to your dog\'s development.'])  # noqa
+    db.session.add(_23_new_dog_module_1_lesson_4_activity)
+    db.session.commit()
+
+# Lesson 5
+    _24_new_dog_module_1_lesson_5 = Lesson(module_id=2, title='Lesson 5 - Bite inhibition, Put a collar on your dog')  # noqa
+    db.session.add(_24_new_dog_module_1_lesson_5)
+    db.session.commit()
+
+    _25_new_dog_module_1_lesson_5_quiz = Quiz(lesson_id=24, prompt='Puppies are born with one set of teeth and don\'t change them throughout life.', choices=['True', 'False'], answer_idx=1, explanation=['At around four months of age puppies will start losing their primary teeth. At this stage, your puppy will be showing more chewing, mouthing behavior. Make sure you offer them toys and chews, otherwise your furniture and shoes might be at risk.'])  # noqa
+    db.session.add(_25_new_dog_module_1_lesson_5_quiz)
+    db.session.commit()
+
+    _26_new_dog_module_1_lesson_5_training_skill_1 = Skill(title='Bite Inhibition', steps=['Initiate an energetic and rough play session with your puppy. Tease with your hands, roll around with your dog in a playful, yet active, manner.', 'If your puppy gets very excited and bites, squeak in a high pitch, take a time out, and hold your hand as if it hurts.', 'If your puppy doesn\'t react to your squeak and keeps being rough, stand up, leave the room and shut the door. Return after a minute and resume playing.', 'Your puppy will learn that hard bites interrupt and otherwise enjoyable play session. Therefore, will choose to avoid biting or be more gentle.'])  # noqa
+    db.session.add(_26_new_dog_module_1_lesson_5_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=24, skill_id=26))
+
+    _27_new_dog_module_1_lesson_5_training_skill_2 = Skill(title='Put a collar on your dog', steps=['Put on a collar and feed your dog from the hand or play with their favorite toy.', 'Take the collar off and stop any fun activities with your puppy.'])  # noqa
+    db.session.add(_27_new_dog_module_1_lesson_5_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=24, skill_id=27))
+    db.engine.execute(skills.insert().values(lesson_id=24, skill_id=22))
+
+    _28_new_dog_module_1_lesson_5_activity = Activity(lesson_id=24, tasks=['Check when your dog has to get vaccinated or de-wormed.'])  # noqa
+    db.session.add(_28_new_dog_module_1_lesson_5_activity)
+    db.session.commit()
+
+# Lesson 6
+    _29_new_dog_module_1_lesson_6 = Lesson(module_id=2, title='Lesson 6 - Crate II')  # noqa
+    db.session.add(_29_new_dog_module_1_lesson_6)
+    db.session.commit()
+
+    _30_new_dog_module_1_lesson_6_quiz = Quiz(lesson_id=29, prompt='To avoid your dog seeking attention in undesirable ways you should teach your dog an alternative / default behavior.', choices=['True', 'False'], answer_idx=0, explanation=['Teaching your dogs the canine equivalent of asking "please?" when desiring something can result in a huge improvement in your quality of life. For example, whenever your dog wants something - a toy, an interaction, food, they should sit down politely and wait.', 'Conditioned default or automatic behaviors can override instinctive behaviors. The default behavior is one that the dog can fall back on when eager, frustrated, agitated, or just plain wants something that they cannot get. This behavior needs to be practiced to the point where it becomes automatic in nearly any situation.'])  # noqa
+    db.session.add(_30_new_dog_module_1_lesson_6_quiz)
+    db.session.commit()
+
+    _31_new_dog_module_1_lesson_6_training_skill_1 = Skill(title='Crate II', steps=['Give the verbal cue to go to the crate. Once your dog is inside, praise and treat and close the door while giving treats through closed doors. If the dog starts to panic, close the door only halfway.', 'Once you close the door, treat your dog while standing, take a few steps back, then return to give another treat.'])  # noqa
+    db.session.add(_31_new_dog_module_1_lesson_6_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=29, skill_id=31))
+    db.engine.execute(skills.insert().values(lesson_id=29, skill_id=27))
+
+    _32_new_dog_module_1_lesson_6_activity = Activity(lesson_id=29, tasks=['Ring the door bell, reward for no reaction. A lot of dogs get excited about the doorbell because this means guests or strangers are coming.', 'Initiate a play when your dog is relaxed or sleeping so your dog learns that being calm also earns your attention.'])  # noqa
+    db.session.add(_32_new_dog_module_1_lesson_6_activity)
+    db.session.commit()
+
+# Lesson 7
+    _33_new_dog_module_1_lesson_7 = Lesson(module_id=2, title='Lesson 7 - Revision')  # noqa
+    db.session.add(_33_new_dog_module_1_lesson_7)
+    db.session.commit()
+
+    _34_new_dog_module_1_lesson_7_quiz = Quiz(lesson_id=33, prompt='When should you deliver a reward?', choices=['Immediately after the whistle signal', 'Just before pressing the whistle'], answer_idx=0, explanation=['A treat should follow immediately after the whistle, as this marks the exact moment when your dog performed. Reward for the performance.'])  # noqa
+    db.session.add(_34_new_dog_module_1_lesson_7_quiz)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=33, skill_id=31))
+
+    _35_new_dog_module_1_lesson_7_activity = Activity(lesson_id=33, tasks=['Meet your neighbor\'s dogs in a neutral environment. Keep all dogs on a leash, so you can control the situation.'])  # noqa
+    db.session.add(_35_new_dog_module_1_lesson_7_activity)
+    db.session.commit()
