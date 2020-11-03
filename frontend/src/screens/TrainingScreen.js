@@ -1,9 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 
+import ActivityIndicator from '../components/animations/ActivityIndicator';
 import Screen from '../components/Screen';
 import ProgramCard from '../components/programs/ProgramCard';
 import colors from '../config/colors';
+
+import useApi from '../hooks/useApi';
+
+import trainingsApi from '../api/trainings';
 import routes from '../navigation/routes';
 
 const programs = [
@@ -45,6 +50,17 @@ const programs = [
 ];
 
 function TrainingScreen({ navigation }) {
+  const [trainings, setTrainings] = useState();
+
+  const getTrainingsApi = useApi(trainingsApi.getTrainings);
+
+  useEffect(() => {
+    (async () => await getTrainingsApi.request())().then((result) => {
+      setTrainings(result.data);
+    });
+  }, []);
+
+  // console.log('TRAINING SCREEN: ', trainings);
 
   return (
     <Screen style={styles.screen}>
@@ -56,7 +72,7 @@ function TrainingScreen({ navigation }) {
             title={item.title}
             subTitle={item.subTitle}
             image={item.image}
-            onPress={() => navigation.navigate(routes.PROGRAM)}
+            onPress={() => navigation.navigate(routes.PROGRAM, trainings.programs[item.id-1])}
             backgroundColor={item.backgroundColor}
           />
         )}
