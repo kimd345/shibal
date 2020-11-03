@@ -70,24 +70,24 @@ with app.app_context():
     db.session.add(_3_new_dog_module_1_lesson_1)
     db.session.commit()
 
-    _4_new_dog_module_1_lesson_1_quiz = Quiz(lesson_id=3, prompt='In the first week many new dog parents will hear their puppy crying at night. How should you react when you hear your puppy cry?', questions=["Take the puppy to your arms. You want to create a safe space and bond.", "Tell your puppy to \"hush\" and shake lightly by the scruff, as dog mum.", "Make sure your dog doesn\'t need to pee. Otherwise, ignore the puppy."], answer_idx=2, explanation='New home, no siblings, it is normal that your puppy will feel lonely and insecure at night. But, you should think about what your reaction will teach them. Whining = sleeping in the bed. If you don\'t want your dog to sleep in your bed in the future, put earplugs in and ignore your puppy. They will calm down.')  # noqa
+    _4_new_dog_module_1_lesson_1_quiz = Quiz(lesson_id=3, prompt='In the first week many new dog parents will hear their puppy crying at night. How should you react when you hear your puppy cry?', choices=['Take the puppy to your arms. You want to create a safe space and bond.', 'Tell your puppy to "hush" and shake lightly by the scruff, as dog mum.', 'Make sure your dog doesn\'t need to pee. Otherwise, ignore the puppy.'], answer_idx=2, explanation=['New home, no siblings, it is normal that your puppy will feel lonely and insecure at night. But, you should think about what your reaction will teach them. Whining = sleeping in the bed. If you don\'t want your dog to sleep in your bed in the future, put earplugs in and ignore your puppy. They will calm down.'])  # noqa
     db.session.add(_4_new_dog_module_1_lesson_1_quiz)
     db.session.commit()
 
-    _5_new_dog_module_1_lesson_1_training_skill_1 = Skill(title='Hand Feeding', steps=["After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.", "Feed your dog while walking backwards. Your dog follows you and eats from your hand."])  # noqa
+    _5_new_dog_module_1_lesson_1_training_skill_1 = Skill(title='Hand Feeding', steps=['After this exercise, your dog will pay more attention to you and your hands. Get your dog\'s attention and show super tasty food in your hand.', 'Feed your dog while walking backwards. Your dog follows you and eats from your hand.'])  # noqa
     db.session.add(_5_new_dog_module_1_lesson_1_training_skill_1)
     db.session.commit()
 
     db.engine.execute(skills.insert().values(lesson_id=3, skill_id=5))
 
-    _6_new_dog_module_1_lesson_1_training_skill_2 = Skill(title='Potty Training', steps=["To be successful in potty training it is important to have a consistent schedule. Take your puppy to their designated potty area 15 to 30 minutes after feeding time, or immediately after they wake up.", "If your dog cannot be taken outside then the spot should be as close to the doors; placing a sponge soaked in urine might help your puppy find the correct place.", "Once you are outside, concentrate on the mission. Keep your dog on a short lead, allow sniffing, but do not play until they are done.", "After your pet has been eliminated, praise enthusiastically and reward with time outside to explore, or have playtime.", "Set reminders to take your puppy outside. A puppy of 1 month can hold it for 1 hour, 2 months - 2 hours, etc. Your dog should not be left alone for longer than six hours without a potty break."])  # noqa
+    _6_new_dog_module_1_lesson_1_training_skill_2 = Skill(title='Potty Training', steps=['To be successful in potty training it is important to have a consistent schedule. Take your puppy to their designated potty area 15 to 30 minutes after feeding time, or immediately after they wake up.', 'If your dog cannot be taken outside then the spot should be as close to the doors; placing a sponge soaked in urine might help your puppy find the correct place.', 'Once you are outside, concentrate on the mission. Keep your dog on a short lead, allow sniffing, but do not play until they are done.', 'After your pet has been eliminated, praise enthusiastically and reward with time outside to explore, or have playtime.', 'Set reminders to take your puppy outside. A puppy of 1 month can hold it for 1 hour, 2 months - 2 hours, etc. Your dog should not be left alone for longer than six hours without a potty break.'])  # noqa
     db.session.add(_6_new_dog_module_1_lesson_1_training_skill_2)
     db.session.commit()
 
     db.engine.execute(skills.insert().values(lesson_id=3, skill_id=6))
 
-    _7_new_dog_module_1_lesson_1_training_activity = Activity(lesson_id=3, tasks=["Introduce your puppy to two family members. They should greet the dog by getting down low to puppy's level and pet them gently."])  # noqa
-    db.session.add(_7_new_dog_module_1_lesson_1_training_activity)
+    _7_new_dog_module_1_lesson_1_activity = Activity(lesson_id=3, tasks=['Introduce your puppy to two family members. They should greet the dog by getting down low to puppy\'s level and pet them gently.'])  # noqa
+    db.session.add(_7_new_dog_module_1_lesson_1_activity)
     db.session.commit()
 
     # Lesson 2
@@ -95,28 +95,54 @@ with app.app_context():
     db.session.add(_8_new_dog_module_1_lesson_2)
     db.session.commit()
 
-    _9_new_dog_module_1_lesson_2_quiz = Quiz(lesson_id=8, prompt='If your dog is trained to go to the toilet at home...', questions=["The designated spot should be near the bed.", "Rugs and newspapers are good for training.", "The spot should be in a quiet place."], answer_idx=2, explanation='Teaching your dog to eliminate on puppy pads, on paper, or in a litter box can make housebreaking hard. The puppy can develop preferences to peeing on paper and actively seek a similar spot. Later, even a house-trained dog can eliminate on newspaper lying on the floor. The best thing is to teach your puppy to do their business outside.')  # noqa
+    _9_new_dog_module_1_lesson_2_quiz = Quiz(lesson_id=8, prompt='If your dog is trained to go to the toilet at home...', choices=['The designated spot should be near the bed.', 'Rugs and newspapers are good for training.', 'The spot should be in a quiet place.'], answer_idx=2, explanation=["Teaching your dog to eliminate on puppy pads, on paper, or in a litter box can make housebreaking hard. The puppy can develop preferences to peeing on paper and actively seek a similar spot. Later, even a house-trained dog can eliminate on newspaper lying on the floor. The best thing is to teach your puppy to do their business outside."])  # noqa
     db.session.add(_9_new_dog_module_1_lesson_2_quiz)
     db.session.commit()
 
-    _10_new_dog_module_1_lesson_2_training_skill_1 = Skill(title='Whistle', steps=["In this exercise you are teaching your dog to associate a specific whistle sound with a reward / to a treat.", "Start by standing or sitting next to your dog.", "Press the whistle button and immediately give a treat.", "A food reward must follow after each whistle so your dog learns whistle = food. You can use the whistle in the app."])  # noqa
+    _10_new_dog_module_1_lesson_2_training_skill_1 = Skill(title='Whistle', steps=['In this exercise you are teaching your dog to associate a specific whistle sound with a reward / to a treat.', 'Start by standing or sitting next to your dog.', 'Press the whistle button and immediately give a treat.', 'A food reward must follow after each whistle so your dog learns whistle = food. You can use the whistle in the app.'])  # noqa
     db.session.add(_10_new_dog_module_1_lesson_2_training_skill_1)
     db.session.commit()
 
     db.engine.execute(skills.insert().values(lesson_id=8, skill_id=10))
 
-    _11_new_dog_module_1_lesson_2_training_skill_2 = Skill(title='Handling', steps=["It is important that your puppy is used to your hands, being touched and lifted up. This will come very handy in many life situations in the future.", "Lift your puppy up and put them on your lap or kneel next to them and hug, pulling them close to you. Wait until the puppy is calm and give them some treats.", "Put your puppy down or stop touching them when they are calm."])  # noqa
+    _11_new_dog_module_1_lesson_2_training_skill_2 = Skill(title='Handling', steps=['It is important that your puppy is used to your hands, being touched and lifted up. This will come very handy in many life situations in the future.', 'Lift your puppy up and put them on your lap or kneel next to them and hug, pulling them close to you. Wait until the puppy is calm and give them some treats.', 'Put your puppy down or stop touching them when they are calm.'])  # noqa
     db.session.add(_11_new_dog_module_1_lesson_2_training_skill_2)
     db.session.commit()
 
     db.engine.execute(skills.insert().values(lesson_id=8, skill_id=11))
 
-    _12_new_dog_module_1_lesson_2_training_skill_3 = Skill(title='Tug', steps=["Take a rope toy or a napkin, offer it to your dog and move it like a cat toy, wiggling on the ground. Once your dog \"attacks\" it, praise and gently pull on the toy.", "When your dog mouths it, gently shake and tug the rope toy to get the dog to hold and pull against you.", "When your dog tugs back on the rope toy, praise your dog enthusiastically. The game itself is the reward, no need for treats."])  # noqa
+    _12_new_dog_module_1_lesson_2_training_skill_3 = Skill(title='Tug', steps=['Take a rope toy or a napkin, offer it to your dog and move it like a cat toy, wiggling on the ground. Once your dog "attacks" it, praise and gently pull on the toy.', 'When your dog mouths it, gently shake and tug the rope toy to get the dog to hold and pull against you.', 'When your dog tugs back on the rope toy, praise your dog enthusiastically. The game itself is the reward, no need for treats.'])  # noqa
     db.session.add(_12_new_dog_module_1_lesson_2_training_skill_3)
     db.session.commit()
 
     db.engine.execute(skills.insert().values(lesson_id=8, skill_id=12))
 
-    _13_new_dog_module_1_lesson_2_training_activity = Activity(lesson_id=8, tasks=["Paws are a sensitive area for many dogs. Touch and apply light pressure when your dog is relaxed so the dog gets used to it."])  # noqa
-    db.session.add(_13_new_dog_module_1_lesson_2_training_activity)
+    _13_new_dog_module_1_lesson_2_activity = Activity(lesson_id=8, tasks=['Paws are a sensitive area for many dogs. Touch and apply light pressure when your dog is relaxed so the dog gets used to it.'])  # noqa
+    db.session.add(_13_new_dog_module_1_lesson_2_activity)
+    db.session.commit()
+
+# Lesson 3
+    _14_new_dog_module_1_lesson_3 = Lesson(module_id=2, title='Lesson 3 - Crate I, Name')  # noqa
+    db.session.add(_14_new_dog_module_1_lesson_3)
+    db.session.commit()
+
+    _15_new_dog_module_1_lesson_3_quiz = Quiz(lesson_id=14, prompt='If your dog is trained to go to the toilet at home...', choices=['True', 'False'], answer_idx=1, explanation=['Crates are a great tool to provide your dog with a safe, puppy-proofed environment, a safe spot to hide from unwanted guests, and somewhere to sleep undisturbed.', 'A crate should be big enough so your dog can stand up and turn around comfortably, with space for food and water bowls. Your dog should not use the crate as a toilet. Soft bedding should be placed on the bottom so your dog can rest comfortably.', 'Do not crate your dog only when you leave home, so your dog does not associate your absence with the crate. When you are at home, provide some random time periods of crating.'])  # noqa
+    db.session.add(_15_new_dog_module_1_lesson_3_quiz)
+    db.session.commit()
+
+    _16_new_dog_module_1_lesson_3_training_skill_1 = Skill(title='Crate I', steps=['Crates are a great tool to provide your dog with a safe, puppy-proofed environment.', 'Prepare some tasty treats, think of a verbal cue, for example, "sleep time," or "crate," or "time off" that you will use.', 'Give the cue and toss a treat in the crate. Praise your dog enthusiastically for entering the crate.', 'Give a release cue, "OK," or "free," or "that\'s it," to let your dog know they can exit the crate. Do not treat for leaving the crate.'])  # noqa
+    db.session.add(_16_new_dog_module_1_lesson_3_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=14, skill_id=16))
+
+    _17_new_dog_module_1_lesson_3_training_skill_2 = Skill(title='Name', steps=['Call your dog by name.', 'If your dog does not react, do not call out again. Instead, click or make kissy sounds to get the dog to look at you, and follow with a whistle and treat.', 'If your dog keeps their attention on you, distract them by throwing a toy or treat on the ground and call them by name again.'])  # noqa
+    db.session.add(_17_new_dog_module_1_lesson_3_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=14, skill_id=17))
+    db.engine.execute(skills.insert().values(lesson_id=14, skill_id=12))
+
+    _18_new_dog_module_1_lesson_3_activity = Activity(lesson_id=14, tasks=['Feed tonight\'s dinner from your hands. Your dog will appreciate the food coming directly from you and next time will focus more on your hands.', 'Weigh your dog. Note the weight so you can compare it in the future.'])  # noqa
+    db.session.add(_18_new_dog_module_1_lesson_3_activity)
     db.session.commit()

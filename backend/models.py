@@ -194,16 +194,16 @@ class Quiz(db.Model):
     id = db.Column(db.Integer, entity_id_seq, primary_key=True)
     lesson_id = db.Column(db.Integer, db.ForeignKey('lessons.id'))
     prompt = db.Column(db.String(500), nullable=False)
-    questions = db.Column(db.ARRAY(db.String(2000)), nullable=False)
+    choices = db.Column(db.ARRAY(db.String(2000)), nullable=False)
     answer_idx = db.Column(db.Integer, nullable=False)
-    explanation = db.Column(db.String(500), nullable=False)
+    explanation = db.Column(db.ARRAY(db.String(2000)), nullable=False)
 
     def to_dict(self):
         return {
             'id': self.id,
             'lesson_id': self.lesson_id,
             'prompt': self.prompt,
-            'questions': self.questions,
+            'choices': self.choices,
             'answer_idx': self.answer_idx,
             'explanation': self.explanation
         }
