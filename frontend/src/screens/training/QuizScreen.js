@@ -1,13 +1,14 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
+import colors from '../../config/colors';
 import Screen from '../../components/Screen';
 import Header from '../../components/Header';
 import Text from '../../components/Text';
-import colors from '../../config/colors';
-import routes from '../../navigation/routes';
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
+
+import routes from '../../navigation/routes';
 
 function QuizScreen({ navigation, route }) {
   const quiz = route.params;
@@ -20,16 +21,19 @@ function QuizScreen({ navigation, route }) {
           <Header style={styles.header}>Daily Question</Header>
           <Text style={styles.prompt}>{quiz.prompt}</Text>
         </View>
-        {choices.map(choice => {
-          return (
+        <FlatList
+          data={choices}
+          keyExtractor={(choice) => choices.indexOf(choice).toString()}
+          renderItem={({ item }) => (
             <Button
-              key={choices.indexOf(choice)}
-              title={choice}
+              title={item}
               height={70}
-              width='70%'
+              width='80%'
+              color='white'
+              textColor='mossygrey'
             />
-          )
-        })}
+          )}
+        />
     </Screen>
   );
 }

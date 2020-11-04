@@ -7,16 +7,16 @@ import colors from '../../config/colors';
 
 function ProgramCard({ title, subTitle, image, onPress, backgroundColor }) {
   return (
-    <TouchableOpacity onPress={onPress}>
-      <View
-        style={[styles.container, { backgroundColor: colors[backgroundColor] }]}
-      >
+    <TouchableOpacity 
+      style={[styles.container, { backgroundColor: colors[backgroundColor] }]} 
+      onPress={onPress}
+      activeOpacity={0.65}
+    >
         <Image style={styles.image} source={image} />
         <View style={styles.detailsContainer}>
           <Header style={styles.title}>{title}</Header>
           <Text style={styles.subTitle}>{subTitle}</Text>
         </View>
-      </View>
     </TouchableOpacity>
   );
 }
@@ -32,6 +32,14 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     justifyContent: 'center',
     height: 150,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 2,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 2,
   },
   detailsContainer: {
     padding: 20,

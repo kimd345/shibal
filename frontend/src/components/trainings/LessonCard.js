@@ -9,18 +9,18 @@ import Icon from '../Icon';
 
 function LessonCard({ title, subTitle, icon, onPress }) {
   return (
-    <>
-      <TouchableOpacity onPress={onPress}>
-        <View style={styles.container}>
-          <Icon name={icon} size={80} backgroundColor='white' iconColor='#2e332e' />
-          <View style={styles.detailsContainer}>
-            <Header style={styles.title}>{title}</Header>
-            <Text style={styles.subTitle} numberOfLines={1}>{subTitle}</Text>
-          </View>
-          <FontAwesome5 name='chevron-right' color='#2e332e' size={20} />
-        </View>
-      </TouchableOpacity>
-    </>
+    <TouchableOpacity 
+      style={styles.container} 
+      onPress={onPress} 
+      activeOpacity={0.65}
+    >
+      <Icon name={icon} size={80} backgroundColor='white' iconColor='#2e332e' />
+      <View style={styles.detailsContainer}>
+        <Header style={styles.title}>{title}</Header>
+        <Text style={styles.subTitle} numberOfLines={1}>{subTitle}</Text>
+      </View>
+      <FontAwesome5 name='chevron-right' color='#2e332e' size={20} />
+    </TouchableOpacity>
   );
 }
 
@@ -34,6 +34,14 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     height: 120,
     padding: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 2,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 2,
   },
   detailsContainer: {
     padding: 20,
