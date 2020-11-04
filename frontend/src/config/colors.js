@@ -28,7 +28,8 @@ export default {
   linkedin: '#0072B1',
   angellist: '#5F29F4',
 
-  grass: '#50C878', // paris
+  grass: '#50C878',
+  pastelMintBlue: '#b1efe0',
   sakura: '#FFB7C5', // cherry blossom
   palepink: '#ffdae0',
 };
