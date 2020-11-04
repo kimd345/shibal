@@ -6,6 +6,7 @@ import colors from '../config/colors';
 import TrainingScreen from '../screens/TrainingScreen';
 import ProgramScreen from '../screens/training/ProgramScreen';
 import LessonScreen from '../screens/training/LessonScreen';
+import QuizScreen from '../screens/training/QuizScreen';
 
 
 const Stack = createStackNavigator();
@@ -28,6 +29,10 @@ function TrainingNavigator({ navigation }) {
 	  <Stack.Screen
 			name='Lesson'
 			component={LessonScreen}
+	  />
+	  <Stack.Screen
+			name='Quiz'
+			component={QuizScreen}
 	  />
 	</Stack.Navigator>
   );

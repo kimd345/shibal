@@ -52,6 +52,7 @@ function AppButton({
           fontFamily: defaultStyles.systemText[fontFamily],
           fontSize,
           fontWeight,
+          textAlign: 'center',
         }}
       >
         {title}

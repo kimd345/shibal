@@ -21,6 +21,7 @@ function LessonScreen({ navigation, route }) {
         icon='question'
         title='Quiz'
         subTitle={lesson.quizzes[0].prompt}
+        onPress={() => navigation.navigate(routes.QUIZ, lesson.quizzes[0])}
       />
     </Screen>
   );

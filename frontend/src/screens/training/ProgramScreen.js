@@ -15,7 +15,7 @@ function ProgramScreen({ navigation, route }) {
     <Screen style={styles.screen}>
       <View style={styles.infoContainer}>
         <Header style={styles.header}>{program.title}</Header>
-        <Text>{program.description}</Text>
+        <Text style={styles.description}>{program.description}</Text>
       </View>
       
       <FlatList
@@ -58,6 +58,9 @@ const styles = StyleSheet.create({
     fontSize: 26,
     lineHeight: 26,
     marginBottom: 20,
+  },
+  description: {
+    lineHeight: 28,
   },
   moduleText: {
     fontSize: 20,

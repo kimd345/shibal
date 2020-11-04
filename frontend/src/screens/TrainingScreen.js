@@ -62,7 +62,7 @@ function TrainingScreen({ navigation }) {
     <>
       <ActivityIndicator
         visible={getTrainingsApi.loading}
-        backgroundColor='primaryBackground'
+        backgroundColor='white'
       />
       <FlatList
         data={programs}
