@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
+import { FlatList } from 'react-native';
 
 import ActivityIndicator from '../components/animations/ActivityIndicator';
-import Screen from '../components/Screen';
-import ProgramCard from '../components/programs/ProgramCard';
-import colors from '../config/colors';
+import ProgramCard from '../components/trainings/ProgramCard';
 
 import useApi from '../hooks/useApi';
 
@@ -60,10 +58,12 @@ function TrainingScreen({ navigation }) {
     });
   }, []);
 
-  // console.log('TRAINING SCREEN: ', trainings);
-
   return (
-    <Screen style={styles.screen}>
+    <>
+      <ActivityIndicator
+        visible={getTrainingsApi.loading}
+        backgroundColor='primaryBackground'
+      />
       <FlatList
         data={programs}
         keyExtractor={(program) => program.id.toString()}
@@ -77,14 +77,8 @@ function TrainingScreen({ navigation }) {
           />
         )}
       />
-    </Screen>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: colors.palegrey,
-  },
-});
 
 export default TrainingScreen;

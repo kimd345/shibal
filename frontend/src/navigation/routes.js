@@ -9,6 +9,7 @@ export default Object.freeze({
 
   TRAINING: 'Training',
   PROGRAM: 'Program',
+  LESSON: 'Lesson',
 
   SOCIAL: 'Social',
   NEW_POST: 'NewPost',

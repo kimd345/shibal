@@ -7,7 +7,7 @@ export default {
   tabButton: '#B5915E', // dark tan
 
   black: '#000',
-  mossygrey: '#525B52', // dark
+  mossygrey: '#2e332e', // dark
   greenishgrey: '#879787', // medium
   leafygrey: '#AAB6AA', // light
   palegrey: '#F6F6F6',
@@ -30,4 +30,5 @@ export default {
 
   grass: '#50C878', // paris
   sakura: '#FFB7C5', // cherry blossom
+  palepink: '#ffdae0',
 };

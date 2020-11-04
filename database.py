@@ -126,7 +126,7 @@ with app.app_context():
     db.session.add(_14_new_dog_module_1_lesson_3)
     db.session.commit()
 
-    _15_new_dog_module_1_lesson_3_quiz = Quiz(lesson_id=14, prompt='If your dog is trained to go to the toilet at home...', choices=['True', 'False'], answer_idx=1, explanation=['Crates are a great tool to provide your dog with a safe, puppy-proofed environment, a safe spot to hide from unwanted guests, and somewhere to sleep undisturbed.', 'A crate should be big enough so your dog can stand up and turn around comfortably, with space for food and water bowls. Your dog should not use the crate as a toilet. Soft bedding should be placed on the bottom so your dog can rest comfortably.', 'Do not crate your dog only when you leave home, so your dog does not associate your absence with the crate. When you are at home, provide some random time periods of crating.'])  # noqa
+    _15_new_dog_module_1_lesson_3_quiz = Quiz(lesson_id=14, prompt='Can the dog\'s crate be used as a punishment?', choices=['True', 'False'], answer_idx=1, explanation=['Crates are a great tool to provide your dog with a safe, puppy-proofed environment, a safe spot to hide from unwanted guests, and somewhere to sleep undisturbed.', 'A crate should be big enough so your dog can stand up and turn around comfortably, with space for food and water bowls. Your dog should not use the crate as a toilet. Soft bedding should be placed on the bottom so your dog can rest comfortably.', 'Do not crate your dog only when you leave home, so your dog does not associate your absence with the crate. When you are at home, provide some random time periods of crating.'])  # noqa
     db.session.add(_15_new_dog_module_1_lesson_3_quiz)
     db.session.commit()
 

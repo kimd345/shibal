@@ -1,5 +1,4 @@
-import { useRoute } from '@react-navigation/native';
-import React, { useState } from 'react';
+import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
 import Screen from '../../components/Screen';
@@ -32,6 +31,7 @@ function ProgramScreen({ navigation, route }) {
                 <>
                   <ListItem
                     title={item.title}
+                    onPress={() => navigation.navigate(routes.LESSON, { programTitle: program.title, lesson: item })}
                   />
                   <ListItemSeparator />
                 </>
@@ -48,7 +48,6 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.white,
     alignItems: 'center',
-    // justifyContent: 'center',
   },
   infoContainer: {
     alignItems: 'center',

@@ -43,9 +43,8 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
   subTitle: {
-    color: colors.secondary,
-    textAlign: 'left',
     fontSize: 12,
+    textAlign: 'left',
     color: colors.white,
   },
   image: {
