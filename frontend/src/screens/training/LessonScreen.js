@@ -22,6 +22,12 @@ function LessonScreen({ navigation, route }) {
         subTitle={lesson.quizzes[0].prompt}
         onPress={() => navigation.navigate(routes.QUIZ, lesson.quizzes[0])}
       />
+      <LessonCard
+        icon='flag-checkered'
+        title='Training'
+        subTitle={`${Math.ceil(lesson.skills.length * 4)} min`}
+        onPress={() => navigation.navigate(routes.SKILLS, lesson.skills)}
+      />
     </>
   );
 }

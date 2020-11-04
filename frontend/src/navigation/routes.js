@@ -11,6 +11,9 @@ export default Object.freeze({
   PROGRAM: 'Program',
   LESSON: 'Lesson',
   QUIZ: 'Quiz',
+  SKILLS: 'Skills',
+  SKILL: 'Skill',
+  ACTIVITY: 'Activity',
 
   SOCIAL: 'Social',
   NEW_POST: 'NewPost',

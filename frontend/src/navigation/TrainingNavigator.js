@@ -7,6 +7,7 @@ import TrainingScreen from '../screens/TrainingScreen';
 import ProgramScreen from '../screens/training/ProgramScreen';
 import LessonScreen from '../screens/training/LessonScreen';
 import QuizScreen from '../screens/training/QuizScreen';
+import SkillsScreen from '../screens/training/SkillsScreen';
 
 
 const Stack = createStackNavigator();
@@ -15,7 +16,8 @@ function TrainingNavigator({ navigation }) {
   return (
 	<Stack.Navigator
 		screenOptions={{
-			headerTintColor: colors.mossygrey,
+      headerTintColor: colors.mossygrey,
+      headerBackTitle: 'Back',
 		}}
 	>
 	  <Stack.Screen
@@ -33,6 +35,14 @@ function TrainingNavigator({ navigation }) {
 	  <Stack.Screen
 			name='Quiz'
 			component={QuizScreen}
+	  />
+	  <Stack.Screen
+			name='Skills'
+			component={SkillsScreen}
+			options={{
+				headerTintColor: colors.white,
+				headerStyle: { backgroundColor: colors.grass },
+			}}
 	  />
 	</Stack.Navigator>
   );

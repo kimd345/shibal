@@ -16,24 +16,24 @@ function QuizScreen({ navigation, route }) {
 
   return (
     <Screen style={styles.screen}>
-        <View style={styles.infoContainer}>
-          <Icon name='question' size={120} backgroundColor='white' iconColor='salmon' />
-          <Header style={styles.header}>Daily Question</Header>
-          <Text style={styles.prompt}>{quiz.prompt}</Text>
-        </View>
-        <FlatList
-          data={choices}
-          keyExtractor={(choice) => choices.indexOf(choice).toString()}
-          renderItem={({ item }) => (
-            <Button
-              title={item}
-              height={70}
-              width='80%'
-              color='white'
-              textColor='mossygrey'
-            />
-          )}
-        />
+      <View style={styles.infoContainer}>
+        <Icon name='question' size={120} backgroundColor='white' iconColor='salmon' />
+        <Header style={styles.header}>Daily Question</Header>
+        <Text style={styles.prompt}>{quiz.prompt}</Text>
+      </View>
+      <FlatList
+        data={choices}
+        keyExtractor={(choice) => choices.indexOf(choice).toString()}
+        renderItem={({ item }) => (
+          <Button
+            title={item}
+            height={70}
+            width='80%'
+            color='white'
+            textColor='mossygrey'
+          />
+        )}
+      />
     </Screen>
   );
 }
