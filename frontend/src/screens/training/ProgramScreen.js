@@ -23,8 +23,12 @@ function ProgramScreen({ navigation, route }) {
         keyExtractor={(module) => module.id.toString()}
         renderItem={({ item }) => (
           <>
-            <Text style={styles.moduleText}>{item.title}</Text>
-            <FlatList 
+            <View style={styles.moduleTextContainer}>
+              <Text style={styles.moduleText}>{item.title}</Text>
+            </View>
+            <ListItemSeparator />
+            <FlatList
+              style={styles.flatList}
               data={item.lessons}
               keyExtractor={(lesson) => lesson.id.toString()}
               renderItem={({ item }) => (
@@ -46,7 +50,6 @@ function ProgramScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.white,
     alignItems: 'center',
   },
   infoContainer: {
@@ -61,6 +64,10 @@ const styles = StyleSheet.create({
   },
   description: {
     lineHeight: 28,
+  },
+  moduleTextContainer: {
+    backgroundColor: colors.white,
+    width: '100%',
   },
   moduleText: {
     fontSize: 20,

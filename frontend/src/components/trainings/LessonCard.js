@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import Text from '../Text';
@@ -14,7 +14,7 @@ function LessonCard({ title, subTitle, icon, onPress }) {
       onPress={onPress} 
       activeOpacity={0.65}
     >
-      <Icon name={icon} size={80} backgroundColor='white' iconColor='#2e332e' />
+      <Icon name={icon} size={80} backgroundColor='white' iconColor='salmon' />
       <View style={styles.detailsContainer}>
         <Header style={styles.title}>{title}</Header>
         <Text style={styles.subTitle} numberOfLines={1}>{subTitle}</Text>
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 10,
-    backgroundColor: colors.palepink,
+    backgroundColor: colors.white,
     marginHorizontal: 20,
     marginVertical: 5,
     height: 120,

@@ -9,7 +9,7 @@ function ListItem({
   subtitle,
   IconComponent,
   onPress,
-  activeOpacity = 0.65,
+  activeOpacity=0.65,
 }) {
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>

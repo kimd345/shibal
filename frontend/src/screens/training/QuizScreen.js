@@ -17,7 +17,7 @@ function QuizScreen({ navigation, route }) {
   return (
     <Screen style={styles.screen}>
         <View style={styles.infoContainer}>
-          <Icon name='question' size={120} backgroundColor='white' iconColor='#2e332e' />
+          <Icon name='question' size={120} backgroundColor='white' iconColor='salmon' />
           <Header style={styles.header}>Daily Question</Header>
           <Text style={styles.prompt}>{quiz.prompt}</Text>
         </View>

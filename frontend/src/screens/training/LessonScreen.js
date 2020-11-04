@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Screen from '../../components/Screen';
 import Text from '../../components/Text';
 import colors from '../../config/colors';
 import routes from '../../navigation/routes';
@@ -12,10 +11,10 @@ function LessonScreen({ navigation, route }) {
   const lesson = route.params.lesson;
 
   return (
-    <Screen style={styles.screen}>
+    <>
       <View style={styles.infoContainer}>
         <Text style={styles.programTitle}>{programTitle}</Text>
-        <Text style={styles.lessonTitle}>{lesson.title.split(' - ')[0]} Plan</Text>
+        <Text style={styles.lessonTitle}>{lesson.title}</Text>
       </View>
       <LessonCard
         icon='question'
@@ -23,14 +22,11 @@ function LessonScreen({ navigation, route }) {
         subTitle={lesson.quizzes[0].prompt}
         onPress={() => navigation.navigate(routes.QUIZ, lesson.quizzes[0])}
       />
-    </Screen>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: colors.white,
-  },
   infoContainer: {
     alignSelf: 'flex-start',
     padding: 30,
