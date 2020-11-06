@@ -44,6 +44,7 @@ function Slider({ items }) {
               key={id}
               stepNum={id}
               item={item} 
+              numSteps={items.length}
             />
           )
         })}
