@@ -5,7 +5,7 @@ import { Entypo } from '@expo/vector-icons';
 import Text from '../Text';
 import Button from '../Button';
 
-function SliderItem(props) {
+function SkillSliderItem(props) {
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
   
@@ -18,8 +18,8 @@ function SliderItem(props) {
         && (<Button 
               title='Finish' 
               width='50%'
-              color='facebook'
-              onPress={() => alert('SliderItem.js')}
+              color='primaryButton'
+              onPress={() => alert('SkillSliderItem.js')}
             />)}
     </View>
   );
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SliderItem;
+export default SkillSliderItem;

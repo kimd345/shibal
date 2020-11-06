@@ -9,6 +9,9 @@ import LessonCard from '../../components/trainings/LessonCard';
 function LessonScreen({ navigation, route }) {
   const programTitle = route.params.programTitle;
   const lesson = route.params.lesson;
+  const duration = (lesson.skills.reduce((totalDuration, skill) => {
+    return (totalDuration + skill.duration);
+  }, 0) / 60);
 
   return (
     <>
@@ -25,7 +28,7 @@ function LessonScreen({ navigation, route }) {
       <LessonCard
         icon='flag-checkered'
         title='Training'
-        subTitle={`${Math.ceil(lesson.skills.length * 4)} min`}
+        subTitle={`${duration} min`}
         onPress={() => navigation.navigate(routes.SKILLS, lesson.skills)}
       />
     </>

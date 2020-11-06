@@ -5,7 +5,7 @@ import colors from '../../config/colors';
 import Screen from '../../components/Screen';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
-import Slider from '../../components/sliders/Slider';
+import SkillSlider from '../../components/trainings/SkillSlider';
 
 import routes from '../../navigation/routes';
 
@@ -14,7 +14,7 @@ function SkillScreen({ navigation, route }) {
   
   return (
     <Screen style={styles.screen}>
-      <Slider items={skill.steps} />
+      <SkillSlider items={skill.steps} />
     </Screen>
   );
 }

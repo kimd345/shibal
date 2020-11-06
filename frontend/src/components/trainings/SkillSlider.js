@@ -3,9 +3,9 @@ import { View, StyleSheet, ScrollView, useWindowDimensions } from 'react-native'
 
 import colors from '../../config/colors';
 import Whistle from '../Whistle';
-import SliderItem from './SliderItem';
+import SkillSliderItem from './SkillSliderItem';
 
-function Slider({ items }) {
+function SkillSlider({ items }) {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
 
   const width = useWindowDimensions().width;
@@ -40,7 +40,7 @@ function Slider({ items }) {
         {items.map(item => {
           const id = items.indexOf(item) + 1;
           return (
-            <SliderItem
+            <SkillSliderItem
               key={id}
               stepNum={id}
               item={item} 
@@ -54,17 +54,22 @@ function Slider({ items }) {
           <View style={[styles.paginationDots, { opacity: pageIndex === index ? 1 : 0.2 }]} key={index} />
         ))}
       </View>
-      {showWhistle && 
-        <View style={styles.whistleWrapper}>
-          <Whistle size={100} />
-        </View>
-      }
+      <View style={styles.timerWrapper}>
+        
+        {showWhistle && 
+          <View style={styles.whistleWrapper}>
+            <Whistle size={100} />
+          </View>
+        }
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    alignItems: 'center',
+  },
   paginationWrapper: {
     position: 'absolute',
     bottom: 150,
@@ -81,10 +86,12 @@ const styles = StyleSheet.create({
     backgroundColor: colors.greenishgrey,
     marginLeft: 10,
   },
+  timerWrapper: {
+    flexDirection: 'row',
+  },
   whistleWrapper: {
-    alignSelf: 'center',
     marginBottom: 20,
   },
 });
 
-export default Slider;
+export default SkillSlider;
