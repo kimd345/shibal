@@ -13,7 +13,7 @@ function SkillSliderItem(props) {
     <View style={[styles.container, { width, height }]}>
       <Entypo name="traffic-cone" size={60} color="black" />
       <Text style={styles.step}>Step {props.stepNum}</Text>
-      <Text style={styles.directions}>{props.item}</Text>
+      <Text style={styles.directions}>{props.step}</Text>
       {props.numSteps === props.stepNum
         && (<Button 
               title='Finish' 

@@ -14,7 +14,7 @@ function SkillScreen({ navigation, route }) {
   
   return (
     <Screen style={styles.screen}>
-      <SkillSlider items={skill.steps} />
+      <SkillSlider steps={skill.steps} />
     </Screen>
   );
 }

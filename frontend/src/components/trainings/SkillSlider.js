@@ -5,11 +5,11 @@ import colors from '../../config/colors';
 import Whistle from '../Whistle';
 import SkillSliderItem from './SkillSliderItem';
 
-function SkillSlider({ items }) {
+function SkillSlider({ steps }) {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
 
   const width = useWindowDimensions().width;
-  const showWhistle = items.join(',').includes('whistle');
+  const showWhistle = steps.join(',').includes('whistle');
 
   const setSliderPage = (event) => {
     const { currentPage } = sliderState;
@@ -37,20 +37,20 @@ function SkillSlider({ items }) {
             setSliderPage(event);
           }}
       >
-        {items.map(item => {
-          const id = items.indexOf(item) + 1;
+        {steps.map(step => {
+          const id = steps.indexOf(step) + 1;
           return (
             <SkillSliderItem
               key={id}
               stepNum={id}
-              item={item} 
-              numSteps={items.length}
+              step={step} 
+              numSteps={steps.length}
             />
           )
         })}
       </ScrollView>
       <View style={styles.paginationWrapper}>
-        {Array.from(Array(items.length).keys()).map((key, index) => (
+        {Array.from(Array(steps.length).keys()).map((key, index) => (
           <View style={[styles.paginationDots, { opacity: pageIndex === index ? 1 : 0.2 }]} key={index} />
         ))}
       </View>
