@@ -21,23 +21,23 @@ function ProgramScreen({ navigation, route }) {
       <FlatList
         data={program.modules}
         keyExtractor={(module) => module.id.toString()}
+        ItemSeparatorComponent={() => <ListItemSeparator />}
         renderItem={({ item }) => (
           <>
             <View style={styles.moduleTextContainer}>
               <Text style={styles.moduleText}>{item.title}</Text>
             </View>
-            <ListItemSeparator />
             <FlatList
               style={styles.flatList}
               data={item.lessons}
               keyExtractor={(lesson) => lesson.id.toString()}
+              ItemSeparatorComponent={() => <ListItemSeparator />}
               renderItem={({ item }) => (
                 <>
                   <ListItem
                     title={item.title}
                     onPress={() => navigation.navigate(routes.LESSON, { programTitle: program.title, lesson: item })}
                   />
-                  <ListItemSeparator />
                 </>
               )}
             />
