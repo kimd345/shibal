@@ -4,8 +4,9 @@ import { View, StyleSheet, ScrollView, useWindowDimensions } from 'react-native'
 import colors from '../../config/colors';
 import Whistle from '../Whistle';
 import SkillSliderItem from './SkillSliderItem';
+import Timer from './Timer';
 
-function SkillSlider({ steps }) {
+function SkillSlider({ steps, duration }) {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
 
   const width = useWindowDimensions().width;
@@ -55,7 +56,7 @@ function SkillSlider({ steps }) {
         ))}
       </View>
       <View style={styles.timerWrapper}>
-        
+        <Timer duration={duration} />
         {showWhistle && 
           <View style={styles.whistleWrapper}>
             <Whistle size={100} />
@@ -88,6 +89,7 @@ const styles = StyleSheet.create({
   },
   timerWrapper: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   whistleWrapper: {
     marginBottom: 20,
