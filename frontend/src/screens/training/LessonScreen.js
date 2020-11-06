@@ -9,9 +9,11 @@ import LessonCard from '../../components/trainings/LessonCard';
 function LessonScreen({ navigation, route }) {
   const programTitle = route.params.programTitle;
   const lesson = route.params.lesson;
-  const duration = (lesson.skills.reduce((totalDuration, skill) => {
+  const quizPrompt = lesson.quizzes[0].prompt;
+  const skillsDuration = (lesson.skills.reduce((totalDuration, skill) => {
     return (totalDuration + skill.duration);
   }, 0) / 60);
+  const activityTask = lesson.activities[0].tasks[0];
 
   return (
     <>
@@ -22,14 +24,20 @@ function LessonScreen({ navigation, route }) {
       <LessonCard
         icon='question'
         title='Quiz'
-        subTitle={lesson.quizzes[0].prompt}
+        subTitle={quizPrompt}
         onPress={() => navigation.navigate(routes.QUIZ, lesson.quizzes[0])}
       />
       <LessonCard
         icon='flag-checkered'
         title='Training'
-        subTitle={`${duration} min`}
+        subTitle={`${skillsDuration} min`}
         onPress={() => navigation.navigate(routes.SKILLS, lesson.skills)}
+      />
+      <LessonCard
+        icon='clipboard-list'
+        title='Activity'
+        subTitle={activityTask}
+        onPress={() => navigation.navigate(routes.ACTIVITY, lesson.activities[0])}
       />
     </>
   );

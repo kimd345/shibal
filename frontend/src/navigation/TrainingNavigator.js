@@ -9,6 +9,7 @@ import LessonScreen from '../screens/training/LessonScreen';
 import QuizScreen from '../screens/training/QuizScreen';
 import SkillsScreen from '../screens/training/SkillsScreen';
 import SkillScreen from '../screens/training/SkillScreen';
+import ActivitiesScreen from '../screens/training/ActivitiesScreen';
 
 
 const Stack = createStackNavigator();
@@ -52,6 +53,10 @@ function TrainingNavigator({ navigation }) {
 				headerTintColor: colors.white,
 				headerStyle: { backgroundColor: colors.grass },
 			}}
+	  />
+		<Stack.Screen
+			name='Activity'
+			component={ActivitiesScreen}
 	  />
 	</Stack.Navigator>
   );

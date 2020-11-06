@@ -2,11 +2,15 @@ import React from 'react';
 import { View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
+import colors from '../config/colors';
+
 function Icon({
   name,
   size = 40,
   backgroundColor = '#000',
   iconColor = '#fff',
+  borderWidth = 0,
+  borderColor = colors.primaryButton,
 }) {
   return (
     <View
@@ -14,6 +18,8 @@ function Icon({
         width: size,
         height: size,
         borderRadius: size / 2,
+        borderWidth,
+        borderColor,
         backgroundColor,
         justifyContent: 'center',
         alignItems: 'center',

@@ -17,7 +17,7 @@ function SkillSliderItem(props) {
       {props.numSteps === props.stepNum
         && (<Button 
               title='Finish' 
-              width='50%'
+              width={100}
               color='primaryButton'
               onPress={() => alert('SkillSliderItem.js')}
             />)}
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     padding: 30,
   },
   step: {
-    marginBottom: 100,
+    marginBottom: 50,
   },
   directions: {
     lineHeight: 28,
