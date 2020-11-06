@@ -3,10 +3,7 @@ import { FlatList, StyleSheet, View } from 'react-native';
 
 import colors from '../../config/colors';
 import Screen from '../../components/Screen';
-import Header from '../../components/Header';
 import Text from '../../components/Text';
-import Icon from '../../components/Icon';
-import Button from '../../components/Button';
 
 import routes from '../../navigation/routes';
 import ProgramIcon from '../../components/trainings/ProgramIcon';
@@ -15,28 +12,36 @@ function SkillsScreen({ navigation, route }) {
   const skills = route.params;
 
   return (
-    <Screen style={styles.screen}>
+    <View style={styles.screen}>
       <View style={styles.container}>
         <View style={styles.infoContainer}>
           <Text style={styles.header}>Training</Text>
           <Text style={styles.description}>Master a familiar trick or learn a new exercise. Repeat the exercise while the timer is running.</Text>
         </View>
         <View style={styles.skillsContainer}>
-          <FlatList
-            contentContainerStyle={styles.flatListContainer}
+          {/* <FlatList
             data={skills}
             keyExtractor={(skill) => skill.id.toString()}
-            numColumns={3}
+            // numColumns={3}
             renderItem={({ item }) => (
               <ProgramIcon
                 item={item}
-                onPress={() => alert('SkillsScreen.js')}
+                onPress={() => navigation.navigate(routes.SKILL, item)}
               />
             )}
-          />
+          /> */}
+          {skills.map(skill => {
+            return (
+              <ProgramIcon
+                key={skills.indexOf(skill)}
+                item={skill}
+                onPress={() => navigation.navigate(routes.SKILL, skill)}
+              />
+            )
+          })}
         </View>
       </View>
-    </Screen>
+    </View>
   );
 }
 
@@ -44,6 +49,7 @@ const styles = StyleSheet.create({
   screen: {
     backgroundColor: colors.grass,
     alignItems: 'center',
+    flex: 1,
   },
   container: {
     top: 150,
@@ -78,10 +84,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.pastelMintBlue,
     borderBottomLeftRadius: 15,
     borderBottomRightRadius: 15,
+    flexDirection: 'row',
   },
-  flatListContainer: {
-    
-  }
 });
 
 export default SkillsScreen;

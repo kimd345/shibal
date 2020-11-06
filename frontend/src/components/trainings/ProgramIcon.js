@@ -10,8 +10,8 @@ function ProgramIcon({ item, onPress }) {
     <View style={styles.container}>
       <TouchableOpacity onPress={onPress}>
         <Icon
-          backgroundColor={colors.primaryBackground}
-          name='bone'
+          backgroundColor='salmon'
+          name='flag-checkered'
           size={80}
         />
       </TouchableOpacity>
