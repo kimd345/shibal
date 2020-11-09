@@ -10,14 +10,16 @@ import NewDogScreen from '../screens/home/NewDogScreen';
 
 import ActivityIndicator from '../components/animations/ActivityIndicator';
 import { Picker } from '../components/inputs';
+
 import colors from '../config/colors';
+import routes from './routes';
 
 import useAuth from '../hooks/useAuth';
 import useApi from '../hooks/useApi';
 
 import usersApi from '../api/users';
 import dogsApi from '../api/dogs';
-import routes from './routes';
+import trainingsApi from '../api/trainings';
 import { actions } from '../redux/ducks';
 
 const Stack = createStackNavigator();
@@ -33,11 +35,12 @@ function HomeNavigator({ navigation }) {
   const getDogApi = useApi(dogsApi.getDog);
   const getDogsApi = useApi(dogsApi.getDogs);
   const putCurrentDogApi = useApi(usersApi.putCurrentDog);
+  const getEnrollmentsApi = useApi(trainingsApi.getEnrollments);
 
   const dispatch = useDispatch();
   const userId = useAuth().user.id;
 
-  console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state.dog));
+  console.log('STORE - HOME NAVIGATOR: ', useSelector((state) => state.enrollments));
   
   useEffect(() => { // set user on mount
     (async () => await getUserApi.request(userId))().then((result) => {
@@ -63,6 +66,14 @@ function HomeNavigator({ navigation }) {
       setInitialRoute(routes.NEW_DOG);
     }
   }, [dogExists]);
+
+  useEffect(() => { // set enrollments on dog change
+    (async () => await getEnrollmentsApi.request(dog.id))()
+      .then(result => {
+        console.log(result.data.enrollments);
+        dispatch(actions.setEnrollments(result.data.enrollments))
+      });
+  }, [dog]);
 
   if (initialRoute === null || getUserApi.loading || getDogApi.loading || getDogsApi.loading ) {
     return <ActivityIndicator visible={true} backgroundColor='palegrey' />;

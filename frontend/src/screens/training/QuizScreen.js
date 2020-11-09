@@ -1,18 +1,20 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import colors from '../../config/colors';
 import Screen from '../../components/Screen';
 import Header from '../../components/Header';
 import Text from '../../components/Text';
 import Icon from '../../components/Icon';
-import Button from '../../components/Button';
-
-import routes from '../../navigation/routes';
+import QuizChoiceItem from '../../components/trainings/QuizChoiceItem';
 
 function QuizScreen({ navigation, route }) {
   const quiz = route.params;
   const choices = route.params.choices;
+
+  const quizEnrollment = useSelector(state => state.enrollments[quiz.id]);
+  console.log('quizEnrollment: ', quizEnrollment);
 
   return (
     <Screen style={styles.screen}>
@@ -21,19 +23,32 @@ function QuizScreen({ navigation, route }) {
         <Header style={styles.header}>Daily Question</Header>
         <Text style={styles.prompt}>{quiz.prompt}</Text>
       </View>
-      <FlatList
-        data={choices}
-        keyExtractor={(choice) => choices.indexOf(choice).toString()}
-        renderItem={({ item }) => (
-          <Button
-            title={item}
-            height={70}
-            width='80%'
-            color='white'
-            textColor='mossygrey'
+      {(quizEnrollment === undefined)
+        ? <FlatList
+            data={choices}
+            keyExtractor={(choice) => choices.indexOf(choice).toString()}
+            renderItem={({ item }) => (
+              <QuizChoiceItem
+                choice={item}
+                quiz={quiz}
+                choices={choices}
+              />
+            )}
           />
-        )}
-      />
+        : <View style={styles.answerContainer}>
+            <View style={styles.answerWrapper}>
+              <Text>{choices[quiz.answer_idx]}</Text>
+            </View>
+            <View style={styles.explanationWrapper}>
+              <FlatList
+                data={quiz.explanation}
+                keyExtractor={(paragraph) => quiz.explanation.indexOf(paragraph).toString()}
+                renderItem={({ item }) => (
+                  <Text>{item}</Text>
+                )}
+              />
+            </View>
+          </View>}
     </Screen>
   );
 }
@@ -58,6 +73,21 @@ const styles = StyleSheet.create({
   lessonTitle: {
     color: colors.mossygrey,
     fontSize: 18,
+  },
+  answerContainer: {
+    width: '90%',
+  },
+  answerWrapper: {
+    backgroundColor: colors.grass,
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    marginBottom: 20,
+  },
+  explanationWrapper: {
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 15,
   },
 });
 

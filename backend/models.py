@@ -57,8 +57,9 @@ class Dog(db.Model):
     birthday = db.Column(db.Date)
     gender = db.Column(db.String(50))
 
-    likes = db.relationship('Like', backref='dog', cascade='save-update, merge, delete, delete-orphan')  # noqa
+    likes = db.relationship('Like', cascade='save-update, merge, delete, delete-orphan')  # noqa
     posts = db.relationship('Post', cascade='save-update, merge, delete, delete-orphan')  # noqa
+    enrollments = db.relationship('Enrollment', cascade='save-update, merge, delete, delete-orphan')  # noqa
 
     def to_dict(self):
         return {
@@ -244,13 +245,17 @@ class Activity(db.Model):
 class Enrollment(db.Model):
     __tablename__ = 'enrollments'
 
-    entity_id = db.Column(db.Integer, db.ForeignKey('programs.id'),
-                          db.ForeignKey('modules.id'),
-                          db.ForeignKey('lessons.id'),
-                          db.ForeignKey('quizzes.id'),
-                          db.ForeignKey('skills.id'),
-                          db.ForeignKey('activities.id'),
-                          primary_key=True)
-    dog_id = db.Column(db.Integer, db.ForeignKey('dogs.id'), primary_key=True)
+    entity_id = db.Column(db.Integer, primary_key=True)
+    dog_id = db.Column(db.Integer,
+                       db.ForeignKey('dogs.id', ondelete='CASCADE'),
+                       primary_key=True)
     entity_type = db.Column(db.String(20), nullable=False)
     status = db.Column(db.String(11), default='In Progress')
+
+    def to_dict(self):
+        return {
+            'entity_id': self.entity_id,
+            'dog_id': self.dog_id,
+            'entity_type': self.entity_type,
+            'status': self.status
+        }

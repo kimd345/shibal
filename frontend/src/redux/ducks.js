@@ -9,6 +9,9 @@ const ADD_DOG = 'ADD_DOG';
 const REMOVE_DOG = 'REMOVE_DOG';
 const EMPTY_DOGS = 'EMPTY_DOGS';
 
+const SET_ENROLLMENTS = 'SET_ENROLLMENTS';
+const ADD_ENROLLMENT = 'ADD_ENROLLMENT';
+
 const SET_LIKES = 'SET_LIKES';
 const ADD_LIKE = 'ADD_LIKE';
 const REMOVE_LIKE = 'REMOVE_LIKE';
@@ -27,6 +30,9 @@ export const actions = {
   removeDog: (dogId) => ({ type: REMOVE_DOG, payload: dogId }),
   emptyDogs: () => ({ type: EMPTY_DOGS }),
 
+  setEnrollments: (enrollments) => ({ type: SET_ENROLLMENTS, payload: enrollments }),
+  addEnrollment: (enrollment) => ({ type: ADD_ENROLLMENT, payload: enrollment }),
+
   setLikes: (likes) => ({ type: SET_LIKES, payload: likes }),
   addLike: (like) => ({ type: ADD_LIKE, payload: like }),
   removeLike: (like) => ({ type: REMOVE_LIKE, payload: like }),
@@ -39,6 +45,7 @@ const initialState = {
   user: {},
   dog: {},
   dogs: [],
+  enrollments: {},
   likes: [],
 };
 
@@ -74,6 +81,22 @@ const rootReducer = (state = initialState, action) => {
 
     case EMPTY_DOGS:
       return { ...state, dog: {}, dogs: [], user: { ...state.user, currentDogId: [] } };
+
+    case SET_ENROLLMENTS:
+      if (!action.payload) return state;
+      if (action.payload.length === 0) return { ...state, enrollments: {} };
+      const enrollments = {};
+      action.payload.forEach(enrollment => {
+        const { entity_id, ...rest } = enrollment;
+        enrollments[enrollment.entity_id] = rest;
+      })
+      return { ...state, enrollments };
+
+    case ADD_ENROLLMENT:
+      const key = action.payload.entity_id;
+      const { entity_id, ...rest } = action.payload;
+      state.enrollments[key] = rest;
+      return state;
 
     case SET_LIKES:
       return { ...state, likes: action.payload };
