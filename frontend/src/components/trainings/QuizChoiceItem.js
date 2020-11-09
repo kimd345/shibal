@@ -13,7 +13,7 @@ import { actions } from '../../redux/ducks';
 
 function QuizChoiceItem({ choice, quiz, choices }) {
   const [textColor, setTextColor] = useState('primaryText');
-  const createQuizEnrollmentApi = useApi(trainingsApi.createQuizEnrollment);
+  const createQuizEnrollmentApi = useApi(trainingsApi.createEnrollment);
 
   const dispatch = useDispatch();
 
@@ -29,8 +29,7 @@ function QuizChoiceItem({ choice, quiz, choices }) {
       textColor={textColor}
       onPress={async () => {
         if (choices.indexOf(choice) === quiz.answer_idx) {
-          setTextColor('grass');
-          await createQuizEnrollmentApi.request(entityId, dogId, 'Quiz', 'Complete')
+          await createQuizEnrollmentApi.request(entityId, dogId, 'Quiz', 'Completed')
             .then(result => dispatch(actions.addEnrollment(result.data)));
         } else {
           setTextColor('google');

@@ -1,11 +1,11 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import colors from '../../config/colors';
 import Text from '../../components/Text';
 
 import routes from '../../navigation/routes';
-import ProgramIcon from '../../components/trainings/ProgramIcon';
+import SkillIcon from '../../components/trainings/SkillIcon';
 
 function SkillsScreen({ navigation, route }) {
   const skills = route.params;
@@ -18,20 +18,9 @@ function SkillsScreen({ navigation, route }) {
           <Text style={styles.description}>Master a familiar trick or learn a new exercise. Repeat the exercise while the timer is running.</Text>
         </View>
         <View style={styles.skillsContainer}>
-          {/* <FlatList
-            data={skills}
-            keyExtractor={(skill) => skill.id.toString()}
-            // numColumns={3}
-            renderItem={({ item }) => (
-              <ProgramIcon
-                item={item}
-                onPress={() => navigation.navigate(routes.SKILL, item)}
-              />
-            )}
-          /> */}
           {skills.map(skill => {
             return (
-              <ProgramIcon
+              <SkillIcon
                 key={skills.indexOf(skill)}
                 item={skill}
                 onPress={() => navigation.navigate(routes.SKILL, skill)}

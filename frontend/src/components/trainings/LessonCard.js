@@ -1,19 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 import Text from '../Text';
 import Header from '../Header';
 import colors from '../../config/colors';
 import Icon from '../Icon';
+import CompletedIcon from './CompletedIcon';
 
-function LessonCard({ title, subTitle, icon, onPress }) {
+function LessonCard({ title, subTitle, icon, onPress, entity }) {
+  const enrollments = useSelector(state => state.enrollments);
+  // const completed = enrollments[entity.id] !== undefined;
+  const [completed, setCompleted] = useState(false);
+
+  // console.log(entity);
+  useFocusEffect(() => {
+    if (entity.answer_idx !== undefined) {  // is quiz
+      if (enrollments[entity.id] !== undefined) { // is enrolled
+        if (enrollments[entity.id].status === 'Completed') { // is completed
+          setCompleted(true);
+        }
+      }
+    } else if (entity[0].duration !== undefined) {  // is skills
+      const skillIds = entity.map(skill => skill.id);
+      setCompleted(skillIds.every(id => enrollments.hasOwnProperty(id)));
+    }
+  }, [enrollments])
+
   return (
     <TouchableOpacity 
       style={styles.container} 
       onPress={onPress} 
       activeOpacity={0.65}
-    >
+    > 
+      {completed && <CompletedIcon />}
       <Icon name={icon} size={80} backgroundColor='white' iconColor='salmon' />
       <View style={styles.detailsContainer}>
         <Header style={styles.title}>{title}</Header>

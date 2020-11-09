@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
 
-import colors from '../../config/colors';
 import Icon from '../Icon';
 import Text from '../Text';
+import CompletedIcon from './CompletedIcon';
 
-function ProgramIcon({ item, onPress }) {
+function SkillIcon({ item, onPress }) {
+  const [completed, setCompleted] = useState(false);
+  const enrollments = useSelector(state => state.enrollments);
+
+  useFocusEffect(() => {
+    if (enrollments[item.id] !== undefined) {
+      if (enrollments[item.id].status === 'Completed') {
+        setCompleted(true);
+      }
+    }
+  });
+
   return (
     <View style={styles.container}>
+      {completed && <CompletedIcon />}
       <TouchableOpacity onPress={onPress}>
         <Icon
           backgroundColor='salmon'
@@ -35,4 +49,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProgramIcon;
+export default SkillIcon;

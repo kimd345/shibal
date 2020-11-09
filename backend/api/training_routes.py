@@ -20,8 +20,6 @@ def getPrograms():
 @training_routes.route('/enrollments/<dogId>', methods=['GET'])
 def getEnrollments(dogId):
     enrollments = Enrollment.query.filter(Enrollment.dog_id == dogId)
-    print('ENNNRROOOLLLMMEEENNNTTTSSS')
-    print(enrollments)
     return {'enrollments': [enrollment.to_dict() for enrollment in enrollments]}, 200  # noqa
 
 
