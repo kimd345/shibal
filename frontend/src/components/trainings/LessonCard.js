@@ -23,9 +23,17 @@ function LessonCard({ title, subTitle, icon, onPress, entity }) {
           setCompleted(true);
         }
       }
-    } else if (entity[0].duration !== undefined) {  // is skills
-      const skillIds = entity.map(skill => skill.id);
-      setCompleted(skillIds.every(id => enrollments.hasOwnProperty(id)));
+    } else if (entity[0] !== undefined) {
+      if (entity[0].duration !== undefined) { // is skills
+        const skillIds = entity.map(skill => skill.id);
+        setCompleted(skillIds.every(id => enrollments.hasOwnProperty(id)));
+      }
+    } else if (entity.tasks !== undefined) {  // is activity
+      if (enrollments[entity.id] !== undefined) { // is enrolled
+        if (enrollments[entity.id].status === 'Completed') { // is completed
+          setCompleted(true);
+        }
+      }
     }
   }, [enrollments])
 

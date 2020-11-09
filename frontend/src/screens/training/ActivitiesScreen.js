@@ -1,8 +1,8 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 
 import colors from '../../config/colors';
-import Screen from '../../components/Screen';
 import Header from '../../components/Header';
 import Text from '../../components/Text';
 import Icon from '../../components/Icon';
@@ -11,9 +11,21 @@ import ActivityTaskCard from '../../components/trainings/ActivityTaskCard';
 
 import routes from '../../navigation/routes';
 
-function QuizScreen({ navigation, route }) {
-  const activity = route.params;
+import useApi from '../../hooks/useApi';
+
+import trainingsApi from '../../api/trainings';
+import { actions } from '../../redux/ducks';
+
+function ActivitiesScreen({ navigation, route }) {
+  const activityId = route.params.id;
   const tasks = route.params.tasks;
+
+  const createActivityEnrollmentApi = useApi(trainingsApi.createEnrollment);
+
+  const dispatch = useDispatch();
+
+  const dogId = useSelector(state => state.dog.id);
+  const enrollment = useSelector(state => state.enrollments[activityId]);
 
   return (
     <View style={styles.screen}>
@@ -23,8 +35,20 @@ function QuizScreen({ navigation, route }) {
         <Text style={styles.prompt}>Spend some time with your dog and complete these tasks during the day</Text>
       </View>
       <ActivityTaskCard
+        entityId={activityId}
         tasks={tasks}
       />
+      {!enrollment
+        && <Button 
+              title='Finish' 
+              width={100}
+              color='primaryButton'
+              onPress={async () => {
+                await createActivityEnrollmentApi.request(activityId, dogId, 'Activity', 'Completed')
+                  .then(result => dispatch(actions.addEnrollment(result.data)));
+                navigation.goBack();
+              }}
+          />}
     </View>
   );
 }
@@ -53,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default QuizScreen;
+export default ActivitiesScreen;

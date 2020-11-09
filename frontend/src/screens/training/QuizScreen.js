@@ -14,7 +14,6 @@ function QuizScreen({ navigation, route }) {
   const choices = route.params.choices;
 
   const quizEnrollment = useSelector(state => state.enrollments[quiz.id]);
-  console.log('quizEnrollment: ', quizEnrollment);
 
   return (
     <Screen style={styles.screen}>

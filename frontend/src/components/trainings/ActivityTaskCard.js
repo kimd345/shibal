@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 import colors from '../../config/colors';
 import { ListItemSeparator } from '../lists';
 import ActivityTaskItem from './ActivityTaskItem';
 
-function ActivityTaskCard({ tasks }) {
+function ActivityTaskCard({ tasks, entityId }) {
 
   return (
     <View style={styles.container}>
@@ -14,7 +14,7 @@ function ActivityTaskCard({ tasks }) {
         keyExtractor={(task) => tasks.indexOf(task).toString()}
         ItemSeparatorComponent={() => <ListItemSeparator />}
         renderItem={({ item }) => (
-          <ActivityTaskItem task={item} />
+          <ActivityTaskItem task={item} entityId={entityId} />
         )}
       />
     </View>

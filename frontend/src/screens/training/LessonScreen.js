@@ -39,7 +39,7 @@ function LessonScreen({ navigation, route }) {
         icon='clipboard-list'
         title='Activity'
         subTitle={activityTask}
-        entity={lesson.activities}
+        entity={lesson.activities[0]}
         onPress={() => navigation.navigate(routes.ACTIVITY, lesson.activities[0])}
       />
     </>

@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
+import { useSelector } from 'react-redux';
 
 import colors from '../../config/colors';
 import Icon from '../Icon';
 import Text from '../Text';
 
-function ActivityTaskItem({ task }) {
-  const [checked, setChecked] = useState(false);
+function ActivityTaskItem({ task, entityId }) {
+  const enrollment = useSelector(state => state.enrollments[entityId] !== undefined);
+  const [checked, setChecked] = useState(enrollment);
+
 
   const handleCheck = () => {
     setChecked(true);

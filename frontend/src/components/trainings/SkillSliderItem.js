@@ -23,6 +23,7 @@ function SkillSliderItem({ stepNum, step, numSteps, entityId }) {
   const navigation = useNavigation();
 
   const dogId = useSelector(state => state.dog.id);
+  const enrollment = useSelector(state => state.enrollments[entityId]);
   
   return (
     <View style={[styles.container, { width, height }]}>
@@ -35,9 +36,11 @@ function SkillSliderItem({ stepNum, step, numSteps, entityId }) {
               width={100}
               color='primaryButton'
               onPress={async () => {
-                await createSkillEnrollmentApi.request(entityId, dogId, 'Skill', 'Completed')
-                  .then(result => dispatch(actions.addEnrollment(result.data)));
-                  navigation.goBack();
+                if (enrollment === undefined) {
+                  await createSkillEnrollmentApi.request(entityId, dogId, 'Skill', 'Completed')
+                    .then(result => dispatch(actions.addEnrollment(result.data)));
+                }
+                navigation.goBack();
               }}
             />)}
     </View>
