@@ -72,7 +72,9 @@ function TrainingScreen({ navigation }) {
             title={item.title}
             subTitle={item.subTitle}
             image={item.image}
-            onPress={() => navigation.navigate(routes.PROGRAM, trainings.programs[item.id-1])}
+            onPress={item.id === 1
+                      ? () => navigation.navigate(routes.PROGRAM, trainings.programs[item.id-1]) 
+                      : () => alert('Coming Soon!')}
             backgroundColor={item.backgroundColor}
           />
         )}
