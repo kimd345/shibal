@@ -4,9 +4,8 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import Screen from '../../components/Screen';
 import Header from '../../components/Header';
 import Text from '../../components/Text';
-import colors from '../../config/colors';
-import routes from '../../navigation/routes';
-import { ListItem, ListItemSeparator } from '../../components/lists';
+import { ListItemSeparator } from '../../components/lists';
+import ModulesItem from '../../components/trainings/ModulesItem';
 
 function ProgramScreen({ navigation, route }) {
   const program = route.params;
@@ -23,25 +22,7 @@ function ProgramScreen({ navigation, route }) {
         keyExtractor={(module) => module.id.toString()}
         ItemSeparatorComponent={() => <ListItemSeparator />}
         renderItem={({ item }) => (
-          <>
-            <View style={styles.moduleTextContainer}>
-              <Text style={styles.moduleText}>{item.title}</Text>
-            </View>
-            <FlatList
-              style={styles.flatList}
-              data={item.lessons}
-              keyExtractor={(lesson) => lesson.id.toString()}
-              ItemSeparatorComponent={() => <ListItemSeparator />}
-              renderItem={({ item }) => (
-                <>
-                  <ListItem
-                    title={item.title}
-                    onPress={() => navigation.navigate(routes.LESSON, { programTitle: program.title, lesson: item })}
-                  />
-                </>
-              )}
-            />
-          </>
+          <ModulesItem module={item} program={program} />
         )}
       />
     </Screen>
@@ -65,15 +46,6 @@ const styles = StyleSheet.create({
   description: {
     lineHeight: 28,
   },
-  moduleTextContainer: {
-    backgroundColor: colors.white,
-    width: '100%',
-  },
-  moduleText: {
-    fontSize: 20,
-    marginHorizontal: 20,
-    textAlign: 'left',
-  }
 });
 
 export default ProgramScreen;
