@@ -8,7 +8,8 @@ import routes from '../../navigation/routes';
 import SkillIcon from '../../components/trainings/SkillIcon';
 
 function SkillsScreen({ navigation, route }) {
-  const skills = route.params;
+  const skills = route.params.skills;
+  const program = route.params.program;
 
   return (
     <View style={styles.screen}>
@@ -23,7 +24,7 @@ function SkillsScreen({ navigation, route }) {
               <SkillIcon
                 key={skills.indexOf(skill)}
                 item={skill}
-                onPress={() => navigation.navigate(routes.SKILL, skill)}
+                onPress={() => navigation.navigate(routes.SKILL, { skill, program })}
               />
             )
           })}

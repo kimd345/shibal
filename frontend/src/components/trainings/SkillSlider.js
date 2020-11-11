@@ -6,7 +6,7 @@ import Whistle from '../Whistle';
 import SkillSliderItem from './SkillSliderItem';
 import Timer from './Timer';
 
-function SkillSlider({ steps, duration, entityId }) {
+function SkillSlider({ steps, duration, entityId, program }) {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
 
   const width = useWindowDimensions().width;
@@ -47,6 +47,7 @@ function SkillSlider({ steps, duration, entityId }) {
               step={step} 
               numSteps={steps.length}
               entityId={entityId}
+              program={program}
             />
           )
         })}

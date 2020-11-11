@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -8,6 +8,7 @@ import Text from '../../components/Text';
 import Icon from '../../components/Icon';
 import Button from '../../components/Button';
 import ActivityTaskCard from '../../components/trainings/ActivityTaskCard';
+import ProgramCompleteScreen from './ProgramCompleteScreen';
 
 import useApi from '../../hooks/useApi';
 
@@ -15,24 +16,41 @@ import trainingsApi from '../../api/trainings';
 import { actions } from '../../redux/ducks';
 
 function ActivitiesScreen({ navigation, route }) {
-  const activityId = route.params.id;
-  const tasks = route.params.tasks;
+  const activityId = route.params.activity.id;
+  const tasks = route.params.activity.tasks;
+  const program = route.params.program;
 
   const createActivityEnrollmentApi = useApi(trainingsApi.createEnrollment);
 
   const dispatch = useDispatch();
 
   const dogId = useSelector(state => state.dog.id);
-  const enrollment = useSelector(state => state.enrollments[activityId]);
+  const trainingIds = useSelector(state => state.trainingIds);
+  const enrollments = useSelector(state => state.enrollments);
+  const enrollment = enrollments[activityId];
 
   const handlePress = async () => {
     await createActivityEnrollmentApi.request(activityId, dogId, 'Activity', 'Completed')
-      .then(result => dispatch(actions.addEnrollment(result.data)));
-    navigation.goBack();
-  }
+      .then(result => dispatch(actions.addEnrollment(result.data)))
+      .then(() => {
+        checkCompletion()
+          ? setModalVisible(true)
+          : navigation.goBack();
+      })
+  };
+
+  const checkCompletion = () => {
+    const enrollmentIds = Object.keys(enrollments).map(key => parseInt(key));
+    const isComplete = trainingIds.join() === enrollmentIds.join()
+
+    return isComplete;
+  };
+
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.screen}>
+      <ProgramCompleteScreen modalVisible={modalVisible} program={program} />
       <View style={styles.infoContainer}>
         <Icon name='clipboard-list' size={120} backgroundColor='white' iconColor='salmon' />
         <Header style={styles.header}>List of activity tasks</Header>

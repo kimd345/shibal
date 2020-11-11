@@ -8,11 +8,12 @@ import SkillSlider from '../../components/trainings/SkillSlider';
 import routes from '../../navigation/routes';
 
 function SkillScreen({ navigation, route }) {
-  const skill = route.params;
+  const skill = route.params.skill;
+  const program = route.params.program;
   
   return (
     <Screen style={styles.screen}>
-      <SkillSlider steps={skill.steps} duration={skill.duration} entityId={skill.id} />
+      <SkillSlider steps={skill.steps} duration={skill.duration} entityId={skill.id} program={program} />
     </Screen>
   );
 }
