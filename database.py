@@ -233,3 +233,39 @@ with app.app_context():
     _35_new_dog_module_1_lesson_7_activity = Activity(lesson_id=33, tasks=['Meet your neighbor\'s dogs in a neutral environment. Keep all dogs on a leash, so you can control the situation.'])  # noqa
     db.session.add(_35_new_dog_module_1_lesson_7_activity)
     db.session.commit()
+
+# Module 2
+# Lesson 1
+    _36_new_dog_module_2 = Module(program_id=1, title='Module 2 - Teach basic commands')  # noqa
+    db.session.add(_36_new_dog_module_2)
+    db.session.commit()
+
+    _37_new_dog_module_2_lesson_1 = Lesson(module_id=36, title='Lesson 1 - Resource guarding, Name II')  # noqa
+    db.session.add(_37_new_dog_module_2_lesson_1)
+    db.session.commit()
+
+    _38_new_dog_module_2_lesson_1_quiz = Quiz(lesson_id=37, prompt='A puppy should not meet other dogs or people until after their second vaccination as the puppy could get an infection.', choices=['True', 'False'], answer_idx=0, explanation=['There was an ongoing debate about how high the risk is for a puppy to explore the world before their second vaccination. Many veterinarians and trainers are united in the opinion that the risk of not being socialized for life is higher than the risk of viruses. Of course, take possible precautions.', 'Do not take your puppy to places where there are many dogs. Carry your dog in your arms and visit friends\' dogs of who are healthy and vaccinated. You can also organize car rides so your dog can sniff and view the world through a window.', 'Puppies are curious and love to explore. Young puppies learn things effortlessly. The more new situations, environments, surfaces, and sounds they experience, the easier it is to live with them later. It is important to expose them to as many people, animals, and sounds as possible until they are 16-weeks-old, when fear starts developing. If puppies are constantly exposed to a situation or person they are more likely to react positively in the future.', 'Puppy socialization is the most important task you have as a dog parent.'])  # noqa
+    db.session.add(_38_new_dog_module_2_lesson_1_quiz)
+    db.session.commit()
+
+    _39_new_dog_module_2_lesson_1_training_skill_1 = Skill(title='Resource Guarding', steps=['Put half of a portion of low value food like their kibble in a bowl, and while your dog is eating, stand at a distance and in a friendly voice say "what have you got there?" as you toss a high-value treat towards your dog. You want the treat to mean more to the dog than the food in the bowl, so your approach is seen as a wonderful thing.', 'Toss some food, stand up, take a few steps and toss food again, approaching and distancing from the dog. Your dog should be happy and relaxed when you approach.'])  # noqa
+    db.session.add(_39_new_dog_module_2_lesson_1_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=37, skill_id=39))
+
+    _40_new_dog_module_2_lesson_1_training_skill_2 = Skill(title='Name II', steps=['Perfect the name command, so that every time you call your dog he looks in your eyes, not at your hand holding the treat.', 'Call your dog by name. If they look in your eyes, click & treat.', 'If your dog looks in your direction but not into your eyes, DO NOT TREAT.', 'Hold the treat near your forehead. When your dog looks into your eyes, C&T.', 'Once the dog gets used to keeping eye contact, hide the treat in your pocket.'])  # noqa
+    db.session.add(_40_new_dog_module_2_lesson_1_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=37, skill_id=40))
+
+    _41_new_dog_module_2_lesson_1_training_skill_3 = Skill(title='Crate II', steps=['Give the verbal cue to go to the crate. Once your dog is inside, praise and treat and close the door while giving treats through closed doors. If the dog starts to panic, close the door only halfway.', 'Once you close the door, treat tour dog while standing, take a few steps back, then return to give another treat.'])  # noqa
+    db.session.add(_41_new_dog_module_2_lesson_1_training_skill_3)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=37, skill_id=41))
+
+    _42_new_dog_module_2_lesson_1_activity = Activity(lesson_id=37, tasks=['Pass by a pharmacy. Greet an elderly person and ask them to reward your dog so your dog gets used to them.', 'Brush your dog\'s teeth. There is a special dog toothpaste that tastes like meat, with a positive association that teaches your dog to love tooth brushing.'])  # noqa
+    db.session.add(_42_new_dog_module_2_lesson_1_activity)
+    db.session.commit()

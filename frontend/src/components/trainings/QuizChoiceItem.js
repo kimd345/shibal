@@ -8,7 +8,7 @@ import useApi from '../../hooks/useApi';
 import trainingsApi from '../../api/trainings';
 import { actions } from '../../redux/ducks';
 
-function QuizChoiceItem({ choice, quiz, choices }) {
+function QuizChoiceItem({ choice, quiz, choices, program }) {
   const [textColor, setTextColor] = useState('primaryText');
   const createQuizEnrollmentApi = useApi(trainingsApi.createEnrollment);
 
@@ -16,6 +16,17 @@ function QuizChoiceItem({ choice, quiz, choices }) {
 
   const entityId = quiz.id;
   const dogId = useSelector(state => state.dog.id);
+  // const trainingIds = useSelector(state => state.trainingIds);
+  // const enrollments = useSelector(state => state.enrollments);
+
+  const handlePress = async () => {
+    if (choices.indexOf(choice) === quiz.answer_idx) {
+      await createQuizEnrollmentApi.request(entityId, dogId, 'Quiz', 'Completed')
+        .then(result => dispatch(actions.addEnrollment(result.data)));
+    } else {
+      setTextColor('google');
+    }
+  };
 
   return (
     <Button
@@ -24,14 +35,7 @@ function QuizChoiceItem({ choice, quiz, choices }) {
       width='80%'
       color='white'
       textColor={textColor}
-      onPress={async () => {
-        if (choices.indexOf(choice) === quiz.answer_idx) {
-          await createQuizEnrollmentApi.request(entityId, dogId, 'Quiz', 'Completed')
-            .then(result => dispatch(actions.addEnrollment(result.data)));
-        } else {
-          setTextColor('google');
-        }
-      }}
+      onPress={handlePress}
     />
   );
 }

@@ -26,7 +26,7 @@ function LessonScreen({ navigation, route }) {
         title='Quiz'
         subTitle={quizPrompt}
         entity={lesson.quizzes[0]}
-        onPress={() => navigation.navigate(routes.QUIZ, lesson.quizzes[0])}
+        onPress={() => navigation.navigate(routes.QUIZ, { quiz: lesson.quizzes[0], program })}
       />
       <LessonCard
         icon='flag-checkered'

@@ -10,8 +10,9 @@ import Icon from '../../components/Icon';
 import QuizChoiceItem from '../../components/trainings/QuizChoiceItem';
 
 function QuizScreen({ navigation, route }) {
-  const quiz = route.params;
-  const choices = route.params.choices;
+  const quiz = route.params.quiz;
+  const choices = route.params.quiz.choices;
+  const program = route.params.program;
 
   const quizEnrollment = useSelector(state => state.enrollments[quiz.id]);
 
@@ -31,6 +32,7 @@ function QuizScreen({ navigation, route }) {
                 choice={item}
                 quiz={quiz}
                 choices={choices}
+                program={program}
               />
             )}
           />
