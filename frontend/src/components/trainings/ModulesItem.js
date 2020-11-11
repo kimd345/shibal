@@ -18,7 +18,7 @@ function ModulesItem({ module, program }) {
         keyExtractor={(lesson) => lesson.id.toString()}
         ItemSeparatorComponent={() => <ListItemSeparator />}
         renderItem={({ item }) => (
-          <LessonsItem lesson={item} program={program} />
+          <LessonsItem lesson={item} program={program} module={module} />
         )}
       />
     </>

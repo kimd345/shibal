@@ -9,8 +9,6 @@ import Icon from '../../components/Icon';
 import Button from '../../components/Button';
 import ActivityTaskCard from '../../components/trainings/ActivityTaskCard';
 
-import routes from '../../navigation/routes';
-
 import useApi from '../../hooks/useApi';
 
 import trainingsApi from '../../api/trainings';
@@ -26,6 +24,12 @@ function ActivitiesScreen({ navigation, route }) {
 
   const dogId = useSelector(state => state.dog.id);
   const enrollment = useSelector(state => state.enrollments[activityId]);
+
+  const handlePress = async () => {
+    await createActivityEnrollmentApi.request(activityId, dogId, 'Activity', 'Completed')
+      .then(result => dispatch(actions.addEnrollment(result.data)));
+    navigation.goBack();
+  }
 
   return (
     <View style={styles.screen}>
@@ -43,11 +47,7 @@ function ActivitiesScreen({ navigation, route }) {
               title='Finish' 
               width={100}
               color='primaryButton'
-              onPress={async () => {
-                await createActivityEnrollmentApi.request(activityId, dogId, 'Activity', 'Completed')
-                  .then(result => dispatch(actions.addEnrollment(result.data)));
-                navigation.goBack();
-              }}
+              onPress={handlePress}
           />}
     </View>
   );

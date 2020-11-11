@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import colors from '../../config/colors';
 import Button from '../../components/Button';
-
-import routes from '../../navigation/routes';
 
 import useApi from '../../hooks/useApi';
 

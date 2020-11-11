@@ -7,7 +7,7 @@ import routes from '../../navigation/routes';
 import LessonCard from '../../components/trainings/LessonCard';
 
 function LessonScreen({ navigation, route }) {
-  const programTitle = route.params.programTitle;
+  const program = route.params.program
   const lesson = route.params.lesson;
   const quizPrompt = lesson.quizzes[0].prompt;
   const skillsDuration = (lesson.skills.reduce((totalDuration, skill) => {
@@ -18,7 +18,7 @@ function LessonScreen({ navigation, route }) {
   return (
     <>
       <View style={styles.infoContainer}>
-        <Text style={styles.programTitle}>{programTitle}</Text>
+        <Text style={styles.programTitle}>{program.title}</Text>
         <Text style={styles.lessonTitle}>{lesson.title}</Text>
       </View>
       <LessonCard

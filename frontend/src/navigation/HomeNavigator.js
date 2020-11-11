@@ -70,7 +70,6 @@ function HomeNavigator({ navigation }) {
   useEffect(() => { // set enrollments on dog change
     (async () => await getEnrollmentsApi.request(dog.id))()
       .then(result => {
-        console.log(result.data.enrollments);
         dispatch(actions.setEnrollments(result.data.enrollments))
       });
   }, [dog]);

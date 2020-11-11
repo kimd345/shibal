@@ -1,22 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
+import useProgress from '../../hooks/useProgress';
+
+import colors from '../../config/colors';
 import Text from '../Text';
 import Header from '../Header';
-import colors from '../../config/colors';
+import ProgramStatus from './ProgramStatus';
 
-function ProgramCard({ title, subTitle, image, onPress, backgroundColor }) {
+function ProgramCard({ program, entityId, title, subTitle, image, onPress, backgroundColor }) {
+  // temporary solution: programs are static in TrainingScreen for now
+  const [status, setStatus] = useState();
+
+  const progress = useProgress();
+
+  progress.setTrainingIds(program);
+
+  const enrollment = (entityId === 1)
+    ? useSelector(state => state.enrollments[entityId])
+    : undefined;
+
+  useFocusEffect(() => {
+    if (enrollment !== undefined) {
+      setStatus(enrollment.status);
+    }
+  });
+  
   return (
     <TouchableOpacity 
       style={[styles.container, { backgroundColor: colors[backgroundColor] }]} 
       onPress={onPress}
       activeOpacity={0.65}
     >
-        <Image style={styles.image} source={image} />
-        <View style={styles.detailsContainer}>
-          <Header style={styles.title}>{title}</Header>
-          <Text style={styles.subTitle}>{subTitle}</Text>
-        </View>
+      {status &&
+        <ProgramStatus program={program} />
+      }
+      <Image style={styles.image} source={image} />
+      <View style={styles.detailsContainer}>
+        <Header style={styles.title}>{title}</Header>
+        <Text style={styles.subTitle}>{subTitle}</Text>
+      </View>
     </TouchableOpacity>
   );
 }

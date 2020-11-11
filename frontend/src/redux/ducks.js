@@ -11,6 +11,8 @@ const EMPTY_DOGS = 'EMPTY_DOGS';
 
 const SET_ENROLLMENTS = 'SET_ENROLLMENTS';
 const ADD_ENROLLMENT = 'ADD_ENROLLMENT';
+const SET_TRAINING_IDS = 'SET_TRAINING_IDS';
+const EDIT_PROGRAM_ENROLLMENT = 'EDIT_PROGRAM_ENROLLMENT';
 
 const SET_LIKES = 'SET_LIKES';
 const ADD_LIKE = 'ADD_LIKE';
@@ -32,6 +34,8 @@ export const actions = {
 
   setEnrollments: (enrollments) => ({ type: SET_ENROLLMENTS, payload: enrollments }),
   addEnrollment: (enrollment) => ({ type: ADD_ENROLLMENT, payload: enrollment }),
+  setTrainingIds: (trainingIds) => ({ type: SET_TRAINING_IDS, payload: trainingIds}),
+  editProgramEnrollment: (enrollment) => ({ type: EDIT_PROGRAM_ENROLLMENT, payload: enrollment }),
 
   setLikes: (likes) => ({ type: SET_LIKES, payload: likes }),
   addLike: (like) => ({ type: ADD_LIKE, payload: like }),
@@ -47,6 +51,7 @@ const initialState = {
   dogs: [],
   enrollments: {},
   likes: [],
+  trainingIds: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -96,6 +101,13 @@ const rootReducer = (state = initialState, action) => {
       const key = action.payload.entity_id;
       const { entity_id, ...rest } = action.payload;
       state.enrollments[key] = rest;
+      return state;
+
+    case SET_TRAINING_IDS:
+      return { ...state, trainingIds: action.payload };
+
+    case EDIT_PROGRAM_ENROLLMENT:
+      state.enrollments[action.payload.entity_id] = action.payload;
       return state;
 
     case SET_LIKES:

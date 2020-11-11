@@ -44,3 +44,24 @@ def createEnrollment():
     db.session.commit()
 
     return enrollment.to_dict(), 200
+
+
+@training_routes.route('/enrollments', methods=['PATCH'])
+def completeProgramEnrollment():
+    if not request.is_json:
+        return jsonify({"msg": "Missing JSON in request"}), 400
+
+    entity_id = request.json.get('programId', None)
+    dog_id = request.json.get('dogId', None)
+
+    if not entity_id:
+        return {"msg": "Entity not found"}, 400
+    if not dog_id:
+        return {"msg": "Dog not found"}, 400
+
+    program_enrollment = Enrollment.query.filter(Enrollment.entity_id == entity_id, Enrollment.dog_id == dog_id).first()  # noqa
+    program_enrollment.status = 'Completed'
+
+    db.session.commit()
+
+    return program_enrollment.to_dict(), 200
