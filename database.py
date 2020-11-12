@@ -136,7 +136,7 @@ with app.app_context():
 
     db.engine.execute(skills.insert().values(lesson_id=14, skill_id=16))
 
-    _17_new_dog_module_1_lesson_3_training_skill_2 = Skill(title='Name', steps=['Call your dog by name.', 'If your dog does not react, do not call out again. Instead, click or make kissy sounds to get the dog to look at you, and follow with a whistle and treat.', 'If your dog keeps their attention on you, distract them by throwing a toy or treat on the ground and call them by name again.'])  # noqa
+    _17_new_dog_module_1_lesson_3_training_skill_2 = Skill(title='Name', steps=['Call your dog by name.', 'If your dog does not react, do not call out again. Instead, whistle or make kissy sounds to get the dog to look at you, and follow with a whistle and treat.', 'If your dog keeps their attention on you, distract them by throwing a toy or treat on the ground and call them by name again.'])  # noqa
     db.session.add(_17_new_dog_module_1_lesson_3_training_skill_2)
     db.session.commit()
 
@@ -254,7 +254,7 @@ with app.app_context():
 
     db.engine.execute(skills.insert().values(lesson_id=37, skill_id=39))
 
-    _40_new_dog_module_2_lesson_1_training_skill_2 = Skill(title='Name II', steps=['Perfect the name command, so that every time you call your dog he looks in your eyes, not at your hand holding the treat.', 'Call your dog by name. If they look in your eyes, click & treat.', 'If your dog looks in your direction but not into your eyes, DO NOT TREAT.', 'Hold the treat near your forehead. When your dog looks into your eyes, C&T.', 'Once the dog gets used to keeping eye contact, hide the treat in your pocket.'])  # noqa
+    _40_new_dog_module_2_lesson_1_training_skill_2 = Skill(title='Name II', steps=['Perfect the name command, so that every time you call your dog he looks in your eyes, not at your hand holding the treat.', 'Call your dog by name. If they look in your eyes, whistle & treat.', 'If your dog looks in your direction but not into your eyes, DO NOT TREAT.', 'Hold the treat near your forehead. When your dog looks into your eyes, C&T.', 'Once the dog gets used to keeping eye contact, hide the treat in your pocket.'])  # noqa
     db.session.add(_40_new_dog_module_2_lesson_1_training_skill_2)
     db.session.commit()
 
@@ -349,4 +349,52 @@ with app.app_context():
 
     _57_new_dog_module_2_lesson_4_activity = Activity(lesson_id=53, tasks=['Train recall. Call your dog to you before serving dinner.', 'Walk Strangely, swinging from side to side, reward your dog for friendly, curious behavior. In this way teach your dog to ignore people who walk in uncoordinated ways, e.g. kids, drunk people.'])  # noqa
     db.session.add(_57_new_dog_module_2_lesson_4_activity)
+    db.session.commit()
+
+# Lesson 5
+    _58_new_dog_module_2_lesson_5 = Lesson(module_id=36, title='Lesson 5 - Sit II')  # noqa
+    db.session.add(_58_new_dog_module_2_lesson_5)
+    db.session.commit()
+
+    _59_new_dog_module_2_lesson_5_quiz = Quiz(lesson_id=58, prompt='Dogs are good at generalizing, e.g. a baby, a child, a man or an older woman, in your dog\'s mind, are all the same and put in a category "people."', choices=['True', 'False'], answer_idx=0, explanation=['Dogs, unlike humans, are good at generalizing. For a reliable response in real-life situations, train your dog in different circumstances.', 'Surfaces: dogs might feel uncomfortable sitting or laying down on sand, carpet, grass, pavement, etc.', 'Environment: performing at home is different to outside, where, for example, cars, strangers, and dogs are distracting. Increase the stimuli slowly, and train in different environments.', 'Your dog may sit down perfectly in front of you, but does he or she respond to you when you stand diagonally to their body position, or behind them?'])  # noqa
+    db.session.add(_59_new_dog_module_2_lesson_5_quiz)
+    db.session.commit()
+
+    _60_new_dog_module_2_lesson_5_training_skill_1 = Skill(title='Sit II', steps=['In this exercise, we want to add a verbal cue and fade out the luring. Start with your dog laying or standing near you.', 'As in level 1, lure your dog into a sit by lifting your hand from the dog\'s nose in an upward direction. Just before the dog sits, add a verbal cue SIT. Whistle and treat when the dog sits down.', 'Repeat the exercise. Give a verbal cue and do the gesture with an empty hand. Once your dog gets into the position, whistle and give them a treat from your pocket.', 'If your dog stays sitting, call your dog to you and repeat the exercise.'])  # noqa
+    db.session.add(_60_new_dog_module_2_lesson_5_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=58, skill_id=60))
+
+    db.engine.execute(skills.insert().values(lesson_id=58, skill_id=56))
+
+    _61_new_dog_module_2_lesson_5_activity = Activity(lesson_id=58, tasks=['Train recall. Call your dog to you before serving dinner.', 'Walk Strangely, swinging from side to side, reward your dog for friendly, curious behavior. In this way teach your dog to ignore people who walk in uncoordinated ways, e.g. kids, drunk people.'])  # noqa
+    db.session.add(_61_new_dog_module_2_lesson_5_activity)
+    db.session.commit()
+
+# Lesson 6
+    _62_new_dog_module_2_lesson_6 = Lesson(module_id=36, title='Lesson 6 - Down II, Put on a leash')  # noqa
+    db.session.add(_62_new_dog_module_2_lesson_6)
+    db.session.commit()
+
+    _63_new_dog_module_2_lesson_6_quiz = Quiz(lesson_id=62, prompt='What is positive training?', choices=['You are not allowed to correct or use negative cues when training.', 'Reward our dog for the behavior you like.', 'Both'], answer_idx=1, explanation=['Positive dog training is based on the principle that if you reward and praise a dog for a behavior, the dog is more likely to repeat it and offer it to you. Often misbehavior, like aggression, biting, or barking stems from fear and timidity. So, pulling on a collar, or scolding your dog when they bark at a man with a hat because your dog is terrified of hats, is making things much worse. With impatience and harsh treatment, you only confirm that the dog has to be fearful of hats, because whenever your pup sees a hat and tries to warn you, you shout at the dog and pull on its lead causing an unpleasant sensation. Be patient and ignore the unwanted behavior, or redirect your dog\'s attention to other things like a toy, a treat, or a change in walking direction.', 'Also, praise your dog when they do not react to a passing cyclist or a ball bouncing nearby. Even though you take it for granted that a dog should not run away and catch the ball, it is against your dog\'s instincts to stay non-reactive to a fast-moving object.'])  # noqa
+    db.session.add(_63_new_dog_module_2_lesson_6_quiz)
+    db.session.commit()
+
+    _64_new_dog_module_2_lesson_6_training_skill_1 = Skill(title='Down II', steps=['In this exercise, add a verbal cue and fade out the luring. Start with your dog sitting or standing near you.', 'Give your dog the command "down," and wait without showing the food.', 'Repeat the exercise. Give a verbal cue and do the gesture with an empty hand. Once your dog gets into the position, whistle and give them a treat from your pocket.'])  # noqa
+    db.session.add(_64_new_dog_module_2_lesson_6_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=62, skill_id=64))
+
+    _65_new_dog_module_2_lesson_6_training_skill_2 = Skill(title='Put on a leash', steps=['Ask your dog to "sit," without rewards this time. Have your leash within arms reach.', 'Pick up the leash. If your dog barks or jumps, put the leash on the floor and turn your back to your dog.', 'Once your dog has calmed down, pick the leash back up.', 'Only attach the leash once your dog is calm. Off you go for a good, long walk. After all that hard work, you don\'t need whistles and treats here. The walk is a reward in itself!'])  # noqa
+    db.session.add(_65_new_dog_module_2_lesson_6_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=62, skill_id=60))
+
+    db.engine.execute(skills.insert().values(lesson_id=62, skill_id=56))
+
+    _66_new_dog_module_2_lesson_6_activity = Activity(lesson_id=62, tasks=['Ask your dog to sit while you put on the leash. Walking outside is an exciting time, sitting down will prevent your dog getting hyper even before you leave the house.', 'Practice the "down" exercise five times on asphalt. A different surface might surprise your dog and you want to teach them a reliable response in all life-situations.'])  # noqa
+    db.session.add(_66_new_dog_module_2_lesson_6_activity)
     db.session.commit()
