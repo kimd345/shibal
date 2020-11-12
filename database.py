@@ -269,3 +269,84 @@ with app.app_context():
     _42_new_dog_module_2_lesson_1_activity = Activity(lesson_id=37, tasks=['Pass by a pharmacy. Greet an elderly person and ask them to reward your dog so your dog gets used to them.', 'Brush your dog\'s teeth. There is a special dog toothpaste that tastes like meat, with a positive association that teaches your dog to love tooth brushing.'])  # noqa
     db.session.add(_42_new_dog_module_2_lesson_1_activity)
     db.session.commit()
+
+# Lesson 2
+    _43_new_dog_module_2_lesson_2 = Lesson(module_id=36, title='Lesson 2 - Crate III, Search')  # noqa
+    db.session.add(_43_new_dog_module_2_lesson_2)
+    db.session.commit()
+
+    _44_new_dog_module_2_lesson_2_quiz = Quiz(lesson_id=43, prompt='A dog needs a set of rules, so they are less stressed.', choices=['True', 'False'], answer_idx=0, explanation=['In a family, agree on the rules i.e. how the dog has to behave, what is allowed, and what is not. Will the pup be allowed, and what is not. Will the pip be allowed on a sofa, to sleep in bed, etc? It is important that everybody follows the same rules and the training methods are consistent. This will cause less confusion and misunderstanding.'])  # noqa
+    db.session.add(_44_new_dog_module_2_lesson_2_quiz)
+    db.session.commit()
+
+    _45_new_dog_module_2_lesson_2_training_skill_1 = Skill(title='Crate III', steps=['Prepare a food bowl, a chew toy, or a toy stuffed with canned food.', 'Give the verbal cue to go to the crate and serve food or give a toy; close the door once the dog enters. Stay in the same room and read a book or watch TV.', 'If your dog is not done with the food or toy, open the door but do not let them bring food out of the crate. The dog has to understand that good things happen only in the crate.'])  # noqa
+    db.session.add(_45_new_dog_module_2_lesson_2_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=43, skill_id=45))
+
+    _46_new_dog_module_2_lesson_2_training_skill_2 = Skill(title='Search', steps=['The exercise is used to concentrate attention on the owner and release minor tensions; relax.', 'Sit down and show a treat to the dog. With the verbal cue "search," throw a treat on the ground towards the dog.', 'When the dog finds the treat and looks at you, immediately throw a second treat with the cue "search." Throw treats towards thed og, but vary the sides.'])  # noqa
+    db.session.add(_46_new_dog_module_2_lesson_2_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=43, skill_id=46))
+
+    db.engine.execute(skills.insert().values(lesson_id=43, skill_id=40))
+
+    _47_new_dog_module_2_lesson_2_activity = Activity(lesson_id=43, tasks=['Put your dog in a bathtub/shower, let the water run slowly, praise and reward your dog enthusiastically. With this activity build a positive association with the bathroom.', 'Feed tonight\'s dinner from your hands. Your dog will appreciate the food coming directly from you and next time will focus more on your hands.'])  # noqa
+    db.session.add(_47_new_dog_module_2_lesson_2_activity)
+    db.session.commit()
+
+# Lesson 3
+    _48_new_dog_module_2_lesson_3 = Lesson(module_id=36, title='Lesson 3 - Handling II, Sit')  # noqa
+    db.session.add(_48_new_dog_module_2_lesson_3)
+    db.session.commit()
+
+    _49_new_dog_module_2_lesson_3_quiz = Quiz(lesson_id=48, prompt='At what age does a sense of fear develop?', choices=['One-month-old', 'Four-month-old', 'One-year-old', 'Never'], answer_idx=1, explanation=['Between the 12th and 16th weeks of life, the socialization period starts closing. Dogs start to become wary of other pets and humans that they don\'t know. Here, they will need a lot of positive reinforcement and support. We suggest whenever your puppy is in an unpleasant situation (like a vet visit, fireworks, etc.) meet the fear with a laugh and distract your friend with a game. A soothing reassurance and hiding with your pup under the table just deepens the experience instead of making the situation something to be laughed at. We suggest you walk your dog on the leash, so if he/she gets into any new, fearful situations you can easily take control.'])  # noqa
+    db.session.add(_49_new_dog_module_2_lesson_3_quiz)
+    db.session.commit()
+
+    _50_new_dog_module_2_lesson_3_training_skill_1 = Skill(title='Handling II', steps=['Lift your puppy up and put them on your lap or kneel next to them and hug, pulling them close to you. Wait until the puppy is calm and give them some treats.', 'Touch your puppy\'s paws, check between nails. Reward them for a calm reaction.'])  # noqa
+    db.session.add(_50_new_dog_module_2_lesson_3_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=48, skill_id=50))
+
+    _51_new_dog_module_2_lesson_3_training_skill_2 = Skill(title='Sit', steps=['Treat in your hand, lift it from your dog\'s nose over their head.', 'Reward only when your dog sits down completely.', 'If your dog stays sitting, call your dog to you and repeat the exercise.'])  # noqa
+    db.session.add(_51_new_dog_module_2_lesson_3_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=48, skill_id=51))
+
+    db.engine.execute(skills.insert().values(lesson_id=48, skill_id=46))
+
+    _52_new_dog_module_2_lesson_3_activity = Activity(lesson_id=48, tasks=['Greet three men, ask them to give a treat to your dog. You want your dog to like men.', 'Ask your dog for a sit before giving food. It is a great way to show your dog how you want them to behave when excited or asking for something. You want your dog to sit, instead of jumping around.'])  # noqa
+    db.session.add(_52_new_dog_module_2_lesson_3_activity)
+    db.session.commit()
+
+# Lesson 4
+    _53_new_dog_module_2_lesson_4 = Lesson(module_id=36, title='Lesson 4 - Come, Down')  # noqa
+    db.session.add(_53_new_dog_module_2_lesson_4)
+    db.session.commit()
+
+    _54_new_dog_module_2_lesson_4_quiz = Quiz(lesson_id=53, prompt='Before your dog learns a reliable recall, they should always be on a leash.', choices=['True', 'False'], answer_idx=0, explanation=['A dog who is still learning perfect recall is safer on a leash. Even in a fenced-off area, we recommend having a five-meter-long leash on the dog. Put it on the ground so the dog can drag it with them. If you need to call the dog back to you and the dog is distracted, you can gently pull on it and encourage the dog to come. The worst lesson is when we call the dog back to us, they ignore us, and we let the cue vanish into thin air. The leash allows the dog freedom, but also guarantees that the dog comes back when called. Recall is the most important skill in your friendship.'])  # noqa
+    db.session.add(_54_new_dog_module_2_lesson_4_quiz)
+    db.session.commit()
+
+    _55_new_dog_module_2_lesson_4_training_skill_1 = Skill(title='Come', steps=['At home call "come," and run away from your dog.', 'If your dog follows, praise them very enthusiastically and give lots of treats.', 'If your dog is not interested, take a squeaky toy and play energetically with it. Only if you get your dog\'s attention, call "come," and show the toy to your dog. Praise very enthusiastically, and play with your dog.'])  # noqa
+    db.session.add(_55_new_dog_module_2_lesson_4_training_skill_1)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=53, skill_id=55))
+
+    _56_new_dog_module_2_lesson_4_training_skill_2 = Skill(title='Down', steps=['Make your dog focus on you and your hand with a treat. Keep the treat near your dog\'s nose.', 'Slowly move the treat downwards in front of your dong\'s nose.', 'Once chest and elbows are on the ground, reward with another W&T!', 'Alternatively, try this method - if your dog is struggling you can sit down, bend your knees, and lure your dog to crawl under. Once his/her body is under your knees, W&T.', 'Once the dog gets comfortable crawling, hold your hand with a treat on the ground, next to your leg. Squeeze the treat between your fingers so it takes time to eat it. When your dog lays down, W&T.'])  # noqa
+    db.session.add(_56_new_dog_module_2_lesson_4_training_skill_2)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=53, skill_id=56))
+
+    db.engine.execute(skills.insert().values(lesson_id=53, skill_id=51))
+
+    _57_new_dog_module_2_lesson_4_activity = Activity(lesson_id=53, tasks=['Train recall. Call your dog to you before serving dinner.', 'Walk Strangely, swinging from side to side, reward your dog for friendly, curious behavior. In this way teach your dog to ignore people who walk in uncoordinated ways, e.g. kids, drunk people.'])  # noqa
+    db.session.add(_57_new_dog_module_2_lesson_4_activity)
+    db.session.commit()
