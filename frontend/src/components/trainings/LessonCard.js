@@ -44,7 +44,7 @@ function LessonCard({ title, subTitle, icon, onPress, entity }) {
       activeOpacity={0.65}
     > 
       {completed && <CompletedIcon />}
-      <Icon name={icon} size={80} backgroundColor='white' iconColor='salmon' />
+      <Icon name={icon} size={80} iconColor='salmon' />
       <View style={styles.detailsContainer}>
         <Header style={styles.title}>{title}</Header>
         <Text style={styles.subTitle} numberOfLines={1}>{subTitle}</Text>

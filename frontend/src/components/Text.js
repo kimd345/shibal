@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.primaryText,
     textAlign: 'center',
-    lineHeight: 27,
+    lineHeight: 28,
   },
 });
 

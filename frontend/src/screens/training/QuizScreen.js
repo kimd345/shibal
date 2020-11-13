@@ -8,6 +8,8 @@ import Header from '../../components/Header';
 import Text from '../../components/Text';
 import Icon from '../../components/Icon';
 import QuizChoiceItem from '../../components/trainings/QuizChoiceItem';
+import { ScrollView } from 'react-native-gesture-handler';
+import Button from '../../components/Button';
 
 function QuizScreen({ navigation, route }) {
   const quiz = route.params.quiz;
@@ -17,52 +19,57 @@ function QuizScreen({ navigation, route }) {
   const quizEnrollment = useSelector(state => state.enrollments[quiz.id]);
 
   return (
-    <Screen style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <View style={styles.infoContainer}>
         <Icon name='question' size={120} backgroundColor='white' iconColor='salmon' />
         <Header style={styles.header}>Daily Question</Header>
         <Text style={styles.prompt}>{quiz.prompt}</Text>
       </View>
       {(quizEnrollment === undefined)
-        ? <FlatList
-            data={choices}
-            keyExtractor={(choice) => choices.indexOf(choice).toString()}
-            renderItem={({ item }) => (
+        ? choices.map(choice => (
               <QuizChoiceItem
-                choice={item}
+                key={choices.indexOf(choice).toString()}
+                choice={choice}
                 quiz={quiz}
                 choices={choices}
                 program={program}
               />
-            )}
-          />
-        : <View style={styles.answerContainer}>
+            ))
+        : <>
             <View style={styles.answerWrapper}>
               <Text>{choices[quiz.answer_idx]}</Text>
             </View>
-            <View style={styles.explanationWrapper}>
-              <FlatList
-                data={quiz.explanation}
-                keyExtractor={(paragraph) => quiz.explanation.indexOf(paragraph).toString()}
-                renderItem={({ item }) => (
-                  <Text>{item}</Text>
-                )}
+            <View style={styles.explanationView}>
+              {quiz.explanation.map(paragraph => {
+                return (
+                  <Text
+                    style={styles.paragraph}
+                    key={quiz.explanation.indexOf(paragraph).toString()}
+                  >
+                    {paragraph}
+                  </Text>
+                )
+              })}
+              <Button
+                onPress={() => navigation.goBack()}
+                title='GOT IT' 
+                icon='check' 
+                width={135} 
               />
-            </View>
-          </View>}
-    </Screen>
+            </View>        
+          </>}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
+    paddingHorizontal: 30,
     backgroundColor: colors.white,
-    alignItems: 'center',
   },
   infoContainer: {
     alignItems: 'center',
     margin: 20,
-    width: '80%',
   },
   header: {
     lineHeight: 40,
@@ -75,20 +82,23 @@ const styles = StyleSheet.create({
     color: colors.mossygrey,
     fontSize: 18,
   },
-  answerContainer: {
-    width: '90%',
-  },
   answerWrapper: {
     backgroundColor: colors.grass,
     borderRadius: 10,
     paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingHorizontal: 30,
     marginBottom: 20,
   },
-  explanationWrapper: {
+  explanationView: {
+    backgroundColor: colors.palegrey,
     borderRadius: 10,
+    marginBottom: 20,
     paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingHorizontal: 30,
+  },
+  paragraph: {
+    fontSize: 14,
+    textAlign: 'left',
   },
 });
 

@@ -16,6 +16,7 @@ function AuthScreen({ navigation }) {
         <Button
           icon='facebook'
           title='Continue with Facebook'
+          width={260}
           // onPress={}
           color={'facebook'}
         />
@@ -23,6 +24,7 @@ function AuthScreen({ navigation }) {
           icon='google'
           title='Continue with Google'
           // onPress={}
+          width={260}
           color={'google'}
         />
       </View>
@@ -30,6 +32,7 @@ function AuthScreen({ navigation }) {
         <Button
           title='Sign up with email'
           onPress={() => navigation.navigate(routes.REGISTER)}
+          width={260}
           color={'palegrey'}
           textColor={'mossygrey'}
         />

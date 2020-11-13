@@ -83,7 +83,7 @@ function DogProfileScreen({ navigation }) {
         color='tabButton'
         onPress={() => navigation.navigate(routes.NEW_DOG)}
         title='New Dog'
-        width={200}
+        width={175}
       />
       <Button
         icon='home-minus'
@@ -103,7 +103,7 @@ function DogProfileScreen({ navigation }) {
           ]
         )}
         title='Remove Dog'
-        width={200}
+        width={175}
       />
     </Screen>
   );

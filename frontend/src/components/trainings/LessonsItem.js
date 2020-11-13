@@ -4,6 +4,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 import routes from '../../navigation/routes';
 
+import { ListItemSeparator } from '../../components/lists';
 import { ListItem } from '../../components/lists';
 import Icon from '../../components/Icon';
 
@@ -43,11 +44,14 @@ function LessonsItem({ lesson, program, module }) {
   };
 
   return (
-    <ListItem
-      title={lesson.title}
-      IconComponent={completed ? <Icon name='check' iconColor='green' backgroundColor='white' /> : null}
-      onPress={handlePress}
-    />
+    <>
+      <ListItem
+        title={lesson.title}
+        IconComponent={completed ? <Icon name='check' iconColor='green' backgroundColor='white' /> : null}
+        onPress={handlePress}
+      />
+      <ListItemSeparator />
+    </>
   );
 }
 

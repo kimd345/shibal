@@ -10,7 +10,6 @@ function SkillSlider({ steps, duration, entityId, program }) {
   const [sliderState, setSliderState] = useState({ currentPage: 0 });
 
   const width = useWindowDimensions().width;
-  const showWhistle = steps.join(',').includes('whistle');
 
   const setSliderPage = (event) => {
     const { currentPage } = sliderState;
@@ -25,6 +24,11 @@ function SkillSlider({ steps, duration, entityId, program }) {
   };
 
   const { currentPage: pageIndex } = sliderState;
+
+  const stepsStr = steps.join(',');
+  const showWhistle = stepsStr.includes('whistle')
+                      || stepsStr.includes('treat')
+                      || stepsStr.includes('W&T');
 
   return (
     <View style={styles.container}>
@@ -61,7 +65,7 @@ function SkillSlider({ steps, duration, entityId, program }) {
         <Timer duration={duration} entityId={entityId} />
         {showWhistle && 
           <View style={styles.whistleWrapper}>
-            <Whistle size={100} />
+            <Whistle size={75} />
           </View>
         }
       </View>
@@ -75,7 +79,7 @@ const styles = StyleSheet.create({
   },
   paginationWrapper: {
     position: 'absolute',
-    bottom: 200,
+    bottom: 150,
     left: 0,
     right: 0,
     justifyContent: 'center',
@@ -90,8 +94,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   timerWrapper: {
+    width: '100%',
+    justifyContent: 'space-evenly',
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
   },
   whistleWrapper: {
     marginBottom: 20,

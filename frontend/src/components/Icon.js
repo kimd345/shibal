@@ -7,7 +7,7 @@ import colors from '../config/colors';
 function Icon({
   name,
   size = 40,
-  backgroundColor = '#000',
+  backgroundColor,
   iconColor = '#fff',
   borderWidth = 0,
   borderColor = colors.primaryButton,

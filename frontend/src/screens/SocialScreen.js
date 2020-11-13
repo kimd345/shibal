@@ -58,7 +58,8 @@ function SocialScreen({ navigation }) {
           <Button 
             title='Participate!'
             icon='star'
-            margin={0}
+            width={165}
+            height={40}
             onPress={() => navigation.navigate(routes.NEW_POST)}
           />
         </View>

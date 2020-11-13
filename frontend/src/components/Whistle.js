@@ -24,7 +24,7 @@ function Whistle({ size }) {
       <MaterialCommunityIcons
         name='whistle'
         size={size}
-        color={colors.mossygrey}
+        color={colors.whistle}
       />
     </TouchableOpacity>
   );

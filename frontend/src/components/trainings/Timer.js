@@ -10,6 +10,7 @@ import useApi from '../../hooks/useApi';
 
 import trainingsApi from '../../api/trainings';
 import { actions } from '../../redux/ducks';
+import colors from '../../config/colors';
 
 function Timer({ duration, entityId }) {
   const [seconds, setSeconds] = useState(duration);
@@ -31,12 +32,16 @@ function Timer({ duration, entityId }) {
   });
 
   return (
-    <View style={styles.container}>
+    <View>
       {seconds > 0
-        ? <Text style={styles.text}>
-            {`${new Date(seconds * 1000).toISOString().substr(15, 4)}`}
-          </Text>
+        ? <View style={styles.textWrapper}>
+            <Text style={styles.text}>
+              {`${new Date(seconds * 1000).toISOString().substr(15, 4)}`}
+            </Text>
+          </View>
         : <Button 
+            icon='bone'
+            width={125}
             title='Finish'
             onPress={async () => {
               if (enrollment === undefined) {
@@ -52,10 +57,17 @@ function Timer({ duration, entityId }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    margin: 50,
-    width: 100,
+  textWrapper: {
+    width: 50,
+    marginLeft: 45,
+    marginRight: 45,
+    borderColor: colors.forest,
+    borderWidth: 1,
+    borderRadius: 7,
   },
+  text: {
+    color: colors.forest,
+  }
 });
 
 export default Timer;

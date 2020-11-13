@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import defaultStyles from '../config/defaultStyles';
@@ -43,20 +43,29 @@ function AppButton({
           name={icon}
           size={24}
           color={textColor}
-          style={{ position: 'absolute', left: 20, marginRight: 10 }}
+          style={{ position: 'absolute', left: 20 }}
         />
       ) : null}
-      <Text
-        style={{
-          color: colors[textColor],
-          fontFamily: defaultStyles.systemText[fontFamily],
-          fontSize,
-          fontWeight,
-          textAlign: 'center',
-        }}
+      <View 
+        style={[
+          styles.textWrapper,
+          {
+            width: width,
+            paddingLeft: icon ? 30 : 0
+          }
+        ]}
       >
-        {title}
-      </Text>
+        <Text
+          style={{
+            color: colors[textColor],
+            fontFamily: defaultStyles.systemText[fontFamily],
+            fontSize,
+            fontWeight,
+          }}
+        >
+          {title}
+        </Text>
+      </View>
     </TouchableOpacity>
   );
 }
@@ -78,6 +87,10 @@ const styles = StyleSheet.create({
     shadowRadius: 1.5,
     elevation: 2.5,
   },
+  textWrapper: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 });
 
 export default AppButton;

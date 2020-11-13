@@ -57,8 +57,9 @@ function SkillSliderItem({ stepNum, step, numSteps, entityId, program }) {
       <Text style={styles.directions}>{step}</Text>
       {numSteps === stepNum
         && (<Button 
+              icon='bone'
               title='Finish' 
-              width={100}
+              width={125}
               color='primaryButton'
               onPress={handlePress}
             />)}
@@ -74,9 +75,7 @@ const styles = StyleSheet.create({
   step: {
     marginBottom: 50,
   },
-  directions: {
-    lineHeight: 28,
-  },
+  directions: {},
 });
 
 export default SkillSliderItem;

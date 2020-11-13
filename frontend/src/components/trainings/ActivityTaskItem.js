@@ -35,7 +35,15 @@ function ActivityTaskItem({ task, entityId }) {
             />}
       </View>
       <View style={styles.textWrapper}>
-        <Text style={[styles.text, {textDecorationLine: checked ? 'line-through' : 'none' }]}>
+        <Text 
+          style={[
+            styles.text, 
+            {
+              textDecorationLine: checked ? 'line-through' : 'none',
+              color: checked ? colors.greenishgrey : colors.mossygrey,
+            }
+          ]}
+        >
           {task}
         </Text>
       </View>
@@ -57,7 +65,6 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'left',
-    color: colors.mossygrey,
     paddingHorizontal: 10,
     fontSize: 14,
     lineHeight: 18,

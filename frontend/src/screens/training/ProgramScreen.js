@@ -1,39 +1,42 @@
 import React from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
-import Screen from '../../components/Screen';
+import colors from '../../config/colors';
 import Header from '../../components/Header';
 import Text from '../../components/Text';
-import { ListItemSeparator } from '../../components/lists';
 import ModulesItem from '../../components/trainings/ModulesItem';
 
 function ProgramScreen({ navigation, route }) {
   const program = route.params;
+  const modules = route.params.modules
 
   return (
-    <Screen style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <View style={styles.infoContainer}>
         <Header style={styles.header}>{program.title}</Header>
         <Text style={styles.description}>{program.description}</Text>
       </View>
       
-      <FlatList
-        data={program.modules}
-        keyExtractor={(module) => module.id.toString()}
-        ItemSeparatorComponent={() => <ListItemSeparator />}
-        renderItem={({ item }) => (
-          <ModulesItem module={item} program={program} />
-        )}
-      />
-    </Screen>
+      {modules.map(module => {
+          return (
+            <ModulesItem 
+              key={modules.indexOf(module).toString()} 
+              module={module} 
+              program={program} 
+            />
+          );
+      })}
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   screen: {
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   infoContainer: {
+    backgroundColor: colors.palegrey,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 30,
@@ -43,9 +46,7 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     marginBottom: 20,
   },
-  description: {
-    lineHeight: 28,
-  },
+  description: {},
 });
 
 export default ProgramScreen;

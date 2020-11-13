@@ -368,7 +368,7 @@ with app.app_context():
 
     db.engine.execute(skills.insert().values(lesson_id=58, skill_id=56))
 
-    _61_new_dog_module_2_lesson_5_activity = Activity(lesson_id=58, tasks=['Train recall. Call your dog to you before serving dinner.', 'Walk Strangely, swinging from side to side, reward your dog for friendly, curious behavior. In this way teach your dog to ignore people who walk in uncoordinated ways, e.g. kids, drunk people.'])  # noqa
+    _61_new_dog_module_2_lesson_5_activity = Activity(lesson_id=58, tasks=['Do a training session in a different room than usual. Dogs find it harder to focus in another environment.', 'Ask your dog to sit before opening the door to go outside. It helps your dog to focus and pay attention to you.', ])  # noqa
     db.session.add(_61_new_dog_module_2_lesson_5_activity)
     db.session.commit()
 
@@ -397,4 +397,19 @@ with app.app_context():
 
     _66_new_dog_module_2_lesson_6_activity = Activity(lesson_id=62, tasks=['Ask your dog to sit while you put on the leash. Walking outside is an exciting time, sitting down will prevent your dog getting hyper even before you leave the house.', 'Practice the "down" exercise five times on asphalt. A different surface might surprise your dog and you want to teach them a reliable response in all life-situations.'])  # noqa
     db.session.add(_66_new_dog_module_2_lesson_6_activity)
+    db.session.commit()
+
+# Lesson 7
+    _67_new_dog_module_2_lesson_7 = Lesson(module_id=36, title='Lesson 7 - Revision')  # noqa
+    db.session.add(_67_new_dog_module_2_lesson_7)
+    db.session.commit()
+
+    _68_new_dog_module_2_lesson_7_quiz = Quiz(lesson_id=67, prompt='It is natural for dogs to hold eye contact with humans.', choices=['True', 'False'], answer_idx=1, explanation=['In dog-to-dog language staring into the eyes is threatening behavior. However, dogs have learned to communicate with humans by looking them in the eyes. With training, dogs learn to check-in with their humans and hold eye-contact. This is a very useful skill, so your dog not only relies on sound but also on your body language cues.'])  # noqa
+    db.session.add(_68_new_dog_module_2_lesson_7_quiz)
+    db.session.commit()
+
+    db.engine.execute(skills.insert().values(lesson_id=67, skill_id=65))
+
+    _70_new_dog_module_2_lesson_7_activity = Activity(lesson_id=67, tasks=['Brush your dog\'s coat. Praise and reward your dog for not resisting.', 'Invite a guest to your house and ask your dog to greet them politely by sitting down. Teach your dog the polite way to say, "Hello."'])  # noqa
+    db.session.add(_70_new_dog_module_2_lesson_7_activity)
     db.session.commit()

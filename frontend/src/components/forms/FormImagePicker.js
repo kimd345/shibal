@@ -131,7 +131,7 @@ function FormImagePicker({ name, category }) {
           icon='image'
           textColor='black'
           title='Pick'
-          width={140}
+          width={105}
         />
         <Button
           onPress={takePhoto}
@@ -139,7 +139,7 @@ function FormImagePicker({ name, category }) {
           icon='camera'
           textColor='black'
           title='Take'
-          width={140}
+          width={105}
         />
       </View>
     </View>

@@ -61,9 +61,10 @@ function ActivitiesScreen({ navigation, route }) {
         tasks={tasks}
       />
       {!enrollment
-        && <Button 
-              title='Finish' 
-              width={100}
+        && <Button
+              icon='check'
+              title='Complete' 
+              width={155}
               color='primaryButton'
               onPress={handlePress}
           />}

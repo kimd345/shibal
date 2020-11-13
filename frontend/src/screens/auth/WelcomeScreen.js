@@ -28,13 +28,13 @@ function WelcomeScreen({ navigation }) {
             icon='arrow-right'
             title='GET STARTED'
             /* onPress={} */
-            width='55%'
+            width={185}
           />
           <Button
             title='LOGIN'
             onPress={() => navigation.navigate(routes.AUTH)}
             color='welcomeLogin'
-            width='40%'
+            width={125}
             height={40}
           />
         </View>
