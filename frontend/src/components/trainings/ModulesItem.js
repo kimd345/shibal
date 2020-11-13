@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   moduleText: {
     fontSize: 20,
-    marginHorizontal: 10,
+    marginHorizontal: 15,
     textAlign: 'left',
   },
 });
