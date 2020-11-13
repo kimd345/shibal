@@ -18,6 +18,7 @@ function TrainingNavigator({ navigation }) {
   return (
 	<Stack.Navigator
 		screenOptions={{
+			headerStyle: { backgroundColor: colors.palegrey },
       headerTintColor: colors.mossygrey,
       headerBackTitle: 'Back',
 		}}

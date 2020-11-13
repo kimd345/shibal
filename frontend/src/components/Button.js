@@ -20,6 +20,7 @@ function AppButton({
   fontFamily = 'fontFamily',
   fontSize = 15,
   fontWeight = '500',
+  textDecorationLine = 'none',
 }) {
   return (
     <TouchableOpacity
@@ -61,6 +62,7 @@ function AppButton({
             fontFamily: defaultStyles.systemText[fontFamily],
             fontSize,
             fontWeight,
+            textDecorationLine,
           }}
         >
           {title}

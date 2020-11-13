@@ -21,7 +21,7 @@ function QuizScreen({ navigation, route }) {
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.infoContainer}>
-        <Icon name='question' size={120} backgroundColor='white' iconColor='salmon' />
+        <Icon name='question' size={120} iconColor='salmon' />
         <Header style={styles.header}>Daily Question</Header>
         <Text style={styles.prompt}>{quiz.prompt}</Text>
       </View>
@@ -65,7 +65,7 @@ function QuizScreen({ navigation, route }) {
 const styles = StyleSheet.create({
   screen: {
     paddingHorizontal: 30,
-    backgroundColor: colors.white,
+    backgroundColor: colors.palegrey,
   },
   infoContainer: {
     alignItems: 'center',

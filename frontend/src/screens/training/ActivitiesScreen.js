@@ -52,7 +52,7 @@ function ActivitiesScreen({ navigation, route }) {
     <View style={styles.screen}>
       <ProgramCompleteScreen modalVisible={modalVisible} program={program} />
       <View style={styles.infoContainer}>
-        <Icon name='clipboard-list' size={120} backgroundColor='white' iconColor='salmon' />
+        <Icon name='clipboard-list' size={120} iconColor='salmon' />
         <Header style={styles.header}>List of activity tasks</Header>
         <Text style={styles.prompt}>Spend some time with your dog and complete these tasks during the day</Text>
       </View>
@@ -74,7 +74,7 @@ function ActivitiesScreen({ navigation, route }) {
 
 const styles = StyleSheet.create({
   screen: {
-    backgroundColor: colors.white,
+    backgroundColor: colors.palegrey,
     alignItems: 'center',
     flex: 1,
   },
