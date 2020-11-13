@@ -31,7 +31,7 @@ function QuizChoiceItem({ choice, quiz, choices, program }) {
   return (
     <Button
       title={choice}
-      height={70}
+      height='auto'
       width='80%'
       color='white'
       textColor={textColor}

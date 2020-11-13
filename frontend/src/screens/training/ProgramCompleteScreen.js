@@ -7,6 +7,7 @@ import colors from '../../config/colors';
 import Text from '../../components/Text';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
+import Screen from '../../components/Screen';
 
 function ProgramCompleteScreen({ modalVisible, program }) {
   const navigation = useNavigation();
@@ -21,11 +22,15 @@ function ProgramCompleteScreen({ modalVisible, program }) {
         </View>
         <LottieView
           autoPlay
-          loop
+          loop={false}
           source={require('../../assets/animations/completed/trophy.json')}
         />
         <View style={styles.buttonWrapper}>
-          <Button title='Finish' onPress={() => navigation.popToTop()} />
+          <Button
+            icon='check'
+            title='COMPLETE' 
+            onPress={() => navigation.popToTop()} 
+          />
         </View>
       </View>
     </Modal>
@@ -36,7 +41,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: colors.primaryBackground,
+    backgroundColor: colors.grass,
   },
   textWrapper: {
     top: 125,
