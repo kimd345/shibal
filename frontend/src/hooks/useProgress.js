@@ -4,7 +4,7 @@ import { actions } from '../redux/ducks';
 export default useProgress = () => {
   const dispatch = useDispatch();
 
-  const ohbra = (object) => {
+  const getNestedIds = (object) => {
     let result = [];
 
     const recursion = (obj) => {
@@ -28,9 +28,25 @@ export default useProgress = () => {
 
   const setTrainingIds = (program) => {
     if (program === undefined) return;
-    const trainingIds = ohbra(program);
+    const trainingIds = getNestedIds(program);
     dispatch(actions.setTrainingIds(trainingIds))
   };
 
-  return { setTrainingIds };
+  const checkProgramCompletion = (enrollments, trainingIds) => {
+    const enrollmentIds = Object.keys(enrollments).map(key => parseInt(key));
+    const isComplete = trainingIds.join() === enrollmentIds.join();
+
+    return isComplete;
+  };
+
+  const checkTrainingCompletion = (enrollments, entity) => {
+    const entityIds = getNestedIds(entity);
+    const enrollmentIds = Object.keys(enrollments).map(key => parseInt(key));
+
+    const isComplete = entityIds.every(entityId => enrollmentIds.includes(entityId));
+
+    return isComplete;
+  }
+
+  return { setTrainingIds, checkProgramCompletion, checkTrainingCompletion };
 };

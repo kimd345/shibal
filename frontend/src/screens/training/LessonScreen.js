@@ -33,14 +33,14 @@ function LessonScreen({ navigation, route }) {
         title='Training'
         subTitle={`${skillsDuration} min`}
         entity={lesson.skills}
-        onPress={() => navigation.navigate(routes.SKILLS, { skills: lesson.skills, program })}
+        onPress={() => navigation.navigate(routes.SKILLS, { skills: lesson.skills, program, lesson })}
       />
       <LessonCard
         icon='clipboard-list'
         title='Activity'
         subTitle={activityTask}
         entity={lesson.activities[0]}
-        onPress={() => navigation.navigate(routes.ACTIVITY, { activity: lesson.activities[0], program })}
+        onPress={() => navigation.navigate(routes.ACTIVITY, { activity: lesson.activities[0], program, lesson })}
       />
     </>
   );

@@ -7,21 +7,23 @@ import { Entypo } from '@expo/vector-icons';
 import Text from '../Text';
 import Button from '../Button';
 import ProgramCompleteScreen from '../../screens/training/ProgramCompleteScreen';
+import LessonCompleteScreen from '../../screens/training/LessonCompleteScreen';
 
 import useApi from '../../hooks/useApi';
+import useProgress from '../../hooks/useProgress';
 
 import trainingsApi from '../../api/trainings';
 import { actions } from '../../redux/ducks';
 
-function SkillSliderItem({ stepNum, step, numSteps, entityId, program }) {
+function SkillSliderItem({ stepNum, step, numSteps, entityId, program, lesson }) {
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
   
   const createSkillEnrollmentApi = useApi(trainingsApi.createEnrollment);
 
   const dispatch = useDispatch();
-
   const navigation = useNavigation();
+  const progress = useProgress();
 
   const dogId = useSelector(state => state.dog.id);
   const trainingIds = useSelector(state => state.trainingIds);
@@ -33,25 +35,24 @@ function SkillSliderItem({ stepNum, step, numSteps, entityId, program }) {
       await createSkillEnrollmentApi.request(entityId, dogId, 'Skill', 'Completed')
         .then(result => dispatch(actions.addEnrollment(result.data)))
         .then(() => {
-          checkCompletion()
-            ? setModalVisible(true)
-            : navigation.goBack();
+          if (progress.checkProgramCompletion(enrollments, trainingIds)) {
+            setProgramCompleteVisible(true);
+          } else if (progress.checkTrainingCompletion(enrollments, lesson)) {
+            setLessonCompleteVisible(true);
+          } else {
+            navigation.goBack();
+          }
       });
     }
   };
 
-  const checkCompletion = () => {
-    const enrollmentIds = Object.keys(enrollments).map(key => parseInt(key));
-    const isComplete = trainingIds.join() === enrollmentIds.join()
-
-    return isComplete;
-  };
-
-  const [modalVisible, setModalVisible] = useState(false);
+  const [programCompleteVisible, setProgramCompleteVisible] = useState(false);
+  const [lessonCompleteVisible, setLessonCompleteVisible] = useState(false);
   
   return (
     <View style={[styles.container, { width, height }]}>
-      <ProgramCompleteScreen modalVisible={modalVisible} program={program} />
+      <ProgramCompleteScreen modalVisible={programCompleteVisible} program={program} />
+      <LessonCompleteScreen modalVisible={lessonCompleteVisible} lesson={lesson} />
       <Entypo name="traffic-cone" size={60} color="black" />
       <Text style={styles.step}>Step {stepNum}</Text>
       <Text style={styles.directions}>{step}</Text>

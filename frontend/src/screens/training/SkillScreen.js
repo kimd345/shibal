@@ -5,15 +5,14 @@ import colors from '../../config/colors';
 import Screen from '../../components/Screen';
 import SkillSlider from '../../components/trainings/SkillSlider';
 
-import routes from '../../navigation/routes';
-
-function SkillScreen({ navigation, route }) {
+function SkillScreen({ route }) {
   const skill = route.params.skill;
   const program = route.params.program;
+  const lesson = route.params.lesson;
   
   return (
     <Screen style={styles.screen}>
-      <SkillSlider steps={skill.steps} duration={skill.duration} entityId={skill.id} program={program} />
+      <SkillSlider steps={skill.steps} duration={skill.duration} entityId={skill.id} program={program} lesson={lesson} />
     </Screen>
   );
 }
