@@ -99,7 +99,14 @@ function HomeNavigator({ navigation }) {
               width={150}
               items={dogs}
               placeholder='Your Inu'
-              style={{ padding: 2 }}
+              style={{ 
+                alignItems: 'center',
+                backgroundColor: colors.white,
+                borderColor: colors.leafygrey,
+                borderWidth: 1,
+                padding: 2, 
+                height: 30, 
+              }}
               selectedItem={dog}
               onSelectItem={(item) => {
                 dogs.forEach(async (dog) => {
