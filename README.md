@@ -10,9 +10,11 @@
 
 ---
 
-Welcome to Shibal! Shibal is an Android/iOS mobile app built with React Native and Flask. Shibal offers a one-stop tool for training your shiba inu through extensive curriculi and socializing with other owners via a social media platform. It is inspired by [DOGO](https://dogo.app/), a popular dog training app.
+Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with React Native and Flask maintained in a single code base. Shibal offers a one-stop tool for training your shiba inu through extensive curriculi and socializing with other owners via a social media platform. It is inspired by [DOGO](https://dogo.app/), a popular dog training app.
 
-<img src="documentation/readme/welcome_screen.gif">
+<p align="center">
+      <img src="documentation/readme/welcome_screen.gif">
+</p>
 
 ---
 
@@ -32,15 +34,16 @@ Data integrity with frontend and backend validations<br>
 Secure with JWT token and SHA-256 hashing<br>
 
 <br><br><br><br><br><br><br>
-<img src="documentation/readme/authentication.gif" align="left" width="200px"> 
+<img src="documentation/readme/create_dog.gif" align="left"> 
 <br><br><br><br>
 ### Manage Dog Profiles<br>
 
-   Create or remove dog profiles
-   Customize 
+   Create or remove dog profiles<br>
+   Upload profile image<br>
+   Select dog to train<br>
 
-<br><br><br><br>
-<br><br><br><br>
+<br><br><br>
+<br><br><br>
 <img margin-right="50px" src="documentation/readme/create_dog.gif" align="right">
 <br><br><br><br><br>
 ### Dynamic Search Bar<br>
