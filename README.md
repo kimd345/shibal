@@ -36,7 +36,7 @@ Secure with JWT token and SHA-256 hashing<br>
 <br><br><br><br><br><br><br>
 <img src="documentation/readme/create_dog.gif" align="left"> 
 <br><br><br><br>
-### Manage Dog Profiles<br>
+### Dog Profiles<br>
 
    Create or remove dog profiles<br>
    Upload profile image<br>
@@ -46,11 +46,12 @@ Secure with JWT token and SHA-256 hashing<br>
 <br><br><br>
 <img margin-right="50px" src="documentation/readme/create_dog.gif" align="right">
 <br><br><br><br><br>
-### Dynamic Search Bar<br>
-Get recommended results as you type
+### Training Programs<br>
+Navigate between training programs and submodules<br>
+Maintain training progress state<br>
 <br><br><br><br><br><br>
 <br><br><br><br>
-<img src="documentation/readme/authentication.gif" align="left" width="200px"> <br><br><br><br>
+<img src="documentation/readme/training.gif" align="left"> <br><br><br><br>
 
 ### Shopping Cart <br>
 Add or remove items from your cart, and checkout items into your collection<br><br>
