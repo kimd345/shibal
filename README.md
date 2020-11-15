@@ -27,24 +27,32 @@ Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with
 
 ---
 
-## Features<br>
-<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="200px"> <br><br><br><br>
+## Features
+<br>
+<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="200px">
+<br><br><br><br>
 ### Authentication<br>
-Sign up or log in with email and password<br>
-###### Secure with JWT token and SHA-256 hashing<br>
-###### Data integrity with frontend and backend validations<br>
+Sign up or log in with email and password
+<br><br>
+###### Secure with JWT token and SHA-256 hashing
+<br>
+###### Data integrity with frontend and backend validations
+<br><br><br><br><br><br><br><br>
 
-<br><br><br><br><br><br><br>
+
 <img src="documentation/readme/create_dog.gif" align="left"> 
 <br><br><br><br>
 ### Dog Profiles<br>
+Create one or more profiles for your dog(s)
+<br>
+Select dog to train
+<br><br>
+###### Upload profile image to AWS S3
+<br>
+###### Enter info with custom input and picker components
+<br><br><br><br><br><br><br>
 
-   Create or remove dog profiles<br>
-   Upload profile image<br>
-   Select dog to train<br>
 
-<br><br><br>
-<br><br><br>
 <img margin-right="50px" src="documentation/readme/training.gif" align="right">
 <br><br><br><br><br>
 ### Training Programs<br>
