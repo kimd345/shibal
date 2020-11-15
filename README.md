@@ -16,7 +16,7 @@ Welcome to Shibal! Shibal is an Android/iOS mobile app built with React Native a
 
 ---
 
-### WOGOS uses the following technologies:
+### Shibal uses the following technologies:
 
 - Frontend - JavaScript | React | Redux
 - Backend - Python | Flask
@@ -26,13 +26,13 @@ Welcome to Shibal! Shibal is an Android/iOS mobile app built with React Native a
 ---
 
 ## Features<br>
-<img margin-right="50px" src="documentation/1_auth.gif" align="right" width="600px" > <br><br><br><br>
+<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="600px" > <br><br><br><br>
 ### Authentication<br>
 Data integrity with frontend and backend validations<br>
 Secure with JWT token and SHA-256 hashing<br>
 
 <br><br><br><br><br><br><br>
-<img src="documentation/2_faceted_filter.gif" align="left" width="600px"> 
+<img src="documentation/2_faceted_filter.gif" align="left" width="200px"> 
 <br><br><br><br>
 ### Faceted Search Filters<br>
 
