@@ -26,13 +26,13 @@ Welcome to Shibal! Shibal is an Android/iOS mobile app built with React Native a
 ---
 
 ## Features<br>
-<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="600px" > <br><br><br><br>
+<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="200px"> <br><br><br><br>
 ### Authentication<br>
 Data integrity with frontend and backend validations<br>
 Secure with JWT token and SHA-256 hashing<br>
 
 <br><br><br><br><br><br><br>
-<img src="documentation/2_faceted_filter.gif" align="left" width="200px"> 
+<img src="documentation/readme/authentication.gif" align="left" width="200px"> 
 <br><br><br><br>
 ### Faceted Search Filters<br>
 
@@ -40,18 +40,18 @@ Secure with JWT token and SHA-256 hashing<br>
 
 <br><br><br><br>
 <br><br><br><br>
-<img margin-right="50px" src="documentation/3_dynamic_search.gif" align="right" width="600px" >
+<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="200px" >
 <br><br><br><br><br>
 ### Dynamic Search Bar<br>
 Get recommended results as you type
 <br><br><br><br><br><br>
 <br><br><br><br>
-<img src="documentation/4_cart_checkout.gif" align="left" width="600px"> <br><br><br><br>
+<img src="documentation/readme/authentication.gif" align="left" width="200px"> <br><br><br><br>
 
 ### Shopping Cart <br>
 Add or remove items from your cart, and checkout items into your collection<br><br>
 <br><br><br><br><br><br><br><br>
-<img margin-right="50px" src="documentation/5_review.gif" align="right" width="600px" >
+<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="200px" >
 <br><br><br><br>
 ### Product Reviews<br>
 Leave a review for items that you have purchased
