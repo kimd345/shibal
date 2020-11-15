@@ -18,9 +18,9 @@ Welcome to Shibal! Shibal is an Android/iOS mobile app built with React Native a
 
 ### Shibal uses the following technologies:
 
-- Frontend - JavaScript | React | Redux
+- Frontend - JavaScript | React Native | Redux
 - Backend - Python | Flask
-- Database - PostgreSQL
+- Database - PostgreSQL / AWS S3
 - Design - HTML5 / CSS
 
 ---
@@ -34,13 +34,14 @@ Secure with JWT token and SHA-256 hashing<br>
 <br><br><br><br><br><br><br>
 <img src="documentation/readme/authentication.gif" align="left" width="200px"> 
 <br><br><br><br>
-### Faceted Search Filters<br>
+### Manage Dog Profiles<br>
 
-   Apply multiple filters across genres and features to your search results
+   Create or remove dog profiles
+   Customize 
 
 <br><br><br><br>
 <br><br><br><br>
-<img margin-right="50px" src="documentation/readme/authentication.gif" align="right" width="200px" >
+<img margin-right="50px" src="documentation/readme/create_dog.gif" align="right">
 <br><br><br><br><br>
 ### Dynamic Search Bar<br>
 Get recommended results as you type
