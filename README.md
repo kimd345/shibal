@@ -47,7 +47,7 @@ Select dog to train<br><br>
 ### Training Programs<br>
 Navigate between training programs and submodules<br>
 Keep track of your dog's progress<br><br>
-###### Maintain deeply-nested training progress state with Redux<br>
+###### Manage deeply-nested training progress state with Redux<br>
 ###### Process state with recursive logic via useProgress custom hook<br><br><br><br><br><br><br><br><br>
 
 
