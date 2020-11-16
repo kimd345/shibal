@@ -10,6 +10,8 @@ import OfflineNotice from './src/components/OfflineNotice';
 import AuthContext from './src/auth/context';
 import authStorage from './src/auth/storage';
 import store from './src/redux/store';
+import logger from './src/utility/logger';
+logger.start();
 
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
