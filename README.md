@@ -5,7 +5,7 @@
 </p>
 
 ---
-## A mobile app for shiba inu owners to train their companion
+### A mobile app for shiba inu owners to train and bond with their companion
 
 ---
 *By Dong Hyuk Kim*<br><br>
