@@ -17,7 +17,7 @@ Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with
 
 ---
 
-### At a glance:
+#### Technologies at a glance:
 
 - Frontend - JavaScript | React Native | Redux
 - Backend - Python | Flask
@@ -57,7 +57,7 @@ Post photos of your dog to the feed<br>
 Browse recent posts<br>
 Like posts from the community<br><br>
 ###### Fetch posts realtime with useFocusEffect native hook<br>
-###### Handle like and unlike with composite primary key<br><br><br><br><br><br><br><br><br>
+###### Handle like and unlike with composite primary key<br><br><br><br><br><br><br><br><br><br><br>
 
 
 ---
