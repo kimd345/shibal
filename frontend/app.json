@@ -22,7 +22,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kimd345.shibal",
+      "buildNumber": "1.0.0"
+    },
+    "android": {
+      "package": "com.kimd345.shibal",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

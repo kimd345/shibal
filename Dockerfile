@@ -7,15 +7,16 @@ COPY . .
 RUN ["pip", "install", "-r", "requirements.txt"]
 
 
-# Build our React App
-RUN ["npm", "install", "--prefix", "frontend"]
-ENV REACT_APP_BASE_URL=https://flask-react-aa.herokuapp.com
-RUN ["npm", "run", "build", "--prefix", "frontend"]
+# # Build our React App
+# RUN ["npm", "install", "--prefix", "frontend"]
+# ENV REACT_APP_BASE_URL=https://flask-react-aa.herokuapp.com
+# RUN ["npm", "run", "build", "--prefix", "frontend"]
 
-# Move our react build for Flask to serve
-# Use cp here because we're copying files inside our working directory, not from
-# our host machine.
-RUN ["cp", "-r", "frontend/build/", "backend/static"]
+# # Move our react build for Flask to serve
+# # Use cp here because we're copying files inside our working directory, not from
+# # our host machine.
+# RUN ["cp", "-r", "frontend/build/", "backend/static"]
+RUN ["cp", "-r", "backend/static"]
 
 # Setup Flask environment
 ENV FLASK_APP=backend
