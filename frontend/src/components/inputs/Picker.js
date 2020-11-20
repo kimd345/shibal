@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import {
   View,
   StyleSheet,
-  TouchableWithoutFeedback,
   Modal,
   FlatList,
 } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Button from '../Button';

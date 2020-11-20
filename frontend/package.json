@@ -21,7 +21,7 @@
     "aws-amplify": "^3.3.2",
     "aws-amplify-react-native": "^4.2.7",
     "dayjs": "^1.9.6",
-    "expo": "^39.0.0",
+    "expo": "^39.0.3",
     "expo-av": "~8.6.0",
     "expo-constants": "~9.2.0",
     "expo-image-picker": "~9.1.1",
