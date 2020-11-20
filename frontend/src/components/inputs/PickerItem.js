@@ -1,14 +1,13 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import Text from '../Text';
 
 function PickerItem({ item, onPress }) {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <TouchableWithoutFeedback onPress={onPress}>
       <Text style={styles.text}>{item.label}</Text>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 }
 
