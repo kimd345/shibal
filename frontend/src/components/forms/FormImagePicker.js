@@ -101,6 +101,7 @@ function FormImagePicker({ name, category }) {
   downloadImage = (uri) => {
     Storage.get(uri)
       .then((result) => {
+        result = result.split('?')[0];  // remove longass uri params
         setImage(result);
         setFieldValue(name, result); // setFieldValue
       })
