@@ -4,9 +4,10 @@ import * as ImagePicker from 'expo-image-picker';
 import { Auth, Storage } from 'aws-amplify';
 import { useFormikContext } from 'formik';
 
+import colors from '../../config/colors';
 import Button from '../Button';
 import Text from '../Text';
-import colors from '../../config/colors';
+
 import useAuth from '../../hooks/useAuth';
 import logger from '../../utility/logger';
 
