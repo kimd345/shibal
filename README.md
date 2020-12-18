@@ -9,7 +9,7 @@
 
 ---
 *By Dong Hyuk Kim*<br><br>
-Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with React Native and Flask maintained in a single code base. Shibal offers a one-stop tool for training your shiba inu through detailed modules and socializing with other owners on a social media platform. It is inspired by [DOGO](https://dogo.app/), a popular dog training app.
+Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with React Native and Flask maintained in a single code base. Shibal offers a one-stop tool for training your shiba inu through detailed modules in the form of online education and socializing with other owners on a social media platform. It is inspired by [DOGO](https://dogo.app/), a popular dog training app.
 
 <p align="center">
       <img src="documentation/readme/welcome_screen.gif">
@@ -49,7 +49,7 @@ Select dog to train<br><br>
 ### Training Programs<br>
 Navigate between training programs and submodules<br>
 Keep track of your dog's progress<br><br>
-###### Manage deeply-nested training progress state with Redux<br>
+###### Manage nested training progress state with Redux<br>
 ###### Process state with recursive logic via useProgress custom hook<br><br><br><br><br><br><br><br><br>
 
 
