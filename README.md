@@ -15,7 +15,7 @@ Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with
       <img src="documentation/readme/welcome_screen.gif">
 </p>
 
-*tested on iPhone 10 and Galaxy S20*
+*tested on iPhone 12 and Galaxy S20*
 
 ---
 
