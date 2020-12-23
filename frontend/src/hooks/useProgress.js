@@ -7,7 +7,7 @@ export default useProgress = () => {
   const getNestedIds = (object) => {
     let result = [];
 
-    const recursion = (obj) => {
+    const flatten = (obj) => {
       for (let key in obj) {
         let value = obj[key];
 
@@ -15,13 +15,13 @@ export default useProgress = () => {
 
         if (Array.isArray(value)) {
           for (let i = 0; i < value.length; i++) {
-            recursion(value[i]);
+            flatten(value[i]);
           }
         }
       }
     };
 
-    recursion(object);
+    flatten(object);
 
     return [ ...new Set(result)].sort((a, b) => a - b);
   };
@@ -29,7 +29,7 @@ export default useProgress = () => {
   const setTrainingIds = (program) => {
     if (program === undefined) return;
     const trainingIds = getNestedIds(program);
-    dispatch(actions.setTrainingIds(trainingIds))
+    dispatch(actions.setTrainingIds(trainingIds));
   };
 
   const checkProgramCompletion = (enrollments, trainingIds) => {

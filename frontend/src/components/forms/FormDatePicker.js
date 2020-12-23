@@ -56,7 +56,7 @@ function FormDatePicker({ name }) {
         <DateTimePicker
           value={date}
           mode='date'
-          display='default'
+          display='spinner'
           onChange={onChange}
         />
       )}

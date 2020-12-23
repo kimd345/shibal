@@ -27,7 +27,7 @@ function WelcomeScreen({ navigation }) {
           <Button
             icon='arrow-right'
             title='GET STARTED'
-            /* onPress={} */
+            onPress={() => navigation.navigate(routes.AUTH)}
             width={185}
           />
           <Button

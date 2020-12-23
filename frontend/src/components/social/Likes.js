@@ -57,24 +57,20 @@ function Likes({ postId }) {
   return (
     <View style={styles.container}>
       <View style={styles.likeItemContainer}>
-      <Text style={styles.likesCount}>{currentLikes.length}</Text>
+        <Text style={styles.likesCount}>{currentLikes.length}</Text>
       </View>
       <View style={styles.likeItemContainer}>
         {!liked ?
-          ((!currentLikes || createLikeApi.loading) ?
-            <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} /> :
-            <TouchableWithoutFeedback onPress={() => handleLike()}>
-              <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} />
-            </TouchableWithoutFeedback>) :
-          ((!currentLikes || deleteLikeApi.loading) ?
-            <Ionicons name="md-heart" size={26} color={colors.google} /> :
-            <TouchableWithoutFeedback onPress={() => handleUnlike()}>
-              <Ionicons name="md-heart" size={26} color={colors.google} />
-            </TouchableWithoutFeedback>)
-
-          // <TouchableWithoutFeedback onPress={()=> handleUnlike()}>
-          //   <Ionicons name="md-heart" size={26} color={colors.google} />
-          // </TouchableWithoutFeedback>
+          ((!currentLikes || createLikeApi.loading)
+            ? <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} /> 
+            : <TouchableWithoutFeedback onPress={() => handleLike()}>
+                <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} />
+              </TouchableWithoutFeedback>) :
+          ((!currentLikes || deleteLikeApi.loading)
+            ? <Ionicons name="md-heart" size={26} color={colors.google} />
+            : <TouchableWithoutFeedback onPress={() => handleUnlike()}>
+                <Ionicons name="md-heart" size={26} color={colors.google} />
+              </TouchableWithoutFeedback>)
         }
       </View>
     </View>

@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { useFonts } from '@use-expo/font';
 import { AppLoading } from 'expo';
+import { LogBox } from 'react-native';
 
 import AuthNavigator from './src/navigation/AuthNavigator';
 import AppNavigator from './src/navigation/AppNavigator';
@@ -34,6 +35,8 @@ export default function App() {
     };
     restoreUser().then(setIsReady(true));
   }
+
+  LogBox.ignoreAllLogs();
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>

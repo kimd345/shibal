@@ -16,50 +16,50 @@ const Stack = createStackNavigator();
 
 function TrainingNavigator({ navigation }) { 
   return (
-	<Stack.Navigator
-		screenOptions={{
-			headerStyle: { backgroundColor: colors.palegrey },
-      headerTintColor: colors.mossygrey,
-      headerBackTitle: 'Back',
-		}}
-	>
-	  <Stack.Screen
-			name='Training'
-			component={TrainingScreen}
-	  />
-	  <Stack.Screen
-			name='Program'
-			component={ProgramScreen}
-	  />
-	  <Stack.Screen
-			name='Lesson'
-			component={LessonScreen}
-	  />
-	  <Stack.Screen
-			name='Quiz'
-			component={QuizScreen}
-	  />
-	  <Stack.Screen
-			name='Skills'
-			component={SkillsScreen}
-			options={{
-				headerTintColor: colors.white,
-				headerStyle: { backgroundColor: colors.grass },
+		<Stack.Navigator
+			screenOptions={{
+				headerStyle: { backgroundColor: colors.palegrey },
+				headerTintColor: colors.mossygrey,
+				headerBackTitle: 'Back',
 			}}
-	  />
-	  <Stack.Screen
-			name='Skill'
-			component={SkillScreen}
-			options={{
-				headerTintColor: colors.white,
-				headerStyle: { backgroundColor: colors.grass },
-			}}
-	  />
-		<Stack.Screen
-			name='Activity'
-			component={ActivitiesScreen}
-	  />
-	</Stack.Navigator>
+		>
+			<Stack.Screen
+				name='Training'
+				component={TrainingScreen}
+			/>
+			<Stack.Screen
+				name='Program'
+				component={ProgramScreen}
+			/>
+			<Stack.Screen
+				name='Lesson'
+				component={LessonScreen}
+			/>
+			<Stack.Screen
+				name='Quiz'
+				component={QuizScreen}
+			/>
+			<Stack.Screen
+				name='Skills'
+				component={SkillsScreen}
+				options={{
+					headerTintColor: colors.white,
+					headerStyle: { backgroundColor: colors.grass },
+				}}
+			/>
+			<Stack.Screen
+				name='Skill'
+				component={SkillScreen}
+				options={{
+					headerTintColor: colors.white,
+					headerStyle: { backgroundColor: colors.grass },
+				}}
+			/>
+			<Stack.Screen
+				name='Activity'
+				component={ActivitiesScreen}
+			/>
+		</Stack.Navigator>
   );
 }
 

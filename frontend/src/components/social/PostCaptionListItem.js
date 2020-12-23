@@ -16,7 +16,7 @@ function PostCaptionListItem({
   activeOpacity = 0.65,
 }) {
   return (
-    <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
+    // <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
       <View style={styles.container}>
         {IconComponent}
         {profileImageUrl && (
@@ -28,7 +28,7 @@ function PostCaptionListItem({
         </View>
         <Likes postId={postId} />
       </View>
-    </TouchableOpacity>
+    // </TouchableOpacity>
   );
 }
 

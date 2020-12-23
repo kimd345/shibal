@@ -1,4 +1,8 @@
 import requests
+import math
+import random
+import dognames as names
+from wonderwords import RandomSentence
 from werkzeug.security import generate_password_hash
 from dotenv import load_dotenv
 from backend import app, db
@@ -14,45 +18,72 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
-    demo_user = User(email='demo@user.com',
-                     hashed_password=generate_password_hash('password'))
-    dogs_user = User(email='dogs@user.com',
-                     hashed_password=generate_password_hash('password'))
+    def seed_users():
+        for i in range(1, 21):
+            db.session.add(
+                User(email=f'user{i}@demo.com',
+                     hashed_password=generate_password_hash('password')))
 
-    db.session.add(demo_user)
-    db.session.add(dogs_user)
+        db.session.commit()
 
-    demo_dog = Dog(user_id=1, name='만두', image_url="https://cdn.shibe.online/shibes/b8556c4cb61497d35c6d1790eef343dcf5430f09.jpg")  # noqa
-    test_dog_2 = Dog(user_id=2, name='Walnut', image_url="https://cdn.shibe.online/shibes/1a92f81932d8e2976fbeadbd48ce03ea149dbe3d.jpg")  # noqa
-    test_dog_3 = Dog(user_id=2, name='ぎょうざ', image_url="https://cdn.shibe.online/shibes/f1979eb7fbd217318a5a72bba5aabbd7793610ef.jpg")  # noqa
+    seed_users()
 
-    db.session.add(demo_dog)
-    db.session.add(test_dog_2)
-    db.session.add(test_dog_3)
+    def seed_dogs():
+        dog_names = names.malearr(50) + names.femalearr(50)
+        shibe_url = "http://shibe.online/api/shibes?count=100&urls=true&httpsUrls=true"  # noqa
+        response = requests.get(shibe_url).json()
+        for i in range(100):
+            db.session.add(
+                Dog(user_id=math.ceil((i+1)/5),
+                    name=dog_names[i],
+                    image_url=response[i]))
 
-    db.session.commit()
+        db.session.commit()
 
-    demo_current_dog = Current_Dog(user_id=1, dog_id=1)
-    test_current_dog = Current_Dog(user_id=2, dog_id=2)
+    seed_dogs()
 
-    db.session.add(demo_current_dog)
-    db.session.add(test_current_dog)
+    def seed_current_dogs():
+        dog_id = 1
+        for i in range(1, 21):
+            db.session.add(Current_Dog(user_id=i, dog_id=dog_id))
+            dog_id += 5
+
+        db.session.commit()
+
+    seed_current_dogs()
+
+    def seed_posts():
+        shibe_url = "http://shibe.online/api/shibes?count=100&urls=true&httpsUrls=true"  # noqa
+        response = requests.get(shibe_url).json()
+        s = RandomSentence()
+
+        for i in range(100):
+            db.session.add(Post(dog_id=i+1, image_url=response[i], body=s.sentence()))  # noqa
+
+        db.session.commit()
+
+    seed_posts()
 
     demo_post = Post(dog_id=1, image_url="https://cdn.shibe.online/shibes/a21b3d28beec5380ab9eb94b14348be0e67cfb92.jpg", body='안녕 얘들아!!')  # noqa
-    test_post_2 = Post(dog_id=2, image_url="https://cdn.shibe.online/shibes/69901d07648a0ba1646b854c7b3114eb8cb7d5d2.jpg", body='hey hey hey')  # noqa
-    test_post_3 = Post(dog_id=2, image_url="https://cdn.shibe.online/shibes/3f90d003d490dd99124c3230efbb198f85b83702.jpg", body='やぁ、何やってんの')  # noqa
+    demo_post_2 = Post(dog_id=2, image_url="https://cdn.shibe.online/shibes/3f90d003d490dd99124c3230efbb198f85b83702.jpg", body='やぁ、何やってんの')  # noqa
+    demo_post_3 = Post(dog_id=3, image_url="https://cdn.shibe.online/shibes/69901d07648a0ba1646b854c7b3114eb8cb7d5d2.jpg", body='hey hey hey')  # noqa
 
     db.session.add(demo_post)
-    db.session.add(test_post_2)
-    db.session.add(test_post_3)
+    db.session.add(demo_post_2)
+    db.session.add(demo_post_3)
 
-    demo_like = Like(dog_id=1, post_id=1)
-    demo_like_2 = Like(dog_id=1, post_id=2)
+    def seed_likes():
+        for post_id in range(1, 103):
+            random_int = math.floor(random.random()*15)
+            random_step = math.ceil(random.random()*6)
+            for dog_id in range(1, random_int, random_step):
+                db.session.add(
+                    Like(dog_id=dog_id, post_id=post_id)
+                )
 
-    db.session.add(demo_like)
-    db.session.add(demo_like_2)
+        db.session.commit()
 
-    db.session.commit()
+    seed_likes()
 
     # NEW DOG
     # Program
