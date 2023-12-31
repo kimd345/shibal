@@ -35,11 +35,11 @@ function LessonsItem({ lesson, program, module }) {
 
   const handlePress = async () => {
     ((enrollments[lesson.id] === undefined) &&
-      await createEnrollmentApi.request(lesson.id, dogId, 'Lesson', 'Completed')
-        .then(result => dispatch(actions.addEnrollment(result.data))));
+      (await createEnrollmentApi.request(lesson.id, dogId, 'Lesson', 'Completed')
+        .then(result => dispatch(actions.addEnrollment(result.data)))));
       ((enrollments[module.id] === undefined) &&
-        await createEnrollmentApi.request(module.id, dogId, 'Module', 'Completed')
-          .then(result => dispatch(actions.addEnrollment(result.data))));
+        (await createEnrollmentApi.request(module.id, dogId, 'Module', 'Completed')
+          .then(result => dispatch(actions.addEnrollment(result.data)))));
     navigation.navigate(routes.LESSON, { program, lesson });
   };
 
