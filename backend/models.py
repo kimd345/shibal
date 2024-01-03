@@ -1,3 +1,30 @@
+"""
+This module defines the database models for the application.
+
+It uses Flask-SQLAlchemy, a SQL toolkit and Object-Relational Mapping (ORM) system for Python, 
+to define and work with the models.
+
+Classes:
+    User: Represents a user in the system. Inherits from SQLAlchemy's Model and 
+    Flask-Login's UserMixin.
+
+Imports:
+    datetime: For working with dates and times.
+    flask_login.UserMixin: Provides default implementations for the methods 
+    that Flask-Login expects user objects to have.
+    flask_sqlalchemy.SQLAlchemy: The SQLAlchemy class, which is the base for all your models.
+    werkzeug.security: Provides functions to hash and check passwords.
+
+Variables:
+    db: The SQLAlchemy object, which is used to interact with the database.
+    entity_id_seq: A sequence to generate unique IDs for entities.
+    skills: A table that represents the many-to-many relationship between lessons and skills.
+
+Functions:
+    password: A property that returns the hashed password of a user.
+    password.setter: A setter that hashes the password and stores it.
+"""
+
 import datetime
 from flask_login import UserMixin
 from flask_sqlalchemy import SQLAlchemy
