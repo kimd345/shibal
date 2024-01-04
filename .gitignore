@@ -1,6 +1,6 @@
-.DS_Store
+**/.DS_Store
 
-.dockerignore
-.env
-.env.example
-.flaskenv
+**/.dockerignore
+**/.env
+**/.env.example
+**/.flaskenv
