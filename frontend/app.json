@@ -46,6 +46,10 @@
           "config": {}
         }
       ]
-    }
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store"
+    ]
   }
 }

@@ -4,7 +4,6 @@ import { Audio } from 'expo-av';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../config/colors';
-import logger from '../utility/logger';
 
 function Whistle({ size }) {
   const whistle = new Audio.Sound();
@@ -16,7 +15,7 @@ function Whistle({ size }) {
       await whistle.playAsync();
     } catch (error) {
       alert("Couldn't load whistle asset.");
-      logger.log(error);
+      console.log(error);
     }
   };
 

@@ -9,7 +9,6 @@ import Button from '../Button';
 import Text from '../Text';
 
 import useAuth from '../../hooks/useAuth';
-import logger from '../../utility/logger';
 
 function FormImagePicker({ name, category }) {
   const { setFieldValue, values } = useFormikContext();
@@ -66,7 +65,7 @@ function FormImagePicker({ name, category }) {
         downloadImage(uploadUrl);
       }
     } catch (e) {
-      logger.log(e);
+      console.log(e);
       alert('Upload failed');
     }
   };
@@ -84,7 +83,7 @@ function FormImagePicker({ name, category }) {
         return response.key;
       })
       .catch((error) => {
-        logger.log(error);
+        console.log(error);
         return error.response;
       });
   };
@@ -106,7 +105,7 @@ function FormImagePicker({ name, category }) {
         setImage(result);
         setFieldValue(name, result); // setFieldValue
       })
-      .catch((err) => logger.log(err));
+      .catch((err) => console.log(err));
   };
 
   const fetchImageFromUri = async (uri) => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import { useFonts } from '@use-expo/font';
+import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
 import { LogBox } from 'react-native';
 
@@ -11,8 +11,6 @@ import OfflineNotice from './src/components/OfflineNotice';
 import AuthContext from './src/auth/context';
 import authStorage from './src/auth/storage';
 import store from './src/redux/store';
-import logger from './src/utility/logger';
-logger.start();
 
 import Amplify from 'aws-amplify';
 import awsconfig from './aws-exports';
