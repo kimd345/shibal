@@ -26,6 +26,11 @@ flask-login = "*"
 requests = "*"
 dognames = "*"
 wonderwords = "*"
+psycopg2-binary = "*"
+flask-migrate = "*"
 
 [requires]
 python_version = "3.8"
+
+[scripts]
+seed = "python database.py"

@@ -1,7 +1,5 @@
 <p align="right">
-<!--    <a href="https://wogos.herokuapp.com/"> -->
       <img src="frontend/src/assets/logo.png" width="80px" alt="wogos"/>
-<!--    </a> -->
 </p>
 
 ---

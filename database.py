@@ -1,17 +1,19 @@
+#!/usr/bin/env python
+
 import requests
 import math
 import random
 import dognames as names
 from wonderwords import RandomSentence
 from werkzeug.security import generate_password_hash
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from backend import app, db
 from backend.models import (User, Dog, Current_Dog, Post, Like,
                             Program, Module, Lesson, Quiz,
                             skills, Skill, Activity, Enrollment)
 
 
-load_dotenv()
+# load_dotenv()
 
 
 with app.app_context():

@@ -35,6 +35,7 @@ from flask_login import LoginManager
 from flask_cors import CORS
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_jwt_extended import JWTManager
+from flask_migrate import Migrate
 
 
 from backend.models import db, User
@@ -59,6 +60,7 @@ app.register_blueprint(post_routes, url_prefix='/api/posts')
 app.register_blueprint(like_routes, url_prefix='/api/likes')
 app.register_blueprint(training_routes, url_prefix='/api/trainings')
 db.init_app(app)
+migrate = Migrate(app, db)
 
 # Application Security
 CORS(app)
