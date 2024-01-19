@@ -1,55 +1,44 @@
 {
-  "expo": {
-    "name": "shibal",
-    "slug": "shibal",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./src/assets/icon.png",
-    "splash": {
-      "image": "./src/assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#d7bf99"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.kimd345.shibal",
-      "buildNumber": "1.0.0"
-    },
-    "android": {
-      "package": "com.kimd345.shibal",
-      "versionCode": 1
-    },
-    "web": {
-      "favicon": "./src/assets/favicon.png"
-    },
-    "description": "",
-    "extra": {
-      "bugsnag": {
-        "apiKey": "042ae7ce66434aecb9b008c946c90771"
-      }
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "@bugsnag/expo/hooks/post-publish.js",
-          "config": {}
-        }
-      ]
-    },
-    "plugins": [
-      "expo-font",
-      "expo-secure-store"
-    ]
-  }
+	"expo": {
+		"name": "shibal",
+		"slug": "shibal",
+		"platforms": ["ios", "android", "web"],
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./src/assets/icon.png",
+		"splash": {
+			"image": "./src/assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#d7bf99"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"bundleIdentifier": "com.kimd345.shibal",
+			"buildNumber": "1.0.0"
+		},
+		"android": {
+			"package": "com.kimd345.shibal",
+			"versionCode": 1
+		},
+		"web": {
+			"favicon": "./src/assets/favicon.png"
+		},
+		"description": "",
+		"plugins": [
+			[
+				"expo-font",
+				{
+					"fonts": [
+						"./src/assets/fonts/DogeSans-Regular.otf",
+						"./src/assets/fonts/Osake.otf"
+					]
+				}
+			],
+			"expo-secure-store"
+		]
+	}
 }

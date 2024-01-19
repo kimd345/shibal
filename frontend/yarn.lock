@@ -2090,6 +2090,11 @@
     resolve-from "^5.0.0"
     sucrase "3.34.0"
 
+"@expo/metro-runtime@^3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@expo/metro-runtime/-/metro-runtime-3.1.1.tgz#96744decdd0551cb459a3362248b80543bcc6705"
+  integrity sha512-NTtSgYIDqoJb/3m6uxus08PcJO7FguHRRg/ZLRBXt/NNPtJ1bk9eLGspZaa5jbSniVZe2AIXW9VGPi/GwKmIbQ==
+
 "@expo/osascript@^2.0.31":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@expo/osascript/-/osascript-2.1.0.tgz#c407dfe839b5e898829d31e6accd962f91adac1c"
@@ -4541,6 +4546,13 @@ expo-secure-store@~12.8.1:
   version "12.8.1"
   resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-12.8.1.tgz#369a570702fa1dc0c49ea41a5ab18aca2a986d38"
   integrity sha512-Ju3jmkHby4w7rIzdYAt9kQyQ7HhHJ0qRaiQOInknhOLIltftHjEgF4I1UmzKc7P5RCfGNmVbEH729Pncp/sHXQ==
+
+expo-splash-screen@~0.26.3:
+  version "0.26.3"
+  resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.26.3.tgz#85bfd4a06fa94a010afac81a058d38c9ae9f4e04"
+  integrity sha512-zV+2J/stwdirINrcs/d0BTVjKGUoZyN2j5vTp4H4dwWWU/gA0yAkzzh5eGHySg+yTqMSr7sPJkiyZh2Hek2vBQ==
+  dependencies:
+    "@expo/prebuild-config" "6.7.3"
 
 expo-status-bar@~1.11.1:
   version "1.11.1"
