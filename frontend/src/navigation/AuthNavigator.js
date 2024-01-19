@@ -1,4 +1,3 @@
-import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import WelcomeScreen from '../screens/auth/WelcomeScreen';
@@ -6,11 +5,9 @@ import AuthScreen from '../screens/auth/AuthScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import RegisterScreen from '../screens/auth/RegisterScreen';
 import colors from '../config/colors';
-import { View } from 'react-native';
 
 const Stack = createStackNavigator();
 const AuthNavigator = () => (
-  <View style={{ flex: 1, backgroundColor: colors.primaryBackground }}>
     <Stack.Navigator
       screenOptions={{
         headerStyle: { backgroundColor: colors.primaryBackground },
@@ -35,7 +32,6 @@ const AuthNavigator = () => (
         options={{ title: 'Sign Up' }}
       />
     </Stack.Navigator>
-  </View>
 );
 
 export default AuthNavigator;

@@ -1,7 +1,10 @@
+// Must be at the top for stack navigation for iOS & Android, or app may crash in production
+import 'react-native-gesture-handler';
+
 import { useCallback, useState } from 'react';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
@@ -45,12 +48,11 @@ export default function App() {
 
 	return (
 		<View
-			style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+			style={{ flex: 1 }}
 			onLayout={onLayoutRootView}
 		>
-      {/* TODO: configure status bar according to theme */}
-      <StatusBar style='auto' />
-      <Text>Open up App.js to start working on your app!</Text>
+			{/* TODO: configure status bar according to theme */}
+			<StatusBar style='auto' />
 			<AuthContext.Provider value={{ user, setUser }}>
 				<Provider store={store}>
 					<OfflineNotice />
