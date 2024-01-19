@@ -38,6 +38,7 @@ function LessonCompleteScreen({ modalVisible, lesson }) {
           autoPlay
           loop={false}
           source={require('../../assets/animations/completed/check.json')}
+          style={styles.lottieView}
         />
         <View style={styles.buttonWrapper}>
           <Text >Come back tomorrow for the next lesson!</Text>
@@ -74,6 +75,9 @@ const styles = StyleSheet.create({
     top: '65%',
     width: '90%',
   },
+  lottieView: {
+    flex: 1,
+  }
 });
 
 export default LessonCompleteScreen;
