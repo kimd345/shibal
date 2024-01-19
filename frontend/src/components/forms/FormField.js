@@ -1,4 +1,3 @@
-import React from 'react';
 import { useFormikContext } from 'formik';
 
 import { TextInput } from '../inputs';

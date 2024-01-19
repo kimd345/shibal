@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet, View, FlatList, Text, Image } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { useDispatch } from 'react-redux';

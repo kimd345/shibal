@@ -1,4 +1,3 @@
-import React from 'react';
 import { ImageBackground, StyleSheet, View, Image } from 'react-native';
 
 import colors from '../../config/colors';

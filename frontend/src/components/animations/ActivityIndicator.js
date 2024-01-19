@@ -1,4 +1,3 @@
-import React from 'react';
 import LottieView from 'lottie-react-native';
 import { View, StyleSheet, Platform } from 'react-native';
 import colors from '../../config/colors';

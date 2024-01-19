@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet, FlatList } from 'react-native';
 
 import colors from '../../config/colors';

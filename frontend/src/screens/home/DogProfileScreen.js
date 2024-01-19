@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet, Image, Alert } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 

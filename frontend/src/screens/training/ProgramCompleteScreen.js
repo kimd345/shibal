@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet, Modal } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LottieView from 'lottie-react-native';

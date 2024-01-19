@@ -1,4 +1,3 @@
-import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useNetInfo } from '@react-native-community/netinfo';
 import Constants from 'expo-constants';

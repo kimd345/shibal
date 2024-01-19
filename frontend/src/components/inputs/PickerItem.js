@@ -1,4 +1,3 @@
-import React from 'react';
 import { StyleSheet, TouchableWithoutFeedback } from 'react-native';
 
 import Text from '../Text';
