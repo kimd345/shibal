@@ -20,7 +20,7 @@ Welcome to Shibal! Shibal is an Android/iOS cross-platform mobile app built with
 #### Technologies at a glance:
 
 - Frontend - JavaScript | React Native | Redux
-- Backend - Python | Flask
+- Backend - Python | Flask | AWS Amplify
 - Database - PostgreSQL / AWS S3
 - Styling - JSX
 
