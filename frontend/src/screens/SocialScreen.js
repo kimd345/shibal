@@ -27,7 +27,7 @@ function SocialScreen({ navigation }) {
     postsApi.getPosts,
     'posts'
   );
-  console.log('LIKES - SOCIAL SCREEN: ', useSelector((state) => state.likes));
+  // console.log('LIKES - SOCIAL SCREEN: ', useSelector((state) => state.likes));
 
 
   useFocusEffect(

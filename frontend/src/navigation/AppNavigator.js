@@ -14,9 +14,9 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => (
   <Tab.Navigator
-    tabBarOptions={{
-      activeTintColor: colors.tabButton,
-      keyboardHidesTabBar: true,
+    screenOptions={{
+      tabBarActiveTintColor: colors.tabButton,
+      tabBarHideOnKeyboard: true,
     }}
   >
     <Tab.Screen
@@ -60,7 +60,7 @@ const AppNavigator = () => (
       component={SettingsScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name='settings' color={color} size={size} />
+          <MaterialCommunityIcons name='cog' color={color} size={size} />
         ),
       }}
     />

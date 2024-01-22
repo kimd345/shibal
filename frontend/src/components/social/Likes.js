@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, TouchableWithoutFeedback } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import ActivityIndicator from '../animations/ActivityIndicator';
 import Text from '../Text';
@@ -23,11 +23,11 @@ function Likes({ postId }) {
 
   const dispatch = useDispatch();
 
-  console.log('STORE - LIKES: ', likes);
+  // console.log('STORE - LIKES: ', likes);
   
   useEffect(() => {
     setCurrentLikes(likes.filter(like => like.postId === postId));
-    console.log('STATE - LIKES: ', currentLikes);
+    // console.log('STATE - LIKES: ', currentLikes);
   }, [likes]);
   
 
@@ -62,14 +62,14 @@ function Likes({ postId }) {
       <View style={styles.likeItemContainer}>
         {!liked ?
           ((!currentLikes || createLikeApi.loading)
-            ? <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} /> 
+            ? <MaterialCommunityIcons name="heart-outline" size={26} color={colors.mossygrey} /> 
             : <TouchableWithoutFeedback onPress={() => handleLike()}>
-                <Ionicons name="md-heart-empty" size={26} color={colors.mossygrey} />
+                <MaterialCommunityIcons name="heart-outline" size={26} color={colors.mossygrey} />
               </TouchableWithoutFeedback>) :
           ((!currentLikes || deleteLikeApi.loading)
-            ? <Ionicons name="md-heart" size={26} color={colors.google} />
+            ? <MaterialCommunityIcons name="heart" size={26} color={colors.google} />
             : <TouchableWithoutFeedback onPress={() => handleUnlike()}>
-                <Ionicons name="md-heart" size={26} color={colors.google} />
+                <MaterialCommunityIcons name="heart" size={26} color={colors.google} />
               </TouchableWithoutFeedback>)
         }
       </View>
