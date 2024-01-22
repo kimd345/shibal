@@ -37,11 +37,13 @@ const genders = [
 function NewDogScreen({ navigation }) {
 	const [error, setError] = useState();
 	const dog = useSelector((state) => state.dog);
+  console.log('dog: ', dog);
 
 	const createDogApi = useApi(dogsApi.createDog);
 	const putCurrentDogApi = useApi(usersApi.putCurrentDog);
 
 	const userId = useAuth().user.id;
+  console.log('userId: ', userId);
 	const dispatch = useDispatch();
 
 	// useEffect(() => {

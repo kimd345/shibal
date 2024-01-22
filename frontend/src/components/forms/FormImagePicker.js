@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { Auth, Storage } from 'aws-amplify';
+import * as AWS from 'aws-amplify';
 import { useFormikContext } from 'formik';
 
 import colors from '../../config/colors';
@@ -18,7 +19,8 @@ function FormImagePicker({ name, category }) {
 
   useEffect(() => {
     (async () => {
-      const cameraRollStatus = await ImagePicker.requestCameraRollPermissionsAsync();
+      const cameraRollStatus =
+				await ImagePicker.requestMediaLibraryPermissionsAsync();
       const cameraStatus = await ImagePicker.requestCameraPermissionsAsync();
       if (
         cameraRollStatus.status !== 'granted' ||
@@ -46,18 +48,17 @@ function FormImagePicker({ name, category }) {
       aspect: [4, 3],
       quality: 1,
     });
-
     this.handleImagePicked(result);
   };
 
   handleImagePicked = async (pickerResult) => {
     try {
-      if (pickerResult.cancelled) {
-        alert('Upload cancelled');
+      if (pickerResult.canceled) {
+        alert('Upload canceled');
         return;
       } else {
         setPercentage(0);
-        const img = await fetchImageFromUri(pickerResult.uri);
+        const img = await fetchImageFromUri(pickerResult.assets[0].uri);
         const uploadUrl = await uploadImage(
           `${category}/user-${userId}_${Date.now()}.jpg`,
           img
@@ -65,12 +66,13 @@ function FormImagePicker({ name, category }) {
         downloadImage(uploadUrl);
       }
     } catch (e) {
-      console.log(e);
+      console.error('Upload error: ', e);
       alert('Upload failed');
     }
   };
 
   uploadImage = (filename, img) => {
+    console.log('AWS: ', AWS.Amplify)
     Auth.currentCredentials();
     return Storage.put(filename, img, {
       level: 'public',
@@ -83,7 +85,7 @@ function FormImagePicker({ name, category }) {
         return response.key;
       })
       .catch((error) => {
-        console.log(error);
+        console.error(error);
         return error.response;
       });
   };
@@ -105,7 +107,7 @@ function FormImagePicker({ name, category }) {
         setImage(result);
         setFieldValue(name, result); // setFieldValue
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error(err));
   };
 
   const fetchImageFromUri = async (uri) => {
