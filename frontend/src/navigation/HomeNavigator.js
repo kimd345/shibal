@@ -52,6 +52,7 @@ function HomeNavigator({ navigation }) {
     if (Object.keys(user).length > 0) {
       setDogExists(user.currentDogId.length === 1);
     }
+    console.log('#### USER: ', user);
   }, [user]);
 
   useEffect(() => { // set dog, dogs and initial route on dogExists change
@@ -68,10 +69,13 @@ function HomeNavigator({ navigation }) {
   }, [dogExists]);
 
   useEffect(() => { // set enrollments on dog change
-    (async () => await getEnrollmentsApi.request(dog.id))()
-      .then(result => {
-        dispatch(actions.setEnrollments(result.data.enrollments))
-      });
+    console.log('#### DOG: ', dog);
+    if (dogExists === true) {
+      (async () => await getEnrollmentsApi.request(dog.id))()
+        .then(result => {
+          dispatch(actions.setEnrollments(result.data.enrollments))
+        });
+    }
   }, [dog]);
 
   if (initialRoute === null || getUserApi.loading || getDogApi.loading || getDogsApi.loading ) {

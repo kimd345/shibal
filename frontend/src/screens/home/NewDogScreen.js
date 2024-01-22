@@ -6,13 +6,13 @@ import * as Yup from 'yup';
 import ActivityIndicator from '../../components/animations/ActivityIndicator';
 import Screen from '../../components/Screen';
 import {
-  ErrorMessage,
-  Form,
-  FormDatePicker,
-  FormField,
-  FormPicker,
-  FormImagePicker,
-  SubmitButton,
+	ErrorMessage,
+	Form,
+	FormDatePicker,
+	FormField,
+	FormPicker,
+	FormImagePicker,
+	SubmitButton,
 } from '../../components/forms';
 import Button from '../../components/Button';
 import colors from '../../config/colors';
@@ -26,105 +26,107 @@ import routes from '../../navigation/routes';
 import { actions } from '../../redux/ducks';
 
 const validationSchema = Yup.object().shape({
-  name: Yup.string().required().max(50).label('Name'),
+	name: Yup.string().required().max(50).label('Name'),
 });
 
 const genders = [
-  { label: 'Male', value: 'Male' },
-  { label: 'Female', value: 'Female' },
+	{ label: 'Male', value: 'Male' },
+	{ label: 'Female', value: 'Female' },
 ];
 
 function NewDogScreen({ navigation }) {
-  const [error, setError] = useState();
-  const dog = useSelector(state => state.dog);
-  // console.log(dog);
-  
-  const createDogApi = useApi(dogsApi.createDog);
-  const putCurrentDogApi = useApi(usersApi.putCurrentDog);
+	const [error, setError] = useState();
+	const dog = useSelector((state) => state.dog);
 
-  const userId = useAuth().user.id;
-  const dispatch = useDispatch();
+	const createDogApi = useApi(dogsApi.createDog);
+	const putCurrentDogApi = useApi(usersApi.putCurrentDog);
 
-  useEffect(() => { // hide tab bar on mount, clean up on unmount
-    const parent = navigation.dangerouslyGetParent();
-    parent.setOptions({
-      tabBarVisible: false
-    });
-    return () =>
-        parent.setOptions({
-          tabBarVisible: true
-        });
-  }, []);
+	const userId = useAuth().user.id;
+	const dispatch = useDispatch();
 
-  const handleSubmit = async (dogInfo) => {
-    dogInfo = { ...dogInfo, ...{ userId: userId } };
-    const resultDog = await createDogApi.request(dogInfo);
-    dispatch(actions.setDog(resultDog.data));
+	// useEffect(() => {
+	// 	// hide tab bar on mount, clean up on unmount
+	// 	const parent = navigation.getParent();
+	// 	parent.setOptions({
+	// 		tabBarVisible: false,
+	// 	});
+	// 	return () =>
+	// 		parent.setOptions({
+	// 			tabBarVisible: true,
+	// 		});
+	// }, []);
 
-    if (!resultDog.ok) {
-      if (resultDog.data) setError(resultDog.data.msg);
-      else {
-        setError('An unexpected error occurred');
-      }
-      return;
-    }
+	const handleSubmit = async (dogInfo) => {
+		dogInfo = { ...dogInfo, ...{ userId: userId } };
+		const resultDog = await createDogApi.request(dogInfo);
+		dispatch(actions.setDog(resultDog.data));
 
-    const dogId = resultDog.data.id;
-    await putCurrentDogApi.request(userId, dogId);
-    dispatch(actions.addDog(resultDog.data));
-    dispatch(actions.setCurrentDogId(dogId));
+		if (!resultDog.ok) {
+			if (resultDog.data) setError(resultDog.data.msg);
+			else {
+				setError('An unexpected error occurred');
+			}
+			return;
+		}
 
-    navigation.navigate(routes.HOME);
-  };
+		const dogId = resultDog.data.id;
+		await putCurrentDogApi.request(userId, dogId);
+		dispatch(actions.addDog(resultDog.data));
+		dispatch(actions.setCurrentDogId(dogId));
 
-  return (
-    <>
-      <ActivityIndicator
-        visible={createDogApi.loading || putCurrentDogApi.loading}
-        backgroundColor='primaryBackground'
-      />
-      <Screen style={styles.screen}>
-        <Form
-          initialValues={{ name: '' }}
-          onSubmit={handleSubmit}
-          validationSchema={validationSchema}
-        >
-          <ErrorMessage error={error} visible={error} />
-          <FormField
-            autoCapitalize='words'
-            autoCorrect={false}
-            icon='dog-side'
-            keyboardType='default'
-            name='name'
-            placeholder="Enter your Inu's name"
-            textContentType='name'
-          />
-          <FormPicker
-            items={genders}
-            name='gender'
-            placeholder='Gender'
-            width='50%'
-          />
-          <FormDatePicker name='birthday' />
-          <FormImagePicker name='imageUrl' category='profiles' />
-          <SubmitButton title='Submit' />
-        </Form>
-        {Object.keys(dog).length > 0 && <Button
-          color='tabButton'
-          onPress={() => navigation.goBack()}
-          title='Cancel'
-          width='60%'
-        />}
-      </Screen>
-    </>
-  );
+		navigation.navigate(routes.HOME);
+	};
+
+	return (
+		<>
+			<ActivityIndicator
+				visible={createDogApi.loading || putCurrentDogApi.loading}
+				backgroundColor='primaryBackground'
+			/>
+			<Screen style={styles.screen}>
+				<Form
+					initialValues={{ name: '' }}
+					onSubmit={handleSubmit}
+					validationSchema={validationSchema}
+				>
+					<ErrorMessage error={error} visible={error} />
+					<FormField
+						autoCapitalize='words'
+						autoCorrect={false}
+						icon='dog-side'
+						keyboardType='default'
+						name='name'
+						placeholder="Enter your Inu's name"
+						textContentType='name'
+					/>
+					<FormPicker
+						items={genders}
+						name='gender'
+						placeholder='Gender'
+						width='50%'
+					/>
+					<FormDatePicker name='birthday' />
+					<FormImagePicker name='imageUrl' category='profiles' />
+					<SubmitButton title='Submit' />
+				</Form>
+				{Object.keys(dog).length > 0 && (
+					<Button
+						color='tabButton'
+						onPress={() => navigation.goBack()}
+						title='Cancel'
+						width='60%'
+					/>
+				)}
+			</Screen>
+		</>
+	);
 }
 
 const styles = StyleSheet.create({
-  screen: {
-    backgroundColor: colors.primaryBackground,
-    padding: 10,
-  },
+	screen: {
+		backgroundColor: colors.primaryBackground,
+		padding: 10,
+	},
 });
 
 export default NewDogScreen;

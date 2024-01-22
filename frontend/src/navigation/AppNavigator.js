@@ -60,7 +60,7 @@ const AppNavigator = () => (
       component={SettingsScreen}
       options={{
         tabBarIcon: ({ color, size }) => (
-          <MaterialCommunityIcons name='settings' color={color} size={size} />
+          <MaterialCommunityIcons name='cog' color={color} size={size} />
         ),
       }}
     />
